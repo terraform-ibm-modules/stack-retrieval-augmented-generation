@@ -41,6 +41,10 @@
 				{
 					"name": "region",
 					"value": "ref:../../inputs/region"
+				},
+				{
+					"name": "resource_group_name",
+					"value": "ref:../../inputs/resource_group_name"
 				}
 			],
 			"name": "1 - Account Infrastructure Base",
@@ -49,6 +53,10 @@
 		{
 			"name": "2a - Security Service - Key Management",
 			"inputs": [
+				{
+					"name": "resource_group_name",
+					"value": "ref:../../inputs/resource_group_name"
+				},
 				{
 					"name": "ibmcloud_api_key",
 					"value": "ref:../../inputs/ibmcloud_api_key"
@@ -64,12 +72,20 @@
 			"name": "2b - Security Service - Secret Manager",
 			"inputs": [
 				{
+					"name": "resource_group_name",
+					"value": "ref:../../inputs/resource_group_name"
+				},
+				{
 					"name": "ibmcloud_api_key",
 					"value": "ref:../../inputs/ibmcloud_api_key"
 				},
 				{
 					"name": "region",
 					"value": "ref:../../inputs/region"
+				},
+				{
+					"name": "resource_group_name",
+					"value": "ref:../../inputs/resource_group_name"
 				}
 			],
 			"version_locator": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd.1019a9f9-3d14-439d-a328-ea990e481fb0"
@@ -88,6 +104,10 @@
 				{
 					"name": "scc_region",
 					"value": "ref:../../inputs/region"
+				},
+				{
+					"name": "resource_group_name",
+					"value": "ref:../../inputs/resource_group_name"
 				}
 			],
 			"version_locator": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd.9cd00e0b-4b0a-482a-8974-8581d27da09f"
@@ -102,6 +122,10 @@
 				{
 					"name": "region",
 					"value": "ref:../../inputs/region"
+				},
+				{
+					"name": "resource_group_name",
+					"value": "ref:../../inputs/resource_group_name"
 				}
 			],
 			"version_locator": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd.fb52a84e-5ce4-4c5c-86ef-2adc4271107c"

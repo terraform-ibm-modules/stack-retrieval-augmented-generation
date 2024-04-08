@@ -1,0 +1,39 @@
+{
+	"inputs": [
+		{
+			"name": "prefix",
+			"required": false,
+			"type": "string",
+			"hidden": false,
+			"default": "stack-demo"
+		}
+	],
+	"members": [
+		{
+			"inputs": [
+				{
+					"name": "prefix",
+					"value": "ref:../../inputs/prefix"
+				}
+			],
+			"name": "1 - Account Infrastructure Base",
+			"version_locator": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd.67f7d453-7ad6-40fe-bf64-a5ab31c55074"
+		},
+		{
+			"name": "2a - Security Service - Key Management",
+			"version_locator": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd.45320da9-fb74-459c-8ebf-0fd70d2c0fc5"
+		},
+		{
+			"name": "2b - Security Service - Secret Manager",
+			"version_locator": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd.1019a9f9-3d14-439d-a328-ea990e481fb0"
+		},
+		{
+			"name": "2c - Security Service - Security Compliance Center",
+			"version_locator": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd.9cd00e0b-4b0a-482a-8974-8581d27da09f"
+		},
+		{
+			"name": "3 - Observability - Logging Monitoring Activity Tracker",
+			"version_locator": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd.fb52a84e-5ce4-4c5c-86ef-2adc4271107c"
+		}
+	]
+}

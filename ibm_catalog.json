@@ -1,0 +1,84 @@
+{
+	"products": [
+		{
+			"label": "Retrieval Augmented Generation Pattern",
+			"name": "Retrieval_Augmented_Generation_Pattern",
+			"version": "0.0.1",
+			"product_kind": "solution",
+			"tags": [
+				"watson",
+				"Banking"
+			],
+			"keywords": [
+				"rag",
+				"watson",
+				"ai"
+			],
+			"short_description": "A sample application that illustrates how to implement the RAG Pattern with watsonx.ai and IBM Cloud services.",
+			"offering_icon_url": "https://globalcatalog.cloud.ibm.com/api/v1/1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc/artifacts/solution.svg",
+			"flavors": [
+				{
+					"label": "Deploy on Code Engine",
+					"name": "Code-Engine-d7b9",
+					"compliance": {
+						"authority": "scc-v3",
+						"controls": [
+							{
+								"profile": {
+									"id": "",
+									"name": "IBM Cloud Framework for Financial Services",
+									"version": "1.5.0"
+								},
+								"names": [
+									"AC-5(c)"
+								]
+							}
+						]
+					},
+					"iam_permissions": [
+						{
+							"service_name": "iam-identity",
+							"resources": [
+								{
+									"name": "Placeholder - will be refined",
+									"description": "Placeholder - will be refined",
+									"role_crns": [
+										"crn:v1:bluemix:public:iam::::role:Administrator"
+									]
+								}
+							]
+						}
+					],
+					"architecture": {
+						"features": [
+							{
+								"title": "Deploy a customer care generative AI app to Code Engine using Continous Delivery",
+								"description": "TBD"
+							}
+						],
+						"diagrams": [
+							{
+								"diagram": {
+									"url": "https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-rag-sample-da/init-da/reference-architecture/stack.svg",
+									"caption": "Solution components",
+									"type": "image/svg+xml",
+									"thumbnail_url": "https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-rag-sample-da/init-da/reference-architecture/stack.svg"
+								},
+								"description": "Solution components"
+							}
+						]
+					},
+					"configuration": [
+						{
+							"key": "prefix",
+							"type": "string",
+							"default_value": "stack-demo",
+							"required": false
+						}
+					],
+					"install_type": "fullstack"
+				}
+			]
+		}
+	]
+}

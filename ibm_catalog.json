@@ -3,7 +3,7 @@
 		{
 			"label": "Retrieval Augmented Generation Pattern",
 			"name": "Retrieval_Augmented_Generation_Pattern",
-			"version": "0.0.2",
+			"version": "0.1.0-dev",
 			"product_kind": "solution",
 			"tags": [
 				"watson",
@@ -36,18 +36,6 @@
 						]
 					},
 					"iam_permissions": [
-						{
-							"service_name": "iam-identity",
-							"resources": [
-								{
-									"name": "Placeholder - will be refined",
-									"description": "Placeholder - will be refined",
-									"role_crns": [
-										"crn:v1:bluemix:public:iam::::role:Administrator"
-									]
-								}
-							]
-						}
 					],
 					"architecture": {
 						"features": [
@@ -74,6 +62,25 @@
 							"type": "string",
 							"default_value": "stack-demo",
 							"required": false
+						},
+						{
+							"name": "ibmcloud_api_key",
+							"required": true,
+							"type": "password",
+							"hidden": false
+						},
+						{
+							"name": "resource_group_name",
+							"required": false,
+							"type": "string",
+							"hidden": false
+						},
+						{
+							"name": "region",
+							"required": false,
+							"type": "string",
+							"hidden": false,
+							"default": "us-south"
 						}
 					],
 					"install_type": "fullstack"

@@ -3,7 +3,6 @@
 		{
 			"label": "Retrieval Augmented Generation Pattern",
 			"name": "Retrieval_Augmented_Generation_Pattern",
-			"version": "0.0.1",
 			"product_kind": "solution",
 			"tags": [
 				"watson",

@@ -182,6 +182,26 @@
 				{
 					"name": "use_existing_resource_group",
 					"value": true
+				},
+				{
+					"name": "watson_machine_learning_plan",
+					"value": "v2-standard"
+				},
+				{
+					"name": "watson_studio_plan",
+					"value": "professional-v1"
+				},
+				{
+					"name": "watson_discovery_plan",
+					"value": "plus"
+				},
+				{
+					"name": "watson_assistant_plan",
+					"value": "plus"
+				},
+				{
+					"name": "watson_governance_plan",
+					"value": "do not install"
 				}
 			],
 			"name": "4 - WatsonX SaaS services",

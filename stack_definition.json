@@ -168,6 +168,32 @@
 					"value": "ref:../../inputs/ibmcloud_api_key"
 				},
 				{
+					"name": "resource_group_name",
+					"value": "ref:../../inputs/resource_group_name"
+				},
+				{
+					"name": "location",
+					"value": "ref:../../inputs/region"
+				},
+				{
+					"name": "resource_prefix",
+					"value": "ref:../../inputs/prefix"
+				},
+				{
+					"name": "use_existing_resource_group",
+					"value": true
+				}
+			],
+			"name": "4 - WatsonX SaaS services",
+			"version_locator": "8bfb1293-8b85-4d3f-a89f-015d0a0719df.89584910-8375-4c44-8c3b-65ddc553c3b2"
+		},
+		{
+			"inputs": [
+				{
+					"name": "ibmcloud_api_key",
+					"value": "ref:../../inputs/ibmcloud_api_key"
+				},
+				{
 					"name": "toolchain_name",
 					"value": "Generative AI Sample App"
 				},

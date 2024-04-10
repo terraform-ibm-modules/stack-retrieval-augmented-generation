@@ -36,6 +36,18 @@
 						]
 					},
 					"iam_permissions": [
+						{
+							"service_name": "iam-identity",
+							"resources": [
+								{
+									"name": "Placeholder - will be refined",
+									"description": "Placeholder - will be refined",
+									"role_crns": [
+										"crn:v1:bluemix:public:iam::::role:Administrator"
+									]
+								}
+							]
+						}
 					],
 					"architecture": {
 						"features": [

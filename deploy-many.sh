@@ -4,9 +4,9 @@ set -x
 
 
 
-PROJECT_ID="8b78e0be-6f9c-4e08-8f16-99c83b03cbf0"
-CONFIG_IDS=("0dfabee9-b301-4117-85de-942ddbd8291f")
-STACK_CONFIG_ID="7fe3da83-b6d6-4c94-8f70-01b6ea557e80"
+PROJECT_ID="f24554c3-a402-48c6-9293-12ebd066baa1"
+CONFIG_IDS=("91d1f479-b586-49c0-a696-a261550c8125" "6b74f33f-a9ea-421a-b18f-1de7b55c21bb")
+STACK_CONFIG_ID="9f66a3df-9717-41c2-8380-347e641f817d"
 
 function set_stack_inputs() {
   ibmcloud project config-update --project-id $PROJECT_ID --id $STACK_CONFIG_ID --definition @.def.json

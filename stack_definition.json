@@ -41,10 +41,6 @@
 				{
 					"name": "region",
 					"value": "ref:../../inputs/region"
-				},
-				{
-					"name": "resource_group_name",
-					"value": "ref:../../inputs/resource_group_name"
 				}
 			],
 			"name": "1 - Account Infrastructure Base",

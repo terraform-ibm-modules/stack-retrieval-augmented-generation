@@ -1,0 +1,100 @@
+{
+    "inputs": [
+        {
+            "default": "rag-stack",
+            "hidden": false,
+            "name": "prefix",
+            "required": false,
+            "type": "string"
+        },
+        {
+            "default": null,
+            "hidden": false,
+            "name": "ibmcloud_api_key",
+            "required": true,
+            "type": "password"
+        },
+        {
+            "default": null,
+            "hidden": false,
+            "name": "resource_group_name",
+            "required": false,
+            "type": "string"
+        },
+        {
+            "default": "us-south",
+            "hidden": false,
+            "name": "region",
+            "required": false,
+            "type": "string"
+        }
+    ],
+    "members": [
+        {
+            "inputs": [
+                {
+                    "name": "ibmcloud_api_key"
+                },
+                {
+                    "name": "prefix"
+                },
+                {
+                    "name": "region"
+                }
+            ],
+            "name": "1 - Account Infrastructure Base",
+            "version_locator": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd.e88c8127-524b-49e5-8556-12dd0fbc336e"
+        },
+        {
+            "inputs": [
+                {
+                    "name": "ibmcloud_api_key"
+                },
+                {
+                    "name": "region"
+                }
+            ],
+            "name": "2a - Security Service - Key Management",
+            "version_locator": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd.ca2f4442-aace-436a-a088-78c0b6274d41"
+        },
+        {
+            "inputs": [
+                {
+                    "name": "ibmcloud_api_key"
+                },
+                {
+                    "name": "region"
+                }
+            ],
+            "name": "2b - Security Service - Secret Manager",
+            "version_locator": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd.1019a9f9-3d14-439d-a328-ea990e481fb0"
+        },
+        {
+            "inputs": [
+                {
+                    "name": "ibmcloud_api_key"
+                },
+                {
+                    "name": "cos_region"
+                },
+                {
+                    "name": "scc_region"
+                }
+            ],
+            "name": "2c - Security Service - Security Compliance Center",
+            "version_locator": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd.9cd00e0b-4b0a-482a-8974-8581d27da09f"
+        },
+        {
+            "inputs": [
+                {
+                    "name": "ibmcloud_api_key"
+                },
+                {
+                    "name": "region"
+                }
+            ],
+            "name": "3 - Observability - Logging Monitoring Activity Tracker",
+            "version_locator": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd.fb52a84e-5ce4-4c5c-86ef-2adc4271107c"
+        }
+    ]
+}

@@ -202,6 +202,10 @@
 				{
 					"name": "watson_governance_plan",
 					"value": "do not install"
+				},
+				{
+					"name": "project_name",
+					"value": "ref:../../inputs/prefix"
 				}
 			],
 			"name": "4 - WatsonX SaaS services",

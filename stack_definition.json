@@ -1,11 +1,37 @@
 {
 	"inputs": [
-		{
+			{
 			"name": "prefix",
 			"required": false,
 			"type": "string",
 			"hidden": false,
-			"default": "stack-demo"
+			"default": "rag-stack"
+		},
+		{
+			"name": "ibmcloud_api_key",
+			"required": true,
+			"type": "password",
+			"hidden": false
+		},
+		{
+			"name": "resource_group_name",
+			"required": false,
+			"type": "string",
+			"hidden": false
+		},
+		{
+			"name": "region",
+			"required": false,
+			"type": "string",
+			"hidden": false,
+			"default": "us-south"
+		},
+		{
+			"name": "sample_app_git_url",
+			"required": false,
+			"type": "string",
+			"hidden": false,
+			"default": "https://github.com/IBM/gen-ai-rag-watsonx-sample-application"
 		}
 	],
 	"members": [

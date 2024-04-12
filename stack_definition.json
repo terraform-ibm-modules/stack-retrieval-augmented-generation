@@ -255,7 +255,7 @@
 				},
 				{
 					"name": "registry_namespace",
-					"value": "namespace-rag"
+					"value": "ref:../../inputs/prefix"
 				},
 				{
 					"name": "ci_app_repo_clone_from_url",

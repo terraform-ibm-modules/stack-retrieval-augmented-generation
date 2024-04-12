@@ -17,7 +17,11 @@ Click the "Add to project" button, and select create in new project.
 ## 3. Set the input configuration for the stack
 
 - Clone this repository locally - and checkout the dev branch.
-- Create a file with name ".def.json" with the following content. Important: ensure region is either us-south or eu-de as watsonx can only be deployed in those 2 locations for now.
+- Create a file with name ".def.json" with the following content. 
+
+**Important**: 
+- Ensure region is either us-south or eu-de as watsonx can only be deployed in those 2 locations for now.
+- Ensure that the prefix is globally unique. It is used for the container registry namespace (which needs to be globally unique) in this alpha version.
 
 ```json
 {
@@ -76,4 +80,4 @@ A few manual steps are required in the alpha version to trigger the deployment o
 1. In the secret manager instance, in the default group, create an arbitrary secret named "ibmcloud-api-key". Put the used api key as secret.
 2. Follow the steps at https://cloud.ibm.com/docs/devsecops?topic=devsecops-devsecops-image-signing to generate a gpg key
 3. In the secret manager instance, in the default group, create an arbitrary secret named "signing_key". Put the signing key. See https://cloud.ibm.com/docs/devsecops?topic=devsecops-devsecops-image-signing#cd-devsecops-gpg-store-secretsmgr
-4. Navigate to the Generative AI Sample App-CI-Toolchain CD service, click "ci-pipeline" and execute the "Manual Trigger"
+4. Navigate to the "Generative AI Sample App-CI-Toolchain" CD instance, click "ci-pipeline" and execute the "Manual Trigger".

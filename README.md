@@ -1,4 +1,4 @@
-# Retrievel Augmented Generation (RAG) stack
+# Retrieval Augmented Generation (RAG) stack
 
 To run the full stack. These steps will be updated as development progresses on the stack and underlaying DAs.
 

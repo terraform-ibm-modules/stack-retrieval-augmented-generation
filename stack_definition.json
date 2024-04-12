@@ -260,6 +260,14 @@
 				{
 					"name": "ci_app_repo_clone_from_url",
 					"value": "ref:../../inputs/sample_app_git_url"
+				},
+				{
+					"name": "repositories_prefix",
+					"value": "rag-sample"
+				},
+				{
+					"name": "ci_app_name",
+					"value": "rag-sample-app"
 				}
 			],
 			"name": "5 - Generative AI Sample App - Code Engine Toolchain Config",
@@ -298,10 +306,38 @@
 				{
 					"name": "ci_pipeline_id",
 					"value": "ref:../5 - Generative AI Sample App - Code Engine Toolchain Config/outputs/ci_pipeline_id"
+				},
+				{
+					"name": "watson_machine_learning_instance_guid",
+					"value": "ref:../4 - WatsonX SaaS services/outputs/watson_machine_learning_guid"
+				},
+				{
+					"name": "watson_machine_learning_instance_resource_name",
+					"value": "ref:../4 - WatsonX SaaS services/outputs/watson_machine_learning_name"
+				},
+				{
+					"name": "watson_machine_learning_instance_crn",
+					"value": "ref:../4 - WatsonX SaaS services/outputs/watson_machine_learning_crn"
+				},
+				{
+					"name": "toolchain_resource_group",
+					"value": "ref:../../inputs/resource_group_name"
+				},
+				{
+					"name": "prefix",
+					"value": "ref:../../inputs/prefix"
+				},
+				{
+					"name": "resource_group_name",
+					"value": "ref:../../inputs/resource_group_name"
+				},
+				{
+					"name": "use_existing_resource_group",
+					"value": true
 				}
 			],
 			"name": "6 - Sample RAG app configuration",
-			"version_locator": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd.e2855bfd-352e-492b-bf4c-080d8d105c81"
+			"version_locator": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd.19041420-5bc9-4aca-9dc8-0cb432c80962"
 		}
 	]
 }

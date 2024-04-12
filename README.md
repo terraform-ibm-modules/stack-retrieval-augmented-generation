@@ -44,26 +44,27 @@ Example:
 }
 ```
 
-## 4. Get the configuration ids for each element of the stack
 
-Run `ibmcloud project configs --project-id <project_id>` to get the list of configurations in the project.
-- Project id is the id of the project created in step 1. The project id can be found under the Manage -> Details tab in the project UI. 
-- Take note the id of each config. The first config is the "stack" config.
+## 4. Run ./deploy-many.sh
 
-## 5. Edit your local copy of deploy-many.sh
+- Ensure you are login into the account containing the Cloud project with the stack using ibmcloud login --sso
+- Execute ./deploy-many.sh with project name, stack name and optional configuration name pattern. The selected non-stack configruations will be processed by their name in alphabetical order. Using configuration name pattern (regex can be used - make sure to enclose it in quotes) you can chose which configurations are deployed
 
-In deploy-many.sh:
-- Set PROJECT_ID to the id of the project
-- Add set the CONFIG_IDS to the array of configurations (ensuring ordering)
-CONFIG_IDS=("9618c574-4e0d-4e89-ac55-440717c8b378" "545c1a92-fa21-447f-96ed-fbefb7c50b35" "9aca1cae-36e3-4d1a-96fe-a4ddec057c01" "3eab3b42-f8d4-4532-b0d2-05ef2cc9c250" "b3dbe0de-1512-4351-b0f5-bb8ae8be4d4b")
-- Set STACK_CONFIG_ID to the id of the config corresponding to the stack
+Example 1 - update stack inputs for stack configuration `RAG` and process all non-stack configurations in the project:
+```bash
+./deploy-many.sh my-test-project RAG
+```
+
+Example 2 - update stack inputs and process some configurations in the project:
+```bash
+./deploy-many.sh my-test-project RAG 'RAG-1|RAG-4|RAG-5'
+```
+
+Example 2 - simulate updating stack inputs and validating some configurations in the project in dry-run mode (no changes or actual validation or deployments is done):
+```bash
+DRY_RUN=true ./deploy-many.sh my-test-project RAG 'RAG-1|RAG-4|RAG-5'
+```
+
+Tips: If deployment fail in one of the DA, you may need to remove the configuration name of the deployment that already passes from the pattern before re-running the script.
 
 Tips: to accelerate iteration you may deploy only a subset of the configurations: the bare minimum are key management, security manager, watson saas, alm and rag configuration da. Base account, observability and SCC are not on the critical path to get the app running.
-
-## 6. Run ./deploy-many.sh
-
-- Ensure you are login using ibmcloud login --sso
-- Execute ./deploy-many.sh
-
-Tips: If deployment fail in one of the DA, you may need to remove the configuration id of the deployment that already passes before re-running the script.
-

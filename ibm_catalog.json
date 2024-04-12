@@ -3,7 +3,7 @@
 		{
 			"label": "Retrieval Augmented Generation Pattern",
 			"name": "Retrieval_Augmented_Generation_Pattern",
-			"version": "0.0.2",
+			"version": "0.1.0-dev",
 			"product_kind": "solution",
 			"tags": [
 				"watson",
@@ -59,10 +59,10 @@
 						"diagrams": [
 							{
 								"diagram": {
-									"url": "https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-rag-sample-da/init-da/reference-architecture/stack.svg",
+									"url": "https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-rag-sample-da/main/reference-architecture/stack.svg",
 									"caption": "Solution components",
 									"type": "image/svg+xml",
-									"thumbnail_url": "https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-rag-sample-da/init-da/reference-architecture/stack.svg"
+									"thumbnail_url": "https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-rag-sample-da/main/reference-architecture/stack.svg"
 								},
 								"description": "Solution components"
 							}
@@ -74,6 +74,25 @@
 							"type": "string",
 							"default_value": "stack-demo",
 							"required": false
+						},
+						{
+							"name": "ibmcloud_api_key",
+							"required": true,
+							"type": "password",
+							"hidden": false
+						},
+						{
+							"name": "resource_group_name",
+							"required": false,
+							"type": "string",
+							"hidden": false
+						},
+						{
+							"name": "region",
+							"required": false,
+							"type": "string",
+							"hidden": false,
+							"default": "us-south"
 						}
 					],
 					"install_type": "fullstack"

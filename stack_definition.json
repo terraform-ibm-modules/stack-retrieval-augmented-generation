@@ -276,6 +276,14 @@
 				{
 					"name": "ci_code_engine_image_name",
 					"value": "code-engine-rag-app"
+				},
+				{
+					"name": "ci_code_engine_env_from_configmaps",
+					"value": "app.properties"
+				},
+				{
+					"name": "cd_code_engine_env_from_configmaps",
+					"value": "app.properties"
 				}
 			],
 			"name": "5 - Generative AI Sample App - Code Engine Toolchain Config",

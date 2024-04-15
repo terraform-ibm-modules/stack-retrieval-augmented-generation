@@ -60,7 +60,7 @@
 							{
 								"diagram": {
 									"url": "https://raw.githubusercontent.com/terraform-ibm-modules/stack-retrieval-augmented-generation/main/reference-architecture/RAG Pattern v2-part-2.svg",
-									"caption": "Solution components",
+									"caption": "Reference architecture",
 									"type": "image/svg+xml",
 									"thumbnail_url": "https://raw.githubusercontent.com/terraform-ibm-modules/stack-retrieval-augmented-generation/main/reference-architecture/RAG Pattern v2-part-2.svg"
 								},

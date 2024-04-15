@@ -2,10 +2,6 @@
 
 set -x
 
-# PROJECT_ID="546993cb-c1ba-49cd-a975-187a2b924c21"
-# CONFIG_IDS=("b79d03d5-edfe-4cd4-8787-7d70738c6529" "853c369d-3dbd-41e4-8e79-006d2c3408b2" "736fd03d-190a-4bcd-a1a5-18334d868f20" "3d76faf5-663e-4a7a-bb1d-3c98a9fa6628" "70667b97-6bb5-425b-8e6a-47c931740604")
-# STACK_CONFIG_ID="53ef9a25-3aad-4167-b548-41b19c57cad4"
-
 function parse_params() {
   PROJECT_NAME=$1
   STACK_NAME=$2
@@ -68,6 +64,7 @@ function wait_for_validation() {
     fi
 
     sleep 10 
+    keep_iam_session_active
   done
 }
 
@@ -104,6 +101,7 @@ function wait_for_deployment() {
 
     # Sleep for a few seconds before checking the state again
     sleep 10
+    keep_iam_session_active
   done
 }
 
@@ -115,11 +113,16 @@ function die()
   exit $exit_code
 }
 
+function keep_iam_session_active()
+{
+  ibmcloud iam oauth-tokens > /dev/null
+}
+
 parse_params "$@"
 get_config_ids
 set_stack_inputs
 
-# 6. Loop through the configuration IDs and execute the functions
+# Loop through the configuration IDs and execute the functions
 for CONFIG_ID in "${CONFIG_IDS[@]}"
 do
   validate_config

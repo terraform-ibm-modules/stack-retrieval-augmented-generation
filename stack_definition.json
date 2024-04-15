@@ -263,7 +263,7 @@
 				},
 				{
 					"name": "repositories_prefix",
-					"value": "rag-sample"
+					"value": "ref:../../inputs/prefix"
 				},
 				{
 					"name": "ci_app_name",

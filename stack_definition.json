@@ -14,6 +14,12 @@
 			"hidden": false
 		},
 		{
+			"name": "watsonx_admin_api_key",
+			"required": false,
+			"type": "password",
+			"hidden": false
+		},
+		{
 			"name": "resource_group_name",
 			"required": false,
 			"type": "string",
@@ -166,6 +172,10 @@
 				{
 					"name": "ibmcloud_api_key",
 					"value": "ref:../../inputs/ibmcloud_api_key"
+				},
+				{
+					"name": "watsonx_admin_api_key",
+					"value": "ref:../../inputs/watsonx_admin_api_key"
 				},
 				{
 					"name": "resource_group_name",

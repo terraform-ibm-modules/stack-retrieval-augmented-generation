@@ -30,7 +30,8 @@ Click the "Add to project" button, and select create in new project.
         "ibmcloud_api_key": "<API Key of the target account with sufficient permissions>",
         "resource_group_name": "<target resource group - must be existing in account>",
         "region": "<region where resources are deployed>",
-        "sample_app_git_url": "https://github.com/IBM/gen-ai-rag-watsonx-sample-application"
+        "sample_app_git_url": "https://github.com/IBM/gen-ai-rag-watsonx-sample-application",
+        "watsonx_admin_api_key": "<optional - admin key to use for watson if different from ibmcloud_api_key>"
     }
 }
 ```
@@ -43,7 +44,8 @@ Example:
         "ibmcloud_api_key": "<your api key>",
         "resource_group_name": "0411-stack-service-rg",
         "region": "eu-de",
-        "sample_app_git_url": "https://github.com/IBM/gen-ai-rag-watsonx-sample-application"
+        "sample_app_git_url": "https://github.com/IBM/gen-ai-rag-watsonx-sample-application",
+        "watsonx_admin_api_key": "<optional - admin key to use for watson if different from ibmcloud_api_key>"
     }
 }
 ```

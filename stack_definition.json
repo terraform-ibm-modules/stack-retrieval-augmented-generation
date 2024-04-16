@@ -101,7 +101,7 @@
 					"value": "ref:../2a - Security Service - Key Management/outputs/kms_guid"
 				},
 				{
-					"name": "use_existing_resource_group",
+					"name": "existing_resource_group",
 					"value": true
 				}
 			],

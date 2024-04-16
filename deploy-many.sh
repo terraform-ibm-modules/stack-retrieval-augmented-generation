@@ -39,22 +39,39 @@ function set_stack_inputs() {
   $CLI_CMD project config-update --project-id $PROJECT_ID --id $STACK_CONFIG_ID --definition @.def.json
 }
 
+function get_validation_state() {
+  if [[ ! -z $DRY_RUN ]]; then
+    echo "validated"
+  else
+    $CLI_CMD project config --project-id $PROJECT_ID --id $CONFIG_ID --output json | jq -r '.state'
+  fi  
+}
+
+function get_deployment_state() {
+  if [[ ! -z $DRY_RUN ]]; then
+    echo "deployed"
+  else
+    $CLI_CMD project config --project-id $PROJECT_ID --id $CONFIG_ID --output json | jq -r ".approved_version.state"
+  fi
+}
+
 function validate_config() {
   echo "=========> Starting validation for $(ibmcloud project config --project-id $PROJECT_ID --id $CONFIG_ID --output json| jq -r '.definition.name')"
-  $CLI_CMD project config-validate --project-id $PROJECT_ID --id $CONFIG_ID --output json > /tmp/validation.json
+  
+  STATE=$(get_validation_state)
+
+  if [[ "$STATE" != "validated" && "$STATE" != "deployed" && "$STATE" != "deploying_failed" ]]; then
+    $CLI_CMD project config-validate --project-id $PROJECT_ID --id $CONFIG_ID --output json > /tmp/validation.json
+  fi
 }
 
 function wait_for_validation() {
   # Loop until the state is set to validated
   while true; do
 
-    # Get the current state of the configuration
-    STATE=$(ibmcloud project config --project-id $PROJECT_ID --id $CONFIG_ID --output json | jq -r '.state')
-    if [[ ! -z $DRY_RUN ]]; then
-      STATE=validated
-    fi
+    STATE=$(get_validation_state)
 
-    if [[ "$STATE" == "validated" ]]; then
+    if [[ "$STATE" == "validated" || "$STATE" == "deployed" || "$STATE" == "deploying_failed" ]]; then
       break
     fi
 
@@ -69,24 +86,24 @@ function wait_for_validation() {
 }
 
 function approve_config() {
-  $CLI_CMD project config-approve --project-id $PROJECT_ID --id $CONFIG_ID --comment "I approve through CLI"
+  if [[ "$STATE" == "validated" ]]; then
+    $CLI_CMD project config-approve --project-id $PROJECT_ID --id $CONFIG_ID --comment "I approve through CLI"
+  fi
 }
 
 function deploy_config() {
-  $CLI_CMD project config-deploy --project-id $PROJECT_ID --id $CONFIG_ID
+
+  STATE=$(get_deployment_state)
+
+  if [[ "$STATE" != "deployed" ]]; then
+    $CLI_CMD project config-deploy --project-id $PROJECT_ID --id $CONFIG_ID
+  fi
 }
 
 function wait_for_deployment() {
   while true; do
     # Retrieve the configuration
-    RESPONSE=$(ibmcloud project config --project-id $PROJECT_ID --id $CONFIG_ID --output json)
-
-    # Check the state of the configuration under approved_version
-    STATE=$(echo "$RESPONSE" | jq -r ".approved_version.state")
-    if [[ ! -z $DRY_RUN ]]; then
-      STATE=deployed
-    fi
-
+    STATE=$(get_deployment_state)
 
     # If the state is "deployed" or "deploying_failed", exit the loop
     if [[ "$STATE" == "deployed" || "$STATE" == "deploying_failed" ]]; then

@@ -22,16 +22,10 @@
 					"name": "Code-Engine-d7b9",
 					"compliance": {
 						"authority": "scc-v3",
-						"controls": [
+						"profiles": [
 							{
-								"profile": {
-									"id": "",
-									"name": "IBM Cloud Framework for Financial Services",
-									"version": "1.5.0"
-								},
-								"names": [
-									"AC-5(c)"
-								]
+								"profile_name": "AI ICT Guardrails",
+								"profile_version": "1.0.0"
 							}
 						]
 					},

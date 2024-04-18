@@ -2,7 +2,7 @@
 	"inputs": [
 		{
 			"name": "prefix",
-			"required": false,
+			"required": true,
 			"type": "string",
 			"hidden": false,
 			"default": "rag-stack"
@@ -42,6 +42,8 @@
 	],
 	"members": [
 		{
+			"name": "1 - Account Infrastructure Base",
+			"version_locator": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd.9971e551-4f32-4d7f-a405-ec8937a0183d",
 			"inputs": [
 				{
 					"name": "prefix",
@@ -54,17 +56,44 @@
 				{
 					"name": "region",
 					"value": "ref:../../inputs/region"
+				},
+				{
+					"name": "security_resource_group_name",
+					"value": "ref:../../inputs/resource_group_name"
+				},
+				{
+					"name": "audit_resource_group_name",
+					"value": "ref:../../inputs/resource_group_name"
+				},
+				{
+					"name": "observability_resource_group_name",
+					"value": "ref:../../inputs/resource_group_name"
+				},
+				{
+					"name": "management_resource_group_name",
+					"value": "ref:../../inputs/resource_group_name"
+				},
+				{
+					"name": "workload_resource_group_name",
+					"value": "ref:../../inputs/resource_group_name"
+				},
+				{
+					"name": "edge_resource_group_name",
+					"value": "ref:../../inputs/resource_group_name"
+				},
+				{
+					"name": "devops_resource_group_name",
+					"value": "ref:../../inputs/resource_group_name"
 				}
-			],
-			"name": "1 - Account Infrastructure Base",
-			"version_locator": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd.9971e551-4f32-4d7f-a405-ec8937a0183d"
+			]
 		},
 		{
-			"name": "2a - Security Service - Key Management",
+			"name": "2a - Security Service - Key Management",			
+			"version_locator": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd.24da1d76-8945-4c71-be55-57651e511914",
 			"inputs": [
 				{
-					"name": "resource_group_name",
-					"value": "ref:../../inputs/resource_group_name"
+					"name": "resource_group_name",					
+					"value": "ref:../1 - Account Infrastructure Base/outputs/security_resource_group_name"
 				},
 				{
 					"name": "use_existing_resource_group",
@@ -78,15 +107,15 @@
 					"name": "region",
 					"value": "ref:../../inputs/region"
 				}
-			],
-			"version_locator": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd.24da1d76-8945-4c71-be55-57651e511914"
+			]
 		},
 		{
 			"name": "2b - Security Service - Secret Manager",
+			"version_locator": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd.ebffb17b-302a-4f12-925c-16c4e6a590c2",
 			"inputs": [
 				{
-					"name": "resource_group_name",
-					"value": "ref:../../inputs/resource_group_name"
+					"name": "resource_group_name",					
+					"value": "ref:../1 - Account Infrastructure Base/outputs/security_resource_group_name"
 				},
 				{
 					"name": "ibmcloud_api_key",
@@ -104,11 +133,11 @@
 					"name": "existing_resource_group",
 					"value": true
 				}
-			],
-			"version_locator": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd.ebffb17b-302a-4f12-925c-16c4e6a590c2"
+			]			
 		},
 		{
-			"name": "2c - Security Service - Security Compliance Center",
+			"name": "2c - Security Service - Security Compliance Center",			
+			"version_locator": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd.2c901854-5628-4d48-9edf-395e22ca47d2",
 			"inputs": [
 				{
 					"name": "ibmcloud_api_key",
@@ -123,8 +152,8 @@
 					"value": "ref:../../inputs/region"
 				},
 				{
-					"name": "resource_group_name",
-					"value": "ref:../../inputs/resource_group_name"
+					"name": "resource_group_name",					
+					"value": "ref:../1 - Account Infrastructure Base/outputs/audit_resource_group_name"
 				},
 				{
 					"name": "existing_kms_instance_crn",
@@ -134,11 +163,11 @@
 					"name": "use_existing_resource_group",
 					"value": true
 				}
-			],
-			"version_locator": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd.2c901854-5628-4d48-9edf-395e22ca47d2"
+			]
 		},
 		{
 			"name": "3 - Observability - Logging Monitoring Activity Tracker",
+			"version_locator": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd.7d068949-1aa6-4fb0-bb47-5fa062851810",
 			"inputs": [
 				{
 					"name": "ibmcloud_api_key",
@@ -151,19 +180,21 @@
 				{
 					"name": "existing_kms_instance_crn",
 					"value": "ref:../2a - Security Service - Key Management/outputs/key_protect_crn"
-				},				
+				},
 				{
-					"name": "resource_group_name",
-					"value": "ref:../../inputs/resource_group_name"
+					"name": "resource_group_name",					
+					"value": "ref:../1 - Account Infrastructure Base/outputs/observability_resource_group_name"
 				},
 				{
 					"name": "use_existing_resource_group",
 					"value": true
 				}
-			],
-			"version_locator": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd.7d068949-1aa6-4fb0-bb47-5fa062851810"
+			]
 		},
 		{
+			
+			"name": "4 - WatsonX SaaS services",
+			"version_locator": "8bfb1293-8b85-4d3f-a89f-015d0a0719df.bcbb2267-a849-426b-9132-c4b47b259d81",
 			"inputs": [
 				{
 					"name": "ibmcloud_api_key",
@@ -175,7 +206,7 @@
 				},
 				{
 					"name": "resource_group_name",
-					"value": "ref:../../inputs/resource_group_name"
+					"value": "ref:../1 - Account Infrastructure Base/outputs/workload_resource_group_name"
 				},
 				{
 					"name": "location",
@@ -213,11 +244,11 @@
 					"name": "project_name",
 					"value": "ref:../../inputs/prefix"
 				}
-			],
-			"name": "4 - WatsonX SaaS services",
-			"version_locator": "8bfb1293-8b85-4d3f-a89f-015d0a0719df.bcbb2267-a849-426b-9132-c4b47b259d81"
+			]
 		},
-		{
+		{			
+			"name": "5 - Generative AI Sample App - Code Engine Toolchain Config",
+			"version_locator": "1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.c5f85486-df86-4b97-b44e-0d5070b8e935-global",
 			"inputs": [
 				{
 					"name": "ibmcloud_api_key",
@@ -233,7 +264,7 @@
 				},
 				{
 					"name": "toolchain_resource_group",
-					"value": "ref:../../inputs/resource_group_name"
+					"value": "ref:../1 - Account Infrastructure Base/outputs/devops_resource_group_name"
 				},
 				{
 					"name": "sm_secret_group",
@@ -291,11 +322,11 @@
 					"name": "cd_code_engine_env_from_configmaps",
 					"value": "app.properties"
 				}
-			],
-			"name": "5 - Generative AI Sample App - Code Engine Toolchain Config",
-			"version_locator": "1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.c5f85486-df86-4b97-b44e-0d5070b8e935-global"
+			]
 		},
-		{
+		{			
+			"name": "6 - Sample RAG app configuration",
+			"version_locator": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd.70fafa69-c12a-4ac9-984e-d6b55bf4654d",
 			"inputs": [
 				{
 					"name": "toolchain_region",
@@ -351,15 +382,13 @@
 				},
 				{
 					"name": "resource_group_name",
-					"value": "ref:../../inputs/resource_group_name"
+					"value": "ref:../1 - Account Infrastructure Base/outputs/workload_resource_group_name"
 				},
 				{
 					"name": "use_existing_resource_group",
 					"value": true
 				}
-			],
-			"name": "6 - Sample RAG app configuration",
-			"version_locator": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd.70fafa69-c12a-4ac9-984e-d6b55bf4654d"
+			]
 		}
 	]
 }

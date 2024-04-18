@@ -100,7 +100,7 @@
 							"required": false,
 							"type": "string",
 							"hidden": false,
-							"default_value": "rag-sample"
+							"default_value": "stack-service-rg"
 						},
 						{
 							"name": "region",

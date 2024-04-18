@@ -89,7 +89,7 @@
 		},
 		{
 			"name": "2a - Security Service - Key Management",			
-			"version_locator": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd.24da1d76-8945-4c71-be55-57651e511914",
+			"version_locator": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd.522f2691-ac0b-4874-a21a-93a3c7ce29a0",
 			"inputs": [
 				{
 					"name": "resource_group_name",					
@@ -111,8 +111,12 @@
 		},
 		{
 			"name": "2b - Security Service - Secret Manager",
-			"version_locator": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd.ebffb17b-302a-4f12-925c-16c4e6a590c2",
+			"version_locator": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd.9df9062b-3c67-4117-ba3f-974f04a39800",
 			"inputs": [
+				{
+					"name": "prefix",					
+					"value": "ref:../../inputs/prefix"
+				},
 				{
 					"name": "resource_group_name",					
 					"value": "ref:../1 - Account Infrastructure Base/outputs/security_resource_group_name"

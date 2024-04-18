@@ -166,6 +166,10 @@
 				{
 					"name": "use_existing_resource_group",
 					"value": true
+				},
+				{
+					"name": "provision_scc_workload_protection",
+					"value": false
 				}
 			]
 		},
@@ -195,8 +199,7 @@
 				}
 			]
 		},
-		{
-			
+		{			
 			"name": "4 - WatsonX SaaS services",
 			"version_locator": "8bfb1293-8b85-4d3f-a89f-015d0a0719df.bcbb2267-a849-426b-9132-c4b47b259d81",
 			"inputs": [

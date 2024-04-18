@@ -341,7 +341,7 @@
 		},
 		{			
 			"name": "6 - Sample RAG app configuration",
-			"version_locator": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd.70fafa69-c12a-4ac9-984e-d6b55bf4654d",
+			"version_locator": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd.20c3a1a0-12bc-411a-b590-0c604546c965",
 			"inputs": [
 				{
 					"name": "toolchain_region",
@@ -402,6 +402,10 @@
 				{
 					"name": "use_existing_resource_group",
 					"value": true
+				},
+				{
+					"name": "toolchain_region",
+					"value": "ref:../../inputs/region"
 				}
 			]
 		}

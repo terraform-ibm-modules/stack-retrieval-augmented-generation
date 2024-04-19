@@ -397,7 +397,7 @@
 				},
 				{
 					"name": "resource_group_name",
-					"value": "ref:../1 - Account Infrastructure Base/outputs/workload_resource_group_name"
+					"value": "ref:../1 - Account Infrastructure Base/outputs/devops_resource_group_name"
 				},
 				{
 					"name": "use_existing_resource_group",

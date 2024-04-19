@@ -389,7 +389,7 @@
 				},
 				{
 					"name": "toolchain_resource_group",
-					"value": "ref:../../inputs/resource_group_name"
+					"value": "ref:../1 - Account Infrastructure Base/outputs/devops_resource_group_name"
 				},
 				{
 					"name": "prefix",

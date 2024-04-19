@@ -22,16 +22,10 @@
 					"name": "Code-Engine-d7b9",
 					"compliance": {
 						"authority": "scc-v3",
-						"controls": [
+						"profiles": [
 							{
-								"profile": {
-									"id": "",
-									"name": "IBM Cloud Framework for Financial Services",
-									"version": "1.5.0"
-								},
-								"names": [
-									"AC-5(c)"
-								]
+								"profile_name": "AI ICT Guardrails",
+								"profile_version": "1.0.0"
 							}
 						]
 					},
@@ -81,8 +75,7 @@
 						{
 							"key": "prefix",
 							"type": "string",
-							"default_value": "stack-demo",
-							"required": false
+							"required": true
 						},
 						{
 							"name": "ibmcloud_api_key",
@@ -91,10 +84,17 @@
 							"hidden": false
 						},
 						{
+							"name": "watsonx_admin_api_key",
+							"required": false,
+							"type": "password",
+							"hidden": false
+						},
+						{
 							"name": "resource_group_name",
 							"required": false,
 							"type": "string",
-							"hidden": false
+							"hidden": false,
+							"default_value": "stack-service-rg"
 						},
 						{
 							"name": "region",
@@ -102,6 +102,13 @@
 							"type": "string",
 							"hidden": false,
 							"default": "us-south"
+						},
+						{
+							"name": "sample_app_git_url",
+							"required": false,
+							"type": "string",
+							"hidden": false,
+							"default_value": "https://github.com/IBM/gen-ai-rag-watsonx-sample-application"
 						}
 					],
 					"install_type": "fullstack"

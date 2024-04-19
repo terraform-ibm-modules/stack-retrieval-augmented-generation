@@ -11,7 +11,6 @@ Click the "Add to project" button, and select create in new project.
 ## 2. Prereqs in target account
 
 - Create an API key in the target account. Keep note of it. Give it admin privilege for now. Exact permissions will be narrowed down in future version.
-- Create a resource group in the target account. This steps is temporary in current alpha version - resource groups will be created in the base account DA in future versions.
 
 
 ## 3. Set the input configuration for the stack
@@ -26,9 +25,9 @@ Click the "Add to project" button, and select create in new project.
 ```json
 {
     "inputs": {
-        "prefix": "<prefix for resources name>",
+        "prefix": "<prefix for resources name - ensure unique>",
         "ibmcloud_api_key": "<API Key of the target account with sufficient permissions>",
-        "resource_group_name": "<target resource group - must be existing in account>",
+        "resource_group_name": "<target resource group - name of a new resource group that the stack will creates>",
         "region": "<region where resources are deployed>",
         "sample_app_git_url": "https://github.com/IBM/gen-ai-rag-watsonx-sample-application",
         "watsonx_admin_api_key": "<optional - admin key to use for watson if different from ibmcloud_api_key>"
@@ -40,9 +39,9 @@ Example:
 ```json
 {
     "inputs": {
-        "prefix": "0410",
+        "prefix": "0418",
         "ibmcloud_api_key": "<your api key>",
-        "resource_group_name": "0411-stack-service-rg",
+        "resource_group_name": "stack-service-rg",
         "region": "eu-de",
         "sample_app_git_url": "https://github.com/IBM/gen-ai-rag-watsonx-sample-application",
         "watsonx_admin_api_key": "<optional - admin key to use for watson if different from ibmcloud_api_key>"

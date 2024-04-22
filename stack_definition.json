@@ -341,7 +341,7 @@
 		},
 		{			
 			"name": "6 - Sample RAG app configuration",
-			"version_locator": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd.20c3a1a0-12bc-411a-b590-0c604546c965",
+			"version_locator": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd.f38f8d99-d652-44d9-a35a-f109f4956039",
 			"inputs": [
 				{
 					"name": "toolchain_region",
@@ -406,6 +406,18 @@
 				{
 					"name": "toolchain_region",
 					"value": "ref:../../inputs/region"
+				},
+				{
+					"name": "signing_key",
+					"value": ""
+				},
+				{
+					"name": "secrets_manager_guid",
+					"value": "ref:../2b - Security Service - Secret Manager/outputs/secrets_manager_guid"
+				},
+				{
+					"name": "secrets_manager_crn",
+					"value": ""
 				}
 			]
 		}

@@ -42,7 +42,7 @@
 		{
 			"name": "signing_key",
 			"required": false,
-			"type": "string",
+			"type": "password",
 			"hidden": false,
 			"default": "replace"
 		}		

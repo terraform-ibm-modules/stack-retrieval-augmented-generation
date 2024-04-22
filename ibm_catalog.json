@@ -31,16 +31,74 @@
 					},
 					"iam_permissions": [
 						{
-							"service_name": "iam-identity",
-							"resources": [
-								{
-									"name": "Placeholder - will be refined",
-									"description": "Placeholder - will be refined",
-									"role_crns": [
-										"crn:v1:bluemix:public:iam::::role:Administrator"
-									]
-								}
+							"service_name": "iam-groups",
+							"role_crns": [
+								"crn:v1:bluemix:public:iam::::role:Administrator"
 							]
+						},
+						{
+							"role_crns": [
+								"crn:v1:bluemix:public:iam::::serviceRole:Manager",
+								"crn:v1:bluemix:public:iam::::role:Editor"
+							],
+							"service_name": "cloud-object-storage"
+						},
+						{
+							"role_crns": [
+								"crn:v1:bluemix:public:iam::::role:Administrator"
+							],
+							"service_name": "iam-identity"
+						},
+						{
+							"role_crns": [
+								"crn:v1:bluemix:public:iam::::serviceRole:Writer",
+								"crn:v1:bluemix:public:iam::::role:Administrator"
+							],
+							"service_name": "atracker"
+						},
+						{
+							"role_crns": [
+								"crn:v1:bluemix:public:iam::::serviceRole:Manager",
+								"crn:v1:bluemix:public:iam::::role:Editor"
+							],
+							"service_name": "kms"
+						},
+						{
+							"service_name": "compliance",
+							"role_crns": [
+								"crn:v1:bluemix:public:iam::::serviceRole:Manager",
+								"crn:v1:bluemix:public:iam::::role:Editor"
+							]
+						},
+						{
+							"role_crns": [
+								"crn:v1:bluemix:public:iam::::role:Editor"
+							],
+							"service_name": "pm-20"
+						},
+						{
+							"role_crns": [
+								"crn:v1:bluemix:public:iam::::role:Editor"
+							],
+							"service_name": "data-science-experience"
+						},
+						{
+							"role_crns": [
+								"crn:v1:bluemix:public:iam::::role:Editor"
+							],
+							"service_name": "aiopenscale"
+						},
+						{
+							"role_crns": [
+								"crn:v1:bluemix:public:iam::::role:Editor"
+							],
+							"service_name": "conversation"
+						},
+						{
+							"role_crns": [
+								"crn:v1:bluemix:public:iam::::role:Editor"
+							],
+							"service_name": "discovery"
 						}
 					],
 					"architecture": {

@@ -38,7 +38,14 @@
 			"type": "string",
 			"hidden": false,
 			"default": "https://github.com/IBM/gen-ai-rag-watsonx-sample-application"
-		}
+		},
+		{
+			"name": "signing_key",
+			"required": false,
+			"type": "string",
+			"hidden": false,
+			"default": "replace"
+		}		
 	],
 	"members": [
 		{
@@ -336,12 +343,20 @@
 				{
 					"name": "cd_code_engine_app_min_scale",
 					"value": "1"
+				},
+				{
+					"name": "ci_signing_key_secret_name",
+					"value": "signing-key"
+				},
+				{
+					"name": "pipeline_ibmcloud_api_key_secret_name",
+					"value": "ibmcloud-api-key"
 				}
 			]
 		},
 		{			
 			"name": "6 - Sample RAG app configuration",
-			"version_locator": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd.f38f8d99-d652-44d9-a35a-f109f4956039",
+			"version_locator": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd-f375f9df-af21-4299-b11d-e5813f918efa",
 			"inputs": [
 				{
 					"name": "toolchain_region",
@@ -409,7 +424,7 @@
 				},
 				{
 					"name": "signing_key",
-					"value": ""
+					"value": "ref:../../inputs/signing_key"
 				},
 				{
 					"name": "secrets_manager_guid",
@@ -417,7 +432,7 @@
 				},
 				{
 					"name": "secrets_manager_crn",
-					"value": ""
+					"value": "notneeded"
 				}
 			]
 		}

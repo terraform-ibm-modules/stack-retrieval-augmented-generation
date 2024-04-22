@@ -109,6 +109,13 @@
 							"type": "string",
 							"hidden": false,
 							"default_value": "https://github.com/IBM/gen-ai-rag-watsonx-sample-application"
+						},
+						{
+							"name": "signing_key",
+							"required": false,
+							"type": "string",
+							"hidden": false,
+							"default_value": "replace"
 						}
 					],
 					"install_type": "fullstack"

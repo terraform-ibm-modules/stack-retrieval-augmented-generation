@@ -9,9 +9,8 @@ import (
 func TestProjectsFullTest(t *testing.T) {
 
 	options := testprojects.TestProjectOptionsDefault(&testprojects.TestProjectsOptions{
-		Testing:       t,
-		Prefix:        "rag-stack",
-		ResourceGroup: "",
+		Testing: t,
+		Prefix:  "rag-stack",
 		StackConfigurationOrder: []string{
 			"1 - Account Infrastructure Base",
 			"2a - Security Service - Key Management",

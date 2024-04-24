@@ -16,7 +16,8 @@ Click the "Add to project" button, and select create in new project.
 ## 3. Set the input configuration for the stack
 
 - Clone this repository locally - and checkout the dev branch.
-- Create a file with name ".def.json" with the following content. 
+- Create a file with name ".def.json" with the following content.
+- The signing key is the base64 key obtained from the `gpg --export-secret-key <Email Address> | base64` command. See https://cloud.ibm.com/docs/devsecops?topic=devsecops-devsecops-image-signing#cd-devsecops-gpg-export for details.
 
 **Important**: 
 - Ensure region is either us-south or eu-de as watsonx can only be deployed in those 2 locations for now.
@@ -30,7 +31,8 @@ Click the "Add to project" button, and select create in new project.
         "resource_group_name": "<target resource group - name of a new resource group that the stack will creates>",
         "region": "<region where resources are deployed>",
         "sample_app_git_url": "https://github.com/IBM/gen-ai-rag-watsonx-sample-application",
-        "watsonx_admin_api_key": "<optional - admin key to use for watson if different from ibmcloud_api_key>"
+        "watsonx_admin_api_key": "<optional - admin key to use for watson if different from ibmcloud_api_key>",
+        "signing_key": "signing key used to sign build artifacts"
     }
 }
 ```
@@ -44,7 +46,8 @@ Example:
         "resource_group_name": "stack-service-rg",
         "region": "eu-de",
         "sample_app_git_url": "https://github.com/IBM/gen-ai-rag-watsonx-sample-application",
-        "watsonx_admin_api_key": "<optional - admin key to use for watson if different from ibmcloud_api_key>"
+        "watsonx_admin_api_key": "<optional - admin key to use for watson if different from ibmcloud_api_key>",
+        "signing_key": "signing key used to sign build artifacts"
     }
 }
 ```

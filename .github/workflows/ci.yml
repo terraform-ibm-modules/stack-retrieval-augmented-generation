@@ -1,0 +1,11 @@
+name: CI-Pipeline
+
+# Controls when the workflow will run, when comment is created
+on:
+  issue_comment:
+    types:
+      - created
+jobs:
+  call-terraform-ci-pipeline:
+    uses: terraform-ibm-modules/common-pipeline-assets/.github/workflows/common-terraform-module-ci-v2.yml@v1.17.9
+    secrets: inherit

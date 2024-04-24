@@ -19,7 +19,7 @@ Click the "Add to project" button, and select create in new project.
 - Create a file with name ".def.json" with the following content.
 - The signing key is the base64 key obtained from the `gpg --export-secret-key <Email Address> | base64` command. See https://cloud.ibm.com/docs/devsecops?topic=devsecops-devsecops-image-signing#cd-devsecops-gpg-export for details.
 
-**Important**: 
+**Important**:
 - Ensure region is either us-south or eu-de as watsonx can only be deployed in those 2 locations for now.
 - Ensure that the prefix is globally unique. It is used for the container registry namespace (which needs to be globally unique) in this alpha version.
 

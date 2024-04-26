@@ -76,12 +76,3 @@ DRY_RUN=true ./deploy-many.sh my-test-project RAG 'RAG-1|RAG-4|RAG-5'
 Tips: If deployment fail in one of the DA, you may need to remove the configuration name of the deployment that already passes from the pattern before re-running the script.
 
 Tips: to accelerate iteration you may deploy only a subset of the configurations: the bare minimum are key management, security manager, watson saas, alm and rag configuration da. Base account, observability and SCC are not on the critical path to get the app running.
-
-
-# 5. Deploy the sample app
-
-A few manual steps are required in the alpha version to trigger the deployment of the app:
-1. In the secret manager instance, in the default group, create an arbitrary secret named "ibmcloud-api-key". Put the used api key as secret.
-2. Follow the steps at https://cloud.ibm.com/docs/devsecops?topic=devsecops-devsecops-image-signing to generate a gpg key
-3. In the secret manager instance, in the default group, create an arbitrary secret named "signing_key". Put the signing key. See https://cloud.ibm.com/docs/devsecops?topic=devsecops-devsecops-image-signing#cd-devsecops-gpg-store-secretsmgr
-4. Navigate to the "Generative AI Sample App-CI-Toolchain" CD instance, click "ci-pipeline" and execute the "Manual Trigger".

@@ -45,6 +45,20 @@
       "type": "password",
       "hidden": false,
       "default": "replace"
+    },
+    {
+      "name": "signing_key",
+      "required": false,
+      "type": "password",
+      "hidden": false,
+      "default": "replace"
+    },
+    {
+      "name": "existing_secrets_manager_crn",
+      "required": false,
+      "type": "string",
+      "hidden": false,
+      "default": null
     }
   ],
   "members": [
@@ -143,6 +157,10 @@
         {
           "name": "existing_resource_group",
           "value": true
+        },
+        {
+          "name": "existing_secrets_manager_crn",
+          "value": "ref:../../inputs/existing_secrets_manager_crn"
         }
       ]
     },

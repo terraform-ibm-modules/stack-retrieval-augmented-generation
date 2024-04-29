@@ -59,6 +59,13 @@
       "type": "string",
       "hidden": false,
       "default": null
+    },
+    {
+      "name": "enable_platform_logs_metrics",
+      "required": false,
+      "type": "boolean",
+      "hidden": false,
+      "default": true
     }
   ],
   "members": [
@@ -151,8 +158,8 @@
           "value": "ref:../../inputs/region"
         },
         {
-          "name": "existing_kms_guid",
-          "value": "ref:../2a - Security Service - Key Management/outputs/kms_guid"
+          "name": "existing_kms_instance_crn",
+          "value": "ref:../2a - Security Service - Key Management/outputs/key_protect_crn"
         },
         {
           "name": "existing_resource_group",
@@ -219,8 +226,12 @@
           "value": "ref:../1 - Account Infrastructure Base/outputs/observability_resource_group_name"
         },
         {
-          "name": "use_existing_resource_group",
-          "value": true
+          "name": "enable_platform_logs",
+          "value": "ref:../../inputs/enable_platform_logs_metrics"
+        },
+        {
+          "name": "enable_platform_metrics",
+          "value": "ref:../../inputs/enable_platform_logs_metrics"
         }
       ]
     },

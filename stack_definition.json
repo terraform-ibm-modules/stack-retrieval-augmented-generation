@@ -118,7 +118,7 @@
     },
     {
       "name": "2b - Security Service - Secret Manager",
-      "version_locator": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd.c586bed6-17a7-47e5-9227-0e1277380034",
+      "version_locator": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd.e9f80ad1-b9a0-4884-be72-650403bdcf76",
       "inputs": [
         {
           "name": "prefix",
@@ -148,7 +148,7 @@
     },
     {
       "name": "2c - Security Service - Security Compliance Center",
-      "version_locator": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd.495193c1-030d-47b1-9c78-fb8aee332f4f",
+      "version_locator": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd.f64fe6f5-de0e-4d7c-9f49-06dbbd289160",
       "inputs": [
         {
           "name": "ibmcloud_api_key",

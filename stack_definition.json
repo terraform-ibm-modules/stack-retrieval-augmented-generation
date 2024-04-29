@@ -237,7 +237,7 @@
     },
     {
       "name": "4 - WatsonX SaaS services",
-      "version_locator": "8bfb1293-8b85-4d3f-a89f-015d0a0719df.f31e9273-a28c-4f3e-866c-35fad9383194",
+      "version_locator": "8bfb1293-8b85-4d3f-a89f-015d0a0719df.76f66c57-96b7-4ed9-a669-2ddbab72a3db",
       "inputs": [
         {
           "name": "ibmcloud_api_key",
@@ -389,7 +389,7 @@
     },
     {
       "name": "6 - Sample RAG app configuration",
-      "version_locator": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd.8478a277-5613-4aab-9500-af6845b0f8d1",
+      "version_locator": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd.bbcb2591-5e49-4633-8f59-6bc996ba3da7",
       "inputs": [
         {
           "name": "toolchain_region",

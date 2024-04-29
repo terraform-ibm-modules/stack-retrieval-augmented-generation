@@ -1,6 +1,6 @@
 # Retrieval Augmented Generation (RAG) stack
 
-To run the full stack. These steps will be updated as development progresses on the stack and underlaying DAs.
+To run the full stack, follow these steps. These steps will be updated as development progresses on the stack and underlying DAs.
 
 ## 1. Deploy the stack in a new project from catalog
 
@@ -10,7 +10,9 @@ Click the "Add to project" button, and select create in new project.
 
 ## 2. Prereqs in target account
 
-- Create an API key in the target account. Keep note of it. Give it admin privilege for now. Exact permissions will be narrowed down in future version.
+Before deploying the stack, ensure you have:
+- Created an API key in the target account with sufficient permissions. Note the API key, as it will be used later.
+- For now, grant it admin privileges. The exact permissions required will be refined in future versions.
 
 
 ## 3. Set the input configuration for the stack
@@ -29,7 +31,7 @@ Click the "Add to project" button, and select create in new project.
         "prefix": "<prefix for resources name - ensure unique>",
         "ibmcloud_api_key": "<API Key of the target account with sufficient permissions>",
         "resource_group_name": "<target resource group - name of a new resource group that the stack will creates>",
-        "region": "<region where resources are deployed>",
+        "region": "<region where all resources are deployed>",
         "sample_app_git_url": "https://github.com/IBM/gen-ai-rag-watsonx-sample-application",
         "watsonx_admin_api_key": "<optional - admin key to use for watson if different from ibmcloud_api_key>",
         "signing_key": "signing key used to sign build artifacts"
@@ -73,6 +75,4 @@ Example 2 - simulate updating stack inputs and validating some configurations in
 DRY_RUN=true ./deploy-many.sh my-test-project RAG 'RAG-1|RAG-4|RAG-5'
 ```
 
-Tips: If deployment fail in one of the DA, you may need to remove the configuration name of the deployment that already passes from the pattern before re-running the script.
-
-Tips: to accelerate iteration you may deploy only a subset of the configurations: the bare minimum are key management, security manager, watson saas, alm and rag configuration da. Base account, observability and SCC are not on the critical path to get the app running.
+Tips: If deployment fail in one of the DA, you may re-run the script as is. It will skip existing installed configuration.

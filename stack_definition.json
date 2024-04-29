@@ -225,6 +225,10 @@
           "name": "resource_group_name",
           "value": "ref:../1 - Account Infrastructure Base/outputs/observability_resource_group_name"
         },
+				{
+					"name": "use_existing_resource_group",
+					"value": true
+				},
         {
           "name": "enable_platform_logs",
           "value": "ref:../../inputs/enable_platform_logs_metrics"

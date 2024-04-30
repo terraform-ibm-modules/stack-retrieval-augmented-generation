@@ -63,7 +63,7 @@ function validate_config() {
 
   STATE=$(get_validation_state)
 
-  if [[ "$STATE" != "validated" && "$STATE" != "deployed" && "$STATE" != "deploying_failed" ]]; then
+  if [[ "$STATE" != "validated" && "$STATE" != "deployed" && "$STATE" != "deploying_failed" && "$STATE" != "approved" ]]; then
     $CLI_CMD project config-validate --project-id "$PROJECT_ID" --id "$CONFIG_ID" --output json > /tmp/validation.json
   fi
 }
@@ -74,7 +74,7 @@ function wait_for_validation() {
 
     STATE=$(get_validation_state)
 
-    if [[ "$STATE" == "validated" || "$STATE" == "deployed" || "$STATE" == "deploying_failed" ]]; then
+    if [[ "$STATE" == "validated" || "$STATE" == "deployed" || "$STATE" == "deploying_failed" || "$STATE" == "approved" || "$STATE" == "deploying" ]]; then
       break
     fi
 

@@ -71,7 +71,7 @@
   "members": [
     {
       "name": "1 - Account Infrastructure Base",
-      "version_locator": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd.65c68525-b954-460c-96e6-ad7300c3b317",
+      "version_locator": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd.c8bf5993-d693-4cac-9479-83c5fb6f96e1",
       "inputs": [
         {
           "name": "prefix",
@@ -139,7 +139,7 @@
     },
     {
       "name": "2b - Security Service - Secret Manager",
-      "version_locator": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd.e9f80ad1-b9a0-4884-be72-650403bdcf76",
+      "version_locator": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd.7230f742-7f93-4647-b53d-89b7905fb5a6",
       "inputs": [
         {
           "name": "prefix",
@@ -225,10 +225,10 @@
           "name": "prefix",
           "value": "ref:../../inputs/prefix"
         },
-				{
-					"name": "use_existing_resource_group",
-					"value": true
-				},
+        {
+          "name": "use_existing_resource_group",
+          "value": true
+        },
         {
           "name": "enable_platform_logs",
           "value": "ref:../../inputs/enable_platform_logs_metrics"
@@ -241,7 +241,7 @@
     },
     {
       "name": "4 - WatsonX SaaS services",
-      "version_locator": "8bfb1293-8b85-4d3f-a89f-015d0a0719df.76f66c57-96b7-4ed9-a669-2ddbab72a3db",
+      "version_locator": "8bfb1293-8b85-4d3f-a89f-015d0a0719df.72efd2d9-801d-49b1-bfe3-614de8f0a3d7",
       "inputs": [
         {
           "name": "ibmcloud_api_key",
@@ -314,21 +314,21 @@
           "value": "ref:../1 - Account Infrastructure Base/outputs/devops_resource_group_name"
         },
         {
-					"name": "sm_secret_group",
-					"value": "Default"
-				},
-				{
-					"name": "sm_resource_group",
-					"value": "ref:../2b - Security Service - Secret Manager/outputs/resource_group_name"
-				},
-				{
-					"name": "sm_name",
-					"value": "ref:../2b - Security Service - Secret Manager/outputs/secrets_manager_name"
-				},
-				{
-					"name": "sm_location",
-					"value": "ref:../2b - Security Service - Secret Manager/inputs/region"
-				},
+          "name": "sm_secret_group",
+          "value": "Default"
+        },
+        {
+          "name": "sm_resource_group",
+          "value": "ref:../2b - Security Service - Secret Manager/outputs/resource_group_name"
+        },
+        {
+          "name": "sm_name",
+          "value": "ref:../2b - Security Service - Secret Manager/outputs/secrets_manager_name"
+        },
+        {
+          "name": "sm_location",
+          "value": "ref:../2b - Security Service - Secret Manager/inputs/region"
+        },
         {
           "name": "ci_code_engine_project",
           "value": "Generative_AI_Sample_App_CI_Project"

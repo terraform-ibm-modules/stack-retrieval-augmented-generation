@@ -24,6 +24,8 @@ Before deploying the stack, ensure you have:
 **Important**:
 - Ensure region is either us-south or eu-de as watsonx can only be deployed in those 2 locations for now.
 - Ensure that the prefix is globally unique. It is used for the container registry namespace (which needs to be globally unique) in this alpha version.
+- If specifying `existing_secrets_manager_crn`, the ibmcloud_api_key that is passed as an input must have the documented read and write access to the instance
+- If specifying `existing_secrets_manager_crn`, ensure that the default security group does not contain secrets named `signing-key` and `ibmcloud-api-key` . The RAG DA currently always attempt to create secret with those names (temporary issue - to be fixed).
 
 ```json
 {
@@ -34,7 +36,9 @@ Before deploying the stack, ensure you have:
         "region": "<region where all resources are deployed>",
         "sample_app_git_url": "https://github.com/IBM/gen-ai-rag-watsonx-sample-application",
         "watsonx_admin_api_key": "<optional - admin key to use for watson if different from ibmcloud_api_key>",
-        "signing_key": "signing key used to sign build artifacts"
+        "signing_key": "signing key used to sign build artifacts",
+        "existing_secrets_manager_crn": "<optional> - reuse an existing secret manager instance",
+        "enable_platform_logs_metrics": "<optional> - set to true to enable observability instance to capture regional logs"
     }
 }
 ```
@@ -49,7 +53,9 @@ Example:
         "region": "eu-de",
         "sample_app_git_url": "https://github.com/IBM/gen-ai-rag-watsonx-sample-application",
         "watsonx_admin_api_key": "<optional - admin key to use for watson if different from ibmcloud_api_key>",
-        "signing_key": "signing key used to sign build artifacts"
+        "signing_key": "signing key used to sign build artifacts",
+        "enable_platform_logs_metrics": "false",
+        "existing_secrets_manager_crn": "crn:v1:bluemix:public:secrets-manager:us-south:a/190c293e9fda4c6684b5acf4b17871b8:14580411-4fa2-42d3-af3f-ab7fc6371b6d::"
     }
 }
 ```

@@ -331,7 +331,7 @@
         },
         {
           "name": "sm_location",
-          "value": "ref:../2b - Security Service - Secret Manager/inputs/region"
+          "value": "ref:../2b - Security Service - Secret Manager/outputs/secrets_manager_region"
         },
         {
           "name": "ci_code_engine_project",

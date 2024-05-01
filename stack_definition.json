@@ -139,7 +139,7 @@
     },
     {
       "name": "2b - Security Service - Secret Manager",
-      "version_locator": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd.7230f742-7f93-4647-b53d-89b7905fb5a6",
+      "version_locator": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd.4513b384-55a0-4d64-b63e-512a22b43b68",
       "inputs": [
         {
           "name": "prefix",
@@ -207,7 +207,7 @@
     },
     {
       "name": "3 - Observability - Logging Monitoring Activity Tracker",
-      "version_locator": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd.826011ab-274b-4010-8935-a463d74f5d31",
+      "version_locator": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd.58843031-95a7-4e8e-9abc-13c478a8bd16",
       "inputs": [
         {
           "name": "ibmcloud_api_key",
@@ -401,7 +401,7 @@
     },
     {
       "name": "6 - Sample RAG app configuration",
-      "version_locator": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd.bbcb2591-5e49-4633-8f59-6bc996ba3da7",
+      "version_locator": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd.9ac0688e-437b-4559-8f7f-992818e9fa6c",
       "inputs": [
         {
           "name": "toolchain_region",

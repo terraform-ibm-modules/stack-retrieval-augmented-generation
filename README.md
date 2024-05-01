@@ -13,20 +13,21 @@ Click the "Add to project" button, and select create in new project.
 Before deploying the stack, ensure you have:
 - Created an API key in the target account with sufficient permissions. Note the API key, as it will be used later.
 - For now, grant it admin privileges. The exact permissions required will be refined in future versions.
+- Install the IBM Cloud CLI's Project addon using `ibmcloud plugin install project` command. More info here: https://cloud.ibm.com/docs/cli?topic=cli-projects-cli
 
 
 ## 3. Set the input configuration for the stack
 
-- Clone this repository locally - and checkout the dev branch.
+- Clone this repository locally.
 - Create a file with name ".def.json" with the following content.
-- The signing key is the base64 key obtained from the `gpg --export-secret-key <Email Address> | base64` command. See https://cloud.ibm.com/docs/devsecops?topic=devsecops-devsecops-image-signing#cd-devsecops-gpg-export for details.
 
 **Important**:
 - Ensure region is either us-south or eu-de as watsonx can only be deployed in those 2 locations for now.
 - Ensure that the prefix is globally unique. It is used for the container registry namespace (which needs to be globally unique) in this alpha version.
+- The signing key is the base64 key obtained from the `gpg --export-secret-key <Email Address> | base64` command. See https://cloud.ibm.com/docs/devsecops?topic=devsecops-devsecops-image-signing#cd-devsecops-gpg-export for details.
 - If specifying `existing_secrets_manager_crn`, the ibmcloud_api_key that is passed as an input must have the documented read and write access to the instance
 - If specifying `existing_secrets_manager_crn`, ensure that the default security group does not contain secrets named `signing-key` and `ibmcloud-api-key` . The RAG DA currently always attempt to create secret with those names (temporary issue - to be fixed).
-
+  
 ```json
 {
     "inputs": {
@@ -76,7 +77,7 @@ Example 2 - update stack inputs and process some configurations in the project:
 ./deploy-many.sh my-test-project RAG 'RAG-1|RAG-4|RAG-5'
 ```
 
-Example 2 - simulate updating stack inputs and validating some configurations in the project in dry-run mode (no changes or actual validation or deployments is done):
+Example 3 - simulate updating stack inputs and validating some configurations in the project in dry-run mode (no changes or actual validation or deployments is done):
 ```bash
 DRY_RUN=true ./deploy-many.sh my-test-project RAG 'RAG-1|RAG-4|RAG-5'
 ```

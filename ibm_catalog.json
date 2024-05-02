@@ -180,7 +180,7 @@
 							"required": false,
 							"type": "boolean",
 							"hidden": false,
-							"default_value": true
+							"default_value": false
 						}
 					],
 					"install_type": "fullstack"

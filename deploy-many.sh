@@ -63,7 +63,7 @@ function validate_config() {
 
   STATE=$(get_validation_state)
 
-  if [[ "$STATE" != "validated" && "$STATE" != "deployed" && "$STATE" != "deploying_failed" && "$STATE" != "approved" ]]; then
+  if [[ "$STATE" != "validated" && "$STATE" != "deployed" && "$STATE" != "deploying_failed" && "$STATE" != "approved" && "$STATE" != "deleting" && "$STATE" != "deleting_failed" ]]; then
     $CLI_CMD project config-validate --project-id "$PROJECT_ID" --id "$CONFIG_ID" --output json > /tmp/validation.json
   fi
 }
@@ -74,7 +74,7 @@ function wait_for_validation() {
 
     STATE=$(get_validation_state)
 
-    if [[ "$STATE" == "validated" || "$STATE" == "deployed" || "$STATE" == "deploying_failed" || "$STATE" == "approved" || "$STATE" == "deploying" ]]; then
+    if [[ "$STATE" == "validated" || "$STATE" == "deployed" || "$STATE" == "deploying_failed" || "$STATE" == "approved" || "$STATE" == "deploying" || "$STATE" == "deleting" || "$STATE" == "deleting_failed" ]]; then
       break
     fi
 
@@ -98,7 +98,7 @@ function deploy_config() {
 
   STATE=$(get_deployment_state)
 
-  if [[ "$STATE" != "deployed" ]]; then
+  if [[ "$STATE" != "deployed" && "$STATE" != "deleting" && "$STATE" != "deleting_failed" ]]; then
     $CLI_CMD project config-deploy --project-id "$PROJECT_ID" --id "$CONFIG_ID"
   fi
 }
@@ -109,7 +109,7 @@ function wait_for_deployment() {
     STATE=$(get_deployment_state)
 
     # If the state is "deployed" or "deploying_failed", exit the loop
-    if [[ "$STATE" == "deployed" || "$STATE" == "deploying_failed" ]]; then
+    if [[ "$STATE" == "deployed" || "$STATE" == "deploying_failed" || "$STATE" == "deleting" || "$STATE" == "deleting_failed" ]]; then
       break
     fi
 

@@ -138,16 +138,44 @@ function keep_iam_session_active()
   ibmcloud iam oauth-tokens > /dev/null
 }
 
-parse_params "$@"
-get_config_ids
-set_stack_inputs
-
-# Loop through the configuration IDs and execute the functions
-for CONFIG_ID in "${CONFIG_IDS[@]}"
-do
+function validate_and_deploy()
+{
   validate_config
   wait_for_validation
   approve_config
   deploy_config
   wait_for_deployment
+}
+
+parse_params "$@"
+get_config_ids
+set_stack_inputs
+
+# Loop through the configuration IDs and execute the functions
+# for CONFIG_ID in "${CONFIG_IDS[@]}"
+# do
+#   validate_and_deploy
+# done
+
+
+####
+
+# Run base config + key management first
+for CONFIG_ID in "${CONFIG_IDS[@]:0:2}"; do
+  validate_and_deploy
+done
+
+
+# Run secret manager, security compliance, observability, and WatsonX SaaS services in parallel
+parallel_configs=("${CONFIG_IDS[2]}" "${CONFIG_IDS[3]}" "${CONFIG_IDS[4]}" "${CONFIG_IDS[5]}")
+for CONFIG_ID in "${parallel_configs[@]}"; do
+  (
+    validate_and_deploy
+  ) &
+done
+wait
+
+# Run ALM + RAG DA at the end
+for CONFIG_ID in "${CONFIG_IDS[@]:6}"; do
+  validate_and_deploy
 done

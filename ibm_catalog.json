@@ -104,7 +104,7 @@
 					"architecture": {
 						"features": [
 							{
-								"title": "Deploy a customer care generative AI app to Code Engine using Continous Delivery",
+								"title": "Deploy a banking retrieval augmented generation app to Code Engine using Continous Delivery.",
 								"description": ""
 							}
 						],

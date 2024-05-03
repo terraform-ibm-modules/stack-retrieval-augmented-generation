@@ -13,13 +13,13 @@ Click the "Add to project" button, and select create in new project.
 Before deploying the stack, ensure you have:
 - Created an API key in the target account with sufficient permissions. Note the API key, as it will be used later.
 - For now, grant it admin privileges. The exact permissions required will be refined in future versions.
+- Install the IBM Cloud CLI's Project addon using `ibmcloud plugin install project` command. More info here: https://cloud.ibm.com/docs/cli?topic=cli-projects-cli
 
 
 ## 3. Set the input configuration for the stack
 
-- Clone this repository locally - and checkout the dev branch.
+- Clone this repository locally.
 - Create a file with name ".def.json" with the following content.
-- The signing key is the base64 key obtained from the `gpg --export-secret-key <Email Address> | base64` command. See https://cloud.ibm.com/docs/devsecops?topic=devsecops-devsecops-image-signing#cd-devsecops-gpg-export for details.
 
 **Important**:
 - Ensure region is either us-south or eu-de as watsonx can only be deployed in those 2 locations for now.
@@ -76,7 +76,7 @@ Example 2 - update stack inputs and process some configurations in the project:
 ./deploy-many.sh my-test-project RAG 'RAG-1|RAG-4|RAG-5'
 ```
 
-Example 2 - simulate updating stack inputs and validating some configurations in the project in dry-run mode (no changes or actual validation or deployments is done):
+Example 3 - simulate updating stack inputs and validating some configurations in the project in dry-run mode (no changes or actual validation or deployments is done):
 ```bash
 DRY_RUN=true ./deploy-many.sh my-test-project RAG 'RAG-1|RAG-4|RAG-5'
 ```

@@ -139,7 +139,7 @@
     },
     {
       "name": "2b - Security Service - Secret Manager",
-      "version_locator": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd.2bc1285e-9979-4903-98ae-537c08d50eb1",
+      "version_locator": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd.4c4b156f-22ff-47be-8519-a09d5fb80d9c",
       "inputs": [
         {
           "name": "prefix",
@@ -284,7 +284,7 @@
           "value": "plus"
         },
         {
-          "name": "watson_assistant_plan",
+          "name": "watsonx_assistant_plan",
           "value": "plus"
         },
         {
@@ -417,7 +417,7 @@
         },
         {
           "name": "watson_discovery_instance_id",
-          "value": "ref:../4 - WatsonX SaaS services/outputs/watsonx_discovery_guid"
+          "value": "ref:../4 - WatsonX SaaS services/outputs/watson_discovery_guid"
         },
         {
           "name": "watson_assistant_region",

@@ -181,6 +181,13 @@
 							"type": "boolean",
 							"hidden": false,
 							"default_value": false
+						},
+						{
+							"name": "secret_manager_service_plan",
+							"required": false,
+							"type": "string",
+							"hidden": false,
+							"default": "trial"
 						}
 					],
 					"install_type": "fullstack"

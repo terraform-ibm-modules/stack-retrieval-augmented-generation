@@ -8,6 +8,13 @@
       "default": "rag-stack"
     },
     {
+      "name": "secret_manager_service_plan",
+      "required": false,
+      "type": "string",
+      "hidden": false,
+      "default": "trial"
+    },
+    {
       "name": "ibmcloud_api_key",
       "required": true,
       "type": "password",

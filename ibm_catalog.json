@@ -133,7 +133,7 @@
 						{
 							"key": "prefix",
 							"type": "string",
-							"default_value": "rag",
+							"default_value": "sample",
 							"description": "A prefix added to the name of all resources created by this solution. Used to avoid name clashes in the target account.",
 							"required": true
 						},
@@ -177,7 +177,7 @@
 						{
 							"key": "resource_group_name",
 							"type": "string",
-							"default_value": "rag-services-rc",
+							"default_value": "rag-services",
 							"description": "The name of the resource group that is created by this solution. The actual name is prefixed with the value of the input 'prefix'.  All resources created by this solution are deployed in this resource group. ",
 							"required": false
 						},

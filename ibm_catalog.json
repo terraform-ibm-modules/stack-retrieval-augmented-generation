@@ -141,7 +141,7 @@
 							"key": "enable_platform_logs_metrics",
 							"type": "boolean",
 							"default_value": false,
-							"description": "Whether to provisioned logging and monitoring instances are configured to receive all platform logs and metrics in the target region. There can only be one instance per region provisioned for platform logs/metrics.",
+							"description": "Whether to provision logging and monitoring instances are configured to receive all platform logs and metrics in the target region. There can only be one instance per region provisioned for platform logs/metrics.",
 							"required": false
 						},
 						{

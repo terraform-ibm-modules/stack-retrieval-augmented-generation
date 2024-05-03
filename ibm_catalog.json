@@ -165,11 +165,11 @@
 							"required": false,
 							"options": [
 								{
-									"displayname": "Option 1",
+									"displayname": "us-south",
 									"value": "us-south"
 								},
 								{
-									"displayname": "Option 2",
+									"displayname": "eu-de",
 									"value": "eu-de"
 								}
 							]
@@ -177,7 +177,7 @@
 						{
 							"key": "resource_group_name",
 							"type": "string",
-							"default_value": "__NULL__",
+							"default_value": "rag-services-rc",
 							"description": "The name of the resource group that is created by this solution. The actual name is prefixed with the value of the input 'prefix'.  All resources created by this solution are deployed in this resource group. ",
 							"required": false
 						},
@@ -196,11 +196,11 @@
 							"required": false,
 							"options": [
 								{
-									"displayname": "Option 1",
+									"displayname": "Trial",
 									"value": "trial"
 								},
 								{
-									"displayname": "Option 2",
+									"displayname": "Standard",
 									"value": "standard"
 								}
 							]

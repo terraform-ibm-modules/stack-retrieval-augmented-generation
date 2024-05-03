@@ -139,7 +139,7 @@
     },
     {
       "name": "2b - Security Service - Secret Manager",
-      "version_locator": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd.4513b384-55a0-4d64-b63e-512a22b43b68",
+      "version_locator": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd.2bc1285e-9979-4903-98ae-537c08d50eb1",
       "inputs": [
         {
           "name": "prefix",
@@ -245,7 +245,7 @@
     },
     {
       "name": "4 - WatsonX SaaS services",
-      "version_locator": "8bfb1293-8b85-4d3f-a89f-015d0a0719df.3ada273c-8ba2-4da9-82b3-8dac63dceb2d",
+      "version_locator": "8bfb1293-8b85-4d3f-a89f-015d0a0719df.02313717-33ba-43cd-8a6d-c661c0538cf3",
       "inputs": [
         {
           "name": "ibmcloud_api_key",

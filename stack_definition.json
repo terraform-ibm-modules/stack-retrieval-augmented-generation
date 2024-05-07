@@ -77,7 +77,7 @@
   "members": [
     {
       "name": "1 - Account Infrastructure Base",
-      "version_locator": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd.c8bf5993-d693-4cac-9479-83c5fb6f96e1",
+      "version_locator": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd.0fb5dd09-ac56-455e-bed7-9c9bf4c949bb",
       "inputs": [
         {
           "name": "prefix",
@@ -259,7 +259,7 @@
     },
     {
       "name": "4 - WatsonX SaaS services",
-      "version_locator": "8bfb1293-8b85-4d3f-a89f-015d0a0719df.3b21f2da-e498-4c35-bac2-47d25c7cfa55",
+      "version_locator": "8bfb1293-8b85-4d3f-a89f-015d0a0719df.570d8bf4-65dd-41dd-92bf-718e5afac34f",
       "inputs": [
         {
           "name": "ibmcloud_api_key",

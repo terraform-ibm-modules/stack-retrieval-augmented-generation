@@ -55,10 +55,9 @@
     },
     {
       "name": "signing_key",
-      "required": false,
+      "required": true,
       "type": "password",
-      "hidden": false,
-      "default": "replace"
+      "hidden": false
     },
     {
       "name": "existing_secrets_manager_crn",

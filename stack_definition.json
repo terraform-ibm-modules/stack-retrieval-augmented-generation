@@ -409,7 +409,7 @@
     },
     {
       "name": "6 - Sample RAG app configuration",
-      "version_locator": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd.9ac0688e-437b-4559-8f7f-992818e9fa6c",
+      "version_locator": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd.ce387005-a5be-4946-8d25-bc4ca972360a",
       "inputs": [
         {
           "name": "toolchain_region",
@@ -491,13 +491,13 @@
     }
   ],
   "outputs": [
-		{
-			"name": "watsonx_project_url",
-			"value": "ref:./members/6 - Sample RAG app configuration/outputs/watson_project_url"
-		},
-		{
-			"name": "watsonx_project_id",
-			"value": "ref:./members/6 - Sample RAG app configuration/outputs/watson_project_id"
-		}
-	]
+    {
+      "name": "watsonx_project_url",
+      "value": "ref:./members/6 - Sample RAG app configuration/outputs/watson_project_url"
+    },
+    {
+      "name": "watsonx_project_id",
+      "value": "ref:./members/6 - Sample RAG app configuration/outputs/watson_project_id"
+    }
+  ]
 }

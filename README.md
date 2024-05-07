@@ -24,6 +24,7 @@ Before deploying the stack, ensure you have:
 **Important**:
 - Ensure region is either us-south or eu-de as watsonx can only be deployed in those 2 locations for now.
 - Ensure that the prefix is globally unique. It is used for the container registry namespace (which needs to be globally unique) in this alpha version.
+- The signing key is the base64 key obtained from the `gpg --export-secret-key <Email Address> | base64` command. See https://cloud.ibm.com/docs/devsecops?topic=devsecops-devsecops-image-signing#cd-devsecops-gpg-export for details.
 - If specifying `existing_secrets_manager_crn`, the ibmcloud_api_key that is passed as an input must have the documented read and write access to the instance
 - If specifying `existing_secrets_manager_crn`, ensure that the default security group does not contain secrets named `signing-key` and `ibmcloud-api-key` . The RAG DA currently always attempt to create secret with those names (temporary issue - to be fixed).
 

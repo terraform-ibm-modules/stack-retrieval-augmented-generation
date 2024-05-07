@@ -15,12 +15,6 @@
       "default": "trial"
     },
     {
-      "name": "ibmcloud_api_key",
-      "required": true,
-      "type": "password",
-      "hidden": false
-    },
-    {
       "name": "watsonx_admin_api_key",
       "required": false,
       "type": "password",
@@ -85,7 +79,7 @@
         },
         {
           "name": "ibmcloud_api_key",
-          "value": "ref:../../inputs/ibmcloud_api_key"
+          "value": ""
         },
         {
           "name": "region",
@@ -135,7 +129,7 @@
         },
         {
           "name": "ibmcloud_api_key",
-          "value": "ref:../../inputs/ibmcloud_api_key"
+          "value": ""
         },
         {
           "name": "region",
@@ -161,7 +155,7 @@
         },
         {
           "name": "ibmcloud_api_key",
-          "value": "ref:../../inputs/ibmcloud_api_key"
+          "value": ""
         },
         {
           "name": "region",
@@ -191,7 +185,7 @@
       "inputs": [
         {
           "name": "ibmcloud_api_key",
-          "value": "ref:../../inputs/ibmcloud_api_key"
+          "value": ""
         },
         {
           "name": "cos_region",
@@ -225,7 +219,7 @@
       "inputs": [
         {
           "name": "ibmcloud_api_key",
-          "value": "ref:../../inputs/ibmcloud_api_key"
+          "value": ""
         },
         {
           "name": "region",
@@ -263,7 +257,7 @@
       "inputs": [
         {
           "name": "ibmcloud_api_key",
-          "value": "ref:../../inputs/ibmcloud_api_key"
+          "value": ""
         },
         {
           "name": "watsonx_admin_api_key",
@@ -317,7 +311,7 @@
       "inputs": [
         {
           "name": "ibmcloud_api_key",
-          "value": "ref:../../inputs/ibmcloud_api_key"
+          "value": ""
         },
         {
           "name": "toolchain_name",
@@ -423,7 +417,7 @@
         },
         {
           "name": "ibmcloud_api_key",
-          "value": "ref:../../inputs/ibmcloud_api_key"
+          "value": ""
         },
         {
           "name": "watson_discovery_region",
@@ -495,5 +489,15 @@
         }
       ]
     }
-  ]
+  ],
+  "outputs": [
+		{
+			"name": "watsonx_project_url",
+			"value": "ref:./members/6 - Sample RAG app configuration/outputs/watson_project_url"
+		},
+		{
+			"name": "watsonx_project_id",
+			"value": "ref:./members/6 - Sample RAG app configuration/outputs/watson_project_id"
+		}
+	]
 }

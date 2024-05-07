@@ -134,22 +134,8 @@
 							"key": "prefix",
 							"type": "string",
 							"default_value": "sample",
-							"description": "A prefix added to the name of all resources created by this solution. Used to avoid name clashes in the target account.",
+							"description": "A prefix added to the name of all resources created by this solution. Used to avoid name clashes in the target account when existing this solution multiple times.",
 							"required": true
-						},
-						{
-							"key": "enable_platform_logs_metrics",
-							"type": "boolean",
-							"default_value": false,
-							"description": "Whether to provision logging and monitoring instances are configured to receive all platform logs and metrics in the target region. There can only be one instance per region provisioned for platform logs/metrics.",
-							"required": false
-						},
-						{
-							"key": "existing_secrets_manager_crn",
-							"type": "string",
-							"default_value": "__NULL__",
-							"description": "The CRN of an existing secret manager instance to use in this solution. If not set, a new secret manager instance is provisioned. ",
-							"required": false
 						},
 						{
 							"key": "ibmcloud_api_key",
@@ -175,17 +161,15 @@
 							]
 						},
 						{
-							"key": "resource_group_name",
-							"type": "string",
-							"default_value": "rag-services",
-							"description": "The name of the resource group that is created by this solution. The actual name is prefixed with the value of the input 'prefix'.  All resources created by this solution are deployed in this resource group. ",
+							"key": "signing_key",
+							"type": "password",
+							"description": "The key used to sign the application image built by the CI pipeline deployed in this solution.",
 							"required": false
 						},
 						{
-							"key": "sample_app_git_url",
-							"type": "string",
-							"default_value": "https://github.com/IBM/gen-ai-rag-watsonx-sample-application",
-							"description": "The URL to the public git repository containing the sample rag application code.",
+							"key": "watsonx_admin_api_key",
+							"type": "password",
+							"description": "The API Key used to provision the watson project resources. If not set, the ibmcloud_api_key is used.",
 							"required": false
 						},
 						{
@@ -206,15 +190,31 @@
 							]
 						},
 						{
-							"key": "signing_key",
-							"type": "password",
-							"description": "The key used to sign the application image built by the CI pipeline deployed in this solution.",
+							"key": "resource_group_name",
+							"type": "string",
+							"default_value": "rag-services",
+							"description": "The name of the resource group that is created by this solution. The actual name is prefixed with the value of the input 'prefix'.  All resources created by this solution are deployed in this resource group. ",
 							"required": false
 						},
 						{
-							"key": "watsonx_admin_api_key",
-							"type": "password",
-							"description": "The API Key used to provision the watson project resources. If not set, the ibmcloud_api_key is used.",
+							"key": "enable_platform_logs_metrics",
+							"type": "boolean",
+							"default_value": false,
+							"description": "Whether to provision logging and monitoring instances are configured to receive all platform logs and metrics in the target region. There can only be one instance per region provisioned for platform logs/metrics.",
+							"required": false
+						},
+						{
+							"key": "existing_secrets_manager_crn",
+							"type": "string",
+							"default_value": "__NULL__",
+							"description": "The CRN of an existing secret manager instance to use in this solution. If not set, a new secret manager instance is provisioned. ",
+							"required": false
+						},
+						{
+							"key": "sample_app_git_url",
+							"type": "string",
+							"default_value": "https://github.com/IBM/gen-ai-rag-watsonx-sample-application",
+							"description": "The URL to the public git repository containing the sample rag application code.",
 							"required": false
 						}
 					],

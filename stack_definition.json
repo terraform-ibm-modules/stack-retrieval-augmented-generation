@@ -1,440 +1,492 @@
 {
-	"inputs": [
-		{
-			"name": "prefix",
-			"required": true,
-			"type": "string",
-			"hidden": false,
-			"default": "rag-stack"
-		},
-		{
-			"name": "ibmcloud_api_key",
-			"required": true,
-			"type": "password",
-			"hidden": false
-		},
-		{
-			"name": "watsonx_admin_api_key",
-			"required": false,
-			"type": "password",
-			"hidden": false
-		},
-		{
-			"name": "resource_group_name",
-			"required": false,
-			"type": "string",
-			"hidden": false
-		},
-		{
-			"name": "region",
-			"required": false,
-			"type": "string",
-			"hidden": false,
-			"default": "us-south"
-		},
-		{
-			"name": "sample_app_git_url",
-			"required": false,
-			"type": "string",
-			"hidden": false,
-			"default": "https://github.com/IBM/gen-ai-rag-watsonx-sample-application"
-		},
-		{
-			"name": "signing_key",
-			"required": false,
-			"type": "password",
-			"hidden": false,
-			"default": "replace"
-		}
-	],
-	"members": [
-		{
-			"name": "1 - Account Infrastructure Base",
-			"version_locator": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd.9971e551-4f32-4d7f-a405-ec8937a0183d",
-			"inputs": [
-				{
-					"name": "prefix",
-					"value": "ref:../../inputs/prefix"
-				},
-				{
-					"name": "ibmcloud_api_key",
-					"value": "ref:../../inputs/ibmcloud_api_key"
-				},
-				{
-					"name": "region",
-					"value": "ref:../../inputs/region"
-				},
-				{
-					"name": "security_resource_group_name",
-					"value": "ref:../../inputs/resource_group_name"
-				},
-				{
-					"name": "audit_resource_group_name",
-					"value": "ref:../../inputs/resource_group_name"
-				},
-				{
-					"name": "observability_resource_group_name",
-					"value": "ref:../../inputs/resource_group_name"
-				},
-				{
-					"name": "management_resource_group_name",
-					"value": "ref:../../inputs/resource_group_name"
-				},
-				{
-					"name": "workload_resource_group_name",
-					"value": "ref:../../inputs/resource_group_name"
-				},
-				{
-					"name": "edge_resource_group_name",
-					"value": "ref:../../inputs/resource_group_name"
-				},
-				{
-					"name": "devops_resource_group_name",
-					"value": "ref:../../inputs/resource_group_name"
-				}
-			]
-		},
-		{
-			"name": "2a - Security Service - Key Management",
-			"version_locator": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd.522f2691-ac0b-4874-a21a-93a3c7ce29a0",
-			"inputs": [
-				{
-					"name": "resource_group_name",
-					"value": "ref:../1 - Account Infrastructure Base/outputs/security_resource_group_name"
-				},
-				{
-					"name": "use_existing_resource_group",
-					"value": true
-				},
-				{
-					"name": "ibmcloud_api_key",
-					"value": "ref:../../inputs/ibmcloud_api_key"
-				},
-				{
-					"name": "region",
-					"value": "ref:../../inputs/region"
-				}
-			]
-		},
-		{
-			"name": "2b - Security Service - Secret Manager",
-			"version_locator": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd.9df9062b-3c67-4117-ba3f-974f04a39800",
-			"inputs": [
-				{
-					"name": "prefix",
-					"value": "ref:../../inputs/prefix"
-				},
-				{
-					"name": "resource_group_name",
-					"value": "ref:../1 - Account Infrastructure Base/outputs/security_resource_group_name"
-				},
-				{
-					"name": "ibmcloud_api_key",
-					"value": "ref:../../inputs/ibmcloud_api_key"
-				},
-				{
-					"name": "region",
-					"value": "ref:../../inputs/region"
-				},
-				{
-					"name": "existing_kms_guid",
-					"value": "ref:../2a - Security Service - Key Management/outputs/kms_guid"
-				},
-				{
-					"name": "existing_resource_group",
-					"value": true
-				}
-			]
-		},
-		{
-			"name": "2c - Security Service - Security Compliance Center",
-			"version_locator": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd.124a3a88-415c-4e40-b4e1-7773be7922a7",
-			"inputs": [
-				{
-					"name": "ibmcloud_api_key",
-					"value": "ref:../../inputs/ibmcloud_api_key"
-				},
-				{
-					"name": "cos_region",
-					"value": "ref:../../inputs/region"
-				},
-				{
-					"name": "scc_region",
-					"value": "ref:../../inputs/region"
-				},
-				{
-					"name": "resource_group_name",
-					"value": "ref:../1 - Account Infrastructure Base/outputs/audit_resource_group_name"
-				},
-				{
-					"name": "existing_kms_instance_crn",
-					"value": "ref:../2a - Security Service - Key Management/outputs/key_protect_crn"
-				},
-				{
-					"name": "use_existing_resource_group",
-					"value": true
-				},
-				{
-					"name": "provision_scc_workload_protection",
-					"value": false
-				}
-			]
-		},
-		{
-			"name": "3 - Observability - Logging Monitoring Activity Tracker",
-			"version_locator": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd.7d068949-1aa6-4fb0-bb47-5fa062851810",
-			"inputs": [
-				{
-					"name": "ibmcloud_api_key",
-					"value": "ref:../../inputs/ibmcloud_api_key"
-				},
-				{
-					"name": "region",
-					"value": "ref:../../inputs/region"
-				},
-				{
-					"name": "existing_kms_instance_crn",
-					"value": "ref:../2a - Security Service - Key Management/outputs/key_protect_crn"
-				},
-				{
-					"name": "resource_group_name",
-					"value": "ref:../1 - Account Infrastructure Base/outputs/observability_resource_group_name"
-				},
-				{
-					"name": "use_existing_resource_group",
-					"value": true
-				}
-			]
-		},
-		{
-			"name": "4 - WatsonX SaaS services",
-			"version_locator": "8bfb1293-8b85-4d3f-a89f-015d0a0719df.bcbb2267-a849-426b-9132-c4b47b259d81",
-			"inputs": [
-				{
-					"name": "ibmcloud_api_key",
-					"value": "ref:../../inputs/ibmcloud_api_key"
-				},
-				{
-					"name": "watsonx_admin_api_key",
-					"value": "ref:../../inputs/watsonx_admin_api_key"
-				},
-				{
-					"name": "resource_group_name",
-					"value": "ref:../1 - Account Infrastructure Base/outputs/workload_resource_group_name"
-				},
-				{
-					"name": "location",
-					"value": "ref:../../inputs/region"
-				},
-				{
-					"name": "resource_prefix",
-					"value": "ref:../../inputs/prefix"
-				},
-				{
-					"name": "use_existing_resource_group",
-					"value": true
-				},
-				{
-					"name": "watson_machine_learning_plan",
-					"value": "v2-standard"
-				},
-				{
-					"name": "watson_studio_plan",
-					"value": "professional-v1"
-				},
-				{
-					"name": "watson_discovery_plan",
-					"value": "plus"
-				},
-				{
-					"name": "watson_assistant_plan",
-					"value": "plus"
-				},
-				{
-					"name": "watson_governance_plan",
-					"value": "do not install"
-				},
-				{
-					"name": "project_name",
-					"value": "ref:../../inputs/prefix"
-				}
-			]
-		},
-		{
-			"name": "5 - Generative AI Sample App - Code Engine Toolchain Config",
-			"version_locator": "1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.c5f85486-df86-4b97-b44e-0d5070b8e935-global",
-			"inputs": [
-				{
-					"name": "ibmcloud_api_key",
-					"value": "ref:../../inputs/ibmcloud_api_key"
-				},
-				{
-					"name": "toolchain_name",
-					"value": "Generative AI Sample App"
-				},
-				{
-					"name": "toolchain_region",
-					"value": "ref:../../inputs/region"
-				},
-				{
-					"name": "toolchain_resource_group",
-					"value": "ref:../1 - Account Infrastructure Base/outputs/devops_resource_group_name"
-				},
-				{
-					"name": "sm_secret_group",
-					"value": "Default"
-				},
-				{
-					"name": "sm_resource_group",
-					"value": "ref:../2b - Security Service - Secret Manager/outputs/resource_group_name"
-				},
-				{
-					"name": "sm_name",
-					"value": "ref:../2b - Security Service - Secret Manager/outputs/secrets_manager_name"
-				},
-				{
-					"name": "sm_location",
-					"value": "ref:../2b - Security Service - Secret Manager/inputs/region"
-				},
-				{
-					"name": "ci_code_engine_project",
-					"value": "Generative_AI_Sample_App_CI_Project"
-				},
-				{
-					"name": "cd_code_engine_project",
-					"value": "Generative_AI_Sample_App_CD_Project"
-				},
-				{
-					"name": "registry_namespace",
-					"value": "ref:../../inputs/prefix"
-				},
-				{
-					"name": "ci_app_repo_clone_from_url",
-					"value": "ref:../../inputs/sample_app_git_url"
-				},
-				{
-					"name": "repositories_prefix",
-					"value": "ref:../../inputs/prefix"
-				},
-				{
-					"name": "ci_app_name",
-					"value": "rag-sample-app"
-				},
-				{
-					"name": "ci_code_engine_context_dir",
-					"value": ""
-				},
-				{
-					"name": "ci_code_engine_image_name",
-					"value": "code-engine-rag-app"
-				},
-				{
-					"name": "ci_code_engine_env_from_configmaps",
-					"value": "app.properties"
-				},
-				{
-					"name": "cd_code_engine_env_from_configmaps",
-					"value": "app.properties"
-				},
-				{
-					"name": "ci_code_engine_app_min_scale",
-					"value": "1"
-				},
-				{
-					"name": "cd_code_engine_app_min_scale",
-					"value": "1"
-				},
-				{
-					"name": "ci_signing_key_secret_name",
-					"value": "signing-key"
-				},
-				{
-					"name": "pipeline_ibmcloud_api_key_secret_name",
-					"value": "ibmcloud-api-key"
-				}
-			]
-		},
-		{
-			"name": "6 - Sample RAG app configuration",
-			"version_locator": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd.f375f9df-af21-4299-b11d-e5813f918efa",
-			"inputs": [
-				{
-					"name": "toolchain_region",
-					"value": "ref:../../inputs/region"
-				},
-				{
-					"name": "ibmcloud_api_key",
-					"value": "ref:../../inputs/ibmcloud_api_key"
-				},
-				{
-					"name": "watson_discovery_region",
-					"value": "ref:../../inputs/region"
-				},
-				{
-					"name": "watson_discovery_instance_id",
-					"value": "ref:../4 - WatsonX SaaS services/outputs/watsonx_discovery_guid"
-				},
-				{
-					"name": "watson_assistant_region",
-					"value": "ref:../../inputs/region"
-				},
-				{
-					"name": "watson_assistant_instance_id",
-					"value": "ref:../4 - WatsonX SaaS services/outputs/watsonx_assistant_guid"
-				},
-				{
-					"name": "cd_pipeline_id",
-					"value": "ref:../5 - Generative AI Sample App - Code Engine Toolchain Config/outputs/cd_pipeline_id"
-				},
-				{
-					"name": "ci_pipeline_id",
-					"value": "ref:../5 - Generative AI Sample App - Code Engine Toolchain Config/outputs/ci_pipeline_id"
-				},
-				{
-					"name": "watson_machine_learning_instance_guid",
-					"value": "ref:../4 - WatsonX SaaS services/outputs/watson_machine_learning_guid"
-				},
-				{
-					"name": "watson_machine_learning_instance_resource_name",
-					"value": "ref:../4 - WatsonX SaaS services/outputs/watson_machine_learning_name"
-				},
-				{
-					"name": "watson_machine_learning_instance_crn",
-					"value": "ref:../4 - WatsonX SaaS services/outputs/watson_machine_learning_crn"
-				},
-				{
-					"name": "toolchain_resource_group",
-					"value": "ref:../1 - Account Infrastructure Base/outputs/devops_resource_group_name"
-				},
-				{
-					"name": "prefix",
-					"value": "ref:../../inputs/prefix"
-				},
-				{
-					"name": "resource_group_name",
-					"value": "ref:../1 - Account Infrastructure Base/outputs/devops_resource_group_name"
-				},
-				{
-					"name": "use_existing_resource_group",
-					"value": true
-				},
-				{
-					"name": "toolchain_region",
-					"value": "ref:../../inputs/region"
-				},
-				{
-					"name": "signing_key",
-					"value": "ref:../../inputs/signing_key"
-				},
-				{
-					"name": "secrets_manager_guid",
-					"value": "ref:../2b - Security Service - Secret Manager/outputs/secrets_manager_guid"
-				},
-				{
-					"name": "secrets_manager_crn",
-					"value": "notneeded"
-				}
-			]
-		}
-	]
+  "inputs": [
+    {
+      "name": "prefix",
+      "required": true,
+      "type": "string",
+      "hidden": false,
+      "default": "rag-stack"
+    },
+    {
+      "name": "secret_manager_service_plan",
+      "required": false,
+      "type": "string",
+      "hidden": false,
+      "default": "trial"
+    },
+    {
+      "name": "ibmcloud_api_key",
+      "required": true,
+      "type": "password",
+      "hidden": false
+    },
+    {
+      "name": "watsonx_admin_api_key",
+      "required": false,
+      "type": "password",
+      "hidden": false
+    },
+    {
+      "name": "resource_group_name",
+      "required": false,
+      "type": "string",
+      "hidden": false
+    },
+    {
+      "name": "region",
+      "required": false,
+      "type": "string",
+      "hidden": false,
+      "default": "us-south"
+    },
+    {
+      "name": "sample_app_git_url",
+      "required": false,
+      "type": "string",
+      "hidden": false,
+      "default": "https://github.com/IBM/gen-ai-rag-watsonx-sample-application"
+    },
+    {
+      "name": "signing_key",
+      "required": false,
+      "type": "password",
+      "hidden": false,
+      "default": "replace"
+    },
+    {
+      "name": "signing_key",
+      "required": false,
+      "type": "password",
+      "hidden": false,
+      "default": "replace"
+    },
+    {
+      "name": "existing_secrets_manager_crn",
+      "required": false,
+      "type": "string",
+      "hidden": false,
+      "default": null
+    },
+    {
+      "name": "enable_platform_logs_metrics",
+      "required": false,
+      "type": "boolean",
+      "hidden": false,
+      "default": false
+    }
+  ],
+  "members": [
+    {
+      "name": "1 - Account Infrastructure Base",
+      "version_locator": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd.c8bf5993-d693-4cac-9479-83c5fb6f96e1",
+      "inputs": [
+        {
+          "name": "prefix",
+          "value": "ref:../../inputs/prefix"
+        },
+        {
+          "name": "ibmcloud_api_key",
+          "value": "ref:../../inputs/ibmcloud_api_key"
+        },
+        {
+          "name": "region",
+          "value": "ref:../../inputs/region"
+        },
+        {
+          "name": "security_resource_group_name",
+          "value": "ref:../../inputs/resource_group_name"
+        },
+        {
+          "name": "audit_resource_group_name",
+          "value": "ref:../../inputs/resource_group_name"
+        },
+        {
+          "name": "observability_resource_group_name",
+          "value": "ref:../../inputs/resource_group_name"
+        },
+        {
+          "name": "management_resource_group_name",
+          "value": "ref:../../inputs/resource_group_name"
+        },
+        {
+          "name": "workload_resource_group_name",
+          "value": "ref:../../inputs/resource_group_name"
+        },
+        {
+          "name": "edge_resource_group_name",
+          "value": "ref:../../inputs/resource_group_name"
+        },
+        {
+          "name": "devops_resource_group_name",
+          "value": "ref:../../inputs/resource_group_name"
+        }
+      ]
+    },
+    {
+      "name": "2a - Security Service - Key Management",
+      "version_locator": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd.05f53606-6eaf-4c4b-a5bb-4ad0d8bcf890",
+      "inputs": [
+        {
+          "name": "resource_group_name",
+          "value": "ref:../1 - Account Infrastructure Base/outputs/security_resource_group_name"
+        },
+        {
+          "name": "use_existing_resource_group",
+          "value": true
+        },
+        {
+          "name": "ibmcloud_api_key",
+          "value": "ref:../../inputs/ibmcloud_api_key"
+        },
+        {
+          "name": "region",
+          "value": "ref:../../inputs/region"
+        }
+      ]
+    },
+    {
+      "name": "2b - Security Service - Secret Manager",
+      "version_locator": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd.4c4b156f-22ff-47be-8519-a09d5fb80d9c",
+      "inputs": [
+        {
+          "name": "prefix",
+          "value": "ref:../../inputs/prefix"
+        },
+        {
+          "name": "resource_group_name",
+          "value": "ref:../1 - Account Infrastructure Base/outputs/security_resource_group_name"
+        },
+        {
+          "name": "ibmcloud_api_key",
+          "value": "ref:../../inputs/ibmcloud_api_key"
+        },
+        {
+          "name": "region",
+          "value": "ref:../../inputs/region"
+        },
+        {
+          "name": "existing_kms_instance_crn",
+          "value": "ref:../2a - Security Service - Key Management/outputs/key_protect_crn"
+        },
+        {
+          "name": "use_existing_resource_group",
+          "value": true
+        },
+        {
+          "name": "existing_secrets_manager_crn",
+          "value": "ref:../../inputs/existing_secrets_manager_crn"
+        }
+      ]
+    },
+    {
+      "name": "2c - Security Service - Security Compliance Center",
+      "version_locator": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd.f64fe6f5-de0e-4d7c-9f49-06dbbd289160",
+      "inputs": [
+        {
+          "name": "ibmcloud_api_key",
+          "value": "ref:../../inputs/ibmcloud_api_key"
+        },
+        {
+          "name": "cos_region",
+          "value": "ref:../../inputs/region"
+        },
+        {
+          "name": "scc_region",
+          "value": "ref:../../inputs/region"
+        },
+        {
+          "name": "resource_group_name",
+          "value": "ref:../1 - Account Infrastructure Base/outputs/audit_resource_group_name"
+        },
+        {
+          "name": "existing_kms_instance_crn",
+          "value": "ref:../2a - Security Service - Key Management/outputs/key_protect_crn"
+        },
+        {
+          "name": "use_existing_resource_group",
+          "value": true
+        },
+        {
+          "name": "provision_scc_workload_protection",
+          "value": false
+        }
+      ]
+    },
+    {
+      "name": "3 - Observability - Logging Monitoring Activity Tracker",
+      "version_locator": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd.58843031-95a7-4e8e-9abc-13c478a8bd16",
+      "inputs": [
+        {
+          "name": "ibmcloud_api_key",
+          "value": "ref:../../inputs/ibmcloud_api_key"
+        },
+        {
+          "name": "region",
+          "value": "ref:../../inputs/region"
+        },
+        {
+          "name": "existing_kms_instance_crn",
+          "value": "ref:../2a - Security Service - Key Management/outputs/key_protect_crn"
+        },
+        {
+          "name": "resource_group_name",
+          "value": "ref:../1 - Account Infrastructure Base/outputs/observability_resource_group_name"
+        },
+        {
+          "name": "prefix",
+          "value": "ref:../../inputs/prefix"
+        },
+        {
+          "name": "use_existing_resource_group",
+          "value": true
+        },
+        {
+          "name": "enable_platform_logs",
+          "value": "ref:../../inputs/enable_platform_logs_metrics"
+        },
+        {
+          "name": "enable_platform_metrics",
+          "value": "ref:../../inputs/enable_platform_logs_metrics"
+        }
+      ]
+    },
+    {
+      "name": "4 - WatsonX SaaS services",
+      "version_locator": "8bfb1293-8b85-4d3f-a89f-015d0a0719df.02313717-33ba-43cd-8a6d-c661c0538cf3",
+      "inputs": [
+        {
+          "name": "ibmcloud_api_key",
+          "value": "ref:../../inputs/ibmcloud_api_key"
+        },
+        {
+          "name": "watsonx_admin_api_key",
+          "value": "ref:../../inputs/watsonx_admin_api_key"
+        },
+        {
+          "name": "resource_group_name",
+          "value": "ref:../1 - Account Infrastructure Base/outputs/workload_resource_group_name"
+        },
+        {
+          "name": "location",
+          "value": "ref:../../inputs/region"
+        },
+        {
+          "name": "resource_prefix",
+          "value": "ref:../../inputs/prefix"
+        },
+        {
+          "name": "use_existing_resource_group",
+          "value": true
+        },
+        {
+          "name": "watson_machine_learning_plan",
+          "value": "v2-standard"
+        },
+        {
+          "name": "watson_studio_plan",
+          "value": "professional-v1"
+        },
+        {
+          "name": "watson_discovery_plan",
+          "value": "plus"
+        },
+        {
+          "name": "watsonx_assistant_plan",
+          "value": "plus"
+        },
+        {
+          "name": "watson_governance_plan",
+          "value": "do not install"
+        },
+        {
+          "name": "project_name",
+          "value": "ref:../../inputs/prefix"
+        }
+      ]
+    },
+    {
+      "name": "5 - Sample RAG app - Application Lifecycle Management (CI,CD,CC)",
+      "version_locator": "1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.c9d011c4-f1eb-4dae-87e9-fe20372d90a5-global",
+      "inputs": [
+        {
+          "name": "ibmcloud_api_key",
+          "value": "ref:../../inputs/ibmcloud_api_key"
+        },
+        {
+          "name": "toolchain_name",
+          "value": "Generative AI Sample App"
+        },
+        {
+          "name": "toolchain_region",
+          "value": "ref:../../inputs/region"
+        },
+        {
+          "name": "toolchain_resource_group",
+          "value": "ref:../1 - Account Infrastructure Base/outputs/devops_resource_group_name"
+        },
+        {
+          "name": "sm_secret_group",
+          "value": "Default"
+        },
+        {
+          "name": "sm_resource_group",
+          "value": "ref:../2b - Security Service - Secret Manager/outputs/resource_group_name"
+        },
+        {
+          "name": "sm_name",
+          "value": "ref:../2b - Security Service - Secret Manager/outputs/secrets_manager_name"
+        },
+        {
+          "name": "sm_location",
+          "value": "ref:../2b - Security Service - Secret Manager/outputs/secrets_manager_region"
+        },
+        {
+          "name": "ci_code_engine_project",
+          "value": "Generative_AI_Sample_App_CI_Project"
+        },
+        {
+          "name": "cd_code_engine_project",
+          "value": "Generative_AI_Sample_App_CD_Project"
+        },
+        {
+          "name": "registry_namespace",
+          "value": "rag-sample-app"
+        },
+        {
+          "name": "registry_namespace_suffix",
+          "value": "ref:../../inputs/prefix"
+        },
+        {
+          "name": "ci_app_repo_clone_from_url",
+          "value": "ref:../../inputs/sample_app_git_url"
+        },
+        {
+          "name": "repositories_prefix",
+          "value": "ref:../../inputs/prefix"
+        },
+        {
+          "name": "ci_app_name",
+          "value": "rag-sample-app"
+        },
+        {
+          "name": "ci_code_engine_image_name",
+          "value": "code-engine-rag-app"
+        },
+        {
+          "name": "ci_code_engine_context_dir",
+          "value": "."
+        },
+        {
+          "name": "ci_code_engine_env_from_configmaps",
+          "value": "app.properties"
+        },
+        {
+          "name": "cd_code_engine_env_from_configmaps",
+          "value": "app.properties"
+        },
+        {
+          "name": "ci_code_engine_app_min_scale",
+          "value": "1"
+        },
+        {
+          "name": "cd_code_engine_app_min_scale",
+          "value": "1"
+        },
+        {
+          "name": "ci_signing_key_secret_name",
+          "value": "signing-key"
+        },
+        {
+          "name": "pipeline_ibmcloud_api_key_secret_name",
+          "value": "ibmcloud-api-key"
+        },
+        {
+          "name": "code_engine_project_prefix",
+          "value": "ref:../../inputs/prefix"
+        }
+      ]
+    },
+    {
+      "name": "6 - Sample RAG app configuration",
+      "version_locator": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd.9ac0688e-437b-4559-8f7f-992818e9fa6c",
+      "inputs": [
+        {
+          "name": "toolchain_region",
+          "value": "ref:../../inputs/region"
+        },
+        {
+          "name": "ibmcloud_api_key",
+          "value": "ref:../../inputs/ibmcloud_api_key"
+        },
+        {
+          "name": "watson_discovery_region",
+          "value": "ref:../../inputs/region"
+        },
+        {
+          "name": "watson_discovery_instance_id",
+          "value": "ref:../4 - WatsonX SaaS services/outputs/watson_discovery_guid"
+        },
+        {
+          "name": "watson_assistant_region",
+          "value": "ref:../../inputs/region"
+        },
+        {
+          "name": "watson_assistant_instance_id",
+          "value": "ref:../4 - WatsonX SaaS services/outputs/watsonx_assistant_guid"
+        },
+        {
+          "name": "cd_pipeline_id",
+          "value": "ref:../5 - Sample RAG app - Application Lifecycle Management (CI,CD,CC)/outputs/cd_pipeline_id"
+        },
+        {
+          "name": "ci_pipeline_id",
+          "value": "ref:../5 - Sample RAG app - Application Lifecycle Management (CI,CD,CC)/outputs/ci_pipeline_id"
+        },
+        {
+          "name": "watson_machine_learning_instance_guid",
+          "value": "ref:../4 - WatsonX SaaS services/outputs/watson_machine_learning_guid"
+        },
+        {
+          "name": "watson_machine_learning_instance_resource_name",
+          "value": "ref:../4 - WatsonX SaaS services/outputs/watson_machine_learning_name"
+        },
+        {
+          "name": "watson_machine_learning_instance_crn",
+          "value": "ref:../4 - WatsonX SaaS services/outputs/watson_machine_learning_crn"
+        },
+        {
+          "name": "toolchain_resource_group",
+          "value": "ref:../1 - Account Infrastructure Base/outputs/devops_resource_group_name"
+        },
+        {
+          "name": "prefix",
+          "value": "ref:../../inputs/prefix"
+        },
+        {
+          "name": "resource_group_name",
+          "value": "ref:../1 - Account Infrastructure Base/outputs/devops_resource_group_name"
+        },
+        {
+          "name": "use_existing_resource_group",
+          "value": true
+        },
+        {
+          "name": "toolchain_region",
+          "value": "ref:../../inputs/region"
+        },
+        {
+          "name": "signing_key",
+          "value": "ref:../../inputs/signing_key"
+        },
+        {
+          "name": "secrets_manager_guid",
+          "value": "ref:../2b - Security Service - Secret Manager/outputs/secrets_manager_guid"
+        },
+        {
+          "name": "secrets_manager_region",
+          "value": "ref:../2b - Security Service - Secret Manager/outputs/secrets_manager_region"
+        }
+      ]
+    }
+  ]
 }

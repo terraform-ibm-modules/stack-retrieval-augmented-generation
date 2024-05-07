@@ -63,7 +63,7 @@ function validate_config() {
 
   STATE=$(get_validation_state)
 
-  if [[ "$STATE" != "validated" && "$STATE" != "deployed" && "$STATE" != "deploying_failed" ]]; then
+  if [[ "$STATE" != "validated" && "$STATE" != "deployed" && "$STATE" != "deploying_failed" && "$STATE" != "approved" && "$STATE" != "deleting" && "$STATE" != "deleting_failed" ]]; then
     $CLI_CMD project config-validate --project-id "$PROJECT_ID" --id "$CONFIG_ID" --output json > /tmp/validation.json
   fi
 }
@@ -74,7 +74,7 @@ function wait_for_validation() {
 
     STATE=$(get_validation_state)
 
-    if [[ "$STATE" == "validated" || "$STATE" == "deployed" || "$STATE" == "deploying_failed" ]]; then
+    if [[ "$STATE" == "validated" || "$STATE" == "deployed" || "$STATE" == "deploying_failed" || "$STATE" == "approved" || "$STATE" == "deploying" || "$STATE" == "deleting" || "$STATE" == "deleting_failed" ]]; then
       break
     fi
 
@@ -98,7 +98,7 @@ function deploy_config() {
 
   STATE=$(get_deployment_state)
 
-  if [[ "$STATE" != "deployed" ]]; then
+  if [[ "$STATE" != "deployed" && "$STATE" != "deleting" && "$STATE" != "deleting_failed" ]]; then
     $CLI_CMD project config-deploy --project-id "$PROJECT_ID" --id "$CONFIG_ID"
   fi
 }
@@ -109,7 +109,7 @@ function wait_for_deployment() {
     STATE=$(get_deployment_state)
 
     # If the state is "deployed" or "deploying_failed", exit the loop
-    if [[ "$STATE" == "deployed" || "$STATE" == "deploying_failed" ]]; then
+    if [[ "$STATE" == "deployed" || "$STATE" == "deploying_failed" || "$STATE" == "deleting" || "$STATE" == "deleting_failed" ]]; then
       break
     fi
 
@@ -138,16 +138,44 @@ function keep_iam_session_active()
   ibmcloud iam oauth-tokens > /dev/null
 }
 
-parse_params "$@"
-get_config_ids
-set_stack_inputs
-
-# Loop through the configuration IDs and execute the functions
-for CONFIG_ID in "${CONFIG_IDS[@]}"
-do
+function validate_and_deploy()
+{
   validate_config
   wait_for_validation
   approve_config
   deploy_config
   wait_for_deployment
+}
+
+parse_params "$@"
+get_config_ids
+set_stack_inputs
+
+# Loop through the configuration IDs and execute the functions
+# for CONFIG_ID in "${CONFIG_IDS[@]}"
+# do
+#   validate_and_deploy
+# done
+
+
+####
+
+# Run base config + key management first
+for CONFIG_ID in "${CONFIG_IDS[@]:0:2}"; do
+  validate_and_deploy
+done
+
+
+# Run secret manager, security compliance, observability, and WatsonX SaaS services in parallel
+parallel_configs=("${CONFIG_IDS[2]}" "${CONFIG_IDS[3]}" "${CONFIG_IDS[4]}" "${CONFIG_IDS[5]}")
+for CONFIG_ID in "${parallel_configs[@]}"; do
+  (
+    validate_and_deploy
+  ) &
+done
+wait
+
+# Run ALM + RAG DA at the end
+for CONFIG_ID in "${CONFIG_IDS[@]:6}"; do
+  validate_and_deploy
 done

@@ -14,7 +14,7 @@
 				"watson",
 				"ai"
 			],
-			"short_description": "A sample application that illustrates how to implement the RAG Pattern with watsonx.ai and IBM Cloud services.",
+			"short_description": "An automated solution that deploys a sample application illustrating how to implement the RAG Pattern with watsonx.ai and IBM Cloud services.",
 			"offering_icon_url": "https://globalcatalog.cloud.ibm.com/api/v1/1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc/artifacts/solution.svg",
 			"flavors": [
 				{
@@ -105,7 +105,7 @@
 						"features": [
 							{
 								"title": "Deploy a customer care generative AI app to Code Engine using Continous Delivery",
-								"description": "TBD"
+								"description": ""
 							}
 						],
 						"diagrams": [
@@ -120,10 +120,10 @@
 							},
 							{
 								"diagram": {
-									"url": "https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-rag-sample-da/main/reference-architecture/stack.svg",
+									"url": "https://raw.githubusercontent.com/terraform-ibm-modules/stack-retrieval-augmented-generation/main/reference-architecture/rag-stack.svg",
 									"caption": "Solution components",
 									"type": "image/svg+xml",
-									"thumbnail_url": "https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-rag-sample-da/main/reference-architecture/stack.svg"
+									"thumbnail_url": "https://raw.githubusercontent.com/terraform-ibm-modules/stack-retrieval-augmented-generation/main/reference-architecture/rag-stack.svg"
 								},
 								"description": "Solution components"
 							}
@@ -133,47 +133,89 @@
 						{
 							"key": "prefix",
 							"type": "string",
+							"default_value": "rag",
+							"description": "A prefix added to the name of all resources created by this solution. Used to avoid name clashes in the target account.",
 							"required": true
 						},
 						{
-							"name": "ibmcloud_api_key",
-							"required": true,
-							"type": "password",
-							"hidden": false
+							"key": "enable_platform_logs_metrics",
+							"type": "boolean",
+							"default_value": false,
+							"description": "Whether to provision logging and monitoring instances are configured to receive all platform logs and metrics in the target region. There can only be one instance per region provisioned for platform logs/metrics.",
+							"required": false
 						},
 						{
-							"name": "watsonx_admin_api_key",
-							"required": false,
-							"type": "password",
-							"hidden": false
-						},
-						{
-							"name": "resource_group_name",
-							"required": false,
+							"key": "existing_secrets_manager_crn",
 							"type": "string",
-							"hidden": false,
-							"default_value": "stack-service-rg"
+							"default_value": "__NULL__",
+							"description": "The CRN of an existing secret manager instance to use in this solution. If not set, a new secret manager instance is provisioned. ",
+							"required": false
 						},
 						{
-							"name": "region",
-							"required": false,
-							"type": "string",
-							"hidden": false,
-							"default": "us-south"
-						},
-						{
-							"name": "sample_app_git_url",
-							"required": false,
-							"type": "string",
-							"hidden": false,
-							"default_value": "https://github.com/IBM/gen-ai-rag-watsonx-sample-application"
-						},
-						{
-							"name": "signing_key",
-							"required": false,
+							"key": "ibmcloud_api_key",
 							"type": "password",
-							"hidden": false,
-							"default_value": "replace"
+							"description": "The API Key used to provision all resources created in this solution.",
+							"required": true
+						},
+						{
+							"key": "region",
+							"type": "string",
+							"default_value": "us-south",
+							"description": "The region in which all resources are deployed.",
+							"required": false,
+							"options": [
+								{
+									"displayname": "us-south",
+									"value": "us-south"
+								},
+								{
+									"displayname": "eu-de",
+									"value": "eu-de"
+								}
+							]
+						},
+						{
+							"key": "resource_group_name",
+							"type": "string",
+							"default_value": "rag-services-rc",
+							"description": "The name of the resource group that is created by this solution. The actual name is prefixed with the value of the input 'prefix'.  All resources created by this solution are deployed in this resource group. ",
+							"required": false
+						},
+						{
+							"key": "sample_app_git_url",
+							"type": "string",
+							"default_value": "https://github.com/IBM/gen-ai-rag-watsonx-sample-application",
+							"description": "The URL to the public git repository containing the sample rag application code.",
+							"required": false
+						},
+						{
+							"key": "secret_manager_service_plan",
+							"type": "string",
+							"default_value": "trial",
+							"description": "The service/pricing plan to use when provisioning a new Secrets Manager instance. Allowed values: 'standard' and 'trial'. Only one trial instance is allowed per account.",
+							"required": false,
+							"options": [
+								{
+									"displayname": "Trial",
+									"value": "trial"
+								},
+								{
+									"displayname": "Standard",
+									"value": "standard"
+								}
+							]
+						},
+						{
+							"key": "signing_key",
+							"type": "password",
+							"description": "The key used to sign the application image built by the CI pipeline deployed in this solution.",
+							"required": false
+						},
+						{
+							"key": "watsonx_admin_api_key",
+							"type": "password",
+							"description": "The API Key used to provision the watson project resources. If not set, the ibmcloud_api_key is used.",
+							"required": false
 						}
 					],
 					"install_type": "fullstack"

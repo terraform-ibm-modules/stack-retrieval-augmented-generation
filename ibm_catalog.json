@@ -144,6 +144,18 @@
 							"required": true
 						},
 						{
+							"key": "signing_key",
+							"type": "password",
+							"description": "The key used to sign the application image built by the CI pipeline deployed in this solution. Please refer to the documentation for details on generating the key.",
+							"display_name": "Multiline secure value",
+							"required": true,
+							"custom_config": {
+								"type": "multiline_secure_value",
+								"grouping": "deployment",
+								"original_grouping": "deployment"
+							}
+						},
+						{
 							"key": "region",
 							"type": "string",
 							"default_value": "us-south",
@@ -159,12 +171,6 @@
 									"value": "eu-de"
 								}
 							]
-						},
-						{
-							"key": "signing_key",
-							"type": "password",
-							"description": "The key used to sign the application image built by the CI pipeline deployed in this solution.",
-							"required": false
 						},
 						{
 							"key": "watsonx_admin_api_key",

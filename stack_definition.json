@@ -15,12 +15,6 @@
       "default": "trial"
     },
     {
-      "name": "ibmcloud_api_key",
-      "required": true,
-      "type": "password",
-      "hidden": false
-    },
-    {
       "name": "watsonx_admin_api_key",
       "required": false,
       "type": "password",
@@ -77,7 +71,7 @@
   "members": [
     {
       "name": "1 - Account Infrastructure Base",
-      "version_locator": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd.c8bf5993-d693-4cac-9479-83c5fb6f96e1",
+      "version_locator": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd.0fb5dd09-ac56-455e-bed7-9c9bf4c949bb",
       "inputs": [
         {
           "name": "prefix",
@@ -85,7 +79,7 @@
         },
         {
           "name": "ibmcloud_api_key",
-          "value": "ref:../../inputs/ibmcloud_api_key"
+          "value": ""
         },
         {
           "name": "region",
@@ -135,7 +129,7 @@
         },
         {
           "name": "ibmcloud_api_key",
-          "value": "ref:../../inputs/ibmcloud_api_key"
+          "value": ""
         },
         {
           "name": "region",
@@ -161,7 +155,7 @@
         },
         {
           "name": "ibmcloud_api_key",
-          "value": "ref:../../inputs/ibmcloud_api_key"
+          "value": ""
         },
         {
           "name": "region",
@@ -191,7 +185,7 @@
       "inputs": [
         {
           "name": "ibmcloud_api_key",
-          "value": "ref:../../inputs/ibmcloud_api_key"
+          "value": ""
         },
         {
           "name": "cos_region",
@@ -225,7 +219,7 @@
       "inputs": [
         {
           "name": "ibmcloud_api_key",
-          "value": "ref:../../inputs/ibmcloud_api_key"
+          "value": ""
         },
         {
           "name": "region",
@@ -259,11 +253,11 @@
     },
     {
       "name": "4 - WatsonX SaaS services",
-      "version_locator": "8bfb1293-8b85-4d3f-a89f-015d0a0719df.3b21f2da-e498-4c35-bac2-47d25c7cfa55",
+      "version_locator": "8bfb1293-8b85-4d3f-a89f-015d0a0719df.570d8bf4-65dd-41dd-92bf-718e5afac34f",
       "inputs": [
         {
           "name": "ibmcloud_api_key",
-          "value": "ref:../../inputs/ibmcloud_api_key"
+          "value": ""
         },
         {
           "name": "watsonx_admin_api_key",
@@ -312,12 +306,12 @@
       ]
     },
     {
-      "name": "5 - Sample RAG app - Application Lifecycle Management (CI,CD,CC)",
+      "name": "5 - Sample RAG app - Application Lifecycle Management",
       "version_locator": "1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.c9d011c4-f1eb-4dae-87e9-fe20372d90a5-global",
       "inputs": [
         {
           "name": "ibmcloud_api_key",
-          "value": "ref:../../inputs/ibmcloud_api_key"
+          "value": ""
         },
         {
           "name": "toolchain_name",
@@ -415,7 +409,7 @@
     },
     {
       "name": "6 - Sample RAG app configuration",
-      "version_locator": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd.9ac0688e-437b-4559-8f7f-992818e9fa6c",
+      "version_locator": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd.ce387005-a5be-4946-8d25-bc4ca972360a",
       "inputs": [
         {
           "name": "toolchain_region",
@@ -423,7 +417,7 @@
         },
         {
           "name": "ibmcloud_api_key",
-          "value": "ref:../../inputs/ibmcloud_api_key"
+          "value": ""
         },
         {
           "name": "watson_discovery_region",
@@ -443,11 +437,11 @@
         },
         {
           "name": "cd_pipeline_id",
-          "value": "ref:../5 - Sample RAG app - Application Lifecycle Management (CI,CD,CC)/outputs/cd_pipeline_id"
+          "value": "ref:../5 - Sample RAG app - Application Lifecycle Management/outputs/cd_pipeline_id"
         },
         {
           "name": "ci_pipeline_id",
-          "value": "ref:../5 - Sample RAG app - Application Lifecycle Management (CI,CD,CC)/outputs/ci_pipeline_id"
+          "value": "ref:../5 - Sample RAG app - Application Lifecycle Management/outputs/ci_pipeline_id"
         },
         {
           "name": "watson_machine_learning_instance_guid",
@@ -494,6 +488,16 @@
           "value": "ref:../2b - Security Service - Secret Manager/outputs/secrets_manager_region"
         }
       ]
+    }
+  ],
+  "outputs": [
+    {
+      "name": "watsonx_project_url",
+      "value": "ref:./members/6 - Sample RAG app configuration/outputs/watson_project_url"
+    },
+    {
+      "name": "watsonx_project_id",
+      "value": "ref:./members/6 - Sample RAG app configuration/outputs/watson_project_id"
     }
   ]
 }

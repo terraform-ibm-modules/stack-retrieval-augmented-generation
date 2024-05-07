@@ -173,6 +173,13 @@
 							]
 						},
 						{
+							"key": "resource_group_name",
+							"type": "string",
+							"default_value": "rag-services",
+							"description": "The name of the resource group that is created by this solution. The actual name is prefixed with the value of the input 'prefix'.  All resources created by this solution are deployed in this resource group. ",
+							"required": false
+						},
+						{
 							"key": "watsonx_admin_api_key",
 							"type": "password",
 							"description": "The API Key used to provision the watson project resources. If not set, the ibmcloud_api_key is used.",
@@ -194,13 +201,6 @@
 									"value": "standard"
 								}
 							]
-						},
-						{
-							"key": "resource_group_name",
-							"type": "string",
-							"default_value": "rag-services",
-							"description": "The name of the resource group that is created by this solution. The actual name is prefixed with the value of the input 'prefix'.  All resources created by this solution are deployed in this resource group. ",
-							"required": false
 						},
 						{
 							"key": "enable_platform_logs_metrics",

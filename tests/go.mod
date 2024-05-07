@@ -6,16 +6,16 @@ toolchain go1.21.3
 
 require (
 	github.com/stretchr/testify v1.9.0
-	github.com/terraform-ibm-modules/ibmcloud-terratest-wrapper v1.31.5
+	github.com/terraform-ibm-modules/ibmcloud-terratest-wrapper v1.31.7
 )
 
 require (
 	github.com/IBM-Cloud/bluemix-go v0.0.0-20240402122236-5c5b994a3f1a // indirect
 	github.com/IBM-Cloud/power-go-client v1.6.0 // indirect
-	github.com/IBM/cloud-databases-go-sdk v0.6.0 // indirect
+	github.com/IBM/cloud-databases-go-sdk v0.7.0 // indirect
 	github.com/IBM/go-sdk-core/v5 v5.17.0 // indirect
-	github.com/IBM/platform-services-go-sdk v0.62.6 // indirect
-	github.com/IBM/project-go-sdk v0.2.9 // indirect
+	github.com/IBM/platform-services-go-sdk v0.62.11 // indirect
+	github.com/IBM/project-go-sdk v0.3.0 // indirect
 	github.com/IBM/vpc-go-sdk v0.50.0 // indirect
 	github.com/Microsoft/go-winio v0.6.1 // indirect
 	github.com/asaskevich/govalidator v0.0.0-20230301143203-a9d515a09cc2 // indirect
@@ -44,7 +44,7 @@ require (
 	github.com/golang/groupcache v0.0.0-20210331224755-41bb18bfe9da // indirect
 	github.com/google/go-cmp v0.6.0 // indirect
 	github.com/google/uuid v1.6.0 // indirect
-	github.com/gruntwork-io/terratest v0.46.13 // indirect
+	github.com/gruntwork-io/terratest v0.46.14 // indirect
 	github.com/hashicorp/go-cleanhttp v0.5.2 // indirect
 	github.com/hashicorp/go-retryablehttp v0.7.5 // indirect
 	github.com/jbenet/go-context v0.0.0-20150711004518-d14ea06fba99 // indirect

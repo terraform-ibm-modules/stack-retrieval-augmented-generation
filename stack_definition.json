@@ -322,7 +322,7 @@
         },
         {
           "name": "toolchain_name",
-          "value": "Generative AI Sample App"
+          "value": "RAG Sample App"
         },
         {
           "name": "toolchain_region",

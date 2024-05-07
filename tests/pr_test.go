@@ -19,7 +19,7 @@ func TestProjectsFullTest(t *testing.T) {
 			"2c - Security Service - Security Compliance Center",
 			"3 - Observability - Logging Monitoring Activity Tracker",
 			"4 - WatsonX SaaS services",
-			"5 - Generative AI Sample App - Code Engine Toolchain Config",
+			"5 - RAG Sample App - Code Engine Toolchain Config",
 			"6 - Sample RAG app configuration",
 		},
 	})

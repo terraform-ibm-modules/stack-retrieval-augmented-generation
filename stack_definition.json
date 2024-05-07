@@ -55,10 +55,9 @@
     },
     {
       "name": "signing_key",
-      "required": false,
+      "required": true,
       "type": "password",
-      "hidden": false,
-      "default": "replace"
+      "hidden": false
     },
     {
       "name": "existing_secrets_manager_crn",
@@ -141,6 +140,10 @@
         {
           "name": "region",
           "value": "ref:../../inputs/region"
+        },
+        {
+          "name": "region",
+          "value": "ref:../../inputs/region"
         }
       ]
     },
@@ -175,6 +178,10 @@
         {
           "name": "existing_secrets_manager_crn",
           "value": "ref:../../inputs/existing_secrets_manager_crn"
+        },
+        {
+          "name": "service_plan",
+          "value": "ref:../../inputs/secret_manager_service_plan"
         }
       ]
     },
@@ -214,7 +221,7 @@
     },
     {
       "name": "3 - Observability - Logging Monitoring Activity Tracker",
-      "version_locator": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd.58843031-95a7-4e8e-9abc-13c478a8bd16",
+      "version_locator": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd.3ae7c6ae-20c2-4214-b3b9-7110356b4b6c",
       "inputs": [
         {
           "name": "ibmcloud_api_key",
@@ -252,7 +259,7 @@
     },
     {
       "name": "4 - WatsonX SaaS services",
-      "version_locator": "8bfb1293-8b85-4d3f-a89f-015d0a0719df.02313717-33ba-43cd-8a6d-c661c0538cf3",
+      "version_locator": "8bfb1293-8b85-4d3f-a89f-015d0a0719df.3b21f2da-e498-4c35-bac2-47d25c7cfa55",
       "inputs": [
         {
           "name": "ibmcloud_api_key",
@@ -314,7 +321,7 @@
         },
         {
           "name": "toolchain_name",
-          "value": "Generative AI Sample App"
+          "value": "RAG Sample App"
         },
         {
           "name": "toolchain_region",

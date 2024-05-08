@@ -221,17 +221,17 @@
 							]
 						},
 						{
-							"key": "enable_platform_logs_metrics",
-							"type": "boolean",
-							"default_value": false,
-							"description": "Whether to provision logging and monitoring instances are configured to receive all platform logs and metrics in the target region. There can only be one instance per region provisioned for platform logs/metrics.",
-							"required": false
-						},
-						{
 							"key": "existing_secrets_manager_crn",
 							"type": "string",
 							"default_value": "__NULL__",
 							"description": "The CRN of an existing secret manager instance to use in this solution. If not set, a new secret manager instance is provisioned. ",
+							"required": false
+						},
+						{
+							"key": "enable_platform_logs_metrics",
+							"type": "boolean",
+							"default_value": false,
+							"description": "Whether to provision logging and monitoring instances are configured to receive all platform logs and metrics in the target region. There can only be one instance per region provisioned for platform logs/metrics.",
 							"required": false
 						},
 						{

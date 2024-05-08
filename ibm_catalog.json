@@ -163,9 +163,10 @@
 						{
 							"key": "signing_key",
 							"type": "password",
-							"description": "The key used to sign the application image built by the CI pipeline deployed in this solution. Please refer to the documentation for details on generating the key.",
+							"description": "The key used to sign the application image built by the CI pipeline deployed in this solution; please refer to the documentation at https://github.com/terraform-ibm-modules/stack-retrieval-augmented-generation/blob/main/README.md for generating the key; if not set, all resources will deploy successfully, but the initial CI pipeline execution will fail at the signing step.",
 							"display_name": "Multiline secure value",
-							"required": true,
+							"default_value": "",
+							"required": false,
 							"custom_config": {
 								"type": "multiline_secure_value",
 								"grouping": "deployment",
@@ -199,14 +200,14 @@
 						{
 							"key": "watsonx_admin_api_key",
 							"type": "password",
-							"description": "The API Key used to provision the watson project resources. If not set, the ibmcloud_api_key is used.",
+							"description": "The API key used to provision the watson project resources. If not set, the API key used to deploy the solution is used.",
 							"required": false
 						},
 						{
 							"key": "secret_manager_service_plan",
 							"type": "string",
 							"default_value": "trial",
-							"description": "The service/pricing plan to use when provisioning a new Secrets Manager instance. Allowed values: 'standard' and 'trial'. Only one trial instance is allowed per account.",
+							"description": "The service/pricing plan to use when provisioning a new Secrets Manager instance. Only one trial instance is allowed per account.",
 							"required": false,
 							"options": [
 								{
@@ -220,17 +221,17 @@
 							]
 						},
 						{
-							"key": "enable_platform_logs_metrics",
-							"type": "boolean",
-							"default_value": false,
-							"description": "Whether to provision logging and monitoring instances are configured to receive all platform logs and metrics in the target region. There can only be one instance per region provisioned for platform logs/metrics.",
-							"required": false
-						},
-						{
 							"key": "existing_secrets_manager_crn",
 							"type": "string",
 							"default_value": "__NULL__",
 							"description": "The CRN of an existing secret manager instance to use in this solution. If not set, a new secret manager instance is provisioned. ",
+							"required": false
+						},
+						{
+							"key": "enable_platform_logs_metrics",
+							"type": "boolean",
+							"default_value": false,
+							"description": "Whether to provision logging and monitoring instances are configured to receive all platform logs and metrics in the target region. There can only be one instance per region provisioned for platform logs/metrics.",
 							"required": false
 						},
 						{

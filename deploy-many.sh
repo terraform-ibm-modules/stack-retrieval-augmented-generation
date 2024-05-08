@@ -149,16 +149,6 @@ function validate_and_deploy()
 
 parse_params "$@"
 get_config_ids
-set_stack_inputs
-
-# Loop through the configuration IDs and execute the functions
-# for CONFIG_ID in "${CONFIG_IDS[@]}"
-# do
-#   validate_and_deploy
-# done
-
-
-####
 
 # Run base config + key management first
 for CONFIG_ID in "${CONFIG_IDS[@]:0:2}"; do

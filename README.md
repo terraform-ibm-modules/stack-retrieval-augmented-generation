@@ -29,7 +29,7 @@ Before deploying the stack, ensure you have:
 * Ensure that the prefix is globally unique. It is used for the container registry namespace (which needs to be globally unique) in this alpha version.
 * If specifying `existing_secrets_manager_crn`, the `ibmcloud_api_key` that is passed as an input must have the documented read and write access to the instance.
 * If specifying `existing_secrets_manager_crn`, ensure that the default security group does not contain secrets named `signing-key` and `ibmcloud-api-key`. The RAG DA currently always attempts to create a secret with those names (temporary issue - to be fixed).
-* The signing key is the base64 key obtained from the `gpg --export-secret-key <Email Address> | base64` command. See https://cloud.ibm.com/docs/devsecops?topic=devsecops-devsecops-image-signing#cd-devsecops-gpg-export for details.
+* The signing key is the base64 key obtained from `gpg --gen-key` (if not generated before or expired) and then exported via `gpg --export-secret-key <Email Address> | base64` command. See https://cloud.ibm.com/docs/devsecops?topic=devsecops-devsecops-image-signing#cd-devsecops-gpg-export for details.
 
 ```json
 {
@@ -68,7 +68,7 @@ Example:
 ## 4. Run ./deploy-many.sh
 
 * Ensure you are logged in to the account containing the Cloud project with the stack using `ibmcloud login --sso`.
-* Execute `./deploy-many.sh` with the project name, stack name, and optional configuration name pattern. The selected non-stack configurations will be processed by their name in alphabetical order. Using the configuration name pattern (regex can be used - make sure to enclose it in quotes), you can choose which configurations are deployed.
+* Execute `./deploy-many.sh` with the project name, stack name (name of the configuration given when deploying the tile), and optional configuration name pattern. The selected non-stack configurations will be processed by their name in alphabetical order. Using the configuration name pattern (regex can be used - make sure to enclose it in quotes), you can choose which configurations are deployed.
 
 Example 1 - Update stack inputs for stack configuration `RAG` and process all non-stack configurations in the project:
 ```bash

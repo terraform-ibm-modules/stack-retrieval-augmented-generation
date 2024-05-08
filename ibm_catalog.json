@@ -163,7 +163,7 @@
 						{
 							"key": "signing_key",
 							"type": "password",
-							"description": "The key used to sign the application image built by the CI pipeline deployed in this solution. Please refer to the documentation for details on generating the key at https://github.com/terraform-ibm-modules/stack-retrieval-augmented-generation/blob/main/README.md. If not set, all configurations in this architecture will still deploy successfully, but the initial CI pipeline execution to build and deploy the application will fail at the signing step.",
+							"description": "The key used to sign the application image built by the CI pipeline deployed in this solution; please refer to the documentation at https://github.com/terraform-ibm-modules/stack-retrieval-augmented-generation/blob/main/README.md for generating the key; if not set, all resources will deploy successfully, but the initial CI pipeline execution will fail at the signing step.",
 							"display_name": "Multiline secure value",
 							"default_value": "replace",
 							"required": false,

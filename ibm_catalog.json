@@ -104,8 +104,24 @@
 					"architecture": {
 						"features": [
 							{
-								"title": "Deploy a banking retrieval augmented generation (RAG) app to IBM Cloud Code Engine using Continous Delivery.",
-								"description": ""
+								"title": "Retrieval Augmented Generation sample pattern.",
+								"description": "Deploy a banking retrieval augmented generation (RAG) sample application to IBM Cloud Code Engine using Continous Delivery."
+							},
+							{
+								"title": "Ensure Observability",
+								"description": "The architecture provides observability by deploying services such as IBM Log Analysis, IBM Monitoring, IBM Activity Tracker, and log retention through Cloud Object Storage buckets."
+							},
+							{
+								"title": "Implement Security",
+								"description": "The architecture ensures security by deploying IBM Key Protect and IBM Secrets Manager."
+							},
+							{
+								"title": "Achieve Regulatory Compliance",
+								"description": "The architecture ensures regulatory compliance by implementing CI/CD/CC pipelines, along with IBM Security Compliance Center (SCC) for secure application lifecycle management."
+							},
+							{
+								"title": "Establish Trust",
+								"description": "The architecture ensures trust by configuring the IBM Cloud account to align with compliance settings as defined in the Financial Services framework."
 							}
 						],
 						"diagrams": [

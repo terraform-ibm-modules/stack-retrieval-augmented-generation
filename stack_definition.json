@@ -493,11 +493,15 @@
   "outputs": [
     {
       "name": "watsonx_project_url",
-      "value": "ref:./members/6 - Sample RAG app configuration/outputs/watson_project_url"
+      "value": "ref:./members/6 - Sample RAG app configuration/outputs/watsonx_project_url"
     },
     {
       "name": "watsonx_project_id",
-      "value": "ref:./members/6 - Sample RAG app configuration/outputs/watson_project_id"
+      "value": "ref:./members/6 - Sample RAG app configuration/outputs/watsonx_project_id"
+    },
+    {
+      "name": "watson_discovery_api_url",
+      "value": "ref:./members/6 - Sample RAG app configuration/outputs/watson_discovery_api_url"
     }
   ]
 }

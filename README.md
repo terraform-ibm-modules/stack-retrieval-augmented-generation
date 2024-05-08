@@ -2,11 +2,13 @@
 
 The following [deployable architecture](https://cloud.ibm.com/docs/secure-enterprise?topic=secure-enterprise-understand-module-da#what-is-da) automates the deployment of a sample GenAI Pattern on IBM Cloud, including all underlying IBM Cloud infrastructure. This architecture implements the best practices for Watsonx GenAI Pattern deployment on IBM Cloud, as described in the [reference architecture](https://cloud.ibm.com/docs/pattern-genai-rag?topic=pattern-genai-rag-genai-pattern).
 
-This deployable architecture provides a comprehensive foundation for trust, observability, security, and regulatory compliance by configuring the IBM Cloud account to align with compliance settings, deploying key and secret management services, and deploying the infrastructure to support CI/CD/CC pipelines for secure application lifecycle management. These pipelines facilitate the deployment of the application, vulnerability checks, and auditability, ensuring a secure and trustworthy deployment of the GenAI Pattern on IBM Cloud.
+This deployable architecture provides a comprehensive foundation for trust, observability, security, and regulatory compliance by configuring the IBM Cloud account to align with compliance settings, deploying key and secret management services, and deploying the infrastructure to support CI/CD/CC pipelines for secure application lifecycle management. These pipelines facilitate the deployment of the application, vulnerability checks, and auditability, ensuring a secure and trustworthy deployment of Generative AI applications on IBM Cloud.
 
 # Objective and Benefits
 
-This deployable architecture is designed to showcase a fully automated deployment of a retrieval augmented generation application through IBM Cloud Project, providing a flexible and customizable foundation for your own Watson-based application deployments on IBM Cloud. By leveraging this architecture, you can accelerate your deployment and tailor it to meet your unique business needs and enterprise goals.
+This deployable architecture is designed to showcase a fully automated deployment of a retrieval augmented generation application through IBM Cloud Project, providing a flexible and customizable foundation for your own Watson-based application deployments on IBM Cloud. This architecture deploys the following [sample application](https://github.com/IBM/gen-ai-rag-watsonx-sample-application) by default.
+
+By leveraging this architecture, you can accelerate your deployment and tailor it to meet your unique business needs and enterprise goals.
 
 By using this architecture, you can:
 
@@ -111,3 +113,9 @@ DRY_RUN=true ./deploy-many.sh my-test-project dev 'RAG-1|RAG-4|RAG-5'
 ```
 
 Tips: If deployment fail for one of the configuration, you may re-run the script as is. It will skip existing installed configurations and continue where it last failed.
+
+## 5. Post deployment steps
+
+At this point, all of the infrastructure is deployed in the target account. The initial build for the sample app has also started in the DevOps service, and the app is deployed to IBM Cloud Code Engine.
+
+There are some remaining steps, specific to the sample app, that can be completed to fully enable Watson assistant in the app. To complete the installation - follow the steps at https://github.com/IBM/gen-ai-rag-watsonx-sample-application/blob/main/artifacts/artifacts-README.md

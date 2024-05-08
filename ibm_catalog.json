@@ -200,14 +200,14 @@
 						{
 							"key": "watsonx_admin_api_key",
 							"type": "password",
-							"description": "The API Key used to provision the watson project resources. If not set, the ibmcloud_api_key is used.",
+							"description": "The API key used to provision the watson project resources. If not set, the API key used to deploy the solution is used.",
 							"required": false
 						},
 						{
 							"key": "secret_manager_service_plan",
 							"type": "string",
 							"default_value": "trial",
-							"description": "The service/pricing plan to use when provisioning a new Secrets Manager instance. Allowed values: 'standard' and 'trial'. Only one trial instance is allowed per account.",
+							"description": "The service/pricing plan to use when provisioning a new Secrets Manager instance. Only one trial instance is allowed per account.",
 							"required": false,
 							"options": [
 								{

@@ -159,7 +159,7 @@ Arguments will take precedence over settings in the config file.
  - `--help`: Show help message
 
 ### Sample Config File
-"""json
+```json
 {
     "project_name": "my_project",
     "stack_name": "my_stack",
@@ -171,11 +171,11 @@ Arguments will take precedence over settings in the config file.
     "stack_inputs": {
         "input1":"value1",
         "input2":"value2",
-        "ibmcloud_api_key": "API_KEY",
+        "ibmcloud_api_key": "API_KEY"
     },
     "api_key_env_var": "IBMCLOUD_API_KEY"
 }
-"""
+```
 - `project_name`: The name of your project.
 - `stack_name`: The name of your stack.
 - `config_order`: An array of configuration names in the order they should be deployed.

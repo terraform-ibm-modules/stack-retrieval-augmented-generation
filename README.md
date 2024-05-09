@@ -32,7 +32,7 @@ Before deploying the deployable architecture, ensure you have:
 
 ## 2. Deploy the Stack in a New Project from Catalog
 
-* Locate the [tile](https://cloud.ibm.com/catalog/7df1e4ca-d54c-4fd0-82ce-3d13247308cd/architecture/Retrieval_Augmented_Generation_Pattern-5fdd0045-30fc-4013-a8bc-6db9d5447a52) for the Deployable Architecture in the IBM Cloud Catalog.
+* Locate the [tile](https://cloud.ibm.com/catalog/7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3/architecture/Retrieval_Augmented_Generation_Pattern-5fdd0045-30fc-4013-a8bc-6db9d5447a52-global) for the Deployable Architecture in the IBM Cloud Catalog.
 * Click the "Add to project" button.
 
     ![image](./images/min/1-catalog.png)

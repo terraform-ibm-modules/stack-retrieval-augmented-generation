@@ -71,7 +71,7 @@
   "members": [
     {
       "name": "1 - Account Infrastructure Base",
-      "version_locator": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd.0fb5dd09-ac56-455e-bed7-9c9bf4c949bb",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.0fb5dd09-ac56-455e-bed7-9c9bf4c949bb-global",
       "inputs": [
         {
           "name": "prefix",
@@ -117,7 +117,7 @@
     },
     {
       "name": "2a - Security Service - Key Management",
-      "version_locator": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd.05f53606-6eaf-4c4b-a5bb-4ad0d8bcf890",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.8e0a8f36-6bee-4611-b78a-bfce1dd8f0fe-global",
       "inputs": [
         {
           "name": "resource_group_name",
@@ -143,7 +143,7 @@
     },
     {
       "name": "2b - Security Service - Secret Manager",
-      "version_locator": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd.4c4b156f-22ff-47be-8519-a09d5fb80d9c",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.4c4b156f-22ff-47be-8519-a09d5fb80d9c-global",
       "inputs": [
         {
           "name": "prefix",
@@ -181,7 +181,7 @@
     },
     {
       "name": "2c - Security Service - Security Compliance Center",
-      "version_locator": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd.f64fe6f5-de0e-4d7c-9f49-06dbbd289160",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.a719a939-8402-4ad2-a846-db4e05dd5122-global",
       "inputs": [
         {
           "name": "ibmcloud_api_key",
@@ -215,7 +215,7 @@
     },
     {
       "name": "3 - Observability - Logging Monitoring Activity Tracker",
-      "version_locator": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd.3ae7c6ae-20c2-4214-b3b9-7110356b4b6c",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.08d35739-6419-492d-8dbf-0a45c01a7fdd-global",
       "inputs": [
         {
           "name": "ibmcloud_api_key",
@@ -253,7 +253,7 @@
     },
     {
       "name": "4 - WatsonX SaaS services",
-      "version_locator": "8bfb1293-8b85-4d3f-a89f-015d0a0719df.570d8bf4-65dd-41dd-92bf-718e5afac34f",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.570d8bf4-65dd-41dd-92bf-718e5afac34f-global",
       "inputs": [
         {
           "name": "ibmcloud_api_key",
@@ -409,7 +409,7 @@
     },
     {
       "name": "6 - Sample RAG app configuration",
-      "version_locator": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd.ce387005-a5be-4946-8d25-bc4ca972360a",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.47430667-340e-4e65-8d45-205b9a7e9fe6-global",
       "inputs": [
         {
           "name": "toolchain_region",

@@ -634,7 +634,7 @@ def deploy_config(project_id: str, config_id: str, timeout: str = "2h") -> None:
     end_time = start_time + parse_time(timeout)
     state = get_config_state(project_id, config_id)
     config_name = get_config_name(project_id, config_id)
-    if state == State.APPROVED:
+    if state == State.APPROVED or state == State.DEPLOYING_FAILED:
         logging.info(f'[{config_name}] Deploying config: {config_id}')
         command = f'ibmcloud project config-deploy --project-id {project_id} --id {config_id}'
         output, err = run_command(command)

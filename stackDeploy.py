@@ -798,38 +798,54 @@ def main() -> None:
                 if config in deployed_configs:
                     continue
                 config_name = get_config_name(project_id, list(config.values())[0]['config_id'])
-                logging.info(f"Checking for config {config_name} ID: {list(config.values())[0]['config_id']} "
-                             f"ready for validation and deployment")
                 try:
                     current_state_code = get_config_state_code(project_id, list(config.values())[0]['config_id'])
                     current_state = get_config_state(project_id, list(config.values())[0]['config_id'])
                     deploy_state = get_config_deployed_state(project_id, list(config.values())[0]['config_id'])
-                    if (current_state_code == StateCode.AWAITING_VALIDATION
+                    if current_state == State.DEPLOYED:
+                        continue
+                    logging.info(f"Checking for config {config_name} ID: {list(config.values())[0]['config_id']} "
+                                 f"ready for validation and deployment")
+                    if ((current_state_code == StateCode.AWAITING_VALIDATION
                             and current_state == State.DRAFT
-                            and deploy_state != State.DEPLOYED):
-                        logging.info(f"Config {list(config.keys())[0]} is ready for validation and deployment")
+                            and deploy_state != State.DEPLOYED)
+                            or current_state == State.DEPLOYING_FAILED
+                            or current_state == State.VALIDATING_FAILED
+                            or current_state == State.APPLY_FAILED
+                            or current_state == State.APPROVED):
+                        logging.info(f"Config {config_name} ID: {list(config.keys())[0]} "
+                                     f"is ready for validation and deployment")
                         ready_to_deploy.append(config)
+                    else:
+                        logging.info(f"Config {config_name} ID: {list(config.keys())[0]} "
+                                     f"is not ready for validation and deployment current state: {current_state}")
                 except ValueError:
-                    logging.info(f"Config {list(config.keys())[0]} no state found trying to validate and deploy")
+                    logging.info(f"Config {config_name} ID: {list(config.keys())[0]} "
+                                 f"no state found trying to validate and deploy")
                     ready_to_deploy.append(config)
                 except Exception:
-                    logging.info(f"Config {list(config.keys())[0]} no state found trying to validate and deploy")
+                    logging.info(f"Config {config_name} ID: {list(config.keys())[0]} "
+                                 f"no state found trying to validate and deploy")
                     ready_to_deploy.append(config)
-            #  validate and deploy all configs that are ready in parallel
-            with concurrent.futures.ThreadPoolExecutor() as executor:
-                futures = []
-                for config in ready_to_deploy:
-                    futures.append(
-                        executor.submit(validate_and_deploy, project_id, list(config.values())[0]['config_id']))
-                concurrent.futures.wait(futures)  # wait for all futures to complete
-                for future in futures:
-                    if future.exception() is not None:
-                        logging.error(f"Exception occurred during validation and deployment: {future.exception()}")
-                        error_messages.append(str(future.exception()))
-                        error_occurred = True
-                        break
-                    else:
-                        deployed_configs.append(future.result())
+            if not ready_to_deploy:
+                logging.info("No configs ready for validation and deployment")
+            else:
+                logging.info(f"Configs ready for validation and deployment: {ready_to_deploy}")
+                #  validate and deploy all configs that are ready in parallel
+                with concurrent.futures.ThreadPoolExecutor() as executor:
+                    futures = []
+                    for config in ready_to_deploy:
+                        futures.append(
+                            executor.submit(validate_and_deploy, project_id, list(config.values())[0]['config_id']))
+                    concurrent.futures.wait(futures)  # wait for all futures to complete
+                    for future in futures:
+                        if future.exception() is not None:
+                            logging.error(f"Exception occurred during validation and deployment: {future.exception()}")
+                            error_messages.append(str(future.exception()))
+                            error_occurred = True
+                            break
+                        else:
+                            deployed_configs.append(future.result())
     # At the end of the script, print the error messages if any
     if error_messages:
         logging.info("The following errors occurred, please see the IBM Cloud Projects UI:")

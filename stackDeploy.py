@@ -830,7 +830,7 @@ def main() -> None:
                         deployed_configs.append(future.result())
     # At the end of the script, print the error messages if any
     if error_messages:
-        logging.info("The following errors occurred:")
+        logging.info("The following errors occurred, please see the IBM Cloud Projects UI:")
         for msg in error_messages:
             logging.error(msg)
 

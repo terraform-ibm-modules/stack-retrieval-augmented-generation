@@ -750,7 +750,7 @@ def main() -> None:
     logging.info(f'API key environment variable: {api_key_env}')
     logging.info(f'Config order: {config_order}')
     logging.info(f'Stack definition path: {stack_def_path}')
-    logging.info(f'Stack inputs: {stack_inputs}')
+    logging.debug(f'Stack inputs: {stack_inputs}')
     logging.info(f'Undeploy: {undeploy}')
     logging.info(f'Skip stack inputs: {skip_stack_inputs}')
     logging.info(f'Debug: {debug}')
@@ -801,7 +801,10 @@ def main() -> None:
                 try:
                     current_state_code = get_config_state_code(project_id, list(config.values())[0]['config_id'])
                     current_state = get_config_state(project_id, list(config.values())[0]['config_id'])
-                    if current_state_code == StateCode.AWAITING_VALIDATION and current_state == State.DRAFT:
+                    deploy_state = get_config_deployed_state(project_id, list(config.values())[0]['config_id'])
+                    if (current_state_code == StateCode.AWAITING_VALIDATION
+                            and current_state == State.DRAFT
+                            and deploy_state != State.DEPLOYED):
                         logging.info(f"Config {list(config.keys())[0]} is ready for validation and deployment")
                         ready_to_deploy.append(config)
                 except ValueError:

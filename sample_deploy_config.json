@@ -9,7 +9,7 @@
     "2c - Security Service - Security Compliance Center",
     "3 - Observability - Logging Monitoring Activity Tracker",
     "4 - WatsonX SaaS services",
-    "5 - Sample RAG app - Application Lifecycle Management (CI,CD,CC)",
+    "5 - Sample RAG app - Application Lifecycle Management",
     "6 - Sample RAG app configuration"
   ],
   "stack_inputs": {

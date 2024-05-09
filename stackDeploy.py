@@ -83,7 +83,7 @@ def string_to_state_code(state_code_str: str) -> StateCode:
         raise ValueError(f"Invalid state code: {state_code_str}")
 
 
-def parse_params() -> (str, str, list[str], str, str, str, bool, bool, bool):
+def parse_params() -> (str, str, list[str], str, str, str, bool, bool, bool, bool):
     """
     Parse command line parameters.
 
@@ -91,7 +91,7 @@ def parse_params() -> (str, str, list[str], str, str, str, bool, bool, bool):
         Tuple containing:
             project name, stack name, config order,
             stack definition path, stack inputs, api key environment variable name,
-            undeploy flag, skip stack inputs flag and debug flag.
+            undeploy flag, skip stack inputs flag, stack definition update flag, debug flag
     """
     parser = argparse.ArgumentParser(description='Update and deploy stack, or undeploy. Arguments override config '
                                                  'json file.')
@@ -112,6 +112,7 @@ def parse_params() -> (str, str, list[str], str, str, str, bool, bool, bool):
     parser.add_argument('--stack_api_key_env', type=str, help='The environment variable name for the stack api key',
                         default='IBMCLOUD_API_KEY')
     parser.add_argument('--skip_stack_inputs', action='store_true', help='Skip setting stack inputs')
+    parser.add_argument('--stack_definition_update', action='store_true', help='Updating stack definition')
     parser.add_argument('--debug', action='store_true', help='Enable debug mode')
     args = parser.parse_args()
     project_name = args.project_name
@@ -175,7 +176,7 @@ def parse_params() -> (str, str, list[str], str, str, str, bool, bool, bool):
         exit(1)
 
     return (project_name, stack_name, config_order, stack_def_path, stack_inputs, api_key_env,
-            args.undeploy, args.skip_stack_inputs, debug)
+            args.undeploy, args.skip_stack_inputs, args.stack_definition_update, debug)
 
 
 def run_command(command: str) -> (str, str):
@@ -398,6 +399,25 @@ def find_dict_with_key(list_of_dicts: list[dict], key: str) -> dict | None:
         if key in dictionary:
             return dictionary
     return None
+
+
+def update_stack_definition(project_id: str, stack_id: str, stack_def_path: str) -> None:
+    """
+    Update stack definition.
+
+    Args:
+        project_id (str): Project ID.
+        stack_id (str): Stack ID.
+        stack_def_path (str): Stack definition path.
+    """
+
+    command = (f'ibmcloud project config-update --project-id {project_id} '
+               f'--id {stack_id} --definition @{stack_def_path}')
+    output, err = run_command(command)
+    if err:
+        logging.error(f'Error: {err}')
+        exit(1)
+    logging.debug(f'Stack definition updated: {output}')
 
 
 def set_stack_inputs(project_id: str, stack_id: str, stack_inputs: dict, api_key_env: str) -> None:
@@ -757,7 +777,7 @@ def main() -> None:
     Main function.
     """
     (project_name, stack_name, config_order, stack_def_path, stack_inputs, api_key_env,
-     undeploy, skip_stack_inputs, debug) = parse_params()
+     undeploy, skip_stack_inputs, stack_def_update, debug) = parse_params()
     if debug:
         logging.basicConfig(level=logging.DEBUG)
     else:
@@ -771,6 +791,7 @@ def main() -> None:
     logging.debug(f'Stack inputs: {stack_inputs}')
     logging.info(f'Undeploy: {undeploy}')
     logging.info(f'Skip stack inputs: {skip_stack_inputs}')
+    logging.info(f'Stack definition update: {stack_def_update}')
     logging.info(f'Debug: {debug}')
 
     missing = check_require_tools()
@@ -799,6 +820,9 @@ def main() -> None:
                 logging.error(f"Un-deployment error: {derr}")
                 error_messages.append(str(derr))
     else:
+        if stack_def_update:
+            logging.info(f'Updating stack definition for stack {stack_name}')
+            update_stack_definition(project_id, stack_id, stack_def_path)
         if not skip_stack_inputs and stack_inputs:
             logging.info(f'Setting stack inputs for stack {stack_name}')
             set_stack_inputs(project_id, stack_id, stack_inputs, api_key_env)

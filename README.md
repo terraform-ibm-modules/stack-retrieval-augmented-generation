@@ -131,7 +131,7 @@ This script is used to validate, approve, and deploy configurations for a projec
 ### Usage
 Clone the repository and navigate to the directory containing the script.
 
-Set the necessary environment variables:
+Set the necessary environment variables, default variable is `IBMCLOUD_API_KEY` but this can be configured in the config file.:
 ```export IBMCLOUD_API_KEY=<your_ibmcloud_api_key>```
 Run the script:
 ```python stackDeploy.py --project_name <project_name> --stack_name <stack_name> --config_order <config_order>```

@@ -53,7 +53,7 @@ class State(Enum):
     VALIDATING_FAILED = "validating_failed"
     APPLIED = "applied"
     APPLY_FAILED = "apply_failed"
-    UNKNOWN = "unknown" # unknown state, custom not in the API
+    UNKNOWN = "unknown"  # unknown state, custom not in the API
 
 
 class StateCode(Enum):
@@ -841,21 +841,26 @@ def main() -> None:
                 config_name = get_config_name(project_id, list(config.values())[0]['config_id'])
                 try:
                     current_state_code = get_config_state_code(project_id, list(config.values())[0]['config_id'])
+                    if current_state_code == StateCode.AWAITING_PREREQUISITE:
+                        logging.info(f"Config {config_name} ID: {list(config.keys())[0]} "
+                                     f"has a prerequisite and cannot be validated or deployed")
+                        continue
+
                     current_state = get_config_state(project_id, list(config.values())[0]['config_id'])
-                    deploy_state = get_config_deployed_state(project_id, list(config.values())[0]['config_id'])
                     if current_state == State.DEPLOYED:
                         continue
+
                     logging.info(f"Checking for config {config_name} ID: {list(config.values())[0]['config_id']} "
                                  f"ready for validation and deployment")
-                    if ((current_state_code == StateCode.AWAITING_VALIDATION
-                            and current_state == State.DRAFT
-                            and deploy_state != State.DEPLOYED)
-                            or current_state == State.DEPLOYING_FAILED
-                            or current_state == State.VALIDATING_FAILED
-                            or current_state == State.APPLY_FAILED
-                            or current_state == State.APPROVED):
+                    # if the config is not deployed and is in a state that can be validated and deployed
+                    if ((current_state_code == StateCode.AWAITING_VALIDATION and current_state == State.DRAFT)
+                            or (current_state in [State.DEPLOYING_FAILED,
+                                                  State.VALIDATING_FAILED,
+                                                  State.APPLY_FAILED,
+                                                  State.APPROVED])):
+
                         logging.info(f"Config {config_name} ID: {list(config.keys())[0]} "
-                                     f"is ready for validation and deployment")
+                                     f"is ready for validation and deployment current state: {current_state}")
                         ready_to_deploy.append(config)
                     else:
                         logging.info(f"Config {config_name} ID: {list(config.keys())[0]} "

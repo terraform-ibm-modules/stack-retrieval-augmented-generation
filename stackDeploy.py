@@ -53,6 +53,7 @@ class State(Enum):
     VALIDATING_FAILED = "validating_failed"
     APPLIED = "applied"
     APPLY_FAILED = "apply_failed"
+    UNKNOWN = "unknown" # unknown state, custom not in the API
 
 
 class StateCode(Enum):
@@ -65,6 +66,7 @@ class StateCode(Enum):
     AWAITING_DEPLOYMENT = "awaiting_deployment"
     AWAITING_DELETION = "awaiting_deletion"
     AWAITING_UNDEPLOYMENT = "awaiting_undeployment"
+    UNKOWN = "unknown"  # unknown state, custom not in the API
 
 
 def string_to_state(state_str: str) -> State:
@@ -485,7 +487,7 @@ def get_config_state(project_id: str, config_id: str) -> State:
     state = data.get('state', '')
     if state == '':
         logging.error(f'state not found for config {config_id}\n{data}')
-        raise Exception(f'Config state not found for config {config_id}')
+        return State.UNKNOWN
     return string_to_state(state)
 
 
@@ -508,8 +510,7 @@ def get_config_state_code(project_id: str, config_id: str) -> StateCode:
     data = json.loads(output)
     state = data.get('state_code', '')
     if state == '':
-        logging.error(f'state code not found for config {config_id}\n{data}')
-        raise Exception(f'Config state code not found for config {config_id}')
+        return StateCode.UNKOWN
     return string_to_state_code(state)
 
 
@@ -796,8 +797,9 @@ def main() -> None:
                 # skip already deployed configs
                 if config in deployed_configs:
                     continue
-                logging.info(f"Checking for config {list(config.values())[0]['config_id']} ready for validation and "
-                             f"deployment")
+                config_name = get_config_name(project_id, list(config.values())[0]['config_id'])
+                logging.info(f"Checking for config {config_name} ID: {list(config.values())[0]['config_id']} "
+                             f"ready for validation and deployment")
                 try:
                     current_state_code = get_config_state_code(project_id, list(config.values())[0]['config_id'])
                     current_state = get_config_state(project_id, list(config.values())[0]['config_id'])

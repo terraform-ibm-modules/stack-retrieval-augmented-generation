@@ -189,12 +189,23 @@ def run_command(command: str) -> (str, str):
         The stdout and stderr output of the command.
     """
     logging.debug(f'Running command: {command}')
-    process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
-                               universal_newlines=True)
-    output, error = process.communicate()
-    if process.returncode != 0:
-        logging.error(f'Error: {error}')
-    return output, error
+    retries = 5
+
+    for i in range(retries):
+        process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+                                   universal_newlines=True)
+        output, error = process.communicate()
+        # retry on tls handshake timeout
+        if 'tls handshake timeout' in error.lower() or 'tls handshake timeout' in output.lower():
+            logging.error(f'Timeout error executing command {command}:\n'
+                          f'Output: {output}\nError:{error}\nretrying in 30 seconds, attempt {i + 1}/{retries}')
+            time.sleep(30)
+        elif process.returncode == 0:
+            return output, error
+        else:
+            logging.error(f'error executing command: {command}')
+            logging.error(f'Output: {output}\nError: {error}')
+            return output, error
 
 
 def check_require_tools() -> dict:
@@ -447,6 +458,9 @@ def validate_config(project_id: str, config_id: str, timeout: str = "30m") -> No
     end_time = start_time + parse_time(timeout)
     state = get_config_state(project_id, config_id)
     config_name = get_config_name(project_id, config_id)
+    if state == State.DEPLOYED or state == State.DEPLOYING_FAILED or state == State.VALIDATED or state == State.APPROVED:
+        logging.info(f'[{config_name}] Already Validated Skipping: {config_id}')
+        return
     if state != State.VALIDATED:
         command = f'ibmcloud project config-validate --project-id {project_id} --id {config_id}'
         output, err = run_command(command)
@@ -573,7 +587,10 @@ def approve_config(project_id: str, config_id: str) -> None:
         config_name = get_config_name(project_id, config_id)
     except Exception as e:
         raise Exception(f'Error: {e}')
-    # only approve if not already approved and validated
+    if state == State.DEPLOYED or state == State.DEPLOYING_FAILED:
+        logging.info(f'[{config_name}] Already Approved Skipping: {config_id}')
+        return
+        # only approve if not already approved and validated
     if state != State.APPROVED and state == State.VALIDATED:
         logging.info(f'[{config_name}] Approving config: {config_id}')
         command = (f'ibmcloud project config-approve --project-id {project_id} '

@@ -95,21 +95,11 @@ Two approaches to deploy the architecture:
 
 * Clone the repository at https://github.com/terraform-ibm-modules/stack-retrieval-augmented-generation/tree/main
 * Ensure you are logged in to the account containing the Cloud project with the stack using `ibmcloud login`.
-* Execute `./deploy-many.sh` with the project name, stack name, and optional configuration name pattern. The selected non-stack configurations will be processed by their name in alphabetical order. Using the configuration name pattern (regex can be used - make sure to enclose it in quotes), you can choose which configurations are deployed.
+* Execute `./deploy-many.sh` with the project name, stack name, and optional configuration name pattern.
 
-Example 1 - Update stack inputs for stack configuration `dev` and process all non-stack configurations in the project:
+Example - Process all configurations in the project:
 ```bash
 ./deploy-many.sh my-test-project dev
-```
-
-Example 2 - Update stack inputs and process some configurations in the project:
-```bash
-./deploy-many.sh my-test-project dev 'RAG-1|RAG-4|RAG-5'
-```
-
-Example 3 - Simulate updating stack inputs and validating some configurations in the project in dry-run mode (no changes or actual validation or deployments are done):
-```bash
-DRY_RUN=true ./deploy-many.sh my-test-project dev 'RAG-1|RAG-4|RAG-5'
 ```
 
 Tips: If deployment fail for one of the configuration, you may re-run the script as is. It will skip existing installed configurations and continue where it last failed.

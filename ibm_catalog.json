@@ -17,6 +17,7 @@
 			"short_description": "An automated solution that deploys a sample application illustrating how to implement the RAG Pattern with watson.ai and IBM Cloud services.",
 			"offering_docs_url": "https://github.com/terraform-ibm-modules/stack-retrieval-augmented-generation/blob/main/README.md",
 			"offering_icon_url": "https://globalcatalog.cloud.ibm.com/api/v1/1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc/artifacts/solution.svg",
+			"provider_name": "IBM",
 			"flavors": [
 				{
 					"label": "Deploy on Code Engine",
@@ -240,6 +241,24 @@
 							"default_value": "https://github.com/IBM/gen-ai-rag-watsonx-sample-application",
 							"description": "The URL to the public git repository containing the sample rag application code.",
 							"required": false
+						}
+					],
+					"outputs": [
+						{
+							"key": "watsonx_project_url",
+							"description": "The URL to the WatsonX project for the sample RAG application."
+						},
+						{
+							"key": "watsonx_project_id",
+							"description": "The ID for the WatsonX project for the sample RAG application."
+						},
+						{
+							"key": "watson_discovery_api_url",
+							"description": "The URL to the Watson Discovery API endpoint."
+						},
+						{
+							"key": "watson_discovery_project_id",
+							"description": "The ID for the Watson Discovery project for the sample RAG application."
 						}
 					],
 					"install_type": "fullstack"

@@ -132,16 +132,16 @@ Once the initial run of the CI pipeline complete, you should be able to view the
 After the application has been built and is running in Code Engine, there are additional steps specific to the sample app that need to be completed to fully enable Watson Assistant in the app. To complete the installation, follow the steps outlined in the [application README.md file](https://github.com/IBM/gen-ai-rag-watsonx-sample-application/blob/main/artifacts/artifacts-README.md).
 
 
-# 6. Important Deployment Considerations
+## 6. Important Deployment Considerations
 
-## API Key Requirements
+### API Key Requirements
 
 The deployable architecture can only be deployed with an API Key associated with a user. It is not compatible with API Keys associated with a serviceId. Additionally, it cannot be deployed using the Project trusted profile support.
 
-## Known UI Issue: "Unable to validate your configuration"
+### Known UI Issue: "Unable to validate your configuration"
 
 After approving the configuration, you may encounter an error message stating "Unable to validate your configuration". This is a known UI issue that can be resolved by simply **refreshing your browser window**. This will allow you to continue with the deployment process.
 
-## Using the ./deploy-many.sh Script
+### Using the ./deploy-many.sh Script
 
 The provided ./deploy-many.sh script is designed to deploy the stack of configurations as provided out of the box. If you make any changes to the stack definition in your project, besides specifying inputs, you should deploy your version through the Project UI instead of using the script.

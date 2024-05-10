@@ -243,6 +243,24 @@
 							"required": false
 						}
 					],
+					"outputs": [
+						{
+							"key": "watsonx_project_url",
+							"description": "The URL to the WatsonX project for the sample RAG application."
+						},
+						{
+							"key": "watsonx_project_id",
+							"description": "The ID for the WatsonX project for the sample RAG application."
+						},
+						{
+							"key": "watson_discovery_api_url",
+							"description": "The URL to the Watson Discovery API endpoint."
+						},
+						{
+							"key": "watson_discovery_project_id",
+							"description": "The ID for the Watson Discovery project for the sample RAG application."
+						}
+					],
 					"install_type": "fullstack"
 				}
 			]

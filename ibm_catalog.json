@@ -242,6 +242,24 @@
 							"required": false
 						}
 					],
+					"outputs": [
+						{
+							"key": "watsonx_project_url",
+							"description": ""
+						},
+						{
+							"key": "watsonx_project_id",
+							"description": ""
+						},
+						{
+							"key": "watson_discovery_api_url",
+							"description": ""
+						},
+						{
+							"key": "watson_discovery_project_id",
+							"description": ""
+						}
+					],
 					"install_type": "fullstack"
 				}
 			]

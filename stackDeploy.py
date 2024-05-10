@@ -304,7 +304,7 @@ def get_project_configs(project_id: str) -> list[dict]:
     Returns:
         list[dict]: List of project configs.
     """
-    command = f'ibmcloud project configs --project-id {project_id} --output json'
+    command = f'ibmcloud project configs --project-id {project_id} --all-pages --output json'
     output, err = run_command(command)
     if err:
         raise Exception(f'Error: {err}')

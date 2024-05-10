@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -x
+# set -x
 
 function parse_params() {
   PROJECT_NAME=$1

@@ -630,9 +630,9 @@ def approve_config(project_id: str, config_id: str) -> None:
         state = get_config_state(project_id, config_id)
         if state != State.APPROVED:
             raise ApprovalError(f'[{config_name}] Approval failed for config {config_id}')
-        logging.info(f'[{config_name}] Config approved: {config_id}')
+        logging.info(f'[{config_name}] Config Approved: {config_id}')
     elif state == State.APPROVED:
-        logging.info(f'[{config_name}] Config already approved: {config_id}')
+        logging.info(f'[{config_name}] Already Approved Skipping: {config_id}')
     elif state != State.VALIDATED:
         raise ApprovalError(f'[{config_name}] '
                             f'Config not validated: {config_id} cannot be approved, current state: {state}')
@@ -672,9 +672,9 @@ def deploy_config(project_id: str, config_id: str, timeout: str = "2h") -> None:
         if state != State.DEPLOYED:
             # TODO: lookup deployment failure reason
             raise DeploymentError(f'[{config_name}] Deployment failed for config {config_id}')
-        logging.info(f'[{config_name}] Config deployed: {config_id}')
+        logging.info(f'[{config_name}] Config Deployed: {config_id}')
     elif state == State.DEPLOYED:
-        logging.info(f'[{config_name}] Config already deployed: {config_id}')
+        logging.info(f'[{config_name}] Already Deployed Skipping: {config_id}')
     elif state != State.APPROVED:
         raise DeploymentError(f'[{config_name}] Config not approved: '
                               f'{config_id} cannot be deployed, current state: {state}')

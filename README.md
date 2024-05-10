@@ -127,7 +127,9 @@ Run the script:
 ```python stackDeploy.py --project_name <project_name> --stack_name <stack_name> --config_order <config_order>```
 Replace <project_name>, <stack_name>, and <config_order> with your specific values.
 
-The script will deploy the configurations in the order specified in the config_order argument. The script will attempt to deploy the configurations in parallel if possible.
+The script will deploy the configurations in the order specified in the config_order argument.
+
+If using the `--parallel` flag, the script will attempt to deploy the configurations in parallel if possible. It will attempt to deploy prerequisites first, then deploy the remaining configurations in parallel. If a configuration has a dependency on another configuration, it will wait for the dependency to complete before deploying.
 
 ### Undeploy
 To undeploy a stack, run the script with the `--undeploy` flag:
@@ -146,6 +148,7 @@ Arguments will take precedence over settings in the config file.
  - `--skip_stack_inputs`: Skip setting stack inputs
  - `-u, --undeploy`: Undeploy the stack
  - `--debug`: Enable debug mode
+ - `--parallel`: Deploy configurations in parallel
  - `--help`: Show help message
 
 ### Sample Config File

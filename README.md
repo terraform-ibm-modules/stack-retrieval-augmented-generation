@@ -72,7 +72,7 @@ You should be directed to a screen looking like:
 
 Two approaches to deploy the architecture:
 1. Through the UI - note that using the UI requires a large number of clicks each elements on the architecture stack.
-2. Automated - se the  script `./deploy-many.sh` is provided.
+2. Automated - the script `stackDeploy.py` is provided. Further details on the script can be found in the [Stack Deployment Script](#stack-deployment-script) section.
 
 ### Approach 1: Deployment through the UI
 
@@ -92,18 +92,19 @@ Two approaches to deploy the architecture:
 
 5. Repeat step 1 for the next configuration in the architecture.
 
-### Approach 2: Run ./deploy-many.sh
+### Approach 2: Run stackDeploy.py
 
 * Clone the repository at https://github.com/terraform-ibm-modules/stack-retrieval-augmented-generation/tree/main
 * Ensure you are logged in to the account containing the Cloud project with the stack using `ibmcloud login`.
-* Execute `./deploy-many.sh` with the project name, stack name, and optional configuration name pattern.
+* Execute `stackDeploy.py` with the project name, stack name, and optional configuration name pattern.
+* Further details on the script can be found in the [Stack Deployment Script](#stack-deployment-script) section.
 
 Example - Process all configurations in the project:
 ```bash
-./deploy-many.sh my-test-project dev
+python stackDeploy.py --project_name my-test-project --stack_name dev --config_order "config1|config2|config3"
 ```
 
-Tips: If deployment fail for one of the configuration, you may re-run the script as is. It will skip existing installed configurations and continue where it last failed.
+Tips: If deployment fail for one of the configuration, you may re-run the script as is. It will skip existing installed configurations and continue where it last failed. Ensure to use the `--skip_stack_inputs` flag to avoid re-setting the stack inputs.
 
 ## 5. Post deployment steps
 
@@ -123,9 +124,13 @@ This script is used to validate, approve, and deploy configurations for a projec
 Clone the repository and navigate to the directory containing the script.
 
 Set the necessary environment variables, default variable is `IBMCLOUD_API_KEY` but this can be configured in the config file.:
-```export IBMCLOUD_API_KEY=<your_ibmcloud_api_key>```
+```bash
+export IBMCLOUD_API_KEY=<your_ibmcloud_api_key>
+```
 Run the script:
-```python stackDeploy.py --project_name <project_name> --stack_name <stack_name> --config_order <config_order>```
+```bash
+python stackDeploy.py --project_name <project_name> --stack_name <stack_name> --config_order <config_order>
+```
 Replace <project_name>, <stack_name>, and <config_order> with your specific values.
 
 The script will deploy the configurations in the order specified in the config_order argument.
@@ -146,7 +151,7 @@ Arguments will take precedence over settings in the config file.
  - `-o <CONFIG_ORDER>, --config_order <CONFIG_ORDER>`: The config names in order to be deployed in the format "config1|config2|config3" (can be set in the config file)
  - `--stack_def_path <STACK_DEF_PATH>`: The path to the stack definition json file (can be set in the config file)
  - `--stack_inputs <STACK_INPUTS>`: Stack inputs as json string {"inputs":{"input1":"value1", "input2":"value2"}} (can be set in the config file)
- - `--stack_api_key_env <STACK_API_KEY_ENV>`: The environment variable name for the stack api key to deploy with (can be set in the config file)
+ - `--stack_api_key_env <STACK_API_KEY_ENV>`: The environment variable name for the stack api key to deploy with. Default `IBMCLOUD_API_KEY` (can be set in the config file)
  - `-c <CONFIG_JSON_PATH>, --config_json_path <CONFIG_JSON_PATH>`: The path to the config json file
  - `--skip_stack_inputs`: Skip setting stack inputs
  - `-u, --undeploy`: Undeploy the stack

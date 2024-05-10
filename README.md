@@ -130,6 +130,8 @@ Replace <project_name>, <stack_name>, and <config_order> with your specific valu
 The script will deploy the configurations in the order specified in the config_order argument.
 
 If using the `--parallel` flag, the script will attempt to deploy the configurations in parallel if possible. It will attempt to deploy prerequisites first, then deploy the remaining configurations in parallel. If a configuration has a dependency on another configuration, it will wait for the dependency to complete before deploying.
+**NOTE:** Use parallel with caution, I always works on a fresh deployment, but it could run with unexpected results if existing configurations are in unexpected states. If in doubt, do not use parallel.
+
 
 ### Undeploy
 To undeploy a stack, run the script with the `--undeploy` flag:

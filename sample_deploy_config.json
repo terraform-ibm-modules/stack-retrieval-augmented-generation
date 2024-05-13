@@ -18,6 +18,6 @@
     "resource_group_name": "<YOUR RESOURCE GROUP NAME HERE>",
     "region": "us-south",
     "signing_key": "<YOUR SIGNING KEY HERE>",
-    "secret_manager_service_plan": "lite"
+    "secret_manager_service_plan": "trial"
   }
 }

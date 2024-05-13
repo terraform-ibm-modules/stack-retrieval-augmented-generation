@@ -71,7 +71,7 @@
   "members": [
     {
       "name": "1 - Account Infrastructure Base",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.0fb5dd09-ac56-455e-bed7-9c9bf4c949bb-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.17581548-4e33-4e6d-9116-bd7f727f5138-global",
       "inputs": [
         {
           "name": "prefix",
@@ -117,7 +117,7 @@
     },
     {
       "name": "2a - Security Service - Key Management",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.8e0a8f36-6bee-4611-b78a-bfce1dd8f0fe-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.b194e3f2-1306-4580-8f11-1860393d7ecd-global",
       "inputs": [
         {
           "name": "resource_group_name",
@@ -181,7 +181,7 @@
     },
     {
       "name": "2c - Security Service - Security Compliance Center",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.a719a939-8402-4ad2-a846-db4e05dd5122-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.9e036202-5495-4ea3-926b-3751450bbf54-global",
       "inputs": [
         {
           "name": "ibmcloud_api_key",
@@ -215,7 +215,7 @@
     },
     {
       "name": "3 - Observability - Logging Monitoring Activity Tracker",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.08d35739-6419-492d-8dbf-0a45c01a7fdd-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.53037ced-f83c-4856-87fe-fc2cb64efab1-global",
       "inputs": [
         {
           "name": "ibmcloud_api_key",
@@ -409,7 +409,7 @@
     },
     {
       "name": "6 - Sample RAG app configuration",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.9d2aeea2-a271-48fe-8c76-b878d3594d6e-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.f84e9973-24c0-4510-82a7-f7f7e782540d-global",
       "inputs": [
         {
           "name": "toolchain_region",

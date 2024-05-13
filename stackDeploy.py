@@ -354,9 +354,24 @@ def get_config_ids(project_id: str, stack_name: str, config_order: list[str]) ->
         logging.debug(f'Checking Config:\n{config}')
         # Check if 'definition' exists in the config dictionary
         # when deploying from tile the config name is in the format stack_name-config_name so strip the prefix
-        if ('definition' in config and
-                (config['definition']['name'] in config_order or
-                 str(config['definition']['name']).strip(f"{stack_name}-") in config_order)):
+        stripped_stack_name = ""
+        # Check if 'definition' exists in the config dictionary
+        if 'definition' in config:
+            # Define the possible prefixes
+            prefixes = [f"{stack_name}-", f"{stack_name} -"]
+
+            # Initialize stripped_stack_name with the original name
+            stripped_stack_name = config['definition']['name']
+
+            # Iterate over the prefixes
+            for prefix in prefixes:
+                # If the name starts with the current prefix, strip it
+                if stripped_stack_name.startswith(prefix):
+                    stripped_stack_name = stripped_stack_name[len(prefix):]
+                    # Once a prefix is found and stripped, no need to check for other prefixes
+                    break
+
+        if stripped_stack_name in config_order:
             cur_config = {config['definition']['name']: {"locator_id": config['definition']['locator_id'],
                                                          "config_id": config['id']}}
             # only add unique configs
@@ -891,7 +906,8 @@ def main() -> None:
                         concurrent.futures.wait(futures)  # wait for all futures to complete
                         for future in futures:
                             if future.exception() is not None:
-                                logging.error(f"Exception occurred during validation and deployment: {future.exception()}")
+                                logging.error(
+                                    f"Exception occurred during validation and deployment: {future.exception()}")
                                 error_messages.append(str(future.exception()))
                                 error_occurred = True
                                 break

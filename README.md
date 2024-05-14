@@ -37,14 +37,14 @@ Ensure that you are familiar with the "Important Deployment Considerations" loca
 * Locate the [tile](https://cloud.ibm.com/catalog/7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3/architecture/Retrieval_Augmented_Generation_Pattern-5fdd0045-30fc-4013-a8bc-6db9d5447a52-global) for the Deployable Architecture in the IBM Cloud Catalog.
 * Click the "Add to project" button.
 
-    ![image](./images/min/1-catalog.png)
+  ![image](./images/min/1-catalog.png)
 
 * Select "Create new" and input IBM Cloud Project details.
-   - Name and description. eg: "Retrieval Augmented Generation Pattern"
-   - Region and resource group for the project. Note that this is the region and resource group where the runtime (IBM Cloud Schematics) executiong the automation code is located. You can still deploy the resources to any region, any resource group, and any account.
-   - Configuration name - for example: "dev" or "prod".
+    - Name and description. eg: "Retrieval Augmented Generation Pattern"
+    - Region and resource group for the project. Note that this is the region and resource group where the runtime (IBM Cloud Schematics) executiong the automation code is located. You can still deploy the resources to any region, any resource group, and any account.
+    - Configuration name - for example: "dev" or "prod".
 
-        ![project](./images/min/2-project.png)
+      ![project](./images/min/2-project.png)
 
 * Click "Add" to complete.
 
@@ -74,38 +74,39 @@ You should be directed to a screen looking like:
 
 Two approaches to deploy the architecture:
 1. Through the UI
-2. Automated - `./deploy-many.sh` is provided.
+2. Automated - the script `stackDeploy.py` is provided. Further details on the script can be found in the [Stack Deployment Script](#stack-deployment-script) section.
 
 ### Approach 1: Deployment through the UI
 
 1. Click on validate
 
-    ![validate button](./images/min/5b-validate.png)
+   ![validate button](./images/min/5b-validate.png)
 
 2. Wait for validation
 
-    ![validation](./images/min/6-validation.png)
+   ![validation](./images/min/6-validation.png)
 
 3. Approve and click the deploy button
 
-    ![deploy](./images/min/7-deploy.png)
+   ![deploy](./images/min/7-deploy.png)
 
 4. Wait for deployment
 
 5. Repeat step 1 for the next configuration in the architecture. Note that as you progress in deploying the initial base configuration, you will be given the option to validate and deploy multiple configuration in parallel.
 
-### Approach 2: Run ./deploy-many.sh
+### Approach 2: Run stackDeploy.py
 
 * Clone the repository at https://github.com/terraform-ibm-modules/stack-retrieval-augmented-generation/tree/main
 * Ensure you are logged in to the account containing the Cloud project with the stack using `ibmcloud login`.
-* Execute `./deploy-many.sh` with the project name, stack name, and optional configuration name pattern.
+* Execute `stackDeploy.py` with the project name, stack name, and optional configuration name pattern.
+* Further details on the script can be found in the [Stack Deployment Script](#stack-deployment-script) section.
 
 Example - Process all configurations in the project:
 ```bash
-./deploy-many.sh my-test-project dev
+python stackDeploy.py --project_name my-test-project --stack_name dev --config_order "config1|config2|config3"
 ```
 
-Tips: If deployment fail for one of the configuration, you may re-run the script as is. It will skip existing installed configurations and continue where it last failed.
+Tips: If deployment fail for one of the configuration, you may re-run the script as is. It will skip existing installed configurations and continue where it last failed. Ensure to use the `--skip_stack_inputs` flag to avoid re-setting the stack inputs.
 
 ## 5. Post deployment steps
 
@@ -117,9 +118,9 @@ To monitor the build and deployment of the application, follow these steps:
 1. **Access the DevOps Toolchains View**: Navigate to the [DevOps / Toolchains view](https://cloud.ibm.com/devops/toolchains) in the target account.
 2. **Select the Resource Group and Region**: Choose the resource group and region where the infrastructure was deployed. The resource group name is based on the prefix and resource_group_name inputs of the deployable architecture.
 3. **Select the Toolchain**: Select "RAG Sample App-CI-Toolchain"
-    ![toolchain](./images/min/8-toolchain.png)
+   ![toolchain](./images/min/8-toolchain.png)
 4. **Access the Delivery Pipeline**: In the toolchain view, select ci-pipeline under Delivery pipeline
-    ![toolchain](./images/min/9-pipeline.png)
+   ![toolchain](./images/min/9-pipeline.png)
 5. **View the CI Pipeline Status**: The current status of the CI pipeline execution can be found under the "rag-webhook-trigger" section.
 
 ### Verifying the Application Deployment
@@ -145,3 +146,83 @@ After approving the configuration, you may encounter an error message stating "U
 ### Using the ./deploy-many.sh Script
 
 The provided ./deploy-many.sh script is designed to deploy the stack of configurations as provided out of the box. If you make any changes to the stack definition in your project, besides specifying inputs, you should deploy your version through the Project UI instead of using the script.
+
+# Stack Deployment Script
+This script is used to validate, approve, and deploy configurations for a project in IBM Cloud. It can also undeploy configurations if needed.
+
+### Prerequisites
+- Python 3
+- IBM Cloud CLI
+- IBM Cloud Project plugin
+
+### Usage
+Clone the repository and navigate to the directory containing the script.
+
+Set the necessary environment variables, default variable is `IBMCLOUD_API_KEY` but this can be configured in the config file.:
+```bash
+export IBMCLOUD_API_KEY=<your_ibmcloud_api_key>
+```
+Run the script:
+```bash
+python stackDeploy.py --project_name <project_name> --stack_name <stack_name> --config_order <config_order>
+```
+Replace <project_name>, <stack_name>, and <config_order> with your specific values.
+
+The script will deploy the configurations in the order specified in the config_order argument.
+
+If using the `--parallel` flag, the script will attempt to deploy the configurations in parallel if possible. It will attempt to deploy prerequisites first, then deploy the remaining configurations in parallel. If a configuration has a dependency on another configuration, it will wait for the dependency to complete before deploying.
+**NOTE:** Use parallel with caution, I always works on a fresh deployment, but it could run with unexpected results if existing configurations are in unexpected states. If in doubt, do not use parallel.
+
+
+### Undeploy
+To undeploy a stack, run the script with the `--undeploy` flag:
+```python stackDeploy.py --project_name <project_name> --stack_name <stack_name> --config_order <config_order> --undeploy```
+The script will undeploy in reverse order of the config_order argument sequentially, as the reverse order is the safest way to undeploy configurations.
+
+### Arguments
+Arguments will take precedence over settings in the config file.
+- `-p <PROJECT_NAME>, --project_name <PROJECT_NAME>`: The project name (can be set in the config file)
+- `-s <STACK_NAME>, --stack_name <STACK_NAME>`: The stack name (can be set in the config file)
+- `-o <CONFIG_ORDER>, --config_order <CONFIG_ORDER>`: The config names in order to be deployed in the format "config1|config2|config3" (can be set in the config file)
+- `--stack_def_path <STACK_DEF_PATH>`: The path to the stack definition json file (can be set in the config file)
+- `--stack_inputs <STACK_INPUTS>`: Stack inputs as json string {"inputs":{"input1":"value1", "input2":"value2"}} (can be set in the config file)
+- `--stack_api_key_env <STACK_API_KEY_ENV>`: The environment variable name for the stack api key to deploy with. Default `IBMCLOUD_API_KEY` (can be set in the config file)
+- `-c <CONFIG_JSON_PATH>, --config_json_path <CONFIG_JSON_PATH>`: The path to the config json file
+- `--skip_stack_inputs`: Skip setting stack inputs
+- `-u, --undeploy`: Undeploy the stack
+- `--debug`: Enable debug mode
+- `--parallel`: Deploy configurations in parallel
+- `--help`: Show help message
+
+### Sample Config File
+```json
+{
+    "project_name": "my_project",
+    "stack_name": "my_stack",
+    "config_order": [
+        "config1",
+        "config2",
+        "config3"],
+    "stack_def_path": "stack_definition.json",
+    "stack_inputs": {
+        "input1":"value1",
+        "input2":"value2",
+        "ibmcloud_api_key": "API_KEY"
+    },
+    "api_key_env_var": "IBMCLOUD_API_KEY"
+}
+```
+- `project_name`: The name of your project.
+- `stack_name`: The name of your stack.
+- `config_order`: An array of configuration names in the order they should be deployed.
+- `stack_def_path`: The path to the stack definition JSON file.
+- `stack_inputs`: A dictionary of stack inputs. NOTE: if a key is set to `API_KEY` it will be replaced with the value of the `stack_api_key_env` environment variable.
+- `config_json_path`: The path to the configuration JSON file.
+- `stack_api_key_env`: The environment variable name for the stack API key to deploy with.
+
+
+### Troubleshooting
+If you encounter any errors, check the logs for detailed error messages. If the error is related to a specific configuration, the error message will include the configuration ID.
+The debug flag can be used to print additional information to the console.
+
+If a failure occurs sometimes running the deployment script again will resolve the issue. Ensure the `--skip_stack_inputs` flag is enabled and the script will skip configurations that have already been deployed.

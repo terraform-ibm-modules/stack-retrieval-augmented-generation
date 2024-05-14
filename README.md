@@ -145,7 +145,8 @@ After approving the configuration, you may encounter an error message stating "U
 
 ### Using the ./deploy-many.sh Script
 
-The provided ./deploy-many.sh script is designed to deploy the stack of configurations as provided out of the box. If you make any changes to the stack definition in your project, besides specifying inputs, you should deploy your version through the Project UI instead of using the script.
+The provided ./deploy-many.sh script is designed to deploy the stack of configurations as provided out of the box.
+If you make any changes to the stack definition in your project, besides specifying inputs, you should deploy your version through the Project UI instead of using the script.
 
 # Stack Deployment Script
 This script is used to validate, approve, and deploy configurations for a project in IBM Cloud. It can also undeploy configurations if needed.
@@ -175,8 +176,10 @@ python stackDeploy.py --config_json_path <config_json_path>
 
 The script will deploy the configurations in the order specified in the config_order argument.
 
-If using the `--parallel` flag, the script will attempt to deploy the configurations in parallel if possible. It will attempt to deploy prerequisites first, then deploy the remaining configurations in parallel. If a configuration has a dependency on another configuration, it will wait for the dependency to complete before deploying.
-**NOTE:** Use parallel with caution, I always works on a fresh deployment, but it could run with unexpected results if existing configurations are in unexpected states. If in doubt, do not use parallel.
+If using the `--parallel` flag, the script will attempt to deploy the configurations in parallel if possible.
+It will attempt to deploy prerequisites first, then deploy the remaining configurations in parallel.
+If a configuration has a dependency on another configuration, it will wait for the dependency to complete before deploying.
+**NOTE:** Use parallel with caution, It always works on a fresh deployment, but it could run with unexpected results if existing configurations are in unexpected states. If in doubt, do not use parallel.
 
 
 ### Undeploy
@@ -184,6 +187,7 @@ To undeploy a stack, run the script with the `--undeploy` flag:
 ```python stackDeploy.py --project_name <project_name> --stack_name <stack_name> --config_order <config_order> --undeploy```
 or
 ```python stackDeploy.py --config_json_path <config_json_path> --undeploy```
+
 The script will undeploy in reverse order of the config_order argument sequentially, as the reverse order is the safest way to undeploy configurations.
 
 ### Arguments
@@ -229,7 +233,8 @@ Arguments will take precedence over settings in the config file.
 
 
 ### Troubleshooting
-If you encounter any errors, check the logs for detailed error messages. If the error is related to a specific configuration, the error message will include the configuration ID.
+If you encounter any errors, check the logs for detailed error messages.
+If the error is related to a specific configuration, the error message will include the configuration ID.
 The debug flag can be used to print additional information to the console.
 
 If a failure occurs sometimes running the deployment script again will resolve the issue. Ensure the `--skip_stack_inputs` flag is enabled and the script will skip configurations that have already been deployed.

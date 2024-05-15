@@ -41,8 +41,8 @@ Ensure that you are familiar with the "Important Deployment Considerations" loca
 
 * Select **Create new** and enter the following details:
    - Name and Description (e.g., "Retrieval Augmented Generation Pattern")
-   - Region and Resource Group for the project (central hub for IaC automation, where code is run, with separate deployment options for provisioned infrastructure later)
-   - Configuration Name (name of the automation in the project, e.g., "dev" or "prod", ideally matching the deployment target, but this can be any name)
+   - Region and Resource Group for the project. e.g. for evaluation purposes, you may select the region the closest to you, and the Default resource group. For more insights on the recommended production topology, refer to the Enterprise account architecture Central administration account [white paper](https://cloud.ibm.com/docs/enterprise-account-architecture?topic=enterprise-account-architecture-admin-hub-account).
+   - Configuration Name (name of the automation in the project, e.g., "RAG", "dev" or "prod", ideally matching the deployment target, but this can be any name)
 
         ![project](./images/min/2-project.png)
 

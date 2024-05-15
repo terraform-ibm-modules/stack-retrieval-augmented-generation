@@ -4,8 +4,7 @@
       "name": "prefix",
       "required": true,
       "type": "string",
-      "hidden": false,
-      "default": "rag-stack"
+      "hidden": false
     },
     {
       "name": "secret_manager_service_plan",

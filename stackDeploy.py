@@ -877,6 +877,7 @@ def main() -> None:
                                 or (current_state in [State.DEPLOYING_FAILED,
                                                       State.VALIDATING_FAILED,
                                                       State.APPLY_FAILED,
+                                                      State.VALIDATED,
                                                       State.APPROVED])):
 
                             logging.info(f"Config {config_name} ID: {list(config.keys())[0]} "

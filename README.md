@@ -39,25 +39,24 @@ Ensure that you are familiar with the "Important Deployment Considerations" loca
 
     ![image](./images/min/1-catalog.png)
 
-* Select "Create new" and input IBM Cloud Project details.
-   - Name and description. eg: "Retrieval Augmented Generation Pattern"
-   - Region and resource group for the project. Note that this is the region and resource group where the runtime (IBM Cloud Schematics) executiong the automation code is located. You can still deploy the resources to any region, any resource group, and any account.
-   - Configuration name - for example: "dev" or "prod".
+* Select **Create new** and enter the following details:
+   - Name and Description (e.g., "Retrieval Augmented Generation Pattern")
+   - Region and Resource Group for the project (central hub for IaC automation, where code is run, with separate deployment options for provisioned infrastructure later)
+   - Configuration Name (name of the automation in the project, e.g., "dev" or "prod", ideally matching the deployment target, but this can be any name)
 
         ![project](./images/min/2-project.png)
 
-* Click "Add" to complete.
+* Click the **Add** button (or **Create** if this is the first project in the account) at the bottom right of the modal popup to complete.
 
 ## 3. Set the Input Configuration for the Stack
 
 After completing `Step 2 - Deploy the Stack in a New Project from Catalog`, you are directed to a page allowing you to enter the configuration for you deployment:
 * Under Security -> Authentication, enter the API Key from the prereqs in the `api_key` field.
-* Under Required, input the signing key
-* Under Optional, input `signing_key` field. This is recommended by not necessary to be able to deploy the Cloud resources. It is necessary to enable the building and deployment of the sample app however.
+  ![inputs](./images/min/3-inputs.png)
+* Under Required, input a prefix. This prefix will be appended to the name of most resources created by automation, ensuring uniqueness and avoiding clashes when provisioning names in the same account.
+* Under Optional, input the signing_key field. While not necessary for deploying Cloud resources, it is recommended and required to enable the building and deployment of the sample app.
 
 You may explore the other available inputs, such as the region and resource group name (under optional tab), leave them as is, or modify them as needed.
-
-![inputs](./images/min/3-inputs.png)
 
 Once ready, click the "Save" button at the top of the screen.
 
@@ -144,4 +143,69 @@ After approving the configuration, you may encounter an error message stating "U
 
 ### Using the ./deploy-many.sh Script
 
-The provided ./deploy-many.sh script is designed to deploy the stack of configurations as provided out of the box. If you make any changes to the stack definition in your project, besides specifying inputs, you should deploy your version through the Project UI instead of using the script.
+The provided `deploy-many.sh` script is designed to deploy the stack of configurations as provided out of the box, and when following the instructions in this page. However, if you:
+- Modify the stack definition in your project (beyond specifying inputs at the stack level)
+- Or, deploy the stack in an existing project
+
+Use the **Project UI** to deploy; do not use the script.
+
+### Notification of New Configuration Versions ("Needs Attention")
+
+You may see notifications in IBM Cloud Project indicating that one or more configurations in the stack have new versions available. You can safely ignore these messages at this point, as they will not prevent you from deploying the stack. No specific action is required from you.
+
+![new version](./images/min/10-new-version.png)
+
+Please note that these notifications are expected, as we are rapidly iterating on the development of the underlying components. As new stack versions become available, the versions of the underlying components will also be updated accordingly.
+
+
+# Customization options
+
+There are numerous customization possibilities available out of the box. This section explores some common scenarios, but is not exhaustive.
+
+## Editing Individual Configurations
+
+Each configuration in the deployed stack surfaces a large number of input parameters. You can directly edit each parameter to tailor your deployment by selecting the **Edit** option in the menu for the corresponding configuration on the right-hand side.
+
+![edit config](./images/min/11-edit-config.png)
+
+This approach enables you to:
+- Fine-tune account settings
+- Deploying additional Watson components, such as Watsonx Governance
+- Deploy to an existing resource group
+- Reuse existing key protect keys
+- Tuning the parameter of the provisioned code engine project
+- ...
+
+## Removing Configurations from the Stack
+
+You can remove any configuration from the stack, provided there is no direct dependency in later configurations, by selecting the **Remove from Stack** option in the right-hand side menu for the corresponding configuration.
+
+This applies to the following configurations:
+- Observability
+- Security and Control Center
+
+![edit config](./images/min/12-remove-config.png)
+
+## Managing Stack-Level Inputs and Outputs
+
+You can add or remove inputs and outputs surfaced at the stack level by following these steps:
+1. Select the stack configuration
+
+    ![stack def](./images/min/13-define-stack.png)
+1. You are presented with a screen allowing you to promote any of the configuration inputs or outputs at the stack level
+
+    ![stack def](./images/min/14-stack-def.png)
+
+
+## Sharing Modified Stacks through a Private IBM Cloud Catalog
+
+Once you have made modifications to your stack in Project, you can share it with others through a private IBM Cloud Catalog. To do so, follow these steps:
+1. Deploy the stack at least once: You need to deploy the stack first to allow importing the stack definition to a private catalog.
+2. Select the "Add to private catalog" option in the menu located on the stack configuration.
+
+This will allow you to share your modified stack with others through a private IBM Cloud Catalog.
+
+
+## Customizing for Your Application
+
+As you deploy your own application, you may want to remove the last configuration (Sample RAG app configuration), which is specific to the sample app provided out of the box. You can use the code of this sample automation as a guide to implement your own, depending on your application needs. The code is available at [https://github.com/terraform-ibm-modules/terraform-ibm-rag-sample-da](https://github.com/terraform-ibm-modules/terraform-ibm-rag-sample-da).

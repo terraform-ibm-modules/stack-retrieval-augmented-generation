@@ -403,6 +403,10 @@
         {
           "name": "code_engine_project_prefix",
           "value": "ref:../../inputs/prefix"
+        },
+        {
+          "name": "add_container_name_suffix",
+          "value": true
         }
       ]
     },

@@ -153,6 +153,7 @@
 							"key": "prefix",
 							"type": "string",
 							"description": "A prefix added to the name of all resources created by this solution. Used to avoid name clashes in the target account when existing this solution multiple times.",
+							"default_value": "rag",
 							"required": true
 						},
 						{

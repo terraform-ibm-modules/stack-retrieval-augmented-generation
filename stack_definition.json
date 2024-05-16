@@ -111,6 +111,10 @@
         {
           "name": "devops_resource_group_name",
           "value": "ref:../../inputs/resource_group_name"
+        },
+        {
+          "name": "provision_trusted_profile_projects",
+          "value": false
         }
       ]
     },

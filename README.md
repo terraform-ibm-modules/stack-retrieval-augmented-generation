@@ -27,7 +27,7 @@ To deploy this architecture, follow these steps.
 Before deploying the deployable architecture, ensure you have:
 
 * Created an API key in the target account with sufficient permissions. The target account is the account that will be hosting the resources deployed by this deployable architecture. See [instructions](https://cloud.ibm.com/docs/account?topic=account-userapikey&interface=ui) Note the API key, as it will be used later. On evaluation environments, you may simply grant `Administrator` role on `IAM Identity Service`, `All Identity and Access enabled services` and `All Account Management` services. If you need to narrow down further access, for a production environment for instance, the minimum level of permissions is indicated in the [Permission tab](https://cloud.ibm.com/catalog/7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3/architecture/Retrieval_Augmented_Generation_Pattern-5fdd0045-30fc-4013-a8bc-6db9d5447a52-global#permissions) of the deployable architecture.
-* (Recommended to ensure successful sample app deployment) Created or have access to a signing key, which is the base64 key obtained from `gpg --gen-key` (if not generated before or expired) and then exported via `gpg --export-secret-key <Email Address> | base64` command. See the [devsecops image signing page](https://cloud.ibm.com/docs/devsecops?topic=devsecops-devsecops-image-signing#cd-devsecops-gpg-export) for details. Keep note of the key for later. The signing key is not required to deploy all of the Cloud resources created by this deployable architecture, but is necessary to get the automation to build and deploy the sample application.
+* (Recommended to ensure successful sample app deployment) Create or have access to a signing key, which is the base64 key obtained from `gpg --gen-key` without passphrase (if not generated before or expired) and then exported via `gpg --export-secret-key <Email Address> | base64` command. See the [devsecops image signing page](https://cloud.ibm.com/docs/devsecops?topic=devsecops-devsecops-image-signing#cd-devsecops-gpg-export) for details. Keep note of the key for later. The signing key is not required to deploy all of the Cloud resources created by this deployable architecture, but is necessary to get the automation to build and deploy the sample application.
 * (Optional) Installed the IBM Cloud CLI's Project add-on using the `ibmcloud plugin install project` command. More information is available [here](https://cloud.ibm.com/docs/cli?topic=cli-projects-cli).
 
 Ensure that you are familiar with the "Important Deployment Considerations" located at the bottom of this document.
@@ -209,3 +209,35 @@ This will allow you to share your modified stack with others through a private I
 ## Customizing for Your Application
 
 As you deploy your own application, you may want to remove the last configuration (Sample RAG app configuration), which is specific to the sample app provided out of the box. You can use the code of this sample automation as a guide to implement your own, depending on your application needs. The code is available at [https://github.com/terraform-ibm-modules/terraform-ibm-rag-sample-da](https://github.com/terraform-ibm-modules/terraform-ibm-rag-sample-da).
+
+# Details to undeploy/delete the architecture
+
+## Cleanup the configuration
+
+Follow the steps outlined in the [cleanup.md file](https://github.com/IBM/gen-ai-rag-watsonx-sample-application/blob/main/artifacts/artifacts-cleanup.md) to remove the configuration done specific to the sample app.
+
+## Undeploy Stack
+
+* Delete the code engine project created for sample application.
+* Delete the container registry namespace created by DA.
+* Undeploy DAs one by one via UI in the reverse order.
+* Once all the DAs are undeployed, delete the project.
+
+## Known issues
+
+* You will get the following error during undeploy  of `Account Infrastructure Base DA` if you have not deleted the code engine project `sampleGenerative_AI_Sample_App_CI_Project`.
+  ```
+  Error Deleting resource group: Resource groups with active instances can't be deleted.
+  ```
+
+* If the RAG DA Stack provisions a trial version of Secrets Manager, and is un-deployed and then re-deployed again with trial version of Secrets Manager, the "2b - Security Service - Secret Manager" DA fails.
+
+  It is because you can only have one trial version of Secrets Manager in an account and even after deletion, the prior trial version of Secrets Manager needs to be removed from the "reclamation" as well. Read more information[here](https://cloud.ibm.com/docs/account?topic=account-resource-reclamation&interface=cli).
+
+  Run the following commands to delete from reclamation.
+
+  ```
+  ibmcloud resource reclamations # it lists all the resources in reclamation state, get the secret manager relamation ID
+  ibmcloud resource reclamation-delete <secret-manager-id>
+  ```
+

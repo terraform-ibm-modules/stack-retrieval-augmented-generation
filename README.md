@@ -240,4 +240,3 @@ Follow the steps outlined in the [cleanup.md file](https://github.com/IBM/gen-ai
   ibmcloud resource reclamations # it lists all the resources in reclamation state, get the reclamation ID of the secret manager service
   ibmcloud resource reclamation-delete <secret-manager-id>
   ```
-

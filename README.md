@@ -225,7 +225,7 @@ Follow the steps outlined in the [cleanup.md file](https://github.com/IBM/gen-ai
 
 ## Known issues
 
-* You will get the following error during undeploy  of `Account Infrastructure Base DA` if you have not deleted the code engine project `sampleGenerative_AI_Sample_App_CI_Project`.
+* You will get the following error during undeploy of `Account Infrastructure Base DA` if you have not deleted the code engine project `sampleGenerative_AI_Sample_App_CI_Project`.
   ```
   Error Deleting resource group: Resource groups with active instances can't be deleted.
   ```
@@ -237,7 +237,7 @@ Follow the steps outlined in the [cleanup.md file](https://github.com/IBM/gen-ai
   Run the following commands to delete from reclamation.
 
   ```
-  ibmcloud resource reclamations # it lists all the resources in reclamation state, get the secret manager relamation ID
+  ibmcloud resource reclamations # it lists all the resources in reclamation state, get the reclamation ID of the secret manager service
   ibmcloud resource reclamation-delete <secret-manager-id>
   ```
 

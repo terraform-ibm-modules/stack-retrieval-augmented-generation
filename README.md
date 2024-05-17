@@ -210,7 +210,7 @@ This will allow you to share your modified stack with others through a private I
 
 As you deploy your own application, you may want to remove the last configuration (Sample RAG app configuration), which is specific to the sample app provided out of the box. You can use the code of this sample automation as a guide to implement your own, depending on your application needs. The code is available at [https://github.com/terraform-ibm-modules/terraform-ibm-rag-sample-da](https://github.com/terraform-ibm-modules/terraform-ibm-rag-sample-da).
 
-# Details to undeploy/delete the architecture
+# Details to undeploy/delete the stack
 
 ## Cleanup the configuration
 

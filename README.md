@@ -27,7 +27,7 @@ To deploy this architecture, follow these steps.
 Before deploying the deployable architecture, ensure you have:
 
 * Created an API key in the target account with sufficient permissions. The target account is the account that will be hosting the resources deployed by this deployable architecture. See [instructions](https://cloud.ibm.com/docs/account?topic=account-userapikey&interface=ui) Note the API key, as it will be used later. On evaluation environments, you may simply grant `Administrator` role on `IAM Identity Service`, `All Identity and Access enabled services` and `All Account Management` services. If you need to narrow down further access, for a production environment for instance, the minimum level of permissions is indicated in the [Permission tab](https://cloud.ibm.com/catalog/7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3/architecture/Retrieval_Augmented_Generation_Pattern-5fdd0045-30fc-4013-a8bc-6db9d5447a52-global#permissions) of the deployable architecture.
-* (Recommended to ensure successful sample app deployment) Created or have access to a signing key, which is the base64 key obtained from `gpg --gen-key` (if not generated before or expired) and then exported via `gpg --export-secret-key <Email Address> | base64` command. See the [devsecops image signing page](https://cloud.ibm.com/docs/devsecops?topic=devsecops-devsecops-image-signing#cd-devsecops-gpg-export) for details. Keep note of the key for later. The signing key is not required to deploy all of the Cloud resources created by this deployable architecture, but is necessary to get the automation to build and deploy the sample application.
+* (Recommended to ensure successful sample app deployment) Created or have access to a signing key, which is the base64 key obtained from `gpg --gen-key` without passphrase (if not generated before or expired) and then exported via `gpg --export-secret-key <Email Address> | base64` command. See the [devsecops image signing page](https://cloud.ibm.com/docs/devsecops?topic=devsecops-devsecops-image-signing#cd-devsecops-gpg-export) for details. Keep note of the key for later. The signing key is not required to deploy all of the Cloud resources created by this deployable architecture, but is necessary to get the automation to build and deploy the sample application.
 * (Optional) Installed the IBM Cloud CLI's Project add-on using the `ibmcloud plugin install project` command. More information is available [here](https://cloud.ibm.com/docs/cli?topic=cli-projects-cli).
 
 Ensure that you are familiar with the "Important Deployment Considerations" located at the bottom of this document.
@@ -157,6 +157,25 @@ You may see notifications in IBM Cloud Project indicating that one or more confi
 
 Please note that these notifications are expected, as we are rapidly iterating on the development of the underlying components. As new stack versions become available, the versions of the underlying components will also be updated accordingly.
 
+### Limitations with the Trial Secret Manager Offering
+
+The automation is configured to deploy a Trial version of Secret Manager by default to minimize costs. However, the Trial version has some limitations. If you want to avoid these limitations, you can opt to deploy a standard (paid) instance of Secret Manager under the **Optional settings** of the stack.
+
+Here are the limitations of the Trial version:
+* **Account limitation**: Only one Trial instance of Secret Manager can be deployed at a time in a given account.
+* **Deployment error**: You will encounter an error in the Secret Manager deployment step if there is already a Trial instance deployed in the same account.
+* **Re-deployment failure**: If the automation provisions a Trial version of Secrets Manager, and is un-deployed and then re-deployed again with the Trial version in the same account, the "2b - Security Service - Secret Manager" deployment will fail. This is because you can only have one Trial version of Secrets Manager in an account, and even after deletion, the prior Trial version of Secrets Manager needs to be removed from the "reclamation" state as well.
+
+
+**What are reclamations?**
+In IBM Cloud, when you delete a resource, it doesn't immediately disappear. Instead, it enters a "reclamation" state, where it remains for a short period of time (usually 7 days) before being permanently deleted. During this time, you can still recover the resource if needed.
+
+To resolve the re-deployment failure, you will need to delete the Secret Manager service from the reclamation state by running the following commands:
+```
+ibmcloud resource reclamations #  lists all the resources in reclamation state, get the reclamation ID of the secret manager service
+ibmcloud resource reclamation-delete <reclamation-id>
+```
+
 
 # Customization options
 
@@ -209,3 +228,44 @@ This will allow you to share your modified stack with others through a private I
 ## Customizing for Your Application
 
 As you deploy your own application, you may want to remove the last configuration (Sample RAG app configuration), which is specific to the sample app provided out of the box. You can use the code of this sample automation as a guide to implement your own, depending on your application needs. The code is available at [https://github.com/terraform-ibm-modules/terraform-ibm-rag-sample-da](https://github.com/terraform-ibm-modules/terraform-ibm-rag-sample-da).
+
+# Undeploying/Deleting the Stack, and all associated Infrastructure Resources
+
+## Cleanup the configuration
+
+> This step is optional if you are planning to fully destroy all Watson resources. The artifacts created by the application will be deleted as part of undeploying the Watson resources.
+
+Follow the steps outlined in the [cleanup.md file](https://github.com/IBM/gen-ai-rag-watsonx-sample-application/blob/main/artifacts/artifacts-cleanup.md) file to remove the configuration specific to the sample app.
+
+## Undeploying Infrastructure
+
+To undeploy the infrastructure created by the automation, complete the following steps:
+
+### 1. Delete Resources Created by the CI toolchain
+
+Those resources are not destroyed automatically as part of undeploying the stack in Project:
+- **Code Engine Project**: Delete the code engine project created for the sample application.
+- **Container Registry Namespace**: Delete the container registry namespace created by the CI tookchain.
+
+
+### 2. Undeploy Configurations in the Project
+
+Undeploy each configuration in the project, one by one, via UI, starting from the "6 - Sample RAG app configuration" and working your way up in the stack up to, and inclusive of "2a - Security Service - Key Management". Wait for full undeployment of a configuration before starting to undeploy the next configuration up in the stack.
+
+### 3. Delete Reclamation Claims
+
+Before undeploying the "1 - Account Infrastructure Base", you will need to manually delete the reclamation claims for the resources deleted from the previous steps. Reclamation allows you to restore deleted resources for up to one week. However, any reclamation that is still active prevents from deleting the resource group managed by the "1 - Account Infrastructure Base":
+* Log in to the target IBM Cloud account with the CLI
+* Run `ibmcloud resource reclamations` to view the full list of reclamation. You may identify the exact reclamations to delete as they are planned to be deleted in one week after the date for which the resource was deleted.
+* For each reclamation, execute `ibmcloud resource reclamation-delete <reclamation-id>`. The reclamation-id is the id provided in the results from ibmcloud resource reclamations listing.
+* Run `ibmcloud resource reclamations` again to ensure the reclamations have been fully deleted
+
+More details are available [here](https://cloud.ibm.com/docs/account?topic=account-resource-reclamation&interface=cli).
+
+### 4. Undeploy "1 - Account Infrastructure Base"
+
+You may now undeploy "1 - Account Infrastructure Base" in the project.
+
+### 5. Delete Project
+
+Once all configurations are undeployed, you may delete the project.

@@ -121,7 +121,7 @@
     },
     {
       "name": "2a - Security Service - Key Management",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.2cdc89ae-daff-471a-9902-ad989376c23b-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.30d23518-293d-428c-9353-e3236bad41ff-global",
       "inputs": [
         {
           "name": "resource_group_name",
@@ -300,11 +300,11 @@
           "value": "plus"
         },
         {
-          "name": "watson_governance_plan",
+          "name": "watsonx_governance_plan",
           "value": "do not install"
         },
         {
-          "name": "project_name",
+          "name": "watsonx_project_name",
           "value": "ref:../../inputs/prefix"
         }
       ]
@@ -356,10 +356,6 @@
         {
           "name": "registry_namespace",
           "value": "rag-sample-app"
-        },
-        {
-          "name": "registry_namespace_suffix",
-          "value": "ref:../../inputs/prefix"
         },
         {
           "name": "ci_app_repo_clone_from_url",
@@ -417,7 +413,7 @@
     },
     {
       "name": "6 - Sample RAG app configuration",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.f84e9973-24c0-4510-82a7-f7f7e782540d-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.93236e64-edbd-49d6-912a-68f913b84989-global",
       "inputs": [
         {
           "name": "toolchain_region",

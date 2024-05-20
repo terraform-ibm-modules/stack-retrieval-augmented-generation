@@ -157,6 +157,21 @@ You may see notifications in IBM Cloud Project indicating that one or more confi
 
 Please note that these notifications are expected, as we are rapidly iterating on the development of the underlying components. As new stack versions become available, the versions of the underlying components will also be updated accordingly.
 
+### Limitations with the Trial Secret Manager offering
+
+
+
+If the RAG DA Stack provisions a trial version of Secrets Manager, and is un-deployed and then re-deployed again with trial version of Secrets Manager, the "2b - Security Service - Secret Manager" DA fails.
+
+  It is because you can only have one trial version of Secrets Manager in an account and even after deletion, the prior trial version of Secrets Manager needs to be removed from the "reclamation" as well. Read more information[here](https://cloud.ibm.com/docs/account?topic=account-resource-reclamation&interface=cli).
+
+  Run the following commands to delete from reclamation.
+
+  ```
+  ibmcloud resource reclamations # it lists all the resources in reclamation state, get the reclamation ID of the secret manager service
+  ibmcloud resource reclamation-delete <secret-manager-id>
+  ```
+
 
 # Customization options
 
@@ -210,33 +225,43 @@ This will allow you to share your modified stack with others through a private I
 
 As you deploy your own application, you may want to remove the last configuration (Sample RAG app configuration), which is specific to the sample app provided out of the box. You can use the code of this sample automation as a guide to implement your own, depending on your application needs. The code is available at [https://github.com/terraform-ibm-modules/terraform-ibm-rag-sample-da](https://github.com/terraform-ibm-modules/terraform-ibm-rag-sample-da).
 
-# Details to undeploy/delete the stack
+# Undeploying/Deleting the Stack, and all associated Infrastructure Resources
 
 ## Cleanup the configuration
 
-Follow the steps outlined in the [cleanup.md file](https://github.com/IBM/gen-ai-rag-watsonx-sample-application/blob/main/artifacts/artifacts-cleanup.md) to remove the configuration done specific to the sample app.
+> This step is optional if you are planning to fully destroy all Watson resources. The artifacts created by the application will be deleted as part of undeploying the Watson resources.
 
-## Undeploy Stack
+Follow the steps outlined in the [cleanup.md file](https://github.com/IBM/gen-ai-rag-watsonx-sample-application/blob/main/artifacts/artifacts-cleanup.md) file to remove the configuration specific to the sample app.
 
-* Delete the code engine project created for sample application.
-* Delete the container registry namespace created by DA.
-* Undeploy DAs one by one via UI in the reverse order.
-* Once all the DAs are undeployed, delete the project.
+## Undeploying Infrastructure
 
-## Known issues
+To undeploy the infrastructure created by the automation, complete the following steps:
 
-* You will get the following error during undeploy of `Account Infrastructure Base DA` if you have not deleted the code engine project `sampleGenerative_AI_Sample_App_CI_Project`.
-  ```
-  Error Deleting resource group: Resource groups with active instances can't be deleted.
-  ```
+### 1. Delete Resources Created by the CI toolchain
 
-* If the RAG DA Stack provisions a trial version of Secrets Manager, and is un-deployed and then re-deployed again with trial version of Secrets Manager, the "2b - Security Service - Secret Manager" DA fails.
+Those resources are not destroyed automatically as part of undeploying the stack in Project:
+- **Code Engine Project**: Delete the code engine project created for the sample application.
+- **Container Registry Namespace**: Delete the container registry namespace created by the CI tookchain.
 
-  It is because you can only have one trial version of Secrets Manager in an account and even after deletion, the prior trial version of Secrets Manager needs to be removed from the "reclamation" as well. Read more information[here](https://cloud.ibm.com/docs/account?topic=account-resource-reclamation&interface=cli).
 
-  Run the following commands to delete from reclamation.
+### 2. Undeploy Configurations in the Project
 
-  ```
-  ibmcloud resource reclamations # it lists all the resources in reclamation state, get the reclamation ID of the secret manager service
-  ibmcloud resource reclamation-delete <secret-manager-id>
-  ```
+Undeploy each configuration in the project, one by one, via UI, starting from the "6 - Sample RAG app configuration" and working your way up in the stack up to, and inclusive of "2a - Security Service - Key Management". Wait for full undeployment of a configuration before starting to undeploy the next configuration up in the stack.
+
+### 3. Delete Reclamation Claims
+
+Before undeploying the "1 - Account Infrastructure Base", you will need to manually delete the reclamation claims for the resources deleted from the previous steps. Reclamation allows you to restore deleted resources for up to one week. However, any reclamation that is still active prevents from deleting the resource group managed by the "1 - Account Infrastructure Base":
+* Log in to the target IBM Cloud account with the CLI
+* Run `ibmcloud resource reclamations` to view the full list of reclamation. You may identify the exact reclamations to delete as they are planned to be deleted in one week after the date for which the resource was deleted.
+* For each reclamation, execute `ibmcloud resource reclamation-delete <reclamation-id>`. The reclamation-id is the id provided in the results from ibmcloud resource reclamations listing.
+* Run `ibmcloud resource reclamations` again to ensure the reclamations have been fully deleted
+
+More details are available [here](https://cloud.ibm.com/docs/account?topic=account-resource-reclamation&interface=cli).
+
+### 4. Undeploy "1 - Account Infrastructure Base"
+
+You may now undeploy "1 - Account Infrastructure Base" in the project.
+
+### 5. Delete Project
+
+Once all configurations are undeployed, you may delete the project.

@@ -300,11 +300,11 @@
           "value": "plus"
         },
         {
-          "name": "watson_governance_plan",
+          "name": "watsonx_governance_plan",
           "value": "do not install"
         },
         {
-          "name": "project_name",
+          "name": "watsonx_project_name",
           "value": "ref:../../inputs/prefix"
         }
       ]
@@ -356,10 +356,6 @@
         {
           "name": "registry_namespace",
           "value": "rag-sample-app"
-        },
-        {
-          "name": "registry_namespace_suffix",
-          "value": "ref:../../inputs/prefix"
         },
         {
           "name": "ci_app_repo_clone_from_url",

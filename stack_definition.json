@@ -48,12 +48,6 @@
       "default": "replace"
     },
     {
-      "name": "signing_key",
-      "required": true,
-      "type": "password",
-      "hidden": false
-    },
-    {
       "name": "existing_secrets_manager_crn",
       "required": false,
       "type": "string",

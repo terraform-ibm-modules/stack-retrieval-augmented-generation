@@ -32,7 +32,7 @@ func TestProjectsFullTest(t *testing.T) {
 		"ibmcloud_api_key":            options.RequiredEnvironmentVars["TF_VAR_ibmcloud_api_key"],
 		"prefix":                      options.Prefix,
 		"signing_key":                 privateKey,
-		"secret_manager_service_plan": "standard",
+		"secret_manager_service_plan": "trial",
 	}
 
 	err := options.RunProjectsTest()

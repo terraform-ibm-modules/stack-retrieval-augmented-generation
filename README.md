@@ -209,3 +209,31 @@ This will allow you to share your modified stack with others through a private I
 ## Customizing for Your Application
 
 As you deploy your own application, you may want to remove the last configuration (Sample RAG app configuration), which is specific to the sample app provided out of the box. You can use the code of this sample automation as a guide to implement your own, depending on your application needs. The code is available at [https://github.com/terraform-ibm-modules/terraform-ibm-rag-sample-da](https://github.com/terraform-ibm-modules/terraform-ibm-rag-sample-da).
+
+## 7. Undeploy the Architecture
+
+To undeploy the architecture, follow these steps: 
+1. You can directly undeploy your deployment by selecting the **Undeploy** option in the menu for the corresponding configuration on the right-hand side.
+
+![stack undeploy](./images/min/15-stack-undeploy.png)
+
+2. After clicking the undeploy button it asks to enter the name of the configuration.
+
+![stack del](./images/min/16-stack-del.png)
+
+3. Once you enter the name of the configuration, you will be able to confirm by pressing on the undeploy button.
+
+![stack del confirm](./images/min/17-stack-confirm.png)
+
+4. Following which the undeployment will start.
+
+![stack undeploying](./images/min/18-stack-undeploying.png)
+
+
+5. Post undeployment it will show the configuration in the **Ready to Deploy** state which confirms that the undeployment was successful without any error.
+
+![stack state](./images/min/19-stack-state.png)
+
+6. Similarly undeploy other configurations and make sure to follow the correct order of undeployment i.e from the bottom to top since there are direct dependencies between some configurations which leeds to failure in undeployment if order is not followed.
+
+7. Before un-deploying all the configurations, you need to delete the **code engine** and **container namespace** from the resource controller since these are left behind in the resource group.

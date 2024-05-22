@@ -147,7 +147,9 @@ def parse_params() -> (str, str, list[str], str, str, str, bool, bool, bool, boo
             project_name = config.get('project_name', '')
         if not stack_name:
             stack_name = config.get('stack_name', '')
-        if not config_order:
+
+        # if config_order is not provided, use the config_order from the config file, only if not in parralel
+        if (not config_order or args.undeploy) and not args.parallel:
             config_order = config.get('config_order', [])
         stack_def_path = config.get('stack_def_path', stack_def_path)
         if not stack_inputs:
@@ -170,7 +172,7 @@ def parse_params() -> (str, str, list[str], str, str, str, bool, bool, bool, boo
         exit(1)
 
     # error if project name, stack name or config name pattern is not provided
-    if not project_name or not stack_name or not config_order:
+    if not project_name or not stack_name:
         logging.error('Project name, stack name and config order must be provided')
         # print argument help
         parser.print_help()
@@ -330,6 +332,33 @@ def get_stack_id(project_id: str, stack_name: str) -> str:
             logging.debug(f'Stack ID for {stack_name} found: {config["id"]}')
             return config['id']
     raise StackNotFoundError(f'Stack {stack_name} not found')
+
+def get_config_ids_for_stack(project_id: str, stack_name: str) -> list[dict]:
+    """
+    Get config IDs for a stack.
+
+    Args:
+        project_id (str): Project ID.
+        stack_name (str): Stack name.
+
+    Returns:
+        list[dict]: List of config IDs for the stack.
+    """
+    stack_id = get_stack_id(project_id, stack_name)
+    command = f'ibmcloud project config --project-id {project_id}  --id {stack_id} --output json'
+    output, err = run_command(command)
+    if err:
+        raise Exception(f'Error: {err}')
+    logging.debug(f'Project configs: {output}')
+    data = json.loads(output)
+
+    members = data.get('definition', {}).get('members', [])
+    # get list of config_id for each member
+    # config_ids  =  [{'config1': {'locator_id': '12345.1234', 'catalog_id':'12345', 'config_id': '1234'}}]
+    config_ids = []
+    for member in members:
+        config_ids.append({member['name']: {"config_id": member['config_id']}})
+    return config_ids
 
 
 def get_config_ids(project_id: str, stack_name: str, config_order: list[str]) -> list[dict]:
@@ -827,7 +856,8 @@ def main() -> None:
     project_id = get_project_id(project_name)
     # TODO: support multiple stacks
     stack_id = get_stack_id(project_id, stack_name)
-    config_ids = get_config_ids(project_id, stack_name, config_order)
+    # config_ids = get_config_ids(project_id, stack_name, config_order)
+    config_ids = get_config_ids_for_stack(project_id, stack_name)
     if undeploy:
         # undeploy all configs in reverse order
         for config in reversed(config_ids):
@@ -841,10 +871,11 @@ def main() -> None:
             logging.info(f'Updating stack definition for stack {stack_name}')
             update_stack_definition(project_id, stack_id, stack_def_path)
         if not skip_stack_inputs and stack_inputs:
+            #  TODO: check if this is needed
+            # logging.info(f'Setting authorization for stack {stack_name}')
+            # set_authorization(project_id, stack_id, api_key_env)
             logging.info(f'Setting stack inputs for stack {stack_name}')
             set_stack_inputs(project_id, stack_id, stack_inputs, api_key_env)
-            logging.info(f'Setting authorization for stack {stack_name}')
-            set_authorization(project_id, stack_id, api_key_env)
 
         if parallel:
             # All configs with state_code awaiting_validation can be validated

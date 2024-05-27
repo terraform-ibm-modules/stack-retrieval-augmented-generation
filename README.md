@@ -71,6 +71,8 @@ You should be directed to a screen looking like:
 
 ![validate](./images/min/5-validate.png)
 
+Note: in some rare occurences, the first member of the stack may not be marked as "Ready to validate". Refreshing the page in your browser window should solve this problem.
+
 Two approaches to deploy the architecture:
 1. Through the UI
 2. Automated - `./deploy-many.sh` is provided.

@@ -171,7 +171,7 @@
           "value": "ref:../../inputs/region"
         },
         {
-          "name": "kms_instance_crn",
+          "name": "existing_kms_instance_crn",
           "value": "ref:../2a - Security Service - Key Management/outputs/kms_instance_crn"
         },
         {
@@ -209,7 +209,7 @@
           "value": "ref:../1 - Account Infrastructure Base/outputs/audit_resource_group_name"
         },
         {
-          "name": "kms_instance_crn",
+          "name": "existing_kms_instance_crn",
           "value": "ref:../2a - Security Service - Key Management/outputs/kms_instance_crn"
         },
         {
@@ -235,7 +235,7 @@
           "value": "ref:../../inputs/region"
         },
         {
-          "name": "kms_instance_crn",
+          "name": "existing_kms_instance_crn",
           "value": "ref:../2a - Security Service - Key Management/outputs/kms_instance_crn"
         },
         {

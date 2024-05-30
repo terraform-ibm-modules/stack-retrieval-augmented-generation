@@ -65,7 +65,7 @@
   "members": [
     {
       "name": "1 - Account Infrastructure Base",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.d5c46079-aefc-410d-ae18-1a82128b3db4-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.d4728681-fb64-477c-babc-ff8f8be0ee30-global",
       "inputs": [
         {
           "name": "prefix",
@@ -115,7 +115,7 @@
     },
     {
       "name": "2a - Security Service - Key Management",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.30d23518-293d-428c-9353-e3236bad41ff-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.8493fc70-8755-47c2-a696-ddabe2031673-global",
       "inputs": [
         {
           "name": "resource_group_name",
@@ -179,7 +179,7 @@
     },
     {
       "name": "2c - Security Service - Security Compliance Center",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.9e036202-5495-4ea3-926b-3751450bbf54-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.09aeab5e-2f02-4a86-a281-844fa19d969d-global",
       "inputs": [
         {
           "name": "ibmcloud_api_key",
@@ -213,7 +213,7 @@
     },
     {
       "name": "3 - Observability - Logging Monitoring Activity Tracker",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.9f478815-8a89-45f1-9889-7a82fa002b5a-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.dbb2626f-f6d7-498c-9a89-3a0b69997b8a-global",
       "inputs": [
         {
           "name": "ibmcloud_api_key",
@@ -251,7 +251,7 @@
     },
     {
       "name": "4 - WatsonX SaaS services",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.a8504fac-eb37-4aa0-a284-f26e876b5750-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.93f61c54-4979-4445-a21b-4e518d3ca72f-global",
       "inputs": [
         {
           "name": "ibmcloud_api_key",
@@ -407,7 +407,7 @@
     },
     {
       "name": "6 - Sample RAG app configuration",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.93236e64-edbd-49d6-912a-68f913b84989-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.b35d1fca-7a41-4624-8982-86c070ac61cf-global",
       "inputs": [
         {
           "name": "toolchain_region",

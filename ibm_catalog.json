@@ -55,6 +55,257 @@
 			],
 			"support_details": "This product is in the community registry, as such support is handled through the originated repo. If you experience issues please open an issue in that repository [https://github.com/terraform-ibm-modules/stack-retrieval-augmented-generation/issues](https://github.com/terraform-ibm-modules/stack-retrieval-augmented-generation/issues). Please note this product is not supported via the IBM Cloud Support Center.",
 			"flavors": [
+				{
+					"label": "Deploy on Code Engine",
+					"name": "Code-Engine-d7b9",
+					"compliance": {
+						"authority": "scc-v3",
+						"profiles": [
+							{
+								"profile_name": "AI ICT Guardrails",
+								"profile_version": "1.0.0"
+							}
+						]
+					},
+					"iam_permissions": [
+						{
+							"service_name": "iam-groups",
+							"role_crns": [
+								"crn:v1:bluemix:public:iam::::role:Administrator"
+							]
+						},
+						{
+							"role_crns": [
+								"crn:v1:bluemix:public:iam::::serviceRole:Manager",
+								"crn:v1:bluemix:public:iam::::role:Editor"
+							],
+							"service_name": "cloud-object-storage"
+						},
+						{
+							"role_crns": [
+								"crn:v1:bluemix:public:iam::::role:Administrator"
+							],
+							"service_name": "iam-identity"
+						},
+						{
+							"role_crns": [
+								"crn:v1:bluemix:public:iam::::serviceRole:Writer",
+								"crn:v1:bluemix:public:iam::::role:Administrator"
+							],
+							"service_name": "atracker"
+						},
+						{
+							"role_crns": [
+								"crn:v1:bluemix:public:iam::::serviceRole:Manager",
+								"crn:v1:bluemix:public:iam::::role:Editor"
+							],
+							"service_name": "kms"
+						},
+						{
+							"service_name": "compliance",
+							"role_crns": [
+								"crn:v1:bluemix:public:iam::::serviceRole:Manager",
+								"crn:v1:bluemix:public:iam::::role:Editor"
+							]
+						},
+						{
+							"role_crns": [
+								"crn:v1:bluemix:public:iam::::role:Editor"
+							],
+							"service_name": "pm-20"
+						},
+						{
+							"role_crns": [
+								"crn:v1:bluemix:public:iam::::role:Editor"
+							],
+							"service_name": "data-science-experience"
+						},
+						{
+							"role_crns": [
+								"crn:v1:bluemix:public:iam::::role:Editor"
+							],
+							"service_name": "aiopenscale"
+						},
+						{
+							"role_crns": [
+								"crn:v1:bluemix:public:iam::::role:Editor"
+							],
+							"service_name": "conversation"
+						},
+						{
+							"role_crns": [
+								"crn:v1:bluemix:public:iam::::role:Editor"
+							],
+							"service_name": "discovery"
+						}
+					],
+					"architecture": {
+						"features": [
+							{
+								"title": "Retrieval Augmented Generation sample pattern",
+								"description": "Deploy a banking retrieval augmented generation (RAG) sample application to IBM Cloud Code Engine using Continous Delivery."
+							},
+							{
+								"title": "Ensure Observability",
+								"description": "The architecture provides observability by deploying services such as IBM Log Analysis, IBM Monitoring, IBM Activity Tracker, and log retention through Cloud Object Storage buckets."
+							},
+							{
+								"title": "Implement Security",
+								"description": "The architecture ensures security by deploying IBM Key Protect and IBM Secrets Manager."
+							},
+							{
+								"title": "Achieve Regulatory Compliance",
+								"description": "The architecture ensures regulatory compliance by implementing CI/CD/CC pipelines, along with IBM Security Compliance Center (SCC) for secure application lifecycle management."
+							},
+							{
+								"title": "Establish Trust",
+								"description": "The architecture ensures trust by configuring the IBM Cloud account to align with compliance settings as defined in the Financial Services framework."
+							}
+						],
+						"diagrams": [
+							{
+								"diagram": {
+									"url": "https://raw.githubusercontent.com/terraform-ibm-modules/stack-retrieval-augmented-generation/main/reference-architecture/RAG Pattern v2-part-2.svg",
+									"caption": "Reference architecture",
+									"type": "image/svg+xml",
+									"thumbnail_url": "https://raw.githubusercontent.com/terraform-ibm-modules/stack-retrieval-augmented-generation/main/reference-architecture/RAG Pattern v2-part-2.svg"
+								},
+								"description": "Reference architecture"
+							},
+							{
+								"diagram": {
+									"url": "https://raw.githubusercontent.com/terraform-ibm-modules/stack-retrieval-augmented-generation/main/reference-architecture/rag-stack.svg",
+									"caption": "Solution components",
+									"type": "image/svg+xml",
+									"thumbnail_url": "https://raw.githubusercontent.com/terraform-ibm-modules/stack-retrieval-augmented-generation/main/reference-architecture/rag-stack.svg"
+								},
+								"description": "Solution components"
+							}
+						]
+					},
+					"configuration": [
+						{
+							"key": "prefix",
+							"type": "string",
+							"description": "A prefix added to the name of all resources created by this solution. Used to avoid name clashes in the target account when existing this solution multiple times.",
+							"default_value": "rag",
+							"required": true
+						},
+						{
+							"key": "ibmcloud_api_key",
+							"type": "password",
+							"description": "The API Key used to provision all resources created in this solution.",
+							"required": true
+						},
+						{
+							"key": "signing_key",
+							"type": "password",
+							"description": "The key used to sign the application image built by the CI pipeline deployed in this solution; please refer to the documentation at https://github.com/terraform-ibm-modules/stack-retrieval-augmented-generation/blob/main/README.md for generating the key; if not set, all resources will deploy successfully, but the initial CI pipeline execution will fail at the signing step.",
+							"display_name": "Multiline secure value",
+							"default_value": "replace",
+							"required": false,
+							"custom_config": {
+								"type": "multiline_secure_value",
+								"grouping": "deployment",
+								"original_grouping": "deployment"
+							}
+						},
+						{
+							"key": "region",
+							"type": "string",
+							"default_value": "us-south",
+							"description": "The region in which all resources are deployed.",
+							"required": false,
+							"options": [
+								{
+									"displayname": "us-south",
+									"value": "us-south"
+								},
+								{
+									"displayname": "eu-de",
+									"value": "eu-de"
+								}
+							]
+						},
+						{
+							"key": "resource_group_name",
+							"type": "string",
+							"default_value": "rag-services",
+							"description": "The name of the resource group that is created by this solution. The actual name is prefixed with the value of the input 'prefix'.  All resources created by this solution are deployed in this resource group. ",
+							"required": false
+						},
+						{
+							"key": "watsonx_admin_api_key",
+							"type": "password",
+							"description": "The API key used to provision the watson project resources. If not set, the API key used to deploy the solution is used.",
+							"required": false
+						},
+						{
+							"key": "secret_manager_service_plan",
+							"type": "string",
+							"default_value": "trial",
+							"description": "The service/pricing plan to use when provisioning a new Secrets Manager instance. Only one trial instance is allowed per account.",
+							"required": false,
+							"options": [
+								{
+									"displayname": "Trial",
+									"value": "trial"
+								},
+								{
+									"displayname": "Standard",
+									"value": "standard"
+								}
+							]
+						},
+						{
+							"key": "existing_secrets_manager_crn",
+							"type": "string",
+							"default_value": "__NULL__",
+							"description": "The CRN of an existing secret manager instance to use in this solution. If not set, a new secret manager instance is provisioned.",
+							"required": false
+						},
+						{
+							"key": "enable_platform_logs_metrics",
+							"type": "boolean",
+							"default_value": false,
+							"description": "Whether to provision logging and monitoring instances are configured to receive all platform logs and metrics in the target region. There can only be one instance per region provisioned for platform logs/metrics.",
+							"required": false
+						},
+						{
+							"key": "sample_app_git_url",
+							"type": "string",
+							"default_value": "https://github.com/IBM/gen-ai-rag-watsonx-sample-application",
+							"description": "The URL to the public git repository containing the sample rag application code.",
+							"required": false
+						},
+						{
+							"key": "existing_kms_instance_crn",
+							"type": "string",
+							"default_value": "__NULL__",
+							"description": "The CRN of an existing KMS instance to use in this solution. If not set, a new KP instance is provisioned.",
+							"required": false
+						}
+					],
+					"outputs": [
+						{
+							"key": "watsonx_project_url",
+							"description": "The URL to the WatsonX project for the sample RAG application."
+						},
+						{
+							"key": "watsonx_project_id",
+							"description": "The ID for the WatsonX project for the sample RAG application."
+						},
+						{
+							"key": "watson_discovery_api_url",
+							"description": "The URL to the Watson Discovery API endpoint."
+						},
+						{
+							"key": "watson_discovery_project_id",
+							"description": "The ID for the Watson Discovery project for the sample RAG application."
+						}
+					],
+					"install_type": "fullstack"
+				}
 			]
 		}
 	]

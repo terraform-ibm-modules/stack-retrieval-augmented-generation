@@ -1,8 +1,8 @@
 {
 	"products": [
 		{
-			"label": "Retrieval Augmented Generation Pattern",
-			"name": "Retrieval_Augmented_Generation_Pattern",
+			"label": "Rajat GenAI Stack Test",
+			"name": "genai-stack-test",
 			"product_kind": "solution",
 			"tags": [
 				"watson",

@@ -261,7 +261,7 @@
 							"key": "existing_secrets_manager_crn",
 							"type": "string",
 							"default_value": "__NULL__",
-							"description": "The CRN of an existing secret manager instance to use in this solution. If not set, a new secret manager instance is provisioned. ",
+							"description": "The CRN of an existing secret manager instance to use in this solution. If not set, a new secret manager instance is provisioned.",
 							"required": false
 						},
 						{
@@ -276,6 +276,13 @@
 							"type": "string",
 							"default_value": "https://github.com/IBM/gen-ai-rag-watsonx-sample-application",
 							"description": "The URL to the public git repository containing the sample rag application code.",
+							"required": false
+						},
+						{
+							"key": "existing_kms_instance_crn",
+							"type": "string",
+							"default_value": "__NULL__",
+							"description": "The CRN of an existing KMS instance to use in this solution. If not set, a new KP instance is provisioned.",
 							"required": false
 						}
 					],

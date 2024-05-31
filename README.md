@@ -1,85 +1,273 @@
-# Retrieval Augmented Generation (RAG) stack
+# Retrieval Augmented Generation Pattern for Watsonx on IBM Cloud
 
-To run the full stack, follow these steps. These steps will be updated as development progresses on the stack and underlying DAs.
+The following [deployable architecture](https://cloud.ibm.com/docs/secure-enterprise?topic=secure-enterprise-understand-module-da#what-is-da) automates the deployment of a sample GenAI Pattern on IBM Cloud, including all underlying IBM Cloud infrastructure. This architecture implements the best practices for Watsonx GenAI Pattern deployment on IBM Cloud, as described in the [reference architecture](https://cloud.ibm.com/docs/pattern-genai-rag?topic=pattern-genai-rag-genai-pattern).
 
-## 1. Deploy the stack in a new project from catalog
+This deployable architecture provides a comprehensive foundation for trust, observability, security, and regulatory compliance by configuring the IBM Cloud account to align with compliance settings, deploying key and secret management services, and deploying the infrastructure to support CI/CD/CC pipelines for secure application lifecycle management. These pipelines facilitate the deployment of the application, vulnerability checks, and auditability, ensuring a secure and trustworthy deployment of Generative AI applications on IBM Cloud.
 
-Catalog url: https://cloud.ibm.com/catalog/7df1e4ca-d54c-4fd0-82ce-3d13247308cd/architecture/Retrieval_Augmented_Generation_Pattern-5fdd0045-30fc-4013-a8bc-6db9d5447a52?bss_account=9f9af00a96104f49b6509aa715f9d6a5
+# Objective and Benefits
 
-Click the "Add to project" button, and select create in new project.
+This deployable architecture is designed to showcase a fully automated deployment of a retrieval augmented generation application through IBM Cloud Project, providing a flexible and customizable foundation for your own Watson-based application deployments on IBM Cloud. This architecture deploys the following [sample application](https://github.com/IBM/gen-ai-rag-watsonx-sample-application) by default.
 
-## 2. Prereqs in target account
+By leveraging this architecture, you can accelerate your deployment and tailor it to meet your unique business needs and enterprise goals.
 
-Before deploying the stack, ensure you have:
-- Created an API key in the target account with sufficient permissions. Note the API key, as it will be used later.
-- For now, grant it admin privileges. The exact permissions required will be refined in future versions.
-- Install the IBM Cloud CLI's Project addon using `ibmcloud plugin install project` command. More info here: https://cloud.ibm.com/docs/cli?topic=cli-projects-cli
+By using this architecture, you can:
 
-
-## 3. Set the input configuration for the stack
-
-- Clone this repository locally.
-- Create a file with name ".def.json" with the following content.
-
-**Important**:
-- Ensure region is either us-south or eu-de as watsonx can only be deployed in those 2 locations for now.
-- Ensure that the prefix is globally unique. It is used for the container registry namespace (which needs to be globally unique) in this alpha version.
-- The signing key is the base64 key obtained from the `gpg --export-secret-key <Email Address> | base64` command. See https://cloud.ibm.com/docs/devsecops?topic=devsecops-devsecops-image-signing#cd-devsecops-gpg-export for details.
-- If specifying `existing_secrets_manager_crn`, the ibmcloud_api_key that is passed as an input must have the documented read and write access to the instance
-- If specifying `existing_secrets_manager_crn`, ensure that the default security group does not contain secrets named `signing-key` and `ibmcloud-api-key` . The RAG DA currently always attempt to create secret with those names (temporary issue - to be fixed).
-  
-```json
-{
-    "inputs": {
-        "prefix": "<prefix for resources name - ensure unique>",
-        "ibmcloud_api_key": "<API Key of the target account with sufficient permissions>",
-        "resource_group_name": "<target resource group - name of a new resource group that the stack will creates>",
-        "region": "<region where all resources are deployed>",
-        "sample_app_git_url": "https://github.com/IBM/gen-ai-rag-watsonx-sample-application",
-        "watsonx_admin_api_key": "<optional - admin key to use for watson if different from ibmcloud_api_key>",
-        "signing_key": "signing key used to sign build artifacts",
-        "existing_secrets_manager_crn": "<optional> - reuse an existing secret manager instance",
-        "enable_platform_logs_metrics": "<optional> - set to true to enable observability instance to capture regional logs"
-    }
-}
-```
-
-Example:
-```json
-{
-    "inputs": {
-        "prefix": "0418",
-        "ibmcloud_api_key": "<your api key>",
-        "resource_group_name": "stack-service-rg",
-        "region": "eu-de",
-        "sample_app_git_url": "https://github.com/IBM/gen-ai-rag-watsonx-sample-application",
-        "watsonx_admin_api_key": "<optional - admin key to use for watson if different from ibmcloud_api_key>",
-        "signing_key": "signing key used to sign build artifacts",
-        "enable_platform_logs_metrics": "false",
-        "existing_secrets_manager_crn": "crn:v1:bluemix:public:secrets-manager:us-south:a/190c293e9fda4c6684b5acf4b17871b8:14580411-4fa2-42d3-af3f-ab7fc6371b6d::"
-    }
-}
-```
+* Establish Trust: The architecture ensures trust by configuring the IBM Cloud account to align with compliance settings as defined in the [Financial Services](https://cloud.ibm.com/docs/framework-financial-services?topic=framework-financial-services-about) framework.
+* Ensure Observability: The architecture provides observability by deploying services such as IBM Log Analysis, IBM Monitoring, IBM Activity Tracker, and log retention through Cloud Object Storage buckets.
+* Implement Security: The architecture ensures security by deploying IBM Key Protect and IBM Secrets Manager.
+* Achieve Regulatory Compliance: The architecture ensures regulatory compliance by implementing CI/CD/CC pipelines, along with IBM Security Compliance Center (SCC) for secure application lifecycle management.
 
 
-## 4. Run ./deploy-many.sh
+# Deployment Details
 
-- Ensure you are login into the account containing the Cloud project with the stack using ibmcloud login --sso
-- Execute ./deploy-many.sh with project name, stack name and optional configuration name pattern. The selected non-stack configruations will be processed by their name in alphabetical order. Using configuration name pattern (regex can be used - make sure to enclose it in quotes) you can chose which configurations are deployed
+To deploy this architecture, follow these steps.
 
-Example 1 - update stack inputs for stack configuration `RAG` and process all non-stack configurations in the project:
+## 1. Prerequisites
+
+Before deploying the deployable architecture, ensure you have:
+
+* Created an API key in the target account with sufficient permissions. The target account is the account that will be hosting the resources deployed by this deployable architecture. See [instructions](https://cloud.ibm.com/docs/account?topic=account-userapikey&interface=ui) Note the API key, as it will be used later. On evaluation environments, you may simply grant `Administrator` role on `IAM Identity Service`, `All Identity and Access enabled services` and `All Account Management` services. If you need to narrow down further access, for a production environment for instance, the minimum level of permissions is indicated in the [Permission tab](https://cloud.ibm.com/catalog/7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3/architecture/Retrieval_Augmented_Generation_Pattern-5fdd0045-30fc-4013-a8bc-6db9d5447a52-global#permissions) of the deployable architecture.
+* (Recommended to ensure successful sample app deployment) Created or have access to a signing key, which is the base64 key obtained from `gpg --gen-key` without passphrase (if not generated before or expired) and then exported via `gpg --export-secret-key <Email Address> | base64` command. See the [devsecops image signing page](https://cloud.ibm.com/docs/devsecops?topic=devsecops-devsecops-image-signing#cd-devsecops-gpg-export) for details. Keep note of the key for later. The signing key is not required to deploy all of the Cloud resources created by this deployable architecture, but is necessary to get the automation to build and deploy the sample application.
+* (Optional) Installed the IBM Cloud CLI's Project add-on using the `ibmcloud plugin install project` command. More information is available [here](https://cloud.ibm.com/docs/cli?topic=cli-projects-cli).
+
+Ensure that you are familiar with the "Important Deployment Considerations" located at the bottom of this document.
+
+## 2. Deploy the Stack in a New Project from Catalog
+
+* Locate the [tile](https://cloud.ibm.com/catalog/7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3/architecture/Retrieval_Augmented_Generation_Pattern-5fdd0045-30fc-4013-a8bc-6db9d5447a52-global) for the Deployable Architecture in the IBM Cloud Catalog.
+* Click the "Add to project" button.
+
+    ![image](./images/min/1-catalog.png)
+
+* Select **Create new** and enter the following details:
+   - Name and Description (e.g., "Retrieval Augmented Generation Pattern")
+   - Region and Resource Group for the project. e.g. for evaluation purposes, you may select the region the closest to you, and the Default resource group. For more insights on the recommended production topology, refer to the Enterprise account architecture Central administration account [white paper](https://cloud.ibm.com/docs/enterprise-account-architecture?topic=enterprise-account-architecture-admin-hub-account).
+   - Configuration Name (name of the automation in the project, e.g., "RAG", "dev" or "prod", ideally matching the deployment target, but this can be any name)
+
+        ![project](./images/min/2-project.png)
+
+* Click the **Add** button (or **Create** if this is the first project in the account) at the bottom right of the modal popup to complete.
+
+## 3. Set the Input Configuration for the Stack
+
+After completing `Step 2 - Deploy the Stack in a New Project from Catalog`, you are directed to a page allowing you to enter the configuration for you deployment:
+* Under Security -> Authentication, enter the API Key from the prereqs in the `api_key` field.
+  ![inputs](./images/min/3-inputs.png)
+* Under Required, input a prefix. This prefix will be appended to the name of most resources created by automation, ensuring uniqueness and avoiding clashes when provisioning names in the same account.
+* Under Optional, input the signing_key field. While not necessary for deploying Cloud resources, it is recommended and required to enable the building and deployment of the sample app.
+
+You may explore the other available inputs, such as the region and resource group name (under optional tab), leave them as is, or modify them as needed.
+
+Once ready, click the "Save" button at the top of the screen.
+
+## 4. Deploy the Architecture
+
+Navigate to the project deployment view by clicking the project name in the breadcrumb menu.
+
+![menu](./images/min/4-bread.png)
+
+
+You should be directed to a screen looking like:
+
+![validate](./images/min/5-validate.png)
+
+Note: in some rare occurences, the first member of the stack may not be marked as "Ready to validate". Refreshing the page in your browser window should solve this problem.
+
+Two approaches to deploy the architecture:
+1. Through the UI
+2. Automated - `./deploy-many.sh` is provided.
+
+### Approach 1: Deployment through the UI
+
+1. Click on validate
+
+    ![validate button](./images/min/5b-validate.png)
+
+2. Wait for validation
+
+    ![validation](./images/min/6-validation.png)
+
+3. Approve and click the deploy button
+
+    ![deploy](./images/min/7-deploy.png)
+
+4. Wait for deployment
+
+5. Repeat step 1 for the next configuration in the architecture. Note that as you progress in deploying the initial base configuration, you will be given the option to validate and deploy multiple configuration in parallel.
+
+### Approach 2: Run ./deploy-many.sh
+
+* Clone the repository at https://github.com/terraform-ibm-modules/stack-retrieval-augmented-generation/tree/main
+* Ensure you are logged in to the account containing the Cloud project with the stack using `ibmcloud login`.
+* Execute `./deploy-many.sh` with the project name, stack name, and optional configuration name pattern.
+
+Example - Process all configurations in the project:
 ```bash
-./deploy-many.sh my-test-project RAG
+./deploy-many.sh my-test-project dev
 ```
 
-Example 2 - update stack inputs and process some configurations in the project:
-```bash
-./deploy-many.sh my-test-project RAG 'RAG-1|RAG-4|RAG-5'
+Tips: If deployment fail for one of the configuration, you may re-run the script as is. It will skip existing installed configurations and continue where it last failed.
+
+## 5. Post deployment steps
+
+At this point, the infrastructure has been successfully deployed in the target account, and the initial build of the sample application has started in the newly-provisioned DevOps service.
+
+### Monitoring the Build and Deployment
+
+To monitor the build and deployment of the application, follow these steps:
+1. **Access the DevOps Toolchains View**: Navigate to the [DevOps / Toolchains view](https://cloud.ibm.com/devops/toolchains) in the target account.
+2. **Select the Resource Group and Region**: Choose the resource group and region where the infrastructure was deployed. The resource group name is based on the prefix and resource_group_name inputs of the deployable architecture.
+3. **Select the Toolchain**: Select "RAG Sample App-CI-Toolchain"
+    ![toolchain](./images/min/8-toolchain.png)
+4. **Access the Delivery Pipeline**: In the toolchain view, select ci-pipeline under Delivery pipeline
+    ![toolchain](./images/min/9-pipeline.png)
+5. **View the CI Pipeline Status**: The current status of the CI pipeline execution can be found under the "rag-webhook-trigger" section.
+
+### Verifying the Application Deployment
+
+Once the initial run of the CI pipeline complete, you should be able to view the application running in the created [Code Engine project](https://cloud.ibm.com/codeengine/projects).
+
+
+### Enabling Watson Assistant
+
+After the application has been built and is running in Code Engine, there are additional steps specific to the sample app that need to be completed to fully enable Watson Assistant in the app. To complete the installation, follow the steps outlined in the [application README.md file](https://github.com/IBM/gen-ai-rag-watsonx-sample-application/blob/main/artifacts/artifacts-README.md).
+
+
+## 6. Important Deployment Considerations
+
+### API Key Requirements
+
+The deployable architecture can only be deployed with an API Key associated with a user. It is not compatible with API Keys associated with a serviceId. Additionally, it cannot be deployed using the Project trusted profile support.
+
+### Known UI Issue: "Unable to validate your configuration"
+
+After approving the configuration, you may encounter an error message stating "Unable to validate your configuration". This is a known UI issue that can be resolved by simply **refreshing your browser window**. This will allow you to continue with the deployment process.
+
+### Using the ./deploy-many.sh Script
+
+The provided `deploy-many.sh` script is designed to deploy the stack of configurations as provided out of the box, and when following the instructions in this page. However, if you:
+- Modify the stack definition in your project (beyond specifying inputs at the stack level)
+- Or, deploy the stack in an existing project
+
+Use the **Project UI** to deploy; do not use the script.
+
+### Notification of New Configuration Versions ("Needs Attention")
+
+You may see notifications in IBM Cloud Project indicating that one or more configurations in the stack have new versions available. You can safely ignore these messages at this point, as they will not prevent you from deploying the stack. No specific action is required from you.
+
+![new version](./images/min/10-new-version.png)
+
+Please note that these notifications are expected, as we are rapidly iterating on the development of the underlying components. As new stack versions become available, the versions of the underlying components will also be updated accordingly.
+
+### Limitations with the Trial Secret Manager Offering
+
+The automation is configured to deploy a Trial version of Secret Manager by default to minimize costs. However, the Trial version has some limitations. If you want to avoid these limitations, you can opt to deploy a standard (paid) instance of Secret Manager under the **Optional settings** of the stack.
+
+Here are the limitations of the Trial version:
+* **Account limitation**: Only one Trial instance of Secret Manager can be deployed at a time in a given account.
+* **Deployment error**: You will encounter an error in the Secret Manager deployment step if there is already a Trial instance deployed in the same account.
+* **Re-deployment failure**: If the automation provisions a Trial version of Secrets Manager, and is un-deployed and then re-deployed again with the Trial version in the same account, the "2b - Security Service - Secret Manager" deployment will fail. This is because you can only have one Trial version of Secrets Manager in an account, and even after deletion, the prior Trial version of Secrets Manager needs to be removed from the "reclamation" state as well.
+
+
+**What are reclamations?**
+In IBM Cloud, when you delete a resource, it doesn't immediately disappear. Instead, it enters a "reclamation" state, where it remains for a short period of time (usually 7 days) before being permanently deleted. During this time, you can still recover the resource if needed.
+
+To resolve the re-deployment failure, you will need to delete the Secret Manager service from the reclamation state by running the following commands:
+```
+ibmcloud resource reclamations #  lists all the resources in reclamation state, get the reclamation ID of the secret manager service
+ibmcloud resource reclamation-delete <reclamation-id>
 ```
 
-Example 3 - simulate updating stack inputs and validating some configurations in the project in dry-run mode (no changes or actual validation or deployments is done):
-```bash
-DRY_RUN=true ./deploy-many.sh my-test-project RAG 'RAG-1|RAG-4|RAG-5'
-```
 
-Tips: If deployment fail in one of the DA, you may re-run the script as is. It will skip existing installed configuration.
+# Customization options
+
+There are numerous customization possibilities available out of the box. This section explores some common scenarios, but is not exhaustive.
+
+## Editing Individual Configurations
+
+Each configuration in the deployed stack surfaces a large number of input parameters. You can directly edit each parameter to tailor your deployment by selecting the **Edit** option in the menu for the corresponding configuration on the right-hand side.
+
+![edit config](./images/min/11-edit-config.png)
+
+This approach enables you to:
+- Fine-tune account settings
+- Deploying additional Watson components, such as Watsonx Governance
+- Deploy to an existing resource group
+- Reuse existing key protect keys
+- Tuning the parameter of the provisioned code engine project
+- ...
+
+## Removing Configurations from the Stack
+
+You can remove any configuration from the stack, provided there is no direct dependency in later configurations, by selecting the **Remove from Stack** option in the right-hand side menu for the corresponding configuration.
+
+This applies to the following configurations:
+- Observability
+- Security and Control Center
+
+![edit config](./images/min/12-remove-config.png)
+
+## Managing Stack-Level Inputs and Outputs
+
+You can add or remove inputs and outputs surfaced at the stack level by following these steps:
+1. Select the stack configuration
+
+    ![stack def](./images/min/13-define-stack.png)
+1. You are presented with a screen allowing you to promote any of the configuration inputs or outputs at the stack level
+
+    ![stack def](./images/min/14-stack-def.png)
+
+
+## Sharing Modified Stacks through a Private IBM Cloud Catalog
+
+Once you have made modifications to your stack in Project, you can share it with others through a private IBM Cloud Catalog. To do so, follow these steps:
+1. Deploy the stack at least once: You need to deploy the stack first to allow importing the stack definition to a private catalog.
+2. Select the "Add to private catalog" option in the menu located on the stack configuration.
+
+This will allow you to share your modified stack with others through a private IBM Cloud Catalog.
+
+
+## Customizing for Your Application
+
+As you deploy your own application, you may want to remove the last configuration (Sample RAG app configuration), which is specific to the sample app provided out of the box. You can use the code of this sample automation as a guide to implement your own, depending on your application needs. The code is available at [https://github.com/terraform-ibm-modules/terraform-ibm-rag-sample-da](https://github.com/terraform-ibm-modules/terraform-ibm-rag-sample-da).
+
+# Undeploying/Deleting the Stack, and all associated Infrastructure Resources
+
+## Cleanup the configuration
+
+> This step is optional if you are planning to fully destroy all Watson resources. The artifacts created by the application will be deleted as part of undeploying the Watson resources.
+
+Follow the steps outlined in the [cleanup.md file](https://github.com/IBM/gen-ai-rag-watsonx-sample-application/blob/main/artifacts/artifacts-cleanup.md) file to remove the configuration specific to the sample app.
+
+## Undeploying Infrastructure
+
+To undeploy the infrastructure created by the automation, complete the following steps:
+
+### 1. Delete Resources Created by the CI toolchain
+
+Those resources are not destroyed automatically as part of undeploying the stack in Project:
+- **Code Engine Project**: Delete the code engine project created for the sample application.
+- **Container Registry Namespace**: Delete the container registry namespace created by the CI tookchain.
+
+
+### 2. Undeploy Configurations in the Project
+
+Undeploy each configuration in the project, one by one, via UI, starting from the "6 - Sample RAG app configuration" and working your way up in the stack up to, and inclusive of "2a - Security Service - Key Management". Wait for full undeployment of a configuration before starting to undeploy the next configuration up in the stack.
+
+### 3. Delete Reclamation Claims
+
+Before undeploying the "1 - Account Infrastructure Base", you will need to manually delete the reclamation claims for the resources deleted from the previous steps. Reclamation allows you to restore deleted resources for up to one week. However, any reclamation that is still active prevents from deleting the resource group managed by the "1 - Account Infrastructure Base":
+* Log in to the target IBM Cloud account with the CLI
+* Run `ibmcloud resource reclamations` to view the full list of reclamation. You may identify the exact reclamations to delete as they are planned to be deleted in one week after the date for which the resource was deleted.
+* For each reclamation, execute `ibmcloud resource reclamation-delete <reclamation-id>`. The reclamation-id is the id provided in the results from ibmcloud resource reclamations listing.
+* Run `ibmcloud resource reclamations` again to ensure the reclamations have been fully deleted
+
+More details are available [here](https://cloud.ibm.com/docs/account?topic=account-resource-reclamation&interface=cli).
+
+### 4. Undeploy "1 - Account Infrastructure Base"
+
+You may now undeploy "1 - Account Infrastructure Base" in the project.
+
+### 5. Delete Project
+
+Once all configurations are undeployed, you may delete the project.

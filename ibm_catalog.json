@@ -288,7 +288,7 @@
 						{
 							"key": "profile_attachments",
 							"type": "list(string)",
-							"default_value": [],
+							"default_value": ["IBM Cloud Framework for Financial Services"],
 							"description": "Optional list of SCC profile attachments to create that will be scoped to your specific IBM Cloud account with a `daily` attachment schedule and defaults to the latest version of the specified profile attachments.",
 							"required": false
 						}

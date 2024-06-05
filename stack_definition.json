@@ -197,7 +197,7 @@
     },
     {
       "name": "2c - Security Service - Security Compliance Center",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.2b229a0b-e048-4aa5-80b9-f58295a0bd1f-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.8d3300b4-b36b-4226-bf1c-b634cfc30b2c-global",
       "inputs": [
         {
           "name": "ibmcloud_api_key",

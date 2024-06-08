@@ -2,21 +2,21 @@ module github.com/terraform-ibm-modules/stack-retrieval-augmented-generation
 
 go 1.21
 
-toolchain go1.22.3
+toolchain go1.22.4
 
 require (
 	github.com/stretchr/testify v1.9.0
-	github.com/terraform-ibm-modules/ibmcloud-terratest-wrapper v1.34.1
+	github.com/terraform-ibm-modules/ibmcloud-terratest-wrapper v1.35.1
 )
 
 require (
 	github.com/IBM-Cloud/bluemix-go v0.0.0-20240423071914-9e96525baef4 // indirect
 	github.com/IBM-Cloud/power-go-client v1.6.0 // indirect
 	github.com/IBM/cloud-databases-go-sdk v0.7.0 // indirect
-	github.com/IBM/go-sdk-core/v5 v5.17.2 // indirect
-	github.com/IBM/platform-services-go-sdk v0.62.11 // indirect
+	github.com/IBM/go-sdk-core/v5 v5.17.3 // indirect
+	github.com/IBM/platform-services-go-sdk v0.63.1 // indirect
 	github.com/IBM/project-go-sdk v0.3.0 // indirect
-	github.com/IBM/vpc-go-sdk v0.50.0 // indirect
+	github.com/IBM/vpc-go-sdk v0.51.0 // indirect
 	github.com/Microsoft/go-winio v0.6.1 // indirect
 	github.com/asaskevich/govalidator v0.0.0-20230301143203-a9d515a09cc2 // indirect
 	github.com/cyphar/filepath-securejoin v0.2.4 // indirect
@@ -44,7 +44,7 @@ require (
 	github.com/golang/groupcache v0.0.0-20210331224755-41bb18bfe9da // indirect
 	github.com/google/go-cmp v0.6.0 // indirect
 	github.com/google/uuid v1.6.0 // indirect
-	github.com/gruntwork-io/terratest v0.46.14 // indirect
+	github.com/gruntwork-io/terratest v0.46.15 // indirect
 	github.com/hashicorp/go-cleanhttp v0.5.2 // indirect
 	github.com/hashicorp/go-retryablehttp v0.7.5 // indirect
 	github.com/jbenet/go-context v0.0.0-20150711004518-d14ea06fba99 // indirect
@@ -64,12 +64,13 @@ require (
 	go.opentelemetry.io/otel v1.16.0 // indirect
 	go.opentelemetry.io/otel/metric v1.16.0 // indirect
 	go.opentelemetry.io/otel/trace v1.16.0 // indirect
-	golang.org/x/crypto v0.23.0 // indirect
-	golang.org/x/mod v0.14.0 // indirect
-	golang.org/x/net v0.23.0 // indirect
-	golang.org/x/sys v0.20.0 // indirect
-	golang.org/x/text v0.15.0 // indirect
-	golang.org/x/tools v0.16.1 // indirect
+	golang.org/x/crypto v0.24.0 // indirect
+	golang.org/x/mod v0.17.0 // indirect
+	golang.org/x/net v0.25.0 // indirect
+	golang.org/x/sync v0.7.0 // indirect
+	golang.org/x/sys v0.21.0 // indirect
+	golang.org/x/text v0.16.0 // indirect
+	golang.org/x/tools v0.21.1-0.20240508182429-e35e4ccd0d2d // indirect
 	gopkg.in/warnings.v0 v0.1.2 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect

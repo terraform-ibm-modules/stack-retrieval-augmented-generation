@@ -1,1 +1,11 @@
 .def.json
+sample_deploy_config.json
+.DS_Store
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/

@@ -67,13 +67,6 @@
       "type": "boolean",
       "hidden": false,
       "default": false
-    },
-    {
-      "name": "profile_attachments",
-      "required": false,
-      "type": "list(string)",
-      "hidden": false,
-      "default": ["AI ICT Guardrails"]
     }
   ],
   "members": [
@@ -221,7 +214,7 @@
         },
         {
           "name": "profile_attachments",
-          "value": "ref:../../inputs/profile_attachments"
+          "value": "AI ICT Guardrails"
         },
         {
           "name": "use_existing_resource_group",

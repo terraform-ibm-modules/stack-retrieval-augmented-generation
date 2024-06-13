@@ -62,18 +62,18 @@
       "default": null
     },
     {
-      "name": "profile_attachments",
-      "required": false,
-      "type": "list(string)",
-      "hidden": false,
-      "default": ["IBM Cloud Framework for Financial Services"]
-    },
-    {
       "name": "enable_platform_logs_metrics",
       "required": false,
       "type": "boolean",
       "hidden": false,
       "default": false
+    },
+    {
+      "name": "profile_attachments",
+      "required": false,
+      "type": "list(string)",
+      "hidden": false,
+      "default": ["AI ICT Guardrails"]
     }
   ],
   "members": [

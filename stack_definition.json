@@ -214,7 +214,7 @@
         },
         {
           "name": "profile_attachments",
-          "value": "AI ICT Guardrails"
+          "value": ["AI ICT Guardrails"]
         },
         {
           "name": "use_existing_resource_group",

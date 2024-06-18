@@ -72,10 +72,21 @@ You should be directed to a screen looking like:
 ![validate](./images/min/5-validate.png)
 
 Two approaches to deploy the architecture:
-1. Through the UI
-2. Automated - `./deploy-many.sh` is provided.
+1. **Fully Automated End-to-End**. Recommended for demo or non-critical environments. This approach allows Project to validate, approve, and deploy all stack members automatically.
+2. **Member-by-Member**. Recommended for critical environments, such as production. This approach enables a detailed review of changes from each stack member before automation is executed, ensuring precise control over the deployment process.
 
-### Approach 1: Deployment through the UI
+
+### Approach 1: Fully Automated End-to-End
+
+To enable auto-deployment:
+1. Go to **Manage** > **Settings** > **Auto-deploy** and toggle **On**.
+   ![auto-deploy](./images/15-auto-deploy.png)
+2. Return to the **Configurations** tab and click **Validate** under stack configuration.
+    ![validate button](./images/16-validate.png)
+
+The project will then validate, approve, and deploy each stack member, taking approximately one hour to complete.
+
+### Approach 2: Member-by-Member
 
 1. Click on validate
 

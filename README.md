@@ -135,18 +135,6 @@ After the application has been built and is running in Code Engine, there are ad
 
 The deployable architecture can only be deployed with an API Key associated with a user. It is not compatible with API Keys associated with a serviceId. Additionally, it cannot be deployed using the Project trusted profile support.
 
-### Known UI Issue: "Unable to validate your configuration"
-
-After approving the configuration, you may encounter an error message stating "Unable to validate your configuration". This is a known UI issue that can be resolved by simply **refreshing your browser window**. This will allow you to continue with the deployment process.
-
-### Using the ./deploy-many.sh Script
-
-The provided `deploy-many.sh` script is designed to deploy the stack of configurations as provided out of the box, and when following the instructions in this page. However, if you:
-- Modify the stack definition in your project (beyond specifying inputs at the stack level)
-- Or, deploy the stack in an existing project
-
-Use the **Project UI** to deploy; do not use the script.
-
 ### Notification of New Configuration Versions ("Needs Attention")
 
 You may see notifications in IBM Cloud Project indicating that one or more configurations in the stack have new versions available. You can safely ignore these messages at this point, as they will not prevent you from deploying the stack. No specific action is required from you.

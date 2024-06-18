@@ -3,7 +3,6 @@
 		{
 			"label": "Retrieval Augmented Generation Pattern",
 			"name": "Retrieval_Augmented_Generation_Pattern",
-			"version": "0.1.0-dev",
 			"product_kind": "solution",
 			"tags": [
 				"watson",
@@ -12,12 +11,49 @@
 			"keywords": [
 				"rag",
 				"watson",
-				"ai"
+				"ai",
+				"compliance",
+				"fscloud",
+				"genai",
+				"sample",
+				"ibmcloud",
+				"financial services",
+				"watsonx",
+				"llm",
+				"retrieval augmented generation",
+				"secure",
+				"secret manager",
+				"key protect",
+				"scc"
 			],
-			"short_description": "An automated solution that deploys a sample application illustrating how to implement the RAG Pattern with watson.ai and IBM Cloud services.",
+			"short_description": "Deploys a sample Retrieval Augmented Generation application, including all supporting IBM Cloud and Watson services.",
+			"long_description": "This deployable architecture provides a comprehensive foundation for trust, observability, security, and regulatory compliance  by configuring and deploying various services, including:\n- Configuring IBM Cloud Account: with recommended values meeting the [IBM Cloud Framework for Financial Services](https://cloud.ibm.com/docs/framework-financial-services?topic=framework-financial-services-about)\n- Deploying Observability Services: for application and platform logging and monitoring\n- Deploying Keys and Secrets Management Services: for storage and management of encryption keys and secrets\n- Deploying CI/CD/CC Pipelines: for secure application lifecycle management\n- Deploying a Suite of Watson AI Services: to provide AI capabilities to the application \n\nThese configured and deployed services enable a secure and trustworthy deployment of Generative AI applications on IBM Cloud.\n\n# Objective\n\nThis deployable architecture is designed to showcase a fully automated deployment of a retrieval augmented generation application through IBM Cloud Project, providing a flexible and customizable foundation for your own Watson-based application deployments on IBM Cloud. This architecture deploys the following [banking sample application](https://github.com/IBM/gen-ai-rag-watsonx-sample-application) by default.\n\nBy leveraging this architecture, you can accelerate your deployment and tailor it to meet your unique business needs and enterprise goals.",
 			"offering_docs_url": "https://github.com/terraform-ibm-modules/stack-retrieval-augmented-generation/blob/main/README.md",
 			"offering_icon_url": "https://globalcatalog.cloud.ibm.com/api/v1/1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc/artifacts/solution.svg",
 			"provider_name": "IBM",
+			"features": [
+				{
+					"title": "Retrieval Augmented Generation sample pattern",
+					"description": "Deploy a banking retrieval augmented generation (RAG) sample application to IBM Cloud Code Engine using Continous Delivery."
+				},
+				{
+					"title": "Ensure Observability",
+					"description": "Provides observability by deploying services such as IBM Log Analysis, IBM Monitoring, IBM Activity Tracker, and log retention."
+				},
+				{
+					"title": "Implement Security",
+					"description": "The architecture ensures security by deploying IBM Key Protect and IBM Secrets Manager."
+				},
+				{
+					"title": "Achieve Regulatory Compliance",
+					"description": "Ensures regulatory compliance by implementing CI/CD/CC pipelines, along with IBM SCC for secure application lifecycle management."
+				},
+				{
+					"title": "Establish Trust",
+					"description": "Ensures trust by configuring the IBM Cloud account to align with compliance settings as defined in the Financial Services framework."
+				}
+			],
+			"support_details": "This product is in the community registry, as such support is handled through the originated repo. If you experience issues please open an issue in that repository [https://github.com/terraform-ibm-modules/stack-retrieval-augmented-generation/issues](https://github.com/terraform-ibm-modules/stack-retrieval-augmented-generation/issues). Please note this product is not supported via the IBM Cloud Support Center.",
 			"flavors": [
 				{
 					"label": "Deploy on Code Engine",
@@ -151,8 +187,8 @@
 						{
 							"key": "prefix",
 							"type": "string",
-							"default_value": "sample",
 							"description": "A prefix added to the name of all resources created by this solution. Used to avoid name clashes in the target account when existing this solution multiple times.",
+							"default_value": "rag",
 							"required": true
 						},
 						{
@@ -225,7 +261,7 @@
 							"key": "existing_secrets_manager_crn",
 							"type": "string",
 							"default_value": "__NULL__",
-							"description": "The CRN of an existing secret manager instance to use in this solution. If not set, a new secret manager instance is provisioned. ",
+							"description": "The CRN of an existing secret manager instance to use in this solution. If not set, a new secret manager instance is provisioned.",
 							"required": false
 						},
 						{
@@ -240,6 +276,13 @@
 							"type": "string",
 							"default_value": "https://github.com/IBM/gen-ai-rag-watsonx-sample-application",
 							"description": "The URL to the public git repository containing the sample rag application code.",
+							"required": false
+						},
+						{
+							"key": "existing_kms_instance_crn",
+							"type": "string",
+							"default_value": "__NULL__",
+							"description": "The CRN of an existing KMS instance to use in this solution. If not set, a new KP instance is provisioned.",
 							"required": false
 						}
 					],

@@ -848,15 +848,12 @@ def main() -> None:
 
         if parallel:
             # All configs with state_code awaiting_validation can be validated
-            deployed_configs = []
             error_occurred = False
-            while len(deployed_configs) < len(config_ids) and not error_occurred:
+            while config_ids and not error_occurred:
                 ready_to_deploy = []
                 # identify all configs that can be deployed
                 for config in config_ids:
                     # skip already deployed configs
-                    if config in deployed_configs:
-                        continue
                     config_name = get_config_name(project_id, list(config.values())[0]['config_id'])
 
                     try:
@@ -868,6 +865,7 @@ def main() -> None:
 
                         current_state = get_config_state(project_id, list(config.values())[0]['config_id'])
                         if current_state == State.DEPLOYED:
+                            config_ids.remove(config)
                             continue
 
                         logging.info(f"Checking for config {config_name} ID: {list(config.values())[0]['config_id']} "
@@ -877,6 +875,7 @@ def main() -> None:
                                 or (current_state in [State.DEPLOYING_FAILED,
                                                       State.VALIDATING_FAILED,
                                                       State.APPLY_FAILED,
+                                                      State.VALIDATED,
                                                       State.APPROVED])):
 
                             logging.info(f"Config {config_name} ID: {list(config.keys())[0]} "
@@ -911,8 +910,7 @@ def main() -> None:
                                 error_messages.append(str(future.exception()))
                                 error_occurred = True
                                 break
-                            else:
-                                deployed_configs.append(future.result())
+
         else:
             for config in config_ids:
                 try:

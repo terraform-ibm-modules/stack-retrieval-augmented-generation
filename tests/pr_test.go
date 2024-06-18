@@ -2,16 +2,15 @@ package tests
 
 import (
 	"github.com/stretchr/testify/assert"
+	"github.com/terraform-ibm-modules/ibmcloud-terratest-wrapper/common"
 	"github.com/terraform-ibm-modules/ibmcloud-terratest-wrapper/testprojects"
 	"testing"
 )
 
 func TestProjectsFullTest(t *testing.T) {
-	t.Skip("Skipping TestProjectsFullTest enabled after all issues are resolved")
 	options := testprojects.TestProjectOptionsDefault(&testprojects.TestProjectsOptions{
-		Testing:       t,
-		Prefix:        "rag-stack",
-		ResourceGroup: "",
+		Testing: t,
+		Prefix:  "rag-stack",
 		StackConfigurationOrder: []string{
 			"1 - Account Infrastructure Base",
 			"2a - Security Service - Key Management",
@@ -19,15 +18,21 @@ func TestProjectsFullTest(t *testing.T) {
 			"2c - Security Service - Security Compliance Center",
 			"3 - Observability - Logging Monitoring Activity Tracker",
 			"4 - WatsonX SaaS services",
-			"5 - RAG Sample App - Code Engine Toolchain Config",
+			"5 - Sample RAG app - Application Lifecycle Management",
 			"6 - Sample RAG app configuration",
 		},
 	})
 
+	privateKey, _, kerr := common.GenerateTempGPGKeyPairBase64()
+	if kerr != nil {
+		t.Fatal(kerr)
+	}
 	options.StackInputs = map[string]interface{}{
-		"resource_group_name": options.ResourceGroup,
-		"ibmcloud_api_key":    options.RequiredEnvironmentVars["TF_VAR_ibmcloud_api_key"],
-		"prefix":              options.Prefix,
+		"resource_group_name":         options.ResourceGroup,
+		"ibmcloud_api_key":            options.RequiredEnvironmentVars["TF_VAR_ibmcloud_api_key"],
+		"prefix":                      options.Prefix,
+		"signing_key":                 privateKey,
+		"secret_manager_service_plan": "trial",
 	}
 
 	err := options.RunProjectsTest()

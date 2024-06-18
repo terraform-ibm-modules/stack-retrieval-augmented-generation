@@ -238,22 +238,9 @@ Those resources are not destroyed automatically as part of undeploying the stack
 
 ### 2. Undeploy Configurations in the Project
 
-Undeploy each configuration in the project, one by one, via UI, starting from the "6 - Sample RAG app configuration" and working your way up in the stack up to, and inclusive of "2a - Security Service - Key Management". Wait for full undeployment of a configuration before starting to undeploy the next configuration up in the stack.
+Select "Undeploy" option in the menu associated with the stack in the project.
+![undeploy](./images/17-undeploy.png)
 
-### 3. Delete Reclamation Claims
-
-Before undeploying the "1 - Account Infrastructure Base", you will need to manually delete the reclamation claims for the resources deleted from the previous steps. Reclamation allows you to restore deleted resources for up to one week. However, any reclamation that is still active prevents from deleting the resource group managed by the "1 - Account Infrastructure Base":
-* Log in to the target IBM Cloud account with the CLI
-* Run `ibmcloud resource reclamations` to view the full list of reclamation. You may identify the exact reclamations to delete as they are planned to be deleted in one week after the date for which the resource was deleted.
-* For each reclamation, execute `ibmcloud resource reclamation-delete <reclamation-id>`. The reclamation-id is the id provided in the results from ibmcloud resource reclamations listing.
-* Run `ibmcloud resource reclamations` again to ensure the reclamations have been fully deleted
-
-More details are available [here](https://cloud.ibm.com/docs/account?topic=account-resource-reclamation&interface=cli).
-
-### 4. Undeploy "1 - Account Infrastructure Base"
-
-You may now undeploy "1 - Account Infrastructure Base" in the project.
-
-### 5. Delete Project
+### 3. Delete Project
 
 Once all configurations are undeployed, you may delete the project.

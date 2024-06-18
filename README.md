@@ -104,19 +104,6 @@ The project will then validate, approve, and deploy each stack member, taking ap
 
 5. Repeat step 1 for the next configuration in the architecture. Note that as you progress in deploying the initial base configuration, you will be given the option to validate and deploy multiple configuration in parallel.
 
-### Approach 2: Run ./deploy-many.sh
-
-* Clone the repository at https://github.com/terraform-ibm-modules/stack-retrieval-augmented-generation/tree/main
-* Ensure you are logged in to the account containing the Cloud project with the stack using `ibmcloud login`.
-* Execute `./deploy-many.sh` with the project name, stack name, and optional configuration name pattern.
-
-Example - Process all configurations in the project:
-```bash
-./deploy-many.sh my-test-project dev
-```
-
-Tips: If deployment fail for one of the configuration, you may re-run the script as is. It will skip existing installed configurations and continue where it last failed.
-
 ## 5. Post deployment steps
 
 At this point, the infrastructure has been successfully deployed in the target account, and the initial build of the sample application has started in the newly-provisioned DevOps service.

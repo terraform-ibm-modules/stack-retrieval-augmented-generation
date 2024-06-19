@@ -74,10 +74,21 @@ You should be directed to a screen looking like:
 Note: in some rare occurences, the first member of the stack may not be marked as "Ready to validate". Refreshing the page in your browser window should solve this problem.
 
 Two approaches to deploy the architecture:
-1. Through the UI
-2. Automated - `./deploy-many.sh` is provided.
+1. **Fully Automated End-to-End**. Recommended for demo or non-critical environments. This approach allows Project to validate, approve, and deploy all stack members automatically.
+2. **Member-by-Member**. Recommended for critical environments, such as production. This approach enables a detailed review of changes from each stack member before automation is executed, ensuring precise control over the deployment process.
 
-### Approach 1: Deployment through the UI
+
+### Approach 1: Fully Automated End-to-End
+
+To enable auto-deployment:
+1. Go to **Manage** > **Settings** > **Auto-deploy** and toggle **On**.
+   ![auto-deploy](./images/15-auto-deploy.png)
+2. Return to the **Configurations** tab and click **Validate** under stack configuration.
+    ![validate button](./images/16-validate.png)
+
+The project will then validate, approve, and deploy each stack member, taking approximately one hour to complete.
+
+### Approach 2: Member-by-Member
 
 1. Click on validate
 
@@ -94,19 +105,6 @@ Two approaches to deploy the architecture:
 4. Wait for deployment
 
 5. Repeat step 1 for the next configuration in the architecture. Note that as you progress in deploying the initial base configuration, you will be given the option to validate and deploy multiple configuration in parallel.
-
-### Approach 2: Run ./deploy-many.sh
-
-* Clone the repository at https://github.com/terraform-ibm-modules/stack-retrieval-augmented-generation/tree/main
-* Ensure you are logged in to the account containing the Cloud project with the stack using `ibmcloud login`.
-* Execute `./deploy-many.sh` with the project name, stack name, and optional configuration name pattern.
-
-Example - Process all configurations in the project:
-```bash
-./deploy-many.sh my-test-project dev
-```
-
-Tips: If deployment fail for one of the configuration, you may re-run the script as is. It will skip existing installed configurations and continue where it last failed.
 
 ## 5. Post deployment steps
 
@@ -138,18 +136,6 @@ After the application has been built and is running in Code Engine, there are ad
 ### API Key Requirements
 
 The deployable architecture can only be deployed with an API Key associated with a user. It is not compatible with API Keys associated with a serviceId. Additionally, it cannot be deployed using the Project trusted profile support.
-
-### Known UI Issue: "Unable to validate your configuration"
-
-After approving the configuration, you may encounter an error message stating "Unable to validate your configuration". This is a known UI issue that can be resolved by simply **refreshing your browser window**. This will allow you to continue with the deployment process.
-
-### Using the ./deploy-many.sh Script
-
-The provided `deploy-many.sh` script is designed to deploy the stack of configurations as provided out of the box, and when following the instructions in this page. However, if you:
-- Modify the stack definition in your project (beyond specifying inputs at the stack level)
-- Or, deploy the stack in an existing project
-
-Use the **Project UI** to deploy; do not use the script.
 
 ### Notification of New Configuration Versions ("Needs Attention")
 
@@ -252,22 +238,9 @@ Those resources are not destroyed automatically as part of undeploying the stack
 
 ### 2. Undeploy Configurations in the Project
 
-Undeploy each configuration in the project, one by one, via UI, starting from the "6 - Sample RAG app configuration" and working your way up in the stack up to, and inclusive of "2a - Security Service - Key Management". Wait for full undeployment of a configuration before starting to undeploy the next configuration up in the stack.
+Select "Undeploy" option in the menu associated with the stack in the project.
+![undeploy](./images/17-undeploy.png)
 
-### 3. Delete Reclamation Claims
-
-Before undeploying the "1 - Account Infrastructure Base", you will need to manually delete the reclamation claims for the resources deleted from the previous steps. Reclamation allows you to restore deleted resources for up to one week. However, any reclamation that is still active prevents from deleting the resource group managed by the "1 - Account Infrastructure Base":
-* Log in to the target IBM Cloud account with the CLI
-* Run `ibmcloud resource reclamations` to view the full list of reclamation. You may identify the exact reclamations to delete as they are planned to be deleted in one week after the date for which the resource was deleted.
-* For each reclamation, execute `ibmcloud resource reclamation-delete <reclamation-id>`. The reclamation-id is the id provided in the results from ibmcloud resource reclamations listing.
-* Run `ibmcloud resource reclamations` again to ensure the reclamations have been fully deleted
-
-More details are available [here](https://cloud.ibm.com/docs/account?topic=account-resource-reclamation&interface=cli).
-
-### 4. Undeploy "1 - Account Infrastructure Base"
-
-You may now undeploy "1 - Account Infrastructure Base" in the project.
-
-### 5. Delete Project
+### 3. Delete Project
 
 Once all configurations are undeployed, you may delete the project.

@@ -265,6 +265,13 @@
 							"required": false
 						},
 						{
+							"key": "iam_engine_enabled",
+							"type": "boolean",
+							"default_value": true,
+							"description": "Set this to true to to configure a Secrets Manager IAM credentials engine. If set to false, no IAM engine will be configured for your instance.",
+							"required": false
+						},
+						{
 							"key": "enable_platform_logs_metrics",
 							"type": "boolean",
 							"default_value": false,

@@ -19,7 +19,7 @@
       "required": false,
       "type": "boolean",
       "hidden": false,
-      "default": true
+      "default": false
     },
     {
       "name": "watsonx_admin_api_key",

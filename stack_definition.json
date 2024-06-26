@@ -15,13 +15,6 @@
       "default": "trial"
     },
     {
-      "name": "iam_engine_enabled",
-      "required": false,
-      "type": "boolean",
-      "hidden": false,
-      "default": false
-    },
-    {
       "name": "watsonx_admin_api_key",
       "required": false,
       "type": "password",
@@ -133,7 +126,7 @@
       "inputs": [
         {
           "name": "resource_group_name",
-          "value": "ref:../1 - Account Infrastructure Base/outputs/security_resource_group_name"
+          "value": "ref:../1%20-%20Account%20Infrastructure%20Base/outputs/security_resource_group_name"
         },
         {
           "name": "use_existing_resource_group",
@@ -167,15 +160,11 @@
         },
         {
           "name": "resource_group_name",
-          "value": "ref:../1 - Account Infrastructure Base/outputs/security_resource_group_name"
+          "value": "ref:../1%20-%20Account%20Infrastructure%20Base/outputs/security_resource_group_name"
         },
         {
           "name": "ibmcloud_api_key",
           "value": ""
-        },
-        {
-          "name": "iam_engine_enabled",
-          "value": "ref:../../inputs/iam_engine_enabled"
         },
         {
           "name": "region",
@@ -183,7 +172,7 @@
         },
         {
           "name": "existing_kms_instance_crn",
-          "value": "ref:../2a - Security Service - Key Management/outputs/kms_instance_crn"
+          "value": "ref:../2a%20-%20Security%20Service%20-%20Key%20Management/outputs/kms_instance_crn"
         },
         {
           "name": "use_existing_resource_group",
@@ -217,11 +206,11 @@
         },
         {
           "name": "resource_group_name",
-          "value": "ref:../1 - Account Infrastructure Base/outputs/audit_resource_group_name"
+          "value": "ref:../1%20-%20Account%20Infrastructure%20Base/outputs/audit_resource_group_name"
         },
         {
           "name": "existing_kms_instance_crn",
-          "value": "ref:../2a - Security Service - Key Management/outputs/kms_instance_crn"
+          "value": "ref:../2a%20-%20Security%20Service%20-%20Key%20Management/outputs/kms_instance_crn"
         },
         {
           "name": "use_existing_resource_group",
@@ -247,11 +236,11 @@
         },
         {
           "name": "existing_kms_instance_crn",
-          "value": "ref:../2a - Security Service - Key Management/outputs/kms_instance_crn"
+          "value": "ref:../2a%20-%20Security%20Service%20-%20Key%20Management/outputs/kms_instance_crn"
         },
         {
           "name": "resource_group_name",
-          "value": "ref:../1 - Account Infrastructure Base/outputs/observability_resource_group_name"
+          "value": "ref:../1%20-%20Account%20Infrastructure%20Base/outputs/observability_resource_group_name"
         },
         {
           "name": "prefix",
@@ -285,7 +274,7 @@
         },
         {
           "name": "resource_group_name",
-          "value": "ref:../1 - Account Infrastructure Base/outputs/workload_resource_group_name"
+          "value": "ref:../1%20-%20Account%20Infrastructure%20Base/outputs/workload_resource_group_name"
         },
         {
           "name": "location",
@@ -343,7 +332,7 @@
         },
         {
           "name": "toolchain_resource_group",
-          "value": "ref:../1 - Account Infrastructure Base/outputs/devops_resource_group_name"
+          "value": "ref:../1%20-%20Account%20Infrastructure%20Base/outputs/devops_resource_group_name"
         },
         {
           "name": "sm_secret_group",
@@ -351,15 +340,15 @@
         },
         {
           "name": "sm_resource_group",
-          "value": "ref:../2b - Security Service - Secret Manager/outputs/resource_group_name"
+          "value": "ref:../2b%20-%20Security%20Service%20-%20Secret Manager/outputs/resource_group_name"
         },
         {
           "name": "sm_name",
-          "value": "ref:../2b - Security Service - Secret Manager/outputs/secrets_manager_name"
+          "value": "ref:../2b%20-%20Security%20Service%20-%20Secret Manager/outputs/secrets_manager_name"
         },
         {
           "name": "sm_location",
-          "value": "ref:../2b - Security Service - Secret Manager/outputs/secrets_manager_region"
+          "value": "ref:../2b%20-%20Security%20Service%20-%20Secret%20Manager/outputs/secrets_manager_region"
         },
         {
           "name": "ci_code_engine_project",
@@ -445,7 +434,7 @@
         },
         {
           "name": "watson_discovery_instance_id",
-          "value": "ref:../4 - WatsonX SaaS services/outputs/watson_discovery_guid"
+          "value": "ref:../4%20-%20WatsonX%20SaaS%20services/outputs/watson_discovery_guid"
         },
         {
           "name": "watson_assistant_region",
@@ -453,31 +442,31 @@
         },
         {
           "name": "watson_assistant_instance_id",
-          "value": "ref:../4 - WatsonX SaaS services/outputs/watsonx_assistant_guid"
+          "value": "ref:../4%20-%20WatsonX%20SaaS%20services/outputs/watsonx_assistant_guid"
         },
         {
           "name": "cd_pipeline_id",
-          "value": "ref:../5 - Sample RAG app - Application Lifecycle Management/outputs/cd_pipeline_id"
+          "value": "ref:../5%20-%20Sample%20RAG%20app%20-%20Application%20Lifecycle%20Management/outputs/cd_pipeline_id"
         },
         {
           "name": "ci_pipeline_id",
-          "value": "ref:../5 - Sample RAG app - Application Lifecycle Management/outputs/ci_pipeline_id"
+          "value": "ref:../5%20-%20Sample%20RAG%20app%20-%20Application%20Lifecycle%20Management/outputs/ci_pipeline_id"
         },
         {
           "name": "watson_machine_learning_instance_guid",
-          "value": "ref:../4 - WatsonX SaaS services/outputs/watson_machine_learning_guid"
+          "value": "ref:../4%20-%20WatsonX%20SaaS%20services/outputs/watson_machine_learning_guid"
         },
         {
           "name": "watson_machine_learning_instance_resource_name",
-          "value": "ref:../4 - WatsonX SaaS services/outputs/watson_machine_learning_name"
+          "value": "ref:../4%20-%20WatsonX%20SaaS%20services/outputs/watson_machine_learning_name"
         },
         {
           "name": "watson_machine_learning_instance_crn",
-          "value": "ref:../4 - WatsonX SaaS services/outputs/watson_machine_learning_crn"
+          "value": "ref:../4%20-%20WatsonX%20SaaS%20services/outputs/watson_machine_learning_crn"
         },
         {
           "name": "toolchain_resource_group",
-          "value": "ref:../1 - Account Infrastructure Base/outputs/devops_resource_group_name"
+          "value": "ref:../1%20-%20Account%20Infrastructure%20Base/outputs/devops_resource_group_name"
         },
         {
           "name": "prefix",
@@ -485,7 +474,7 @@
         },
         {
           "name": "resource_group_name",
-          "value": "ref:../1 - Account Infrastructure Base/outputs/devops_resource_group_name"
+          "value": "ref:../1%20-%20Account%20Infrastructure%20Base/outputs/devops_resource_group_name"
         },
         {
           "name": "use_existing_resource_group",
@@ -501,11 +490,11 @@
         },
         {
           "name": "secrets_manager_guid",
-          "value": "ref:../2b - Security Service - Secret Manager/outputs/secrets_manager_guid"
+          "value": "ref:../2b%20-%20Security%20Service%20-%20Secret%20Manager/outputs/secrets_manager_guid"
         },
         {
           "name": "secrets_manager_region",
-          "value": "ref:../2b - Security Service - Secret Manager/outputs/secrets_manager_region"
+          "value": "ref:../2b%20-%20Security%20Service%20-%20Secret%20Manager/outputs/secrets_manager_region"
         }
       ]
     }
@@ -513,19 +502,19 @@
   "outputs": [
     {
       "name": "watsonx_project_url",
-      "value": "ref:./members/6 - Sample RAG app configuration/outputs/watsonx_project_url"
+      "value": "ref:./members/6%20-%20Sample%20RAG%20app%20configuration/outputs/watsonx_project_url"
     },
     {
       "name": "watsonx_project_id",
-      "value": "ref:./members/6 - Sample RAG app configuration/outputs/watsonx_project_id"
+      "value": "ref:./members/6%20-%20Sample%20RAG%20app%20configuration/outputs/watsonx_project_id"
     },
     {
       "name": "watson_discovery_api_url",
-      "value": "ref:./members/6 - Sample RAG app configuration/outputs/watson_discovery_api_url"
+      "value": "ref:./members/6%20-%20Sample%20RAG%20app%20configuration/outputs/watson_discovery_api_url"
     },
     {
       "name": "watson_discovery_project_id",
-      "value": "ref:./members/6 - Sample RAG app configuration/outputs/watson_discovery_project_id"
+      "value": "ref:./members/6%20-%20Sample%20RAG%20app%20configuration/outputs/watson_discovery_project_id"
     }
   ]
 }

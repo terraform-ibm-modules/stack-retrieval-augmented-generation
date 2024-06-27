@@ -55,6 +55,13 @@
       "default": null
     },
     {
+      "name": "iam_engine_enabled",
+      "required": false,
+      "type": "boolean",
+      "hidden": false,
+      "default": false
+    },
+    {
       "name": "existing_kms_instance_crn",
       "required": false,
       "type": "string",
@@ -181,6 +188,10 @@
         {
           "name": "existing_secrets_manager_crn",
           "value": "ref:../../inputs/existing_secrets_manager_crn"
+        },
+        {
+          "name": "iam_engine_enabled",
+          "value": "ref:../../inputs/iam_engine_enabled"
         },
         {
           "name": "service_plan",

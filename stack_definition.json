@@ -148,10 +148,6 @@
           "value": "ref:../../inputs/region"
         },
         {
-          "name": "region",
-          "value": "ref:../../inputs/region"
-        },
-        {
           "name": "existing_kms_instance_crn",
           "value": "ref:../../inputs/existing_kms_instance_crn"
         }
@@ -206,6 +202,10 @@
         {
           "name": "ibmcloud_api_key",
           "value": ""
+        },
+        {
+          "name": "prefix",
+          "value": "ref:../../inputs/prefix"
         },
         {
           "name": "cos_region",

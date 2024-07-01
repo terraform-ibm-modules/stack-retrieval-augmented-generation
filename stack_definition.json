@@ -190,7 +190,7 @@
     },
     {
       "name": "2c - Security Service - Security Compliance Center",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.9e036202-5495-4ea3-926b-3751450bbf54-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.8d3300b4-b36b-4226-bf1c-b634cfc30b2c-global",
       "inputs": [
         {
           "name": "ibmcloud_api_key",
@@ -211,6 +211,10 @@
         {
           "name": "existing_kms_instance_crn",
           "value": "ref:../2a - Security Service - Key Management/outputs/kms_instance_crn"
+        },
+        {
+          "name": "profile_attachments",
+          "value": ["AI ICT Guardrails"]
         },
         {
           "name": "use_existing_resource_group",

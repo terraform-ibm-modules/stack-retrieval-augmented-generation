@@ -72,7 +72,7 @@
   "members": [
     {
       "name": "1 - Account Infrastructure Base",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.5e2f1f48-776d-4dce-87f5-de2940fdc2e3-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.be107739-fdfc-4089-95e0-def4abac847d-global",
       "inputs": [
         {
           "name": "prefix",
@@ -152,7 +152,7 @@
     },
     {
       "name": "2b - Security Service - Secret Manager",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.62deff73-587f-4dc6-99cf-15854a2d9ba0-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.037f40f0-2575-40fe-a771-81ac437d5d60-global",
       "inputs": [
         {
           "name": "prefix",
@@ -190,7 +190,7 @@
     },
     {
       "name": "2c - Security Service - Security Compliance Center",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.f4dfbf7a-5bc6-4fc7-bfe8-e9bfb3dc145e-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.f91391b9-72c3-48c2-b40d-fb27cfc7d00c-global",
       "inputs": [
         {
           "name": "ibmcloud_api_key",
@@ -224,7 +224,7 @@
     },
     {
       "name": "3 - Observability - Logging Monitoring Activity Tracker",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.2df9138c-f658-4d5a-b212-8c1445a5e6c8-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.351cb33e-7037-4016-a38f-4e10c4a7ef68-global",
       "inputs": [
         {
           "name": "ibmcloud_api_key",
@@ -262,7 +262,7 @@
     },
     {
       "name": "4 - WatsonX SaaS services",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.0645267d-b8e9-42d9-8b4f-ea67dc713ff7-global",
+      "version_locator": "1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.c237751c-d3dd-4c23-b0b1-ba726d30c8e9-global",
       "inputs": [
         {
           "name": "ibmcloud_api_key",

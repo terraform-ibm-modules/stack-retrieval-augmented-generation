@@ -1,3 +1,4 @@
+>TESTING CHANGES FOR ISSUE-9655; PLEASE IGNORE AND DO NOT MERGE
 # Retrieval Augmented Generation Pattern for Watsonx on IBM Cloud
 
 The following [deployable architecture](https://cloud.ibm.com/docs/secure-enterprise?topic=secure-enterprise-understand-module-da#what-is-da) automates the deployment of a sample GenAI Pattern on IBM Cloud, including all underlying IBM Cloud infrastructure. This architecture implements the best practices for Watsonx GenAI Pattern deployment on IBM Cloud, as described in the [reference architecture](https://cloud.ibm.com/docs/pattern-genai-rag?topic=pattern-genai-rag-genai-pattern).

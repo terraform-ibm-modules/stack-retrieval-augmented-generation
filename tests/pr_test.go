@@ -9,18 +9,9 @@ import (
 
 func TestProjectsFullTest(t *testing.T) {
 	options := testprojects.TestProjectOptionsDefault(&testprojects.TestProjectsOptions{
-		Testing: t,
-		Prefix:  "rag-stack",
-		StackConfigurationOrder: []string{
-			"1 - Account Infrastructure Base",
-			"2a - Security Service - Key Management",
-			"2b - Security Service - Secret Manager",
-			"2c - Security Service - Security Compliance Center",
-			"3 - Observability - Logging Monitoring Activity Tracker",
-			"4 - WatsonX SaaS services",
-			"5 - Sample RAG app - Application Lifecycle Management",
-			"6 - Sample RAG app configuration",
-		},
+		Testing:        t,
+		Prefix:         "rag-stack",
+		ParallelDeploy: true,
 	})
 
 	privateKey, _, kerr := common.GenerateTempGPGKeyPairBase64()

@@ -197,6 +197,10 @@
           "value": ""
         },
         {
+          "name": "prefix",
+          "value": "ref:../../inputs/prefix"
+        },
+        {
           "name": "cos_region",
           "value": "ref:../../inputs/region"
         },
@@ -214,7 +218,7 @@
         },
         {
           "name": "profile_attachments",
-          "value": ["AI ICT Guardrails"]
+          "value": ["AI Guardrails 2.0"]
         },
         {
           "name": "use_existing_resource_group",

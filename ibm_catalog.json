@@ -285,6 +285,13 @@
 							"default_value": "__NULL__",
 							"description": "The CRN of an existing KMS instance to use in this solution. If not set, a new KP instance is provisioned.",
 							"required": false
+						},
+						{
+							"key": "existing_scc_instance_crn",
+							"type": "string",
+							"default_value": "__NULL__",
+							"description": "The CRN of an existing SCC instance to use in this solution. If not set, a new SCC instance is provisioned.",
+							"required": false
 						}
 					],
 					"outputs": [

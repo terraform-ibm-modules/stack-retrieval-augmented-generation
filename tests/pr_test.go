@@ -24,7 +24,6 @@ func TestProjectsFullTest(t *testing.T) {
 		"prefix":                      options.Prefix,
 		"signing_key":                 privateKey,
 		"secret_manager_service_plan": "trial",
-		"existing_scc_instance_crn":   "crn:v1:bluemix:public:compliance:us-south:a/abac0df06b644a9cabc6e44f55b3880e:8d1c1f98-2026-432f-98ae-bcb77fce9f29::",
 	}
 
 	err := options.RunProjectsTest()

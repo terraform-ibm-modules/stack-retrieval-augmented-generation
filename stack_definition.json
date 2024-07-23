@@ -55,6 +55,13 @@
       "default": null
     },
     {
+      "name": "existing_scc_instance_crn",
+      "required": false,
+      "type": "string",
+      "hidden": false,
+      "default": null
+    },
+    {
       "name": "existing_kms_instance_crn",
       "required": false,
       "type": "string",
@@ -190,7 +197,7 @@
     },
     {
       "name": "2c - Security Service - Security Compliance Center",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.f91391b9-72c3-48c2-b40d-fb27cfc7d00c-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.63cfb113-9c65-4a5b-bef0-71f2856c6ff2-global",
       "inputs": [
         {
           "name": "ibmcloud_api_key",
@@ -203,6 +210,10 @@
         {
           "name": "scc_region",
           "value": "ref:../../inputs/region"
+        },
+        {
+          "name": "existing_scc_instance_crn",
+          "value": "ref:../../inputs/existing_scc_instance_crn"
         },
         {
           "name": "resource_group_name",

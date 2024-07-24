@@ -285,6 +285,37 @@
 							"default_value": "__NULL__",
 							"description": "The CRN of an existing KMS instance to use in this solution. If not set, a new KP instance is provisioned.",
 							"required": false
+						},
+						{
+							"key": "resource_groups_scope",
+							"type": "string",
+							"default_value": [],
+							"required": false
+						},
+						{
+							"key": "attachment_schedule",
+							"type": "string",
+							"default_value": "daily",
+							"description": "The scanning schedule to use for the IBM Cloud Security and Compliance Center.",
+							"required": false,
+							"options": [
+								{
+								"displayname": "Daily",
+								"value": "daily"
+								},
+								{
+								"displayname": "Weekly",
+								"value": "every_7_days"
+								},
+								{
+								"displayname": "Monthly",
+								"value": "every_30_days"
+								},
+								{
+								"displayname": "Never",
+								"value": "none"
+								}
+							]
 						}
 					],
 					"outputs": [

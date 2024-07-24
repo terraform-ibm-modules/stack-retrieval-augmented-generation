@@ -1,8 +1,8 @@
 {
 	"products": [
 		{
-			"label": "Retrieval Augmented Generation Pattern",
-			"name": "Retrieval_Augmented_Generation_Pattern",
+			"label": "Retrieval Augmented Generation Pattern (Dev)",
+			"name": "Retrieval_Augmented_Generation_Pattern_dev",
 			"product_kind": "solution",
 			"tags": [
 				"watson",

@@ -67,6 +67,20 @@
       "type": "boolean",
       "hidden": false,
       "default": false
+    },
+    {
+      "name": "resource_groups_scope",
+      "required": false,
+      "type": "list",
+      "hidden": false,
+      "default": []
+    },
+    {
+      "name": "attachment_schedule",
+      "required": false,
+      "type": "string",
+      "hidden": false,
+      "default": "daily"
     }
   ],
   "members": [
@@ -135,10 +149,6 @@
         {
           "name": "ibmcloud_api_key",
           "value": ""
-        },
-        {
-          "name": "region",
-          "value": "ref:../../inputs/region"
         },
         {
           "name": "region",
@@ -219,6 +229,14 @@
         {
           "name": "profile_attachments",
           "value": ["AI Guardrails 2.0"]
+        },
+        {
+          "name": "resource_groups_scope",
+          "value": "ref:../../inputs/resource_groups_scope"
+        },
+        {
+          "name": "attachment_schedule",
+          "value": "ref:../../inputs/attachment_schedule"
         },
         {
           "name": "use_existing_resource_group",

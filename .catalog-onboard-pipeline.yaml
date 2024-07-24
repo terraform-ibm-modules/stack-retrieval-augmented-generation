@@ -7,7 +7,7 @@ offerings:
     offering_id: 5fdd0045-30fc-4013-a8bc-6db9d5447a52
     variations:
       - name: Code-Engine-d7b9
-        mark_ready: false
+        mark_ready: true
         install_type: fullstack
         format_kind: stack
         validation_type: projects

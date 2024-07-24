@@ -290,6 +290,7 @@
 							"key": "resource_groups_scope",
 							"type": "string",
 							"default_value": [],
+							"description": "The resource group to associate with the Security and Compliance Center profile attachments. If not specified, the attachments are scoped to the current account ID. Only one resource group is allowed.",
 							"required": false
 						},
 						{

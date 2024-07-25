@@ -296,7 +296,7 @@
 						{
 							"key": "attachment_schedule",
 							"type": "string",
-							"default_value": "daily",
+							"default_value": "every_30_days",
 							"description": "The scanning schedule to use for the IBM Cloud Security and Compliance Center attachment.",
 							"required": false,
 							"options": [

@@ -80,7 +80,7 @@
       "required": false,
       "type": "string",
       "hidden": false,
-      "default": "daily"
+      "default": "every_30_days"
     }
   ],
   "members": [

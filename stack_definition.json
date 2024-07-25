@@ -71,7 +71,7 @@
     {
       "name": "resource_groups_scope",
       "required": false,
-      "type": "list",
+      "type": "array",
       "hidden": false,
       "default": []
     },

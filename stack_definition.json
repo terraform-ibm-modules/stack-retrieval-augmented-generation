@@ -18,7 +18,8 @@
       "name": "watsonx_admin_api_key",
       "required": false,
       "type": "password",
-      "hidden": false
+      "hidden": false,
+      "default": "__NULL__"
     },
     {
       "name": "resource_group_name",
@@ -340,19 +341,19 @@
         },
         {
           "name": "watson_machine_learning_plan",
-          "value": "do not install"
+          "value": "v2-standard"
         },
         {
           "name": "watson_studio_plan",
-          "value": "do not install"
+          "value": "professional-v1"
         },
         {
           "name": "watson_discovery_plan",
-          "value": "do not install"
+          "value": "plus"
         },
         {
           "name": "watsonx_assistant_plan",
-          "value": "do not install"
+          "value": "plus"
         },
         {
           "name": "watsonx_governance_plan",
@@ -467,7 +468,7 @@
       ]
     },
     {
-      "name": "7 - Sample RAG app configuration",
+      "name": "8 - Sample RAG app configuration",
       "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.af19228a-3182-46da-b52a-b1d9f662609d-global",
       "inputs": [
         {
@@ -484,7 +485,7 @@
         },
         {
           "name": "watson_discovery_instance_id",
-          "value": "ref:../4 - WatsonX SaaS services/outputs/watson_discovery_guid"
+          "value": "ref:../5 - WatsonX SaaS services/outputs/watson_discovery_guid"
         },
         {
           "name": "watson_assistant_region",
@@ -492,27 +493,27 @@
         },
         {
           "name": "watson_assistant_instance_id",
-          "value": "ref:../4 - WatsonX SaaS services/outputs/watsonx_assistant_guid"
+          "value": "ref:../5 - WatsonX SaaS services/outputs/watsonx_assistant_guid"
         },
         {
           "name": "cd_pipeline_id",
-          "value": "ref:../5 - Sample RAG app - Application Lifecycle Management/outputs/cd_pipeline_id"
+          "value": "ref:../6 - Sample RAG app - Application Lifecycle Management/outputs/cd_pipeline_id"
         },
         {
           "name": "ci_pipeline_id",
-          "value": "ref:../5 - Sample RAG app - Application Lifecycle Management/outputs/ci_pipeline_id"
+          "value": "ref:../6 - Sample RAG app - Application Lifecycle Management/outputs/ci_pipeline_id"
         },
         {
           "name": "watson_machine_learning_instance_guid",
-          "value": "ref:../4 - WatsonX SaaS services/outputs/watson_machine_learning_guid"
+          "value": "ref:../5 - WatsonX SaaS services/outputs/watson_machine_learning_guid"
         },
         {
           "name": "watson_machine_learning_instance_resource_name",
-          "value": "ref:../4 - WatsonX SaaS services/outputs/watson_machine_learning_name"
+          "value": "ref:../5 - WatsonX SaaS services/outputs/watson_machine_learning_name"
         },
         {
           "name": "watson_machine_learning_instance_crn",
-          "value": "ref:../4 - WatsonX SaaS services/outputs/watson_machine_learning_crn"
+          "value": "ref:../5 - WatsonX SaaS services/outputs/watson_machine_learning_crn"
         },
         {
           "name": "toolchain_resource_group",
@@ -564,19 +565,19 @@
 		},
     {
       "name": "watsonx_project_url",
-      "value": "ref:./members/6 - Sample RAG app configuration/outputs/watsonx_project_url"
+      "value": "ref:./members/7 - Sample RAG app configuration/outputs/watsonx_project_url"
     },
     {
       "name": "watsonx_project_id",
-      "value": "ref:./members/6 - Sample RAG app configuration/outputs/watsonx_project_id"
+      "value": "ref:./members/7 - Sample RAG app configuration/outputs/watsonx_project_id"
     },
     {
       "name": "watson_discovery_api_url",
-      "value": "ref:./members/6 - Sample RAG app configuration/outputs/watson_discovery_api_url"
+      "value": "ref:./members/7 - Sample RAG app configuration/outputs/watson_discovery_api_url"
     },
     {
       "name": "watson_discovery_project_id",
-      "value": "ref:./members/6 - Sample RAG app configuration/outputs/watson_discovery_project_id"
+      "value": "ref:./members/7 - Sample RAG app configuration/outputs/watson_discovery_project_id"
     }
   ]
 }

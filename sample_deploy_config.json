@@ -9,8 +9,9 @@
     "2c - Security Service - Security Compliance Center",
     "3 - Observability - Logging Monitoring Activity Tracker",
     "4 - WatsonX SaaS services",
-    "5 - Sample RAG app - Application Lifecycle Management",
-    "6 - Sample RAG app configuration"
+    "5 - Databases for Elasticsearch",
+    "6 - Sample RAG app - Application Lifecycle Management",
+    "7 - Sample RAG app configuration"
   ],
   "stack_inputs": {
     "prefix": "<YOUR PREFIX HERE>",

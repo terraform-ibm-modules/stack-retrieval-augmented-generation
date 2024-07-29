@@ -138,6 +138,12 @@
 								"crn:v1:bluemix:public:iam::::role:Editor"
 							],
 							"service_name": "discovery"
+						},
+						{
+							"service_name": "databases-for-elasticsearch",
+							"role_crns": [
+							  "crn:v1:bluemix:public:iam::::role:Editor"
+							]
 						}
 					],
 					"architecture": {
@@ -288,6 +294,22 @@
 						}
 					],
 					"outputs": [
+						{
+							"key": "elasticsearch_hostname",
+							"description": "Elasticsearch instance hostname."
+						},
+						{
+							"key": "elasticsearch_port",
+							"description": "Elasticsearch instance port."
+						},
+						{
+							"key": "elasticsearch_service_credentials_json",
+							"description": "Elasticsearch instance service credentials json map."
+						},
+						{
+							"key": "elasticsearch_crn",
+							"description": "Elasticsearch instance crn."
+						},
 						{
 							"key": "watsonx_project_url",
 							"description": "The URL to the WatsonX project for the sample RAG application."

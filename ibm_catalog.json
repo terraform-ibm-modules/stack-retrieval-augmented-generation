@@ -240,6 +240,12 @@
 							"default_value": "rag-services",
 							"description": "The name of the resource group that is created by this solution. The actual name is prefixed with the value of the input 'prefix'.  All resources created by this solution are deployed in this resource group. ",
 							"required": false
+						},						{
+							"key": "existing_resource_group_name",
+							"type": "string",
+							"default_value": "__NULL__",
+							"description": "The name of an existing resource group that is used by this solution. Prefix is NOT used for existing resource group.  All resources created by this solution are deployed in this resource group. ",
+							"required": false
 						},
 						{
 							"key": "watsonx_admin_api_key",

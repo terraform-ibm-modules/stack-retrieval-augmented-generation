@@ -27,6 +27,13 @@
       "hidden": false
     },
     {
+      "name": "existing_resource_group_name",
+      "required": false,
+      "type": "string",
+      "hidden": false,
+      "default": null
+    },
+    {
       "name": "region",
       "required": false,
       "type": "string",
@@ -113,6 +120,34 @@
         {
           "name": "devops_resource_group_name",
           "value": "ref:../../inputs/resource_group_name"
+        },
+        {
+          "name": "existing_security_resource_group_name",
+          "value": "ref:../../inputs/existing_resource_group_name"
+        },
+        {
+          "name": "existing_audit_resource_group_name",
+          "value": "ref:../../inputs/existing_resource_group_name"
+        },
+        {
+          "name": "existing_observability_resource_group_name",
+          "value": "ref:../../inputs/existing_resource_group_name"
+        },
+        {
+          "name": "existing_management_resource_group_name",
+          "value": "ref:../../inputs/existing_resource_group_name"
+        },
+        {
+          "name": "existing_workload_resource_group_name",
+          "value": "ref:../../inputs/existing_resource_group_name"
+        },
+        {
+          "name": "existing_edge_resource_group_name",
+          "value": "ref:../../inputs/existing_resource_group_name"
+        },
+        {
+          "name": "existing_devops_resource_group_name",
+          "value": "ref:../../inputs/existing_resource_group_name"
         },
         {
           "name": "provision_trusted_profile_projects",

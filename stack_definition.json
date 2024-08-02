@@ -69,6 +69,13 @@
       "default": null
     },
     {
+      "name": "existing_scc_instance_crn",
+      "required": false,
+      "type": "string",
+      "hidden": false,
+      "default": null
+    },
+    {
       "name": "enable_platform_logs_metrics",
       "required": false,
       "type": "boolean",
@@ -225,7 +232,7 @@
     },
     {
       "name": "2c - Security Service - Security Compliance Center",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.f91391b9-72c3-48c2-b40d-fb27cfc7d00c-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.1ac9df0e-d3d5-4ed8-abfc-043578670dbb-global",
       "inputs": [
         {
           "name": "ibmcloud_api_key",
@@ -240,6 +247,14 @@
           "value": "ref:../../inputs/region"
         },
         {
+          "name": "existing_scc_instance_crn",
+          "value": "ref:../../inputs/existing_scc_instance_crn"
+        },
+        {
+          "name": "provision_scc_workload_protection",
+          "value": false
+        },
+        {
           "name": "resource_group_name",
           "value": "ref:../1 - Account Infrastructure Base/outputs/audit_resource_group_name"
         },
@@ -250,10 +265,6 @@
         {
           "name": "use_existing_resource_group",
           "value": true
-        },
-        {
-          "name": "provision_scc_workload_protection",
-          "value": false
         }
       ]
     },

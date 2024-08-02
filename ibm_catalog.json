@@ -248,6 +248,13 @@
 							"required": false
 						},
 						{
+							"key": "existing_scc_instance_crn",
+							"type": "string",
+							"default_value": "__NULL__",
+							"description": "The CRN of an existing Security and Compliance Center instance. If not supplied, a new instance will be created.",
+							"required": false
+						},
+						{
 							"key": "watsonx_admin_api_key",
 							"type": "password",
 							"description": "The API key used to provision the watson project resources. If not set, the API key used to deploy the solution is used.",

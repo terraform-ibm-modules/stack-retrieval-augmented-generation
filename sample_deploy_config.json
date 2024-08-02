@@ -5,11 +5,12 @@
   "config_order": [
     "1 - Account Infrastructure Base",
     "2a - Security Service - Key Management",
-    "2b - Security Service - Secret Manager",
-    "2c - Security Service - Security Compliance Center",
-    "3 - Observability - Logging Monitoring Activity Tracker",
-    "4 - WatsonX SaaS services",
-    "5 - Databases for Elasticsearch",
+    "2b - WatsonX SaaS services",
+    "3a - Observability - Logging Monitoring Activity Tracker",
+    "3b - Databases for Elasticsearch",
+    "4 - Event Notifications",
+    "5a - Security Service - Secret Manager",
+    "5b - Security Service - Security Compliance Center",
     "6 - Sample RAG app - Application Lifecycle Management",
     "7 - Sample RAG app configuration"
   ],

@@ -69,17 +69,31 @@
       "default": null
     },
     {
+      "name": "existing_en_instance_crn",
+      "required": false,
+      "type": "string",
+      "hidden": false,
+      "default": null
+    },
+    {
       "name": "enable_platform_logs_metrics",
       "required": false,
       "type": "boolean",
       "hidden": false,
       "default": false
+    },
+    {
+      "name": "elasticsearch_plan",
+      "required": false,
+      "type": "string",
+      "hidden": false,
+      "default": "enterprise"
     }
   ],
   "members": [
     {
       "name": "1 - Account Infrastructure Base",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.62aeb17c-2272-416c-b982-5f17fa508d04-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.46e4d114-53c1-488e-8908-efd7196c91f4-global",
       "inputs": [
         {
           "name": "prefix",
@@ -157,7 +171,7 @@
     },
     {
       "name": "2a - Security Service - Key Management",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.4a3affda-ffc6-4d14-a4f7-aeeb2b80908c-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.99c0136d-38b4-4707-9623-09b288f8b04d-global",
       "inputs": [
         {
           "name": "resource_group_name",
@@ -186,117 +200,7 @@
       ]
     },
     {
-      "name": "2b - Security Service - Secret Manager",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.037f40f0-2575-40fe-a771-81ac437d5d60-global",
-      "inputs": [
-        {
-          "name": "prefix",
-          "value": "ref:../../inputs/prefix"
-        },
-        {
-          "name": "resource_group_name",
-          "value": "ref:../1 - Account Infrastructure Base/outputs/security_resource_group_name"
-        },
-        {
-          "name": "ibmcloud_api_key",
-          "value": ""
-        },
-        {
-          "name": "region",
-          "value": "ref:../../inputs/region"
-        },
-        {
-          "name": "existing_kms_instance_crn",
-          "value": "ref:../2a - Security Service - Key Management/outputs/kms_instance_crn"
-        },
-        {
-          "name": "use_existing_resource_group",
-          "value": true
-        },
-        {
-          "name": "existing_secrets_manager_crn",
-          "value": "ref:../../inputs/existing_secrets_manager_crn"
-        },
-        {
-          "name": "service_plan",
-          "value": "ref:../../inputs/secret_manager_service_plan"
-        }
-      ]
-    },
-    {
-      "name": "2c - Security Service - Security Compliance Center",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.f91391b9-72c3-48c2-b40d-fb27cfc7d00c-global",
-      "inputs": [
-        {
-          "name": "ibmcloud_api_key",
-          "value": ""
-        },
-        {
-          "name": "cos_region",
-          "value": "ref:../../inputs/region"
-        },
-        {
-          "name": "scc_region",
-          "value": "ref:../../inputs/region"
-        },
-        {
-          "name": "resource_group_name",
-          "value": "ref:../1 - Account Infrastructure Base/outputs/audit_resource_group_name"
-        },
-        {
-          "name": "existing_kms_instance_crn",
-          "value": "ref:../2a - Security Service - Key Management/outputs/kms_instance_crn"
-        },
-        {
-          "name": "use_existing_resource_group",
-          "value": true
-        },
-        {
-          "name": "provision_scc_workload_protection",
-          "value": false
-        }
-      ]
-    },
-    {
-      "name": "3 - Observability - Logging Monitoring Activity Tracker",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.351cb33e-7037-4016-a38f-4e10c4a7ef68-global",
-      "inputs": [
-        {
-          "name": "ibmcloud_api_key",
-          "value": ""
-        },
-        {
-          "name": "region",
-          "value": "ref:../../inputs/region"
-        },
-        {
-          "name": "existing_kms_instance_crn",
-          "value": "ref:../2a - Security Service - Key Management/outputs/kms_instance_crn"
-        },
-        {
-          "name": "resource_group_name",
-          "value": "ref:../1 - Account Infrastructure Base/outputs/observability_resource_group_name"
-        },
-        {
-          "name": "prefix",
-          "value": "ref:../../inputs/prefix"
-        },
-        {
-          "name": "use_existing_resource_group",
-          "value": true
-        },
-        {
-          "name": "enable_platform_logs",
-          "value": "ref:../../inputs/enable_platform_logs_metrics"
-        },
-        {
-          "name": "enable_platform_metrics",
-          "value": "ref:../../inputs/enable_platform_logs_metrics"
-        }
-      ]
-    },
-    {
-      "name": "4 - WatsonX SaaS services",
+      "name": "2b - WatsonX SaaS services",
       "version_locator": "1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.a68377c5-2a73-4832-8fd9-ad5b73b5256b-global",
       "inputs": [
         {
@@ -342,66 +246,222 @@
         {
           "name": "watsonx_governance_plan",
           "value": "do not install"
-        },
-        {
-          "name": "watsonx_project_name",
-          "value": "ref:../../inputs/prefix"
         }
       ]
     },
     {
-      "name": "5 - Databases for Elasticsearch",
-			"version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.c5ea982b-011a-46c8-a49d-0de273f40b46-global",
-			"inputs": [
-				{
-					"name": "use_existing_resource_group",
-					"value": true
-				},
-				{
-					"name": "resource_group_name",
-					"value": "ref:../../members/1 - Account Infrastructure Base/outputs/workload_resource_group_name"
-				},
-				{
-					"name": "region",
-					"value": "ref:../../inputs/region"
-				},
-				{
-					"name": "prefix",
-					"value": "ref:../../inputs/prefix"
-				},
-				{
-					"name": "plan",
-					"value": "enterprise"
-				},
-				{
-					"name": "elasticsearch_version",
-					"value": "8.12"
-				},
-				{
-					"name": "existing_kms_instance_crn",
-					"value": "ref:../../members/2a - Security Service - Key Management/outputs/kms_instance_crn"
-				},
-				{
-					"name": "kms_endpoint_type",
-					"value": "private"
-				},
-				{
-					"name": "member_host_flavor",
-					"value": "b3c.4x16.encrypted"
-				},
+      "name": "3a - Observability - Logging Monitoring Activity Tracker",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.9559b390-b310-4373-a61d-c4add658c3cf-global",
+      "inputs": [
         {
-					"name": "service_credential_names",
-					"value": {
-						"elastic_db_admin" : "Administrator",
-						"wxasst_db_user" : "Editor",
-						"toolchain_db_user" : "Editor"
-					}
-				}
-			]
-		},
+          "name": "ibmcloud_api_key",
+          "value": ""
+        },
+        {
+          "name": "region",
+          "value": "ref:../../inputs/region"
+        },
+        {
+          "name": "existing_kms_instance_crn",
+          "value": "ref:../2a - Security Service - Key Management/outputs/kms_instance_crn"
+        },
+        {
+          "name": "resource_group_name",
+          "value": "ref:../1 - Account Infrastructure Base/outputs/observability_resource_group_name"
+        },
+        {
+          "name": "prefix",
+          "value": "ref:../../inputs/prefix"
+        },
+        {
+          "name": "use_existing_resource_group",
+          "value": true
+        },
+        {
+          "name": "enable_platform_logs",
+          "value": "ref:../../inputs/enable_platform_logs_metrics"
+        },
+        {
+          "name": "enable_platform_metrics",
+          "value": "ref:../../inputs/enable_platform_logs_metrics"
+        }
+      ]
+    },
+    {
+      "name": "3b - Databases for Elasticsearch",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.9e63c855-8749-412e-bc3e-bd24caaadc91-global",
+      "inputs": [
+        {
+          "name": "use_existing_resource_group",
+          "value": true
+        },
+        {
+          "name": "resource_group_name",
+          "value": "ref:../../members/1 - Account Infrastructure Base/outputs/workload_resource_group_name"
+        },
+        {
+          "name": "region",
+          "value": "ref:../../inputs/region"
+        },
+        {
+          "name": "prefix",
+          "value": "ref:../../inputs/prefix"
+        },
+        {
+          "name": "plan",
+          "value": "ref:../../inputs/elasticsearch_plan"
+        },
+        {
+          "name": "elasticsearch_version",
+          "value": "8.12"
+        },
+        {
+          "name": "existing_kms_instance_crn",
+          "value": "ref:../../members/2a - Security Service - Key Management/outputs/kms_instance_crn"
+        },
+        {
+          "name": "kms_endpoint_type",
+          "value": "private"
+        },
+        {
+          "name": "member_host_flavor",
+          "value": "b3c.4x16.encrypted"
+        },
+        {
+          "name": "service_credential_names",
+          "value": {
+            "elastic_db_admin": "Administrator",
+            "wxasst_db_user": "Editor",
+            "toolchain_db_user": "Editor"
+          }
+        }
+      ]
+    },
+    {
+      "name": "4 - Event Notifications",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.54f93c23-e45e-4bbb-bcf8-0f5f9bcce0ea-global",
+      "inputs": [
+        {
+          "name": "kms_endpoint_url",
+          "value": "ref:../2a - Security Service - Key Management/outputs/kms_private_endpoint"
+        },
+        {
+          "name": "existing_kms_instance_crn",
+          "value": "ref:../2a - Security Service - Key Management/outputs/kms_instance_crn"
+        },
+        {
+          "name": "kms_endpoint_type",
+          "value": "private"
+        },
+        {
+          "name": "resource_group_name",
+          "value": "ref:../1 - Account Infrastructure Base/outputs/observability_resource_group_name"
+        },
+        {
+          "name": "use_existing_resource_group",
+          "value": true
+        },
+        {
+          "name": "region",
+          "value": "ref:../../inputs/region"
+        },
+        {
+          "name": "prefix",
+          "value": "ref:../../inputs/prefix"
+        },
+        {
+          "name": "existing_monitoring_crn",
+          "value": "ref:../3a - Observability - Logging Monitoring Activity Tracker/outputs/cloud_monitoring_crn"
+        },
+        {
+          "name": "existing_en_instance_crn",
+          "value": "ref:../../inputs/existing_en_instance_crn"
+        }
+      ]
+    },
+    {
+      "name": "5a - Security Service - Secret Manager",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.e806bb05-dfb9-40a8-99bf-1b9272cf8d82-global",
+      "inputs": [
+        {
+          "name": "prefix",
+          "value": "ref:../../inputs/prefix"
+        },
+        {
+          "name": "resource_group_name",
+          "value": "ref:../1 - Account Infrastructure Base/outputs/security_resource_group_name"
+        },
+        {
+          "name": "ibmcloud_api_key",
+          "value": ""
+        },
+        {
+          "name": "region",
+          "value": "ref:../../inputs/region"
+        },
+        {
+          "name": "existing_kms_instance_crn",
+          "value": "ref:../2a - Security Service - Key Management/outputs/kms_instance_crn"
+        },
+        {
+          "name": "use_existing_resource_group",
+          "value": true
+        },
+        {
+          "name": "existing_secrets_manager_crn",
+          "value": "ref:../../inputs/existing_secrets_manager_crn"
+        },
+        {
+          "name": "service_plan",
+          "value": "ref:../../inputs/secret_manager_service_plan"
+        },
+        {
+          "name": "existing_event_notification_instance_crn",
+          "value": "ref:../4 - Event Notifications/outputs/crn"
+        }
+      ]
+    },
+    {
+      "name": "5b - Security Service - Security Compliance Center",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.1ac9df0e-d3d5-4ed8-abfc-043578670dbb-global",
+      "inputs": [
+        {
+          "name": "ibmcloud_api_key",
+          "value": ""
+        },
+        {
+          "name": "cos_region",
+          "value": "ref:../../inputs/region"
+        },
+        {
+          "name": "scc_region",
+          "value": "ref:../../inputs/region"
+        },
+        {
+          "name": "resource_group_name",
+          "value": "ref:../1 - Account Infrastructure Base/outputs/audit_resource_group_name"
+        },
+        {
+          "name": "existing_kms_instance_crn",
+          "value": "ref:../2a - Security Service - Key Management/outputs/kms_instance_crn"
+        },
+        {
+          "name": "use_existing_resource_group",
+          "value": true
+        },
+        {
+          "name": "provision_scc_workload_protection",
+          "value": false
+        },
+        {
+          "name": "existing_en_crn",
+          "value": "ref:../4 - Event Notifications/outputs/crn"
+        }
+      ]
+    },
     {
       "name": "6 - Sample RAG app - Application Lifecycle Management",
-      "version_locator": "1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.cce4d1b1-c09a-4c23-8aba-92f6e9f38cda-global",
+      "version_locator": "1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.d89d89f5-883e-40bf-a6a5-b694b5894af1-global",
       "inputs": [
         {
           "name": "ibmcloud_api_key",
@@ -409,7 +469,7 @@
         },
         {
           "name": "toolchain_name",
-          "value": "RAG Sample App"
+          "value": "rag-sample-app"
         },
         {
           "name": "toolchain_region",
@@ -420,28 +480,24 @@
           "value": "ref:../1 - Account Infrastructure Base/outputs/devops_resource_group_name"
         },
         {
-          "name": "sm_secret_group",
-          "value": "Default"
-        },
-        {
           "name": "sm_resource_group",
-          "value": "ref:../2b - Security Service - Secret Manager/outputs/resource_group_name"
+          "value": "ref:../5a - Security Service - Secret Manager/outputs/resource_group_name"
         },
         {
           "name": "sm_name",
-          "value": "ref:../2b - Security Service - Secret Manager/outputs/secrets_manager_name"
+          "value": "ref:../5a - Security Service - Secret Manager/outputs/secrets_manager_name"
         },
         {
           "name": "sm_location",
-          "value": "ref:../2b - Security Service - Secret Manager/outputs/secrets_manager_region"
+          "value": "ref:../5a - Security Service - Secret Manager/outputs/secrets_manager_region"
         },
         {
           "name": "ci_code_engine_project",
-          "value": "Generative_AI_Sample_App_CI_Project"
+          "value": "generative-ai-sample-app-ci-project"
         },
         {
           "name": "cd_code_engine_project",
-          "value": "Generative_AI_Sample_App_CD_Project"
+          "value": "generative-ai-sample-app-cd-project"
         },
         {
           "name": "registry_namespace",
@@ -492,7 +548,7 @@
           "value": "ibmcloud-api-key"
         },
         {
-          "name": "code_engine_project_prefix",
+          "name": "prefix",
           "value": "ref:../../inputs/prefix"
         },
         {
@@ -503,7 +559,7 @@
     },
     {
       "name": "7 - Sample RAG app configuration",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.92fcdabc-7c4e-450e-9f1b-e6b059119aa7-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.3d6ed304-0d2a-4555-be79-c72a1bfefca5-global",
       "inputs": [
         {
           "name": "toolchain_region",
@@ -519,7 +575,7 @@
         },
         {
           "name": "watson_discovery_instance_id",
-          "value": "ref:../4 - WatsonX SaaS services/outputs/watson_discovery_guid"
+          "value": "ref:../2b - WatsonX SaaS services/outputs/watson_discovery_guid"
         },
         {
           "name": "watson_assistant_region",
@@ -527,7 +583,7 @@
         },
         {
           "name": "watson_assistant_instance_id",
-          "value": "ref:../4 - WatsonX SaaS services/outputs/watsonx_assistant_guid"
+          "value": "ref:../2b - WatsonX SaaS services/outputs/watsonx_assistant_guid"
         },
         {
           "name": "cd_pipeline_id",
@@ -539,15 +595,15 @@
         },
         {
           "name": "watson_machine_learning_instance_guid",
-          "value": "ref:../4 - WatsonX SaaS services/outputs/watson_machine_learning_guid"
+          "value": "ref:../2b - WatsonX SaaS services/outputs/watson_machine_learning_guid"
         },
         {
           "name": "watson_machine_learning_instance_resource_name",
-          "value": "ref:../4 - WatsonX SaaS services/outputs/watson_machine_learning_name"
+          "value": "ref:../2b - WatsonX SaaS services/outputs/watson_machine_learning_name"
         },
         {
           "name": "watson_machine_learning_instance_crn",
-          "value": "ref:../4 - WatsonX SaaS services/outputs/watson_machine_learning_crn"
+          "value": "ref:../2b - WatsonX SaaS services/outputs/watson_machine_learning_crn"
         },
         {
           "name": "toolchain_resource_group",
@@ -575,32 +631,32 @@
         },
         {
           "name": "secrets_manager_guid",
-          "value": "ref:../2b - Security Service - Secret Manager/outputs/secrets_manager_guid"
+          "value": "ref:../5a - Security Service - Secret Manager/outputs/secrets_manager_guid"
         },
         {
           "name": "secrets_manager_region",
-          "value": "ref:../2b - Security Service - Secret Manager/outputs/secrets_manager_region"
+          "value": "ref:../5a - Security Service - Secret Manager/outputs/secrets_manager_region"
         }
       ]
     }
   ],
   "outputs": [
-		{
-		  "name": "elasticsearch_hostname",
-		  "value": "ref:./members/5 - Databases for Elasticsearch/outputs/hostname"
-		},
-		{
-		  "name": "elasticsearch_port",
-		  "value": "ref:./members/5 - Databases for Elasticsearch/outputs/port"
-		},
-		{
-		  "name": "elasticsearch_service_credentials_json",
-		  "value": "ref:./members/5 - Databases for Elasticsearch/outputs/service_credentials_json"
-		},
     {
-		  "name": "elasticsearch_crn",
-		  "value": "ref:./members/5 - Databases for Elasticsearch/outputs/crn"
-		},
+      "name": "elasticsearch_hostname",
+      "value": "ref:./members/3b - Databases for Elasticsearch/outputs/hostname"
+    },
+    {
+      "name": "elasticsearch_port",
+      "value": "ref:./members/3b - Databases for Elasticsearch/outputs/port"
+    },
+    {
+      "name": "elasticsearch_service_credentials_json",
+      "value": "ref:./members/3b - Databases for Elasticsearch/outputs/service_credentials_json"
+    },
+    {
+      "name": "elasticsearch_crn",
+      "value": "ref:./members/3b - Databases for Elasticsearch/outputs/crn"
+    },
     {
       "name": "watsonx_project_url",
       "value": "ref:./members/6 - Sample RAG app configuration/outputs/watsonx_project_url"

@@ -6,7 +6,7 @@ offerings:
     catalog_id: 7df1e4ca-d54c-4fd0-82ce-3d13247308cd
     offering_id: 6068c87c-ed4b-4427-be22-d7ac65fa2a8e
     variations:
-      - name: Code-Engine-d7b9
+      - name: basic
         mark_ready: true
         install_type: fullstack
         format_kind: stack

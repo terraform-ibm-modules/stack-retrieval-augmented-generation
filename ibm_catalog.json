@@ -59,6 +59,7 @@
 				{
 					"label": "Deploy on Code Engine",
 					"name": "Code-Engine-d7b9",
+					"working_directory": "basic",
 					"compliance": {
 						"authority": "scc-v3",
 						"profiles": [

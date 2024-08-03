@@ -67,6 +67,20 @@
       "type": "boolean",
       "hidden": false,
       "default": false
+    },
+    {
+      "name": "resource_groups_scope",
+      "required": false,
+      "type": "array",
+      "hidden": false,
+      "default": []
+    },
+    {
+      "name": "attachment_schedule",
+      "required": false,
+      "type": "string",
+      "hidden": false,
+      "default": "every_30_days"
     }
   ],
   "members": [
@@ -141,10 +155,6 @@
           "value": "ref:../../inputs/region"
         },
         {
-          "name": "region",
-          "value": "ref:../../inputs/region"
-        },
-        {
           "name": "existing_kms_instance_crn",
           "value": "ref:../../inputs/existing_kms_instance_crn"
         }
@@ -190,11 +200,15 @@
     },
     {
       "name": "2c - Security Service - Security Compliance Center",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.f91391b9-72c3-48c2-b40d-fb27cfc7d00c-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.1ac9df0e-d3d5-4ed8-abfc-043578670dbb-global",
       "inputs": [
         {
           "name": "ibmcloud_api_key",
           "value": ""
+        },
+        {
+          "name": "prefix",
+          "value": "ref:../../inputs/prefix"
         },
         {
           "name": "cos_region",
@@ -211,6 +225,18 @@
         {
           "name": "existing_kms_instance_crn",
           "value": "ref:../2a - Security Service - Key Management/outputs/kms_instance_crn"
+        },
+        {
+          "name": "profile_attachments",
+          "value": ["AI Guardrails 2.0"]
+        },
+        {
+          "name": "resource_groups_scope",
+          "value": "ref:../../inputs/resource_groups_scope"
+        },
+        {
+          "name": "attachment_schedule",
+          "value": "ref:../../inputs/attachment_schedule"
         },
         {
           "name": "use_existing_resource_group",

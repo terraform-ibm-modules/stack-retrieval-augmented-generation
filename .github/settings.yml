@@ -15,7 +15,7 @@ repository:
   # By changing this field, you rename the repository.
 
   # Uncomment this name property and set the name to the current repo name.
-  name: "stack-retrieval-augmented-generation"
+  name: "stack-ibm-retrieval-augmented-generation"
 
   # The description is displayed under the repository name on the
   # organization page and in the 'About' section of the repository.

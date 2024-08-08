@@ -1,6 +1,7 @@
 {
   "project_name": "<YOUR PROJECT NAME HERE>",
   "stack_name": "<YOUR STACK NAME HERE>",
+  "//": ["checkov:skip=CKV_SECRET_6: ignore stack_api_key_env in this file"],
   "stack_api_key_env": "IBMCLOUD_API_KEY",
   "config_order": [
     "1 - Account Infrastructure Base",

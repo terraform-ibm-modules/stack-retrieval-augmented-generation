@@ -63,7 +63,7 @@
 						"authority": "scc-v3",
 						"profiles": [
 							{
-								"profile_name": "AI ICT Guardrails",
+								"profile_name": "AI Security Guardrails 2.0",
 								"profile_version": "1.0.0"
 							}
 						]

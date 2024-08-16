@@ -27,3 +27,8 @@ output "secrets_manager_instance_crn" {
   value       = module.secrets_manager.secrets_manager_crn
   description = "CRN of created secret manager instance"
 }
+
+output "kms_instance_crn" {
+  value       = module.key_protect_all_inclusive.key_protect_crn
+  description = "CRN of created kms instance"
+}

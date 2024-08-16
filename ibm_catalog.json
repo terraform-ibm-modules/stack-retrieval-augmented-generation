@@ -328,6 +328,48 @@
 									"value": "platinum"
 								}
 							]
+						},
+						{
+							"key": "existing_discovery_instance",
+							"type": "string",
+							"default_value": "__NULL__",
+							"description": "The CRN of an existing WatsonX SaaS discovery instance to use in this solution. If not set, a new discovery instance is provisioned depending on which plan is selected.",
+							"required": false
+						},
+						{
+							"key": "existing_assistant_instance",
+							"type": "string",
+							"default_value": "__NULL__",
+							"description": "The CRN of an existing WatsonX SaaS assistant instance to use in this solution. If not set, a new assistant instance is provisioned depending on which plan is selected.",
+							"required": false
+						},
+						{
+							"key": "existing_governance_instance",
+							"type": "string",
+							"default_value": "__NULL__",
+							"description": "The CRN of an existing WatsonX SaaS governance instance to use in this solution. If not set, a new governance instance is provisioned depending on which plan is selected.",
+							"required": false
+						},
+						{
+							"key": "existing_studio_instance",
+							"type": "string",
+							"default_value": "__NULL__",
+							"description": "The CRN of an existing WatsonX SaaS studio instance to use in this solution. If not set, a new studio instance is provisioned depending on which plan is selected.",
+							"required": false
+						},
+						{
+							"key": "existing_machine_learning_instance",
+							"type": "string",
+							"default_value": "__NULL__",
+							"description": "The CRN of an existing WatsonX SaaS machine learning instance to use in this solution. If not set, a new machine learning instance is provisioned depending on which plan is selected.",
+							"required": false
+						},
+						{
+							"key": "existing_db_instance_crn",
+							"type": "string",
+							"default_value": "__NULL__",
+							"description": "The CRN of an existing elasticsearch instance to use in this solution. If not set, a new elasticsearch instance is provisioned.",
+							"required": false
 						}
 					],
 					"outputs": [

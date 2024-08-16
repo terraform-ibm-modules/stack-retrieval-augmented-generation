@@ -38,3 +38,19 @@ module "secrets_manager" {
   sm_service_plan      = "trial"
   sm_tags              = var.resource_tags
 }
+
+##############################################################################
+# Key Protect All Inclusive
+##############################################################################
+
+module "key_protect_all_inclusive" {
+  source                      = "terraform-ibm-modules/kms-all-inclusive/ibm"
+  version                     = "4.15.6"
+  resource_group_id           = module.resource_group.resource_group_id
+  key_protect_instance_name   = "${var.prefix}-kms"
+  region                      = var.region
+  resource_tags               = var.resource_tags
+  key_protect_allowed_network = "public-and-private"
+  key_ring_endpoint_type      = "private"
+  key_endpoint_type           = "private"
+}

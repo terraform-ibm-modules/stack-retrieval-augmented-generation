@@ -34,13 +34,16 @@ func TestMain(m *testing.M) {
 	os.Exit(m.Run())
 }
 
-func TestProjectsFullTest(t *testing.T) {
+const basicDaStackDefPath = "solutions/basic/stack_definition.json"
+
+func TestProjectsBasicFullTest(t *testing.T) {
 	t.Parallel()
 
 	options := testprojects.TestProjectOptionsDefault(&testprojects.TestProjectsOptions{
-		Testing:        t,
-		Prefix:         "rag-stack",
-		ParallelDeploy: true,
+		Testing:                t,
+		Prefix:                 "rag-stack",
+		ParallelDeploy:         true,
+		StackConfigurationPath: basicDaStackDefPath,
 	})
 
 	privateKey, _, kerr := common.GenerateTempGPGKeyPairBase64()
@@ -63,7 +66,7 @@ func TestProjectsFullTest(t *testing.T) {
 	}
 }
 
-func TestProjectsExistingResourcesTest(t *testing.T) {
+func TestProjectsBasicExistingResourcesTest(t *testing.T) {
 	// TODO: pipeline has issues with SM trial version, to unblock further Stack testing, disabling that test for now
 	t.Skip()
 	t.Parallel()
@@ -109,8 +112,9 @@ func TestProjectsExistingResourcesTest(t *testing.T) {
 		// ------------------------------------------------------------------------------------
 
 		options := testprojects.TestProjectOptionsDefault(&testprojects.TestProjectsOptions{
-			Testing:        t,
-			ParallelDeploy: true,
+			Testing:                t,
+			ParallelDeploy:         true,
+			StackConfigurationPath: basicDaStackDefPath,
 		})
 
 		privateKey, _, kerr := common.GenerateTempGPGKeyPairBase64()

@@ -2,11 +2,11 @@ module github.com/terraform-ibm-modules/dev-rag
 
 go 1.21
 
-toolchain go1.22.4
+toolchain go1.23.0
 
 require (
 	github.com/stretchr/testify v1.9.0
-	github.com/terraform-ibm-modules/ibmcloud-terratest-wrapper v1.35.3
+	github.com/terraform-ibm-modules/ibmcloud-terratest-wrapper v1.37.0
 )
 
 require (

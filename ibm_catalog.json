@@ -59,6 +59,7 @@
 				{
 					"label": "Basic",
 					"name": "basic",
+					"working_directory": "solutions/basic",
 					"compliance": {
 						"authority": "scc-v3",
 						"profiles": [

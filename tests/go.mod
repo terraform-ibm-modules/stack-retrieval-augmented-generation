@@ -2,11 +2,11 @@ module github.com/terraform-ibm-modules/stack-retrieval-augmented-generation
 
 go 1.21
 
-toolchain go1.22.5
+toolchain go1.23.0
 
 require (
 	github.com/stretchr/testify v1.9.0
-	github.com/terraform-ibm-modules/ibmcloud-terratest-wrapper v1.35.4
+	github.com/terraform-ibm-modules/ibmcloud-terratest-wrapper v1.37.0
 )
 
 require (

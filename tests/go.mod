@@ -1,4 +1,4 @@
-module github.com/terraform-ibm-modules/dev-rag
+module github.com/terraform-ibm-modules/stack-retrieval-augmented-generation
 
 go 1.21
 

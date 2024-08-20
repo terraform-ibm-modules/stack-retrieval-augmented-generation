@@ -5,15 +5,15 @@
   "stack_api_key_env": "IBMCLOUD_API_KEY",
   "config_order": [
     "1 - Account Infrastructure Base",
-    "2a - Security Service - Key Management",
-    "2b - WatsonX SaaS services",
+    "2 - Security Service - Key Management",
     "3a - Observability - Logging Monitoring Activity Tracker",
     "3b - Databases for Elasticsearch",
     "4 - Event Notifications",
     "5a - Security Service - Secret Manager",
     "5b - Security Service - Security Compliance Center",
-    "6 - Sample RAG app - Application Lifecycle Management",
-    "7 - Sample RAG app configuration"
+    "6 - WatsonX SaaS services",
+    "7 - Sample RAG app - Application Lifecycle Management",
+    "8 - Sample RAG app configuration"
   ],
   "stack_inputs": {
     "prefix": "<YOUR PREFIX HERE>",

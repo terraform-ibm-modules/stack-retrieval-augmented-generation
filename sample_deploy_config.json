@@ -4,16 +4,16 @@
   "//": ["checkov:skip=CKV_SECRET_6: ignore stack_api_key_env in this file"],
   "stack_api_key_env": "IBMCLOUD_API_KEY",
   "config_order": [
-    "1 - Account Infrastructure Base",
-    "2a - Security Service - Key Management",
-    "2b - WatsonX SaaS services",
-    "3a - Observability - Logging Monitoring Activity Tracker",
-    "3b - Databases for Elasticsearch",
-    "4 - Event Notifications",
-    "5a - Security Service - Secret Manager",
-    "5b - Security Service - Security Compliance Center",
-    "6 - Sample RAG app - Application Lifecycle Management",
-    "7 - Sample RAG app configuration"
+    "Account Infrastructure Base",
+    "Baseline Security - Encryption Key Management",
+    "Baseline Security - Logging Monitoring Activity Tracker",
+    "Baseline Security - Observability Event Notifications",
+    "Baseline Security - Secrets Manager",
+    "Baseline Security - Security Compliance Center",
+    "Gen AI - Databases for Elasticsearch",
+    "Gen AI - WatsonX SaaS services",
+    "Workload - Application Lifecycle Management",
+    "Workload - Sample RAG App Configuration"
   ],
   "stack_inputs": {
     "prefix": "<YOUR PREFIX HERE>",

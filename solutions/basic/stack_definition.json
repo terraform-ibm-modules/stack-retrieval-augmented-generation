@@ -69,7 +69,7 @@
       "default": null
     },
     {
-      "name": "existing_en_instance_crn",
+      "name": "existing_event_notification_instance_crn",
       "required": false,
       "type": "string",
       "hidden": false,
@@ -97,7 +97,7 @@
       "default": null
     },
     {
-      "name": "existing_assistant_instance",
+      "name": "existing_assistant_instance_crn",
       "required": false,
       "type": "string",
       "hidden": false,
@@ -125,7 +125,7 @@
       "default": null
     },
     {
-      "name": "existing_db_instance_crn",
+      "name": "existing_elasticsearch_instance_crn",
       "required": false,
       "type": "string",
       "hidden": false,
@@ -313,7 +313,7 @@
         },
         {
           "name": "existing_en_instance_crn",
-          "value": "ref:../../inputs/existing_en_instance_crn"
+          "value": "ref:../../inputs/existing_event_notification_instance_crn"
         }
       ]
     },
@@ -435,7 +435,11 @@
         },
         {
           "name": "member_host_flavor",
-          "value": "b3c.4x16.encrypted"
+          "value": "multitenant"
+        },
+        {
+          "name": "member_cpu_count",
+          "value": 0
         },
         {
           "name": "service_credential_names",
@@ -447,7 +451,7 @@
         },
         {
           "name": "existing_db_instance_crn",
-          "value": "ref:../../inputs/existing_db_instance_crn"
+          "value": "ref:../../inputs/existing_elasticsearch_instance_crn"
         }
       ]
     },
@@ -509,7 +513,7 @@
         },
         {
           "name": "existing_assistant_instance",
-          "value": "ref:../../inputs/existing_assistant_instance"
+          "value": "ref:../../inputs/existing_assistant_instance_crn"
         },
         {
           "name": "watsonx_governance_plan",

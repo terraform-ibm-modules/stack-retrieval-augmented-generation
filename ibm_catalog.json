@@ -246,13 +246,13 @@
 							"key": "resource_group_name",
 							"type": "string",
 							"default_value": "rag-services",
-							"description": "The name of the resource group that is created by this solution. The actual name is prefixed with the value of the input 'prefix'.  All resources created by this solution are deployed in this resource group. ",
+							"description": "The name of the resource group that is created by this solution. The actual name is prefixed with the value of the input 'prefix'. All resources created by this solution are deployed in this resource group. ",
 							"required": false
 						},						{
 							"key": "existing_resource_group_name",
 							"type": "string",
 							"default_value": "__NULL__",
-							"description": "The name of an existing resource group that is used by this solution. Prefix is NOT used for existing resource group.  All resources created by this solution are deployed in this resource group. ",
+							"description": "The name of an existing resource group that is used by this solution, takes precedence over resource_group_name. Prefix is NOT used for existing resource group. All resources created by this solution are deployed in this resource group.",
 							"required": false
 						},
 						{
@@ -307,7 +307,7 @@
 							"required": false
 						},
 						{
-							"key": "existing_en_instance_crn",
+							"key": "existing_event_notification_instance_crn",
 							"type": "string",
 							"default_value": "__NULL__",
 							"description": "The CRN of an existing event notification instance to use in this solution. If not set, a new event notification instance is provisioned.",
@@ -338,7 +338,7 @@
 							"required": false
 						},
 						{
-							"key": "existing_assistant_instance",
+							"key": "existing_assistant_instance_crn",
 							"type": "string",
 							"default_value": "__NULL__",
 							"description": "The CRN of an existing WatsonX SaaS assistant instance to use in this solution. If not set, a new assistant instance is provisioned depending on which plan is selected.",
@@ -366,7 +366,7 @@
 							"required": false
 						},
 						{
-							"key": "existing_db_instance_crn",
+							"key": "existing_elasticsearch_instance_crn",
 							"type": "string",
 							"default_value": "__NULL__",
 							"description": "The CRN of an existing elasticsearch instance to use in this solution. If not set, a new elasticsearch instance is provisioned.",
@@ -376,19 +376,19 @@
 					"outputs": [
 						{
 							"key": "elasticsearch_hostname",
-							"description": "Elasticsearch instance hostname."
+							"description": "The hostname of the Elasticsearch instance."
 						},
 						{
 							"key": "elasticsearch_port",
-							"description": "Elasticsearch instance port."
+							"description": "The port of the Elasticsearch instance."
 						},
 						{
 							"key": "elasticsearch_service_credentials_json",
-							"description": "Elasticsearch instance service credentials json map."
+							"description": "The service credentials of the Elasticsearch instance."
 						},
 						{
 							"key": "elasticsearch_crn",
-							"description": "Elasticsearch instance crn."
+							"description": "The CRN of the Elasticsearch instance."
 						},
 						{
 							"key": "watsonx_project_url",

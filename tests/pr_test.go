@@ -67,8 +67,6 @@ func TestProjectsBasicFullTest(t *testing.T) {
 }
 
 func TestProjectsBasicExistingResourcesTest(t *testing.T) {
-	// TODO: pipeline has issues with SM trial version, to unblock further Stack testing, disabling that test for now
-	t.Skip()
 	t.Parallel()
 	// Current supported regions
 	var validRegions = []string{
@@ -123,16 +121,16 @@ func TestProjectsBasicExistingResourcesTest(t *testing.T) {
 		}
 
 		options.StackInputs = map[string]interface{}{
-			"prefix":                       terraform.Output(t, existingTerraformOptions, "prefix"),
-			"region":                       terraform.Output(t, existingTerraformOptions, "region"),
-			"existing_resource_group_name": terraform.Output(t, existingTerraformOptions, "resource_group_name"),
-			"ibmcloud_api_key":             options.RequiredEnvironmentVars["TF_VAR_ibmcloud_api_key"], // always required by the stack
-			"enable_platform_logs_metrics": false,
-			"existing_secrets_manager_crn": terraform.Output(t, existingTerraformOptions, "secrets_manager_instance_crn"),
-			"signing_key":                  privateKey,
-			"existing_kms_instance_crn":    terraform.Output(t, existingTerraformOptions, "kms_instance_crn"),
-			"existing_en_instance_crn":     terraform.Output(t, existingTerraformOptions, "event_notification_instance_crn"),
-			"en_email_list":                []string{"GoldenEye.Operations@ibm.com"},
+			"prefix":                                   terraform.Output(t, existingTerraformOptions, "prefix"),
+			"region":                                   terraform.Output(t, existingTerraformOptions, "region"),
+			"existing_resource_group_name":             terraform.Output(t, existingTerraformOptions, "resource_group_name"),
+			"ibmcloud_api_key":                         options.RequiredEnvironmentVars["TF_VAR_ibmcloud_api_key"], // always required by the stack
+			"enable_platform_logs_metrics":             false,
+			"existing_secrets_manager_crn":             terraform.Output(t, existingTerraformOptions, "secrets_manager_instance_crn"),
+			"signing_key":                              privateKey,
+			"existing_kms_instance_crn":                terraform.Output(t, existingTerraformOptions, "kms_instance_crn"),
+			"existing_event_notification_instance_crn": terraform.Output(t, existingTerraformOptions, "event_notification_instance_crn"),
+			"en_email_list":                            []string{"GoldenEye.Operations@ibm.com"},
 		}
 
 		err := options.RunProjectsTest()

@@ -452,6 +452,10 @@
         {
           "name": "existing_db_instance_crn",
           "value": "ref:../../inputs/existing_elasticsearch_instance_crn"
+        },
+        {
+          "name": "profile_attachments",
+          "value": []
         }
       ]
     },

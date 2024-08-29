@@ -83,13 +83,6 @@
       "default": false
     },
     {
-      "name": "elasticsearch_plan",
-      "required": false,
-      "type": "string",
-      "hidden": false,
-      "default": "enterprise"
-    },
-    {
       "name": "existing_discovery_instance",
       "required": false,
       "type": "string",
@@ -423,7 +416,7 @@
         },
         {
           "name": "plan",
-          "value": "ref:../../inputs/elasticsearch_plan"
+          "value": "enterprise"
         },
         {
           "name": "elasticsearch_version",

@@ -314,23 +314,6 @@
 							"required": false
 						},
 						{
-							"key": "elasticsearch_plan",
-							"type": "string",
-							"default_value": "enterprise",
-							"description": "The pricing plan for the Databases for Elasticsearch instance.",
-							"required": false,
-							"options": [
-								{
-									"displayname": "Enterprise",
-									"value": "enterprise"
-								},
-								{
-									"displayname": "Platinum",
-									"value": "platinum"
-								}
-							]
-						},
-						{
 							"key": "existing_discovery_instance",
 							"type": "string",
 							"default_value": "__NULL__",

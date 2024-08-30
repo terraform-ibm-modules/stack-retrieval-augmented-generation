@@ -205,6 +205,10 @@
           "value": "ref:../../inputs/region"
         },
         {
+          "name": "profile_attachments",
+          "value": ["AI Security Guardrails 2.0"]
+        },
+        {
           "name": "resource_group_name",
           "value": "ref:../1 - Account Infrastructure Base/outputs/audit_resource_group_name"
         },

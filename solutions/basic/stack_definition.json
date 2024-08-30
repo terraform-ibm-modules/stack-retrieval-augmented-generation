@@ -361,6 +361,10 @@
           "value": ""
         },
         {
+          "name": "prefix",
+          "value": "ref:../../inputs/prefix"
+        },
+        {
           "name": "cos_region",
           "value": "ref:../../inputs/region"
         },

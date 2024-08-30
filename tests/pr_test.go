@@ -23,6 +23,12 @@ const yamlLocation = "../common-dev-assets/common-go-assets/common-permanent-res
 
 var permanentResources map[string]interface{}
 
+// Current supported regions (NOTE: eu-es is not being used as we don't have extended trial plan quota in that region currently)
+var validRegions = []string{
+	"us-south",
+	"eu-de",
+}
+
 func TestMain(m *testing.M) {
 	// Read the YAML file contents
 	var err error
@@ -52,6 +58,7 @@ func TestProjectsBasicFullTest(t *testing.T) {
 	}
 	options.StackInputs = map[string]interface{}{
 		"resource_group_name":         options.ResourceGroup,
+		"region":                      validRegions[rand.Intn(len(validRegions))],
 		"ibmcloud_api_key":            options.RequiredEnvironmentVars["TF_VAR_ibmcloud_api_key"],
 		"prefix":                      options.Prefix,
 		"signing_key":                 privateKey,
@@ -68,12 +75,6 @@ func TestProjectsBasicFullTest(t *testing.T) {
 
 func TestProjectsBasicExistingResourcesTest(t *testing.T) {
 	t.Parallel()
-	// Current supported regions
-	var validRegions = []string{
-		"us-south",
-		"eu-de",
-		"eu-es",
-	}
 
 	// ------------------------------------------------------------------------------------
 	// Provision RG, EN and SM

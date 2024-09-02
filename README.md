@@ -152,7 +152,7 @@ The automation is configured to deploy a Trial version of Secret Manager by defa
 Here are the limitations of the Trial version:
 * **Account limitation**: Only one Trial instance of Secret Manager can be deployed at a time in a given account.
 * **Deployment error**: You will encounter an error in the Secret Manager deployment step if there is already a Trial instance deployed in the same account.
-* **Re-deployment failure**: If the automation provisions a Trial version of Secrets Manager, and is un-deployed and then re-deployed again with the Trial version in the same account, the "Baseline Security - Secrets Manager" deployment will fail. This is because you can only have one Trial version of Secrets Manager in an account, and even after deletion, the prior Trial version of Secrets Manager needs to be removed from the "reclamation" state as well.
+* **Re-deployment failure**: If the automation provisions a Trial version of Secrets Manager, and is un-deployed and then re-deployed again with the Trial version in the same account, the "Essential Security - Secrets Manager" deployment will fail. This is because you can only have one Trial version of Secrets Manager in an account, and even after deletion, the prior Trial version of Secrets Manager needs to be removed from the "reclamation" state as well.
 
 
 **What are reclamations?**

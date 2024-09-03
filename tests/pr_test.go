@@ -23,9 +23,10 @@ const yamlLocation = "../common-dev-assets/common-go-assets/common-permanent-res
 
 var permanentResources map[string]interface{}
 
-// Current supported regions (NOTE: eu-es is not being used as we don't have extended trial plan quota in that region currently. Not using us-south on request of the SM team to prevent overloading in that region.)
+// Current supported regions (NOTE: eu-es is not being used as we don't have extended trial plan quota in that region currently.
 var validRegions = []string{
-	"eu-de",
+	// temporarily locking into us-south due to https://github.com/terraform-ibm-modules/terraform-ibm-watsonx-saas-da/issues/148#issuecomment-2326785254
+	"us-south",
 }
 
 func TestMain(m *testing.M) {

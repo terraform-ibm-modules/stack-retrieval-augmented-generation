@@ -128,7 +128,7 @@
   "members": [
     {
       "name": "Account Infrastructure Base",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.7546bd0d-010e-4e34-90d5-5bd7d2fa820c-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.957fb9a6-fd43-4d5a-b29d-9c76695fa91a-global",
       "inputs": [
         {
           "name": "prefix",
@@ -206,7 +206,7 @@
     },
     {
       "name": "Essential Security - Encryption Key Management",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.a58250eb-8af0-4874-842e-88e66f5ffbb8-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.206bfa3d-3bbe-435e-adb9-dd244fdaad86-global",
       "inputs": [
         {
           "name": "resource_group_name",
@@ -232,7 +232,7 @@
     },
     {
       "name": "Essential Security - Logging Monitoring Activity Tracker",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.6d66c3b4-6b0a-4484-a59e-8f490e3ff8b8-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.9a4b4855-07a5-43a0-af1d-ef44e091821c-global",
       "inputs": [
         {
           "name": "ibmcloud_api_key",
@@ -270,7 +270,7 @@
     },
     {
       "name": "Essential Security - Observability Event Notifications",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.ac3acff3-aa75-41f1-a5db-217d7bf6928a-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.ee7b0d6c-3603-40fb-953b-4bdbd43c3cbe-global",
       "inputs": [
         {
           "name": "kms_endpoint_url",
@@ -312,7 +312,7 @@
     },
     {
       "name": "Essential Security - Secrets Manager",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.266ee06f-e0d3-486e-8016-c5ce25845680-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.f98df044-b1c7-4f38-86db-6438e76a35bf-global",
       "inputs": [
         {
           "name": "prefix",
@@ -354,7 +354,7 @@
     },
     {
       "name": "Essential Security - Security Compliance Center",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.86ecc32b-65b6-4cb9-b263-2815138c47bc-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.c689955e-d4ad-4f9e-8bdc-c8929dd5991a-global",
       "inputs": [
         {
           "name": "ibmcloud_api_key",
@@ -394,13 +394,13 @@
         },
         {
           "name": "profile_attachments",
-          "value": []
+          "value": ["AI Security Guardrails 2.0"]
         }
       ]
     },
     {
       "name": "Gen AI - Databases for Elasticsearch",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.2d84cdb9-84a9-4487-880d-574c47482646-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.1b14c633-2d83-49a9-a9ee-4ce5921e22e1-global",
       "inputs": [
         {
           "name": "use_existing_resource_group",

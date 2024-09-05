@@ -349,6 +349,10 @@
         {
           "name": "existing_event_notification_instance_crn",
           "value": "ref:../Essential Security - Observability Event Notifications/outputs/crn"
+        },
+        {
+          "name": "enable_event_notification",
+          "value": true
         }
       ]
     },

@@ -57,14 +57,14 @@
 			"support_details": "This product is in the community registry, as such support is handled through the originated repo. If you experience issues please open an issue in that repository [https://github.com/terraform-ibm-modules/stack-retrieval-augmented-generation/issues](https://github.com/terraform-ibm-modules/stack-retrieval-augmented-generation/issues). Please note this product is not supported via the IBM Cloud Support Center.",
 			"flavors": [
 				{
-					"label": "Basic",
+					"label": "Basic (Deploy on Code Engine)",
 					"name": "basic",
 					"working_directory": "solutions/basic",
 					"compliance": {
 						"authority": "scc-v3",
 						"profiles": [
 							{
-								"profile_name": "AI ICT Guardrails",
+								"profile_name": "AI Security Guardrails 2.0",
 								"profile_version": "1.0.0"
 							}
 						]
@@ -143,14 +143,14 @@
 						{
 							"service_name": "databases-for-elasticsearch",
 							"role_crns": [
-							  "crn:v1:bluemix:public:iam::::role:Editor"
+							  	"crn:v1:bluemix:public:iam::::role:Editor"
 							]
 						},
 						{
 							"service_name": "event-notifications",
 							"role_crns": [
-							  "crn:v1:bluemix:public:iam::::serviceRole:Manager",
-							"crn:v1:bluemix:public:iam::::role:Editor"
+							  	"crn:v1:bluemix:public:iam::::serviceRole:Manager",
+								"crn:v1:bluemix:public:iam::::role:Editor"
 							]
 						}
 					],
@@ -180,19 +180,19 @@
 						"diagrams": [
 							{
 								"diagram": {
-									"url": "https://raw.githubusercontent.com/terraform-ibm-modules/stack-retrieval-augmented-generation/main/reference-architecture/RAG Pattern v2-part-2.svg",
+									"url": "https://raw.githubusercontent.com/terraform-ibm-modules/dev-rag/main/reference-architecture/rag-pattern.svg",
 									"caption": "Reference architecture",
 									"type": "image/svg+xml",
-									"thumbnail_url": "https://raw.githubusercontent.com/terraform-ibm-modules/stack-retrieval-augmented-generation/main/reference-architecture/RAG Pattern v2-part-2.svg"
+									"thumbnail_url": "https://raw.githubusercontent.com/terraform-ibm-modules/dev-rag/main/reference-architecture/rag-pattern.svg"
 								},
 								"description": "Reference architecture"
 							},
 							{
 								"diagram": {
-									"url": "https://raw.githubusercontent.com/terraform-ibm-modules/stack-retrieval-augmented-generation/main/reference-architecture/rag-stack.svg",
+									"url": "https://raw.githubusercontent.com/terraform-ibm-modules/dev-rag/main/reference-architecture/rag-stack.svg",
 									"caption": "Solution components",
 									"type": "image/svg+xml",
-									"thumbnail_url": "https://raw.githubusercontent.com/terraform-ibm-modules/stack-retrieval-augmented-generation/main/reference-architecture/rag-stack.svg"
+									"thumbnail_url": "https://raw.githubusercontent.com/terraform-ibm-modules/dev-rag/main/reference-architecture/rag-stack.svg"
 								},
 								"description": "Solution components"
 							}
@@ -246,13 +246,13 @@
 							"key": "resource_group_name",
 							"type": "string",
 							"default_value": "rag-services",
-							"description": "The name of the resource group that is created by this solution. The actual name is prefixed with the value of the input 'prefix'.  All resources created by this solution are deployed in this resource group. ",
+							"description": "The name of the resource group that is created by this solution. The actual name is prefixed with the value of the input 'prefix'.  All resources created by this solution are deployed in this resource group.",
 							"required": false
 						},						{
 							"key": "existing_resource_group_name",
 							"type": "string",
 							"default_value": "__NULL__",
-							"description": "The name of an existing resource group that is used by this solution. Prefix is NOT used for existing resource group.  All resources created by this solution are deployed in this resource group. ",
+							"description": "The name of an existing resource group that is used by this solution, takes precedence over resource_group_name. Prefix is NOT used for existing resource group. All resources created by this solution are deployed in this resource group.",
 							"required": false
 						},
 						{
@@ -307,28 +307,11 @@
 							"required": false
 						},
 						{
-							"key": "existing_en_instance_crn",
+							"key": "existing_event_notification_instance_crn",
 							"type": "string",
 							"default_value": "__NULL__",
 							"description": "The CRN of an existing event notification instance to use in this solution. If not set, a new event notification instance is provisioned.",
 							"required": false
-						},
-						{
-							"key": "elasticsearch_plan",
-							"type": "string",
-							"default_value": "enterprise",
-							"description": "The pricing plan for the Databases for Elasticsearch instance.",
-							"required": false,
-							"options": [
-								{
-									"displayname": "Enterprise",
-									"value": "enterprise"
-								},
-								{
-									"displayname": "Platinum",
-									"value": "platinum"
-								}
-							]
 						},
 						{
 							"key": "existing_discovery_instance",
@@ -366,7 +349,7 @@
 							"required": false
 						},
 						{
-							"key": "existing_db_instance_crn",
+							"key": "existing_elasticsearch_instance_crn",
 							"type": "string",
 							"default_value": "__NULL__",
 							"description": "The CRN of an existing elasticsearch instance to use in this solution. If not set, a new elasticsearch instance is provisioned.",
@@ -376,19 +359,19 @@
 					"outputs": [
 						{
 							"key": "elasticsearch_hostname",
-							"description": "Elasticsearch instance hostname."
+							"description": "The hostname of the Elasticsearch instance."
 						},
 						{
 							"key": "elasticsearch_port",
-							"description": "Elasticsearch instance port."
+							"description": "The port of the Elasticsearch instance."
 						},
 						{
 							"key": "elasticsearch_service_credentials_json",
-							"description": "Elasticsearch instance service credentials json map."
+							"description": "The service credentials of the Elasticsearch instance."
 						},
 						{
 							"key": "elasticsearch_crn",
-							"description": "Elasticsearch instance crn."
+							"description": "The CRN of the Elasticsearch instance."
 						},
 						{
 							"key": "watsonx_project_url",

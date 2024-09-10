@@ -227,6 +227,10 @@
         {
           "name": "existing_kms_instance_crn",
           "value": "ref:../../inputs/existing_kms_instance_crn"
+        },
+        {
+          "name": "prefix",
+          "value": "ref:../../inputs/prefix"
         }
       ]
     },

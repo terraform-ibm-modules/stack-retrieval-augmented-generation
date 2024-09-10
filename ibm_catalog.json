@@ -321,7 +321,7 @@
 							"required": false
 						},
 						{
-							"key": "existing_assistant_instance",
+							"key": "existing_assistant_instance_crn",
 							"type": "string",
 							"default_value": "__NULL__",
 							"description": "The CRN of an existing WatsonX SaaS assistant instance to use in this solution. If not set, a new assistant instance is provisioned depending on which plan is selected.",

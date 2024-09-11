@@ -430,7 +430,7 @@
         },
         {
           "name": "plan",
-          "value": "enterprise"
+          "value": "platinum"
         },
         {
           "name": "elasticsearch_version",
@@ -446,11 +446,19 @@
         },
         {
           "name": "member_host_flavor",
-          "value": "multitenant"
+          "value": "b3c.4x16.encrypted"
         },
         {
           "name": "member_cpu_count",
-          "value": 0
+          "value": 3
+        },
+        {
+          "name": "enable_elser_model",
+          "value": true
+        },
+        {
+          "name": "elser_model_type",
+          "value": ".elser_model_2_linux-x86_64"
         },
         {
           "name": "service_credential_names",
@@ -541,41 +549,80 @@
       ]
     },
     {
-      "name": "Workload - Code Engine Projects",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.524cca67-fad4-4842-a52a-3c54677a6b3e-global",
+      "name": "Workload - Red Hat OpenShift Container Platform on VPC",
+      "version_locator": "1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.afef7128-4e23-426b-bd52-10d2f5e7adee-global",
       "inputs": [
         {
           "name": "ibmcloud_api_key",
           "value": ""
         },
         {
-          "name": "resource_group_name",
-          "value": "ref:../Account Infrastructure Base/outputs/workload_resource_group_name"
-        },
-        {
-          "name": "existing_resource_group",
-          "value": true
-        },
-        {
           "name": "prefix",
           "value": "ref:../../inputs/prefix"
         },
         {
-          "name": "project_names",
+          "name": "region",
+          "value": "ref:../../inputs/region"
+        },
+        {
+          "name": "vpcs",
           "value": [
-            "Generative_AI_Sample_App_CI_Project",
-            "Generative_AI_Sample_App_CD_Project"
+            "workload"
           ]
         },
         {
-          "name": "region",
-          "value": "ref:../../inputs/region"
+          "name": "enable_transit_gateway",
+          "value": false
+        },
+        {
+          "name": "add_atracker_route",
+          "value": false
+        },
+        {
+          "name": "existing_kms_instance_name",
+          "value": "ref:../../members/Essential Security - Encryption Key Management/outputs/key_protect_name"
+        },
+        {
+          "name": "existing_kms_resource_group",
+          "value": "ref:../Account Infrastructure Base/outputs/security_resource_group_name"
+        },
+        {
+          "name": "existing_kms_endpoint_type",
+          "value": "private"
+        },
+        {
+          "name": "existing_cos_instance_name",
+          "value": "ref:../Essential Security - Logging Monitoring Activity Tracker/outputs/cos_instance_name"
+        },
+        {
+          "name": "existing_cos_resource_group",
+          "value": "ref:../Account Infrastructure Base/outputs/observability_resource_group_name"
+        },
+        {
+          "name": "existing_cos_endpoint_type",
+          "value": "private"
+        },
+        {
+          "name": "use_existing_cos_for_vpc_flowlogs",
+          "value": true
+        },
+        {
+          "name": "cluster_zones",
+          "value": "2"
+        },
+        {
+          "name": "flavor",
+          "value": "bx2.4x16"
+        },
+        {
+          "name": "workers_per_zone",
+          "value": 1
         }
       ]
     },
     {
       "name": "Workload - Application Lifecycle Management",
-      "version_locator": "1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.fba3ffcb-9f24-4ed8-83a7-5d3f5ac2122d-global",
+      "version_locator": "1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.c3622dde-a31a-44c2-983b-9fe0a67a4e64-global",
       "inputs": [
         {
           "name": "ibmcloud_api_key",
@@ -606,12 +653,8 @@
           "value": "ref:../Essential Security - Secrets Manager/outputs/secrets_manager_region"
         },
         {
-          "name": "ci_code_engine_project",
-          "value": "ref:../Workload - Code Engine Projects/outputs/project_1_name"
-        },
-        {
-          "name": "cd_code_engine_project",
-          "value": "ref:../Workload - Code Engine Projects/outputs/project_2_name"
+          "name": "cluster_name",
+          "value": "ref:../Workload - Red Hat OpenShift Container Platform on VPC/outputs/workload_cluster_name"
         },
         {
           "name": "registry_namespace",
@@ -622,36 +665,16 @@
           "value": "ref:../../inputs/sample_app_git_url"
         },
         {
+          "name": "ci_app_repo_clone_from_branch",
+          "value": "main"
+        },
+        {
           "name": "repositories_prefix",
           "value": "ref:../../inputs/prefix"
         },
         {
           "name": "ci_app_name",
           "value": "rag-sample-app"
-        },
-        {
-          "name": "ci_code_engine_image_name",
-          "value": "code-engine-rag-app"
-        },
-        {
-          "name": "ci_code_engine_context_dir",
-          "value": "."
-        },
-        {
-          "name": "ci_code_engine_env_from_configmaps",
-          "value": "app.properties"
-        },
-        {
-          "name": "cd_code_engine_env_from_configmaps",
-          "value": "app.properties"
-        },
-        {
-          "name": "ci_code_engine_app_min_scale",
-          "value": "1"
-        },
-        {
-          "name": "cd_code_engine_app_min_scale",
-          "value": "1"
         },
         {
           "name": "ci_signing_key_secret_name",
@@ -672,10 +695,6 @@
         {
           "name": "add_container_name_suffix",
           "value": true
-        },
-        {
-          "name": "add_code_engine_prefix",
-          "value": false
         }
       ]
     },

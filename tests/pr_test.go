@@ -40,6 +40,7 @@ func TestMain(m *testing.M) {
 }
 
 const basicDaStackDefPath = "solutions/basic/stack_definition.json"
+const standardDaStackDefPath = "solutions/standard/stack_definition.json"
 
 func TestProjectsBasicFullTest(t *testing.T) {
 	t.Parallel()
@@ -151,5 +152,36 @@ func TestProjectsBasicExistingResourcesTest(t *testing.T) {
 		terraform.Destroy(t, existingTerraformOptions)
 		terraform.WorkspaceDelete(t, existingTerraformOptions, prefix)
 		logger.Log(t, "END: Destroy (existing resources)")
+	}
+}
+
+func TestProjectsStandardFullTest(t *testing.T) {
+	t.Parallel()
+
+	options := testprojects.TestProjectOptionsDefault(&testprojects.TestProjectsOptions{
+		Testing:                t,
+		Prefix:                 "rag-s",
+		ParallelDeploy:         true,
+		StackConfigurationPath: standardDaStackDefPath,
+	})
+
+	privateKey, _, kerr := common.GenerateTempGPGKeyPairBase64()
+	if kerr != nil {
+		t.Fatal(kerr)
+	}
+	options.StackInputs = map[string]interface{}{
+		"resource_group_name":         options.ResourceGroup,
+		"region":                      validRegions[rand.Intn(len(validRegions))],
+		"ibmcloud_api_key":            options.RequiredEnvironmentVars["TF_VAR_ibmcloud_api_key"],
+		"prefix":                      options.Prefix,
+		"signing_key":                 privateKey,
+		"secret_manager_service_plan": "trial",
+	}
+
+	err := options.RunProjectsTest()
+	if assert.NoError(t, err) {
+		t.Log("TestProjectsFullTest Passed")
+	} else {
+		t.Error("TestProjectsFullTest Failed")
 	}
 }

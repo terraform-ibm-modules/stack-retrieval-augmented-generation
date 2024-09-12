@@ -1,8 +1,8 @@
 {
 	"products": [
 		{
-			"label": "Retrieval Augmented Generation Pattern",
-			"name": "Retrieval_Augmented_Generation_Pattern",
+			"label": "Testing - Retrieval Augmented Generation Pattern",
+			"name": "Testing_Retrieval_Augmented_Generation_Pattern",
 			"product_kind": "solution",
 			"tags": [
 				"watson",
@@ -305,7 +305,16 @@
 							"description": "The ID for the Watson Discovery project for the sample RAG application."
 						}
 					],
-					"install_type": "fullstack"
+					"install_type": "fullstack",
+					"dependency_version_2": true,
+					"licenses": [
+						{
+							"id": "LICENSE",
+							"name": "LICENSE",
+							"type": "text/plain",
+							"description": "LICENSE"
+						}
+					]
 				}
 			]
 		}

@@ -79,15 +79,12 @@ You can deploy a stacked deployable architecture through the IBM Cloud console i
 
 - By using **Auto-deploy**: The deployment method can be useful for demonstration and nonproduction environments. With auto-deploy, all the stack member configurations are validated and then approved and deployed.
 
-    > [!TIP]
-    > You can check the **Auto-deploy** setting for your project by clicking **Manage** > **Settings**. By turning on Auto-deploy, you enable the setting for all configurations in the project.
-
+    You can check the **Auto-deploy** setting for your project by clicking **Manage** > **Settings**. By turning on Auto-deploy, you enable the setting for all configurations in the project.
 - Individually by deploying each member configuration. The manual method is appropriate for projects that hold production environments. You can review the changes in each member configuration before the automation is run.
 
 > [!TIP]
 > After you approve the configuration, you might receive the error message "Unable to validate your configuration". To resolve the issue, refresh your browser.
-
-> [!TIP]
+>
 > You might see "New version available" notifications in the **Needs Attention** column in your project configuration. You can ignore these messages because they do not prevent you from deploying the stack.
 
 ### Deploying the architecture with Auto-deploy

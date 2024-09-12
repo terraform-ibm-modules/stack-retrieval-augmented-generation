@@ -25,7 +25,6 @@ Before you deploy the deployable architecture, make sure that you complete the f
 > You must use an API key that is associated with a user. You can't use service ID keys or trusted profiles.
 
 - Create an API key in the target account with the required permissions. The target account is the account that hosts the resources that are deployed by this architecture. For more information, see [Managing user API keys](https://cloud.ibm.com/docs/account?topic=account-userapikey&interface=ui).
-
     - Copy the value of the API key. You need it in the following steps.
     - In test or evaluation environments, you can grant the Administrator role on the following services
         - IAM Identity service
@@ -35,12 +34,9 @@ Before you deploy the deployable architecture, make sure that you complete the f
         To scope access to be more restrictive for a production environment, refer to the minimum permission level in the [permission tab](https://cloud.ibm.com/catalog/7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3/architecture/Retrieval_Augmented_Generation_Pattern-5fdd0045-30fc-4013-a8bc-6db9d5447a52-global#permissions) of this deployable architecture.
 - Create or have access to a signing key, which is the Base64 key that is obtained from the `gpg --gen-key` command without a passphrase (if not expired generated previously). Export the signing key by running the command `gpg --export-secret-key <email address> | base64` command. For more information about storing the key, see [Generating a GPG key](https://cloud.ibm.com/docs/devsecops?topic=devsecops-devsecops-image-signing#cd-devsecops-gpg-export). Copy the value of the key.
 
-
     The signing key is not required to deploy all the Cloud resources that are created by this deployable architecture. However, the key is necessary to get the automation to build and deploy the sample application.
 - [Install or update ](https://cloud.ibm.com/docs/cli?topic=cli-getting-started) the IBM Cloud CLI.
 - Optional: Install the IBM Cloud CLI Project plug-in by running the `ibmcloud plugin install project` command. For more information, see the [Project CLI reference](/docs/cli?topic=cli-projects-cli).
-- Read the [Deployment considerations](#deployment-considerations).
-
 
 ## Add the architecture to a project
 

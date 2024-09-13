@@ -402,9 +402,7 @@
         },
         {
           "name": "profile_attachments",
-          "value": [
-            "AI Security Guardrails 2.0"
-          ]
+          "value": []
         }
       ]
     },

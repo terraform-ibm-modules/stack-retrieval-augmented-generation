@@ -128,7 +128,7 @@
   "members": [
     {
       "name": "Account Infrastructure Base",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.957fb9a6-fd43-4d5a-b29d-9c76695fa91a-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.8252b811-2ef8-4bb1-b3b8-2c3e433485dd-global",
       "inputs": [
         {
           "name": "prefix",
@@ -206,7 +206,7 @@
     },
     {
       "name": "Essential Security - Encryption Key Management",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.206bfa3d-3bbe-435e-adb9-dd244fdaad86-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.7f57ef48-2bb2-4641-8f6e-db27a7eacc38-global",
       "inputs": [
         {
           "name": "resource_group_name",
@@ -232,7 +232,7 @@
     },
     {
       "name": "Essential Security - Logging Monitoring Activity Tracker",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.9a4b4855-07a5-43a0-af1d-ef44e091821c-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.0c74a83d-b073-45b5-a373-a0d61cc679b7-global",
       "inputs": [
         {
           "name": "ibmcloud_api_key",
@@ -270,7 +270,7 @@
     },
     {
       "name": "Essential Security - Observability Event Notifications",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.ee7b0d6c-3603-40fb-953b-4bdbd43c3cbe-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.ed652d2c-dd98-449d-92ac-18d77767e1f5-global",
       "inputs": [
         {
           "name": "kms_endpoint_url",
@@ -312,7 +312,7 @@
     },
     {
       "name": "Essential Security - Secrets Manager",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.f98df044-b1c7-4f38-86db-6438e76a35bf-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.905f2e5a-cd97-4680-bca1-8e6509d23141-global",
       "inputs": [
         {
           "name": "prefix",
@@ -358,7 +358,7 @@
     },
     {
       "name": "Essential Security - Security Compliance Center",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.c689955e-d4ad-4f9e-8bdc-c8929dd5991a-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.b27fc8c7-f6ec-4f98-890d-4f7ccfd37aaf-global",
       "inputs": [
         {
           "name": "ibmcloud_api_key",
@@ -398,13 +398,15 @@
         },
         {
           "name": "profile_attachments",
-          "value": ["AI Security Guardrails 2.0"]
+          "value": [
+            "AI Security Guardrails 2.0"
+          ]
         }
       ]
     },
     {
       "name": "Gen AI - Databases for Elasticsearch",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.1b14c633-2d83-49a9-a9ee-4ce5921e22e1-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.3cf6526b-c1d7-46d0-adf6-be1c4de18a1c-global",
       "inputs": [
         {
           "name": "use_existing_resource_group",
@@ -462,7 +464,7 @@
     },
     {
       "name": "Gen AI - WatsonX SaaS services",
-      "version_locator": "1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.9e2f1ef3-4ab2-4e08-a302-64c0f63989a2-global",
+      "version_locator": "1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.898b1113-985e-4524-9b69-279f0dc0fef2-global",
       "inputs": [
         {
           "name": "ibmcloud_api_key",
@@ -536,7 +538,7 @@
     },
     {
       "name": "Workload - Code Engine Projects",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.524cca67-fad4-4842-a52a-3c54677a6b3e-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.42a9e379-8a61-4fad-a4c7-09f72a9bfb7c-global",
       "inputs": [
         {
           "name": "ibmcloud_api_key",
@@ -556,7 +558,10 @@
         },
         {
           "name": "project_names",
-          "value": ["Generative_AI_Sample_App_CI_Project", "Generative_AI_Sample_App_CD_Project"]
+          "value": [
+            "Generative_AI_Sample_App_CI_Project",
+            "Generative_AI_Sample_App_CD_Project"
+          ]
         },
         {
           "name": "region",
@@ -672,7 +677,7 @@
     },
     {
       "name": "Workload - Sample RAG App Configuration",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.322cd315-4920-4d07-8724-dd10f31e5d1d-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.cd554614-0e33-4d4b-b3dd-19e9fe5d98d0-global",
       "inputs": [
         {
           "name": "toolchain_region",

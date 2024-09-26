@@ -1,7 +1,7 @@
 {
 	"products": [
 		{
-			"label": "Retrieval Augmented Generation Pattern (Dev)",
+			"label": "Retrieval Augmented Generation (RAG) Pattern (Dev)",
 			"name": "Retrieval_Augmented_Generation_Pattern_dev",
 			"product_kind": "solution",
 			"tags": [
@@ -27,27 +27,27 @@
 				"key protect",
 				"scc"
 			],
-			"short_description": "Deploys a sample Retrieval Augmented Generation application, including all supporting IBM Cloud and Watson services.",
-			"long_description": "This deployable architecture provides a comprehensive foundation for trust, observability, security, and regulatory compliance  by configuring and deploying various services, including:\n- Configuring IBM Cloud Account: with recommended values meeting the [IBM Cloud Framework for Financial Services](https://cloud.ibm.com/docs/framework-financial-services?topic=framework-financial-services-about)\n- Deploying Observability Services: for application and platform logging and monitoring\n- Deploying Keys and Secrets Management Services: for storage and management of encryption keys and secrets\n- Deploying CI/CD/CC Pipelines: for secure application lifecycle management\n- Deploying a Suite of Watson AI Services: to provide AI capabilities to the application \n\nThese configured and deployed services enable a secure and trustworthy deployment of Generative AI applications on IBM Cloud.\n\n# Objective\n\nThis deployable architecture is designed to showcase a fully automated deployment of a retrieval augmented generation application through IBM Cloud Project, providing a flexible and customizable foundation for your own Watson-based application deployments on IBM Cloud. This architecture deploys the following [banking sample application](https://github.com/IBM/gen-ai-rag-watsonx-sample-application) by default.\n\nBy leveraging this architecture, you can accelerate your deployment and tailor it to meet your unique business needs and enterprise goals.",
+			"short_description": "Automate RAG deployment with supporting IBM Cloud and watsonx services, embed your enterprise data in generative AI solutions.",
+			"long_description": "Utilize data from your enterprise to achieve productivity gains in activities related to question/answer conversations, content search, summarization and generation. RAG can be deployed in multiple configurations and is applicable to various industry use cases and solutions.\n\nThis deployable architecture provides a comprehensive foundation for trust, observability, security, and regulatory compliance by configuring and deploying various services and a sample application for a [RAG pattern](https://cloud.ibm.com/docs/pattern-genai-rag?topic=pattern-genai-rag-genai-pattern), including:\n- Configuring IBM Cloud Account with best practices from [IBM Cloud Framework for Financial Services](https://cloud.ibm.com/docs/framework-financial-services?topic=framework-financial-services-about)\n- Deploying key and secrets management services for storage and management of encryption keys and secrets\n- Deploying controls for continuous compliance\n- Deploying observability services for application and platform logging and monitoring\n- Deploying a suite of watsonx services to provide generative AI RAG capabilities\n- Deploying content databases for storing vector embeddings of the documents and content search/retrieval\n- Deploying a sample application in a variety of run times including CI/CD/CC pipelines for secure application lifecycle management\n\nThe above configured and deployed services enable a secure and trustworthy deployment of generative AI applications on IBM Cloud.\n\nThe configurations are flexible and be changed to meet the needs for several types of RAG patterns depending on the chosen combination of technologies and services.\n\nThe generative AI RAG pattern services include:\n- [watsonx.ai](https://dataplatform.cloud.ibm.com/docs/content/wsj/getting-started/welcome-main.html?context=wx)\n- [watsonx.data](https://cloud.ibm.com/docs/watsonxdata) (with Milvus)\n- [watsonx.governance](https://dataplatform.cloud.ibm.com/docs/content/svc-welcome/aiopenscale.html?context=wx)\n- [watsonx Assistant](https://cloud.ibm.com/docs/watson-assistant?topic=watson-assistant-welcome-new-assistant)\n- [watsonx Orchestrate](https://www.ibm.com/docs/en/watsonx/watson-orchestrate/current)\n- [Watson Discovery](https://cloud.ibm.com/docs/discovery-data)\n- [Elasticsearch](https://cloud.ibm.com/docs/databases-for-elasticsearch) Enterprise and Platinum edition\nThe supporting services include:\n- [Secrets Manager](https://cloud.ibm.com/docs/secrets-manager)\n- [Key Protect](https://cloud.ibm.com/docs/key-protect)\n- [Security and Compliance Center](https://cloud.ibm.com/docs/security-compliance)\n- [Event Notifications](https://cloud.ibm.com/docs/event-notifications?topic=event-notifications-getting-started)\n- [Logs](https://cloud.ibm.com/docs/cloud-logs)\n- [Monitoring](https://cloud.ibm.com/docs/monitoring?topic=monitoring-getting-started)\n- [Object Storage](https://cloud.ibm.com/docs/cloud-object-storage?topic=cloud-object-storage-getting-started-cloud-object-storage)\n- [Continuous Delivery](https://cloud.ibm.com/docs/ContinuousDelivery) toolchains\n- [Container Registry](https://cloud.ibm.com/docs/Registry)\n\nA [sample RAG application](https://github.com/IBM/gen-ai-rag-watsonx-sample-application) is deployed to [Code Engine](https://cloud.ibm.com/docs/codeengine) or [Red Hat OpenShift](https://cloud.ibm.com/docs/openshift) cluster.\n\nBy leveraging this architecture, you can accelerate your deployment and tailor it to meet your unique business needs and enterprise goals.",
 			"offering_docs_url": "https://github.com/terraform-ibm-modules/stack-retrieval-augmented-generation/blob/main/README.md",
 			"offering_icon_url": "https://globalcatalog.cloud.ibm.com/api/v1/1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc/artifacts/solution.svg",
 			"provider_name": "IBM",
 			"features": [
 				{
-					"title": "Retrieval Augmented Generation sample pattern",
-					"description": "Deploy a banking retrieval augmented generation (RAG) sample application to IBM Cloud Code Engine using Continous Delivery."
-				},
-				{
-					"title": "Ensure Observability",
-					"description": "Provides observability by deploying services such as IBM Log Analysis, IBM Monitoring, IBM Activity Tracker, and log retention."
+					"title": "RAG Pattern",
+					"description": "Deploy a RAG pattern with supporting IBM Cloud and watsonx services, and a sample application to Code Engine or Red Hat OpenShift using Continuous Delivery."
 				},
 				{
 					"title": "Implement Security",
-					"description": "The architecture ensures security by deploying IBM Key Protect and IBM Secrets Manager."
+					"description": "The architecture ensures security by deploying Key Protect and Secrets Manager."
 				},
 				{
 					"title": "Achieve Regulatory Compliance",
-					"description": "Ensures regulatory compliance by implementing CI/CD/CC pipelines, along with IBM SCC for secure application lifecycle management."
+					"description": "Ensures regulatory compliance by implementing CI/CD/CC pipelines, along with Security and Compliance Center for continuous compliance."
+				},
+				{
+					"title": "Ensure Observability",
+					"description": "Provides observability by deploying services such as Logs and Monitoring for log analysis and tracking activity."
 				},
 				{
 					"title": "Establish Trust",
@@ -157,24 +157,8 @@
 					"architecture": {
 						"features": [
 							{
-								"title": "Retrieval Augmented Generation sample pattern",
-								"description": "Deploy a banking retrieval augmented generation (RAG) sample application to IBM Cloud Code Engine using Continous Delivery."
-							},
-							{
-								"title": "Ensure Observability",
-								"description": "The architecture provides observability by deploying services such as IBM Log Analysis, IBM Monitoring, IBM Activity Tracker, and log retention through Cloud Object Storage buckets."
-							},
-							{
-								"title": "Implement Security",
-								"description": "The architecture ensures security by deploying IBM Key Protect and IBM Secrets Manager."
-							},
-							{
-								"title": "Achieve Regulatory Compliance",
-								"description": "The architecture ensures regulatory compliance by implementing CI/CD/CC pipelines, along with IBM Security Compliance Center (SCC) for secure application lifecycle management."
-							},
-							{
-								"title": "Establish Trust",
-								"description": "The architecture ensures trust by configuring the IBM Cloud account to align with compliance settings as defined in the Financial Services framework."
+								"title": "Enables:",
+								"description": "1.Code Engine for containerized and serverless workloads\n2.Elasticsearch Enterprise for building and storing dense vector indexes or keyword search indexes\n3.watsonx.ai in-memory vector store for RAG trial and exploration\n4.watsonx.ai UI to upload documents\n5.watsonx.ai Prompt Lab for inferencing and Prompt Templates\n6.watsonx Assistant Conversational Search with embedded LLM\n7.Build your own data processing, ingestion pipeline and indexes"
 							}
 						],
 						"diagrams": [
@@ -494,24 +478,8 @@
 					"architecture": {
 						"features": [
 							{
-								"title": "Retrieval Augmented Generation sample pattern",
-								"description": "Deploy a banking retrieval augmented generation (RAG) sample application to IBM Cloud Code Engine using Continous Delivery."
-							},
-							{
-								"title": "Ensure Observability",
-								"description": "The architecture provides observability by deploying services such as IBM Log Analysis, IBM Monitoring, IBM Activity Tracker, and log retention through Cloud Object Storage buckets."
-							},
-							{
-								"title": "Implement Security",
-								"description": "The architecture ensures security by deploying IBM Key Protect and IBM Secrets Manager."
-							},
-							{
-								"title": "Achieve Regulatory Compliance",
-								"description": "The architecture ensures regulatory compliance by implementing CI/CD/CC pipelines, along with IBM Security Compliance Center (SCC) for secure application lifecycle management."
-							},
-							{
-								"title": "Establish Trust",
-								"description": "The architecture ensures trust by configuring the IBM Cloud account to align with compliance settings as defined in the Financial Services framework."
+								"title": "Enables:",
+								"description": "1.Red Hat OpenShift cluster for microservices workloads\n2.Elasticsearch Platinum for building and storing sparse vectors, dense vector indexes or keyword search indexes\n  - watsonx.ai use of Elasticsearch ELSER2 vector index for RAG\n  - watsonx Assistant Conversational Search with UI feature for uploading documents to create or use Elasticsearch ELSER2 vector index for RAG\n3.watsonx.ai in-memory vector store for RAG trial and exploration\n4.watsonx.ai UI to upload documents\n5.watsonx.ai Prompt Lab for inferencing and Prompt Templates\n6.watsonx Assistant Conversational Search with embedded LLM\n7.Build your own data processing, ingestion pipeline and indexes"
 							}
 						],
 						"diagrams": [

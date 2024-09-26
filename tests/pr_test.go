@@ -48,7 +48,6 @@ func TestProjectsBasicFullTest(t *testing.T) {
 	options := testprojects.TestProjectOptionsDefault(&testprojects.TestProjectsOptions{
 		Testing:                t,
 		Prefix:                 "rag-stack",
-		ParallelDeploy:         true,
 		StackConfigurationPath: basicDaStackDefPath,
 	})
 
@@ -112,7 +111,6 @@ func TestProjectsBasicExistingResourcesTest(t *testing.T) {
 
 		options := testprojects.TestProjectOptionsDefault(&testprojects.TestProjectsOptions{
 			Testing:                t,
-			ParallelDeploy:         true,
 			StackConfigurationPath: basicDaStackDefPath,
 		})
 
@@ -161,7 +159,6 @@ func TestProjectsStandardFullTest(t *testing.T) {
 	options := testprojects.TestProjectOptionsDefault(&testprojects.TestProjectsOptions{
 		Testing:                t,
 		Prefix:                 "rag-s",
-		ParallelDeploy:         true,
 		StackConfigurationPath: standardDaStackDefPath,
 	})
 

@@ -1,8 +1,24 @@
-# Retrieval augmented generation for watsonx on IBM Cloud
+# Retrieval augmented generation (RAG) for watsonx on IBM Cloud
 
-The following [deployable architecture](https://cloud.ibm.com/docs/secure-enterprise?topic=secure-enterprise-understand-module-da#what-is-da) automates the deployment of a sample gen AI Pattern on IBM Cloud, including all underlying IBM Cloud infrastructure. This architecture implements the best practices for watsonx gen AI Pattern deployment on IBM Cloud, as described in the [reference architecture](https://cloud.ibm.com/docs/pattern-genai-rag?topic=pattern-genai-rag-genai-pattern).
+The following [deployable architecture](https://cloud.ibm.com/docs/secure-enterprise?topic=secure-enterprise-understand-module-da#what-is-da) automates the deployment of a sample gen AI Pattern on IBM Cloud, including all underlying IBM Cloud and WatsonX infrastructure. This architecture implements the best practices for watsonx gen AI Pattern deployment on IBM Cloud, as described in the [reference architecture](https://cloud.ibm.com/docs/pattern-genai-rag?topic=pattern-genai-rag-genai-pattern).
 
-This deployable architecture provides a comprehensive foundation for trust, observability, security, and regulatory compliance. The architecture configures an IBM Cloud account to align with compliance settings. It also deploys key management and secrets management services and the infrastructure to support continuous integration (CI), continuous delivery (CD), and continuous compliance (CC) pipelines for secure management of the application lifecycle. These pipelines facilitate the deployment of the application, check for vulnerabilities and auditability, and help ensure a secure and trustworthy deployment of generative AI applications on IBM Cloud.
+This deployable architecture provides a comprehensive foundation for trust, observability, security, and regulatory compliance. The architecture configures an IBM Cloud account to align with compliance settings. It also deploys key management and secrets management services and the infrastructure to support continuous integration (CI), continuous delivery (CD), and continuous compliance (CC) pipelines for secure management of the application lifecycle. It also deploys the WatsonX services suite and IBM Cloud Elasticsearch to faciliate a RAG pattern. These pipelines facilitate the deployment of the application, check for vulnerabilities and auditability, and help ensure a secure and trustworthy deployment of generative AI applications on IBM Cloud.
+
+## Variations
+
+Two variations are available for this deployable architecture:
+1. Basic variation:
+   - Code Engine Project: Provisions a Code Engine project, providing a fully managed platform for containerized applications.
+   - Application Deployment: Deploys the application on the provisioned Code Engine project.
+   - Elasticsearch Enterprise: Provisions an Elasticsearch [enterprise](https://cloud.ibm.com/docs/databases-for-elasticsearch?topic=databases-for-elasticsearch-elastic-offerings) instance for search and analytics capabilities.
+
+2. Standard variation:
+   - IBM Cloud OpenShift Cluster: Provisions an [IBM Cloud OpenShift cluster](https://cloud.ibm.com/docs/openshift?topic=openshift-overview)
+   - VPC Network Infrastructure: Sets up the underlying VPC network infrastructure to support the OpenShift cluster.
+   - Application Deployment: Deploys the application on the provisioned OpenShift cluster.
+   - ElasticSearch Platinum Plan: Leverages the platinum plan of ElasticSearch, which includes the [ELSER](https://cloud.ibm.com/docs/databases-for-elasticsearch?topic=databases-for-elasticsearch-elser-embeddings-elasticsearch) model for advanced vector generation capabilities.
+
+
 
 ## Objective and benefits
 
@@ -12,7 +28,7 @@ By using this architecture, you can accelerate your deployment and tailor it to 
 
 This architecture can help you achieve the following goals:
 
-- Establish trust: The architecture configures the IBM Cloud account to align with the compliance settings that are defined in the [IBM Cloud for Financial Services](https://cloud.ibm.com/docs/framework-financial-services?topic=framework-financial-services-about) framework.
+- Establish trust: The architecture configures the IBM Cloud account to align with the compliance settings that are defined in the [IBM Cloud for Financial Services](https://cloud.ibm.com/docs/framework-financial-services?topic=framework-financial-services-about) framework, and the [AI Security Guardrails 2.0](https://cloud.ibm.com/docs/security-compliance?topic=security-compliance-ai-security-change-log) profile.
 - Ensure observability: The architecture provides observability by deploying services such as IBM Log Analysis, IBM Monitoring, IBM Activity Tracker, and log retention through IBM Cloud Object Storage buckets.
 - Implement security: The architecture deploys instances of IBM Key Protect and IBM Secrets Manager.
 - Achieve regulatory compliance: The architecture implements CI, CD, and CC pipelines along with IBM Security Compliance Center (SCC) for secure application lifecycle management.
@@ -27,30 +43,29 @@ Before you deploy the deployable architecture, make sure that you complete the f
 - Create an API key in the target account with the required permissions. The target account is the account that hosts the resources that are deployed by this architecture. For more information, see [Managing user API keys](https://cloud.ibm.com/docs/account?topic=account-userapikey&interface=ui).
     - Copy the value of the API key. You need it in the following steps.
     - In test or evaluation environments, you can grant the Administrator role on the following services
-        - IAM Identity service
-        - All Identity and Access enabled services
+        - IAM Identity service. In addition to the Administrator role, when deploying the Standard variation of the Deployable Architecture, explicitly assign the `User API key creator` role, as it is mandatory for a successful OpenShift cluster deployment.
+        - All Identity and Access enabled services.
         - All Account Management services.
 
         To scope access to be more restrictive for a production environment, refer to the minimum permission level in the [permission tab](https://cloud.ibm.com/catalog/7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3/architecture/Retrieval_Augmented_Generation_Pattern-5fdd0045-30fc-4013-a8bc-6db9d5447a52-global#permissions) of this deployable architecture.
 - Create or have access to a signing key, which is the Base64 key that is obtained from the `gpg --gen-key` command without a passphrase (if not expired generated previously). Export the signing key by running the command `gpg --export-secret-key <email address> | base64` command. For more information about storing the key, see [Generating a GPG key](https://cloud.ibm.com/docs/devsecops?topic=devsecops-devsecops-image-signing#cd-devsecops-gpg-export). Copy the value of the key.
 
-    The signing key is not required to deploy all the Cloud resources that are created by this deployable architecture. However, the key is necessary to get the automation to build and deploy the sample application.
-- [Install or update ](https://cloud.ibm.com/docs/cli?topic=cli-getting-started) the IBM Cloud CLI.
-- Optional: Install the IBM Cloud CLI Project plug-in by running the `ibmcloud plugin install project` command. For more information, see the [Project CLI reference](/docs/cli?topic=cli-projects-cli).
+    The signing key is not required to deploy all the Cloud resources created by this deployable architecture. Although the sample application will be built and deployed, the CI pipeline will report a failure due to the missing signing step.
+
 
 ## Add the architecture to a project
 
-1.  Go to the **Retrieval Augmented Generation Pattern** [details page](https://cloud.ibm.com/catalog/7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3/architecture/Retrieval_Augmented_Generation_Pattern-5fdd0045-30fc-4013-a8bc-6db9d5447a52-global) in the IBM Cloud catalog community registry.
+1.  Go to the **Retrieval Augmented Generation (RAG) Pattern** [details page](https://cloud.ibm.com/catalog/7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3/architecture/Retrieval_Augmented_Generation_Pattern-5fdd0045-30fc-4013-a8bc-6db9d5447a52-global) in the IBM Cloud catalog community registry.
 1.  Select the latest product version in the Architecture section.
-1.  Click **Review deployment options**.
-1.  Select the **Add to project** deployment type in **Deployment options**, and then click **Add to project**.
-1.  Select **Create new** and enter the following details:
+1.  Select the variation **Basic** or **Standard**. Refers to the Variations section above for further details on the two variations.
+2.  Click **Add to project**
+3.  Select **Create new** and enter the following details:
     1.  Add a name and description.
-    1.  Select a region and resource group for the project. For example, for evaluation purposes, you can select the region that is closest to you and the default resource group.
+    2.  Select a region and resource group for the project. For example, for evaluation purposes, you can select the region that is closest to you and the default resource group.
 
         For more information about the enterprise account structures, see the [Central administration account](/docs/enterprise-account-architecture?topic=enterprise-account-architecture-admin-hub-account) white paper.
-    1.  Enter a configuration name. For example, "RAG", "dev" or "prod". The name can help you later to match your deployment target.
-1.  Click **Add** (or **Create** for the initial project in the account).
+    3.  Enter a configuration name. For example, "RAG", "dev" or "prod". The name can help you later to match your deployment target.
+4.  Click **Create**
 
 ## Configure your stack
 
@@ -111,20 +126,14 @@ To monitor the build and deployment of the application, follow these steps:
 1.  Access the DevOps Toolchains view by navigating to [DevOps > Toolchains](https://cloud.ibm.com/devops/toolchains) in the target account.
 1.  Select the resource group and region where the infrastructure was deployed. The resource group name is based on the prefix and `resource_group_name` inputs of the deployable architecture.
 1.  Select the **RAG Sample App-CI-Toolchain**.
-    ![Toolchain](./images/min/8-toolchain.png)
-1.  In the toolchain view, select **ci-pipeline** in delivery pipeline.
-    ![Toolchain](./images/min/9-pipeline.png)
-5.  Look for the status of the CI pipeline execution in the **rag-webhook-trigger** section.
+2.  In the toolchain view, select **ci-pipeline** in delivery pipeline.
+3.  Look for the status of the CI pipeline execution in the **rag-webhook-trigger** section.
 
 ### Verifying the sample application
 
-After the CI pipeline completes, you can access the application in the created [Code Engine project](https://cloud.ibm.com/codeengine/projects).
+- Code Engine: After the CI pipeline completes, you can access the application in the created [Code Engine project](https://cloud.ibm.com/codeengine/projects).
+- OpenShift: TODO
 
-
-### Enabling Watson Assistant
-
-After the application is built and is running in Code Engine, enable Watson Assistant in the app.
-To complete the installation, follow the steps that are outlined in the [Configuration steps for watsonx Assistant artifacts](https://github.com/IBM/gen-ai-rag-watsonx-sample-application/blob/main/artifacts/artifacts-README.md) file in the gen-ai-rag-watsonx-sample-application GitHub project.
 
 ## Troubleshooting
 
@@ -163,9 +172,10 @@ For example, by editing the member configuration, you can accomplish these thing
 
 - Fine-tune account settings
 - Deploy more Watson components, such as watsonx.governance
-- Deploy to a resource group
+- Deploy to an existing resource group
 - Reuse existing Key Protect keys
-- Tune the parameters of the provisioned Code Engine project
+- Reuse existing IBM Cloud service instances (Secrets Manager, key Protect, Event Notifications, Watsonx services)
+- Adjust the parameters of your provisioned Code Engine project or OpenShift cluster to meet specific requirements.
 
 To edit the member configuration, select **Edit** from the Options icon ![Options icon](/images/action-menu-icon.svg "Options") in the member configuration row.
 
@@ -175,8 +185,8 @@ You can remove a member configuration from the stack that other configurations d
 
 You can remove the following configurations in this architecture:
 
-- Observability
 - Security and Control Center
+- Sample RAG App Configuration
 
 To remove a member configuration, select **Remove from Stack** from the Options icon ![Options icon](/images/action-menu-icon.svg "Options") in the member configuration row.
 

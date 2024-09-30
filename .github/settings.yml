@@ -15,14 +15,14 @@ repository:
   # By changing this field, you rename the repository.
 
   # Uncomment this name property and set the name to the current repo name.
-  name: "dev-rag"
+  name: "stack-retrieval-augmented-generation"
 
   # The description is displayed under the repository name on the
   # organization page and in the 'About' section of the repository.
 
   # Uncomment this description property
   # and update the description to the current repo description.
-  description: "A temporary repo for development of rag stack"
+  description: "A deployable architecture that automates the deployment of a sample gen AI Pattern on IBM Cloud, including all underlying IBM Cloud and WatsonX infrastructure."
 
   # Use a comma-separated list of topics to set on the repo (ensure not to use any caps in the topic string).
-  topics: terraform, ibm-cloud, terraform-stack, ibm-cloud-stack, core-team, temp-dev
+  topics: terraform, ibm-cloud, terraform-stack, ibm-cloud-stack, core-team, genai, watsonx, rag

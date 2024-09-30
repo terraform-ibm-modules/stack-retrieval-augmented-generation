@@ -76,7 +76,7 @@
       "default": null
     },
     {
-      "name": "enable_platform_metrics",
+      "name": "enable_platform_logs_metrics",
       "required": false,
       "type": "boolean",
       "hidden": false,
@@ -236,7 +236,7 @@
     },
     {
       "name": "Essential Security - Logging Monitoring Activity Tracker",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.eaf90e32-42b4-4cd6-a4c3-ea720f6ea9f7-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.157744e4-5ef1-4e0f-9b8b-8b49b2ee8bb2-global",
       "inputs": [
         {
           "name": "ibmcloud_api_key",
@@ -268,7 +268,11 @@
         },
         {
           "name": "enable_platform_metrics",
-          "value": "ref:../../inputs/enable_platform_metrics"
+          "value": "ref:../../inputs/enable_platform_logs_metrics"
+        },
+        {
+          "name": "enable_platform_logging",
+          "value": "ref:../../inputs/enable_platform_logs_metrics"
         }
       ]
     },
@@ -404,7 +408,7 @@
     },
     {
       "name": "Gen AI - Databases for Elasticsearch",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.aa4a2c9b-8a6a-472d-a9d3-9fc6e97b062f-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.bd9fa211-0586-4580-90a7-47f22f6b8b4b-global",
       "inputs": [
         {
           "name": "use_existing_resource_group",
@@ -659,7 +663,7 @@
     },
     {
       "name": "Workload - Sample RAG App Configuration",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.15a21bde-a11f-476b-a312-83a9c863e8eb-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.0f19e9f8-07c5-4091-9c0a-5f55f846b152-global",
       "inputs": [
         {
           "name": "toolchain_region",

@@ -152,6 +152,13 @@
 								"crn:v1:bluemix:public:iam::::serviceRole:Manager",
 								"crn:v1:bluemix:public:iam::::role:Editor"
 							]
+						},
+						{
+							"role_crns": [
+								"crn:v1:bluemix:public:iam::::serviceRole:Writer",
+								"crn:v1:bluemix:public:iam::::role:Editor"
+							],
+							"service_name": "codeengine"
 						}
 					],
 					"architecture": {
@@ -299,10 +306,10 @@
 							"required": false
 						},
 						{
-							"key": "enable_platform_metrics",
+							"key": "enable_platform_logs_metrics",
 							"type": "boolean",
 							"default_value": false,
-							"description": "Whether the monitoring instance is configured to receive all platform metrics in the target region. There can only be one instance per region provisioned for platform metrics.",
+							"description": "Whether to provision logging and monitoring instances are configured to receive all platform logs and metrics in the target region. There can only be one instance per region provisioned for platform logs/metrics.",
 							"required": false
 						},
 						{
@@ -414,7 +421,7 @@
 						"profiles": [
 							{
 								"profile_name": "AI Security Guardrails 2.0",
-								"profile_version": "1.0.0"
+								"profile_version": "1.1.0"
 							}
 						]
 					},
@@ -501,6 +508,18 @@
 								"crn:v1:bluemix:public:iam::::serviceRole:Manager",
 								"crn:v1:bluemix:public:iam::::role:Editor"
 							]
+						},
+						{
+							"role_crns": [
+								"crn:v1:bluemix:public:iam::::role:Administrator"
+							],
+							"service_name": "containers-kubernetes"
+						},
+						{
+							"role_crns": [
+								"crn:v1:bluemix:public:iam::::role:Administrator"
+							],
+							"service_name": "is.vpc"
 						}
 					],
 					"architecture": {
@@ -518,11 +537,11 @@
 								"description": " "
 							},
 							{
-								"title": "- watsonx.ai use of Elasticsearch ELSER2 vector index for RAG",
+								"title": "i. watsonx.ai use of Elasticsearch ELSER2 vector index for RAG",
 								"description": " "
 							},
 							{
-								"title": "- watsonx Assistant Conversational Search with UI feature for uploading documents to create or use Elasticsearch ELSER2 vector index for RAG",
+								"title": "ii. watsonx Assistant Conversational Search with UI feature for uploading documents to create or use Elasticsearch ELSER2 vector index for RAG",
 								"description": " "
 							},
 							{
@@ -656,10 +675,10 @@
 							"required": false
 						},
 						{
-							"key": "enable_platform_metrics",
+							"key": "enable_platform_logs_metrics",
 							"type": "boolean",
 							"default_value": false,
-							"description": "Whether the monitoring instance is configured to receive all platform metrics in the target region. There can only be one instance per region provisioned for platform metrics.",
+							"description": "Whether to provision logging and monitoring instances are configured to receive all platform logs and metrics in the target region. There can only be one instance per region provisioned for platform logs/metrics.",
 							"required": false
 						},
 						{

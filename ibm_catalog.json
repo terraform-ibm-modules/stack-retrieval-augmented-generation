@@ -1,8 +1,8 @@
 {
 	"products": [
 		{
-			"label": "Retrieval Augmented Generation (RAG) Pattern (Dev)",
-			"name": "Retrieval_Augmented_Generation_Pattern_dev",
+			"label": "Retrieval Augmented Generation (RAG) Pattern",
+			"name": "Retrieval_Augmented_Generation_Pattern",
 			"product_kind": "solution",
 			"tags": [
 				"watson",
@@ -199,19 +199,19 @@
 						"diagrams": [
 							{
 								"diagram": {
-									"url": "https://raw.githubusercontent.com/terraform-ibm-modules/dev-rag/main/reference-architecture/rag-pattern.svg",
+									"url": "https://raw.githubusercontent.com/terraform-ibm-modules/stack-retrieval-augmented-generation/main/reference-architecture/rag-pattern.svg",
 									"caption": "Reference architecture",
 									"type": "image/svg+xml",
-									"thumbnail_url": "https://raw.githubusercontent.com/terraform-ibm-modules/dev-rag/main/reference-architecture/rag-pattern.svg"
+									"thumbnail_url": "https://raw.githubusercontent.com/terraform-ibm-modules/stack-retrieval-augmented-generation/main/reference-architecture/rag-pattern.svg"
 								},
 								"description": "Reference architecture"
 							},
 							{
 								"diagram": {
-									"url": "https://raw.githubusercontent.com/terraform-ibm-modules/dev-rag/main/reference-architecture/rag-stack.svg",
+									"url": "https://raw.githubusercontent.com/terraform-ibm-modules/stack-retrieval-augmented-generation/main/reference-architecture/rag-stack.svg",
 									"caption": "Solution components",
 									"type": "image/svg+xml",
-									"thumbnail_url": "https://raw.githubusercontent.com/terraform-ibm-modules/dev-rag/main/reference-architecture/rag-stack.svg"
+									"thumbnail_url": "https://raw.githubusercontent.com/terraform-ibm-modules/stack-retrieval-augmented-generation/main/reference-architecture/rag-stack.svg"
 								},
 								"description": "Solution components"
 							}
@@ -568,19 +568,19 @@
 						"diagrams": [
 							{
 								"diagram": {
-									"url": "https://raw.githubusercontent.com/terraform-ibm-modules/dev-rag/main/reference-architecture/rag-pattern.svg",
+									"url": "https://raw.githubusercontent.com/terraform-ibm-modules/stack-retrieval-augmented-generation/main/reference-architecture/rag-pattern.svg",
 									"caption": "Reference architecture",
 									"type": "image/svg+xml",
-									"thumbnail_url": "https://raw.githubusercontent.com/terraform-ibm-modules/dev-rag/main/reference-architecture/rag-pattern.svg"
+									"thumbnail_url": "https://raw.githubusercontent.com/terraform-ibm-modules/stack-retrieval-augmented-generation/main/reference-architecture/rag-pattern.svg"
 								},
 								"description": "Reference architecture"
 							},
 							{
 								"diagram": {
-									"url": "https://raw.githubusercontent.com/terraform-ibm-modules/dev-rag/main/reference-architecture/rag-stack.svg",
+									"url": "https://raw.githubusercontent.com/terraform-ibm-modules/stack-retrieval-augmented-generation/main/reference-architecture/rag-stack.svg",
 									"caption": "Solution components",
 									"type": "image/svg+xml",
-									"thumbnail_url": "https://raw.githubusercontent.com/terraform-ibm-modules/dev-rag/main/reference-architecture/rag-stack.svg"
+									"thumbnail_url": "https://raw.githubusercontent.com/terraform-ibm-modules/stack-retrieval-augmented-generation/main/reference-architecture/rag-stack.svg"
 								},
 								"description": "Solution components"
 							}

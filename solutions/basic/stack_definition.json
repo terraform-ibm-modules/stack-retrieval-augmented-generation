@@ -271,7 +271,7 @@
           "value": "ref:../../inputs/enable_platform_logs_metrics"
         },
         {
-          "name": "enable_platform_logging",
+          "name": "enable_platform_logs",
           "value": "ref:../../inputs/enable_platform_logs_metrics"
         }
       ]

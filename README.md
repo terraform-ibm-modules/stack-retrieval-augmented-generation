@@ -48,9 +48,10 @@ Before you deploy the deployable architecture, make sure that you complete the f
         - All Account Management services.
 
         To scope access to be more restrictive for a production environment, refer to the minimum permission level in the [permission tab](https://cloud.ibm.com/catalog/7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3/architecture/Retrieval_Augmented_Generation_Pattern-5fdd0045-30fc-4013-a8bc-6db9d5447a52-global#permissions) of this deployable architecture.
-- Create or have access to a signing key, which is the Base64 key that is obtained from the `gpg --gen-key` command without a passphrase (if not expired generated previously). Export the signing key by running the command `gpg --export-secret-key <email address> | base64` command. For more information about storing the key, see [Generating a GPG key](https://cloud.ibm.com/docs/devsecops?topic=devsecops-devsecops-image-signing#cd-devsecops-gpg-export). Copy the value of the key.
-
-    The signing key is not required to deploy all the Cloud resources created by this deployable architecture. Although the sample application will be built and deployed, the CI pipeline will report a failure due to the missing signing step.
+- Generating and exporting a signing key. This step is optional for deploying the application, but it is required for the CI pipeline to complete successfully. Without this step, the CI pipeline will report a failure due to the missing signing step. If you want to generate and export a signing key, follow these steps:
+    - Create or obtain a signing key by running the command `gpg --gen-key` without a passphrase (if not expired, you can use a previously generated key).
+    - Export the signing key by running the command `gpg --export-secret-key <email address> | base64`. For more information about storing the key, see [Generating a GPG key](https://cloud.ibm.com/docs/devsecops?topic=devsecops-devsecops-image-signing#cd-devsecops-gpg-export).
+    - Copy the value of the key and keep note of the key for later.
 
 
 ## Add the architecture to a project
@@ -131,8 +132,11 @@ To monitor the build and deployment of the application, follow these steps:
 
 ### Verifying the sample application
 
-- Code Engine: After the CI pipeline completes, you can access the application in the created [Code Engine project](https://cloud.ibm.com/codeengine/projects).
-- OpenShift: TODO
+- Code Engine deployment (Basic): After the CI pipeline completes, you can access the application in the created [Code Engine project](https://cloud.ibm.com/codeengine/projects).
+- OpenShift deployment (Standard):
+    1.  In your project, click the **Configurations** tab.
+    2.  Click the `Workload - Sample RAG App Configuration` row.
+    3.  In the `Outputs` tab, the URL to the deployed application is listed under the `sample_app_public_url` output.
 
 
 ## Troubleshooting

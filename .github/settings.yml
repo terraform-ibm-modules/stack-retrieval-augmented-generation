@@ -22,7 +22,7 @@ repository:
 
   # Uncomment this description property
   # and update the description to the current repo description.
-  # description: ""
+  description: "A deployable architecture that automates the deployment of a sample gen AI Pattern on IBM Cloud, including all underlying IBM Cloud and WatsonX infrastructure."
 
   # Use a comma-separated list of topics to set on the repo (ensure not to use any caps in the topic string).
-  topics: terraform, ibm-cloud, terraform-stack, ibm-cloud-stack, core-team
+  topics: terraform, ibm-cloud, terraform-stack, ibm-cloud-stack, core-team, genai, watsonx, rag

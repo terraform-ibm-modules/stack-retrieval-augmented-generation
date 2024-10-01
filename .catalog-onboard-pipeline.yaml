@@ -6,7 +6,15 @@ offerings:
     catalog_id: 7df1e4ca-d54c-4fd0-82ce-3d13247308cd
     offering_id: 5fdd0045-30fc-4013-a8bc-6db9d5447a52
     variations:
-      - name: Code-Engine-d7b9
+      - name: basic
+        mark_ready: false
+        install_type: fullstack
+        format_kind: stack
+        validation_type: projects
+        scc:
+          instance_id: 1c7d5f78-9262-44c3-b779-b28fe4d88c37
+          region: us-south
+      - name: standard
         mark_ready: false
         install_type: fullstack
         format_kind: stack

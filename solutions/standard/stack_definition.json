@@ -428,7 +428,7 @@
         },
         {
           "name": "plan",
-          "value": "enterprise"
+          "value": "platinum"
         },
         {
           "name": "elasticsearch_version",
@@ -444,11 +444,19 @@
         },
         {
           "name": "member_host_flavor",
-          "value": "multitenant"
+          "value": "b3c.4x16.encrypted"
         },
         {
           "name": "member_cpu_count",
-          "value": 0
+          "value": 3
+        },
+        {
+          "name": "enable_elser_model",
+          "value": true
+        },
+        {
+          "name": "elser_model_type",
+          "value": ".elser_model_2_linux-x86_64"
         },
         {
           "name": "service_credential_names",
@@ -539,41 +547,87 @@
       ]
     },
     {
-      "name": "Workload - Code Engine Projects",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.42a9e379-8a61-4fad-a4c7-09f72a9bfb7c-global",
+      "name": "Workload - Compute Red Hat OpenShift Container Platform on VPC",
+      "version_locator": "1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.639be978-b7d7-4702-9723-0b638225491b-global",
       "inputs": [
         {
           "name": "ibmcloud_api_key",
           "value": ""
         },
         {
-          "name": "resource_group_name",
-          "value": "ref:../Account Infrastructure Base/outputs/workload_resource_group_name"
-        },
-        {
-          "name": "existing_resource_group",
-          "value": true
-        },
-        {
           "name": "prefix",
           "value": "ref:../../inputs/prefix"
         },
         {
-          "name": "project_names",
+          "name": "region",
+          "value": "ref:../../inputs/region"
+        },
+        {
+          "name": "vpcs",
           "value": [
-            "Generative_AI_Sample_App_CI_Project",
-            "Generative_AI_Sample_App_CD_Project"
+            "management",
+            "workload"
           ]
         },
         {
-          "name": "region",
-          "value": "ref:../../inputs/region"
+          "name": "ignore_vpcs_for_cluster_deployment",
+          "value": [
+            "management"
+          ]
+        },
+        {
+          "name": "enable_transit_gateway",
+          "value": false
+        },
+        {
+          "name": "add_atracker_route",
+          "value": false
+        },
+        {
+          "name": "existing_kms_instance_name",
+          "value": "ref:../../members/Essential Security - Encryption Key Management/outputs/key_protect_name"
+        },
+        {
+          "name": "existing_kms_resource_group",
+          "value": "ref:../Account Infrastructure Base/outputs/security_resource_group_name"
+        },
+        {
+          "name": "existing_kms_endpoint_type",
+          "value": "private"
+        },
+        {
+          "name": "existing_cos_instance_name",
+          "value": "ref:../Essential Security - Logging Monitoring Activity Tracker/outputs/cos_instance_name"
+        },
+        {
+          "name": "existing_cos_resource_group",
+          "value": "ref:../Account Infrastructure Base/outputs/observability_resource_group_name"
+        },
+        {
+          "name": "existing_cos_endpoint_type",
+          "value": "private"
+        },
+        {
+          "name": "use_existing_cos_for_vpc_flowlogs",
+          "value": true
+        },
+        {
+          "name": "cluster_zones",
+          "value": "2"
+        },
+        {
+          "name": "flavor",
+          "value": "bx2.4x16"
+        },
+        {
+          "name": "workers_per_zone",
+          "value": 1
         }
       ]
     },
     {
       "name": "Workload - DevSecOps Application Lifecycle Management",
-      "version_locator": "1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.72e3b0a3-9d6c-4b85-be2c-baed5a5ac732-global",
+      "version_locator": "1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.d0d2aff1-8f34-4fa8-bc00-92378edd2226-global",
       "inputs": [
         {
           "name": "ibmcloud_api_key",
@@ -604,12 +658,8 @@
           "value": "ref:../Essential Security - Secrets Manager/outputs/secrets_manager_region"
         },
         {
-          "name": "ci_code_engine_project",
-          "value": "ref:../Workload - Code Engine Projects/outputs/project_1_name"
-        },
-        {
-          "name": "cd_code_engine_project",
-          "value": "ref:../Workload - Code Engine Projects/outputs/project_2_name"
+          "name": "cluster_name",
+          "value": "ref:../Workload - Compute Red Hat OpenShift Container Platform on VPC/outputs/workload_cluster_name"
         },
         {
           "name": "registry_namespace",
@@ -620,20 +670,16 @@
           "value": "ref:../../inputs/sample_app_git_url"
         },
         {
+          "name": "app_repo_branch",
+          "value": "main"
+        },
+        {
           "name": "repositories_prefix",
           "value": "ref:../../inputs/prefix"
         },
         {
           "name": "ci_app_name",
           "value": "rag-sample-app"
-        },
-        {
-          "name": "cd_pipeline_properties",
-          "value": "[{\"pipeline_id\":\"cd\",\"properties\":[{\"name\":\"app-concurrency\",\"type\":\"text\",\"value\":\"100\"},{\"name\":\"app-deployment-timeout\",\"type\":\"text\",\"value\":\"300\"},{\"name\":\"app-max-scale\",\"type\":\"text\",\"value\":\"1\"},{\"name\":\"app-min-scale\",\"type\":\"text\",\"value\":\"1\"},{\"name\":\"app-port\",\"type\":\"text\",\"value\":\"8080\"},{\"name\":\"app-visibility\",\"type\":\"text\",\"value\":\"public\"},{\"name\":\"change-request-id\",\"type\":\"text\",\"value\":\"notAvailable\"},{\"name\":\"code-engine-binding-resource-group\",\"type\":\"text\",\"value\":\"\"},{\"name\":\"code-engine-deployment-type\",\"type\":\"text\",\"value\":\"application\"},{\"name\":\"code-engine-project\",\"type\":\"text\",\"value\":\"\"},{\"name\":\"code-engine-region\",\"type\":\"text\",\"value\":\"\"},{\"name\":\"code-engine-resource-group\",\"type\":\"text\",\"value\":\"\"},{\"name\":\"code-signing-certificate\",\"type\":\"secure\",\"value\":\"\"},{\"name\":\"cos-api-key\",\"type\":\"secure\",\"value\":\"\"},{\"name\":\"cos-bucket-name\",\"type\":\"text\",\"value\":\"\"},{\"name\":\"cos-endpoint\",\"type\":\"text\",\"value\":\"\"},{\"name\":\"cpu\",\"type\":\"text\",\"value\":\"0.25\"},{\"name\":\"doi-environment\",\"type\":\"text\",\"value\":\"\"},{\"name\":\"doi-ibmcloud-api-key\",\"type\":\"secure\",\"value\":\"\"},{\"name\":\"doi-toolchain-id\",\"type\":\"text\",\"value\":\"\"},{\"name\":\"emergency-label\",\"type\":\"text\",\"value\":\"EMERGENCY\"},{\"name\":\"env-from-configmaps\",\"type\":\"text\",\"value\":\"app.properties\"},{\"name\":\"env-from-secrets\",\"type\":\"text\",\"value\":\"\"},{\"name\":\"ephemeral-storage\",\"type\":\"text\",\"value\":\"0.4G\"},{\"name\":\"event-notifications\",\"type\":\"text\",\"value\":\"0\"},{\"name\":\"force-redeploy\",\"type\":\"single_select\",\"value\":\"false\",\"enum\":\"[false,true]\"},{\"name\":\"git-token\",\"type\":\"secure\",\"value\":\"\"},{\"name\":\"ibmcloud-api-key\",\"type\":\"secure\",\"value\":\"\"},{\"name\":\"job-instances\",\"type\":\"text\",\"value\":\"1\"},{\"name\":\"job-maxexecutiontime\",\"type\":\"text\",\"value\":\"7200\"},{\"name\":\"job-retrylimit\",\"type\":\"text\",\"value\":\"3\"},{\"name\":\"memory\",\"type\":\"text\",\"value\":\"0.5G\"},{\"name\":\"merge-cra-sbom\",\"type\":\"text\",\"value\":\"1\"},{\"name\":\"peer-review-collection\",\"type\":\"text\",\"value\":\"\"},{\"name\":\"peer-review-compliance\",\"type\":\"text\",\"value\":\"1\"},{\"name\":\"pipeline-config\",\"type\":\"text\",\"value\":\".pipeline-config.yaml\"},{\"name\":\"pipeline-config-branch\",\"type\":\"text\",\"value\":\"\"},{\"name\":\"pipeline-debug\",\"type\":\"single_select\",\"value\":\"0\",\"enum\":\"[0,1]\"},{\"name\":\"pre-prod-evidence-collection\",\"type\":\"text\",\"value\":\"0\"},{\"name\":\"region\",\"type\":\"text\",\"value\":\"\"},{\"name\":\"remove-unspecified-references-to-configuration-resources\",\"type\":\"text\",\"value\":\"false\"},{\"name\":\"service-bindings\",\"type\":\"text\",\"value\":\"\"},{\"name\":\"slack-notifications\",\"type\":\"text\",\"value\":\"0\"},{\"name\":\"source-environment\",\"type\":\"text\",\"value\":\"master\"},{\"name\":\"target-environment\",\"type\":\"text\",\"value\":\"prod\"},{\"name\":\"target-environment-detail\",\"type\":\"text\",\"value\":\"Productiontargetenvironment\"},{\"name\":\"target-environment-purpose\",\"type\":\"text\",\"value\":\"production\"},{\"name\":\"version\",\"type\":\"text\",\"value\":\"v1\"}]}]"
-        },
-        {
-          "name": "ci_pipeline_properties",
-          "value": "[{\"pipeline_id\":\"ci\",\"properties\":[{\"name\":\"app-concurrency\",\"type\":\"text\",\"value\":\"100\"},{\"name\":\"app-deployment-timeout\",\"type\":\"text\",\"value\":\"300\"},{\"name\":\"app-max-scale\",\"type\":\"text\",\"value\":\"1\"},{\"name\":\"app-min-scale\",\"type\":\"text\",\"value\":\"1\"},{\"name\":\"app-port\",\"type\":\"text\",\"value\":\"8080\"},{\"name\":\"app-visibility\",\"type\":\"text\",\"value\":\"public\"},{\"name\":\"code-engine-binding-resource-group\",\"type\":\"text\",\"value\":\"\"},{\"name\":\"code-engine-build-size\",\"type\":\"text\",\"value\":\"large\"},{\"name\":\"code-engine-build-strategy\",\"type\":\"text\",\"value\":\"dockerfile\"},{\"name\":\"code-engine-build-timeout\",\"type\":\"text\",\"value\":\"1200\"},{\"name\":\"code-engine-build-use-native-docker\",\"type\":\"text\",\"value\":\"false\"},{\"name\":\"code-engine-deployment-type\",\"type\":\"text\",\"value\":\"application\"},{\"name\":\"code-engine-project\",\"type\":\"text\",\"value\":\"\"},{\"name\":\"code-engine-region\",\"type\":\"text\",\"value\":\"\"},{\"name\":\"code-engine-resource-group\",\"type\":\"text\",\"value\":\"\"},{\"name\":\"code-engine-wait-timeout\",\"type\":\"text\",\"value\":\"1300\"},{\"name\":\"context-dir\",\"type\":\"text\",\"value\":\".\"},{\"name\":\"cos-api-key\",\"type\":\"secure\",\"value\":\"\"},{\"name\":\"cos-bucket-name\",\"type\":\"text\",\"value\":\"\"},{\"name\":\"cos-endpoint\",\"type\":\"text\",\"value\":\"\"},{\"name\":\"cpu\",\"type\":\"text\",\"value\":\"0.25\"},{\"name\":\"cra-bom-generate\",\"type\":\"single_select\",\"value\":\"1\",\"enum\":\"[0,1]\"},{\"name\":\"cra-deploy-analysis\",\"type\":\"single_select\",\"value\":\"1\",\"enum\":\"[0,1]\"},{\"name\":\"cra-generate-cyclonedx-format\",\"type\":\"text\",\"value\":\"1\"},{\"name\":\"cra-vulnerability-scan\",\"type\":\"single_select\",\"value\":\"1\",\"enum\":\"[0,1]\"},{\"name\":\"custom_image_tag\",\"type\":\"text\",\"value\":\"\"},{\"name\":\"dev-region\",\"type\":\"text\",\"value\":\"\"},{\"name\":\"doi-environment\",\"type\":\"text\",\"value\":\"\"},{\"name\":\"doi-ibmcloud-api-key\",\"type\":\"secure\",\"value\":\"\"},{\"name\":\"doi-toolchain-id\",\"type\":\"text\",\"value\":\"\"},{\"name\":\"env-from-configmaps\",\"type\":\"text\",\"value\":\"app.properties\"},{\"name\":\"env-from-secrets\",\"type\":\"text\",\"value\":\"\"},{\"name\":\"ephemeral-storage\",\"type\":\"text\",\"value\":\"0.4G\"},{\"name\":\"event-notifications\",\"type\":\"text\",\"value\":\"0\"},{\"name\":\"git-token\",\"type\":\"secure\",\"value\":\"\"},{\"name\":\"ibmcloud-api-key\",\"type\":\"secure\",\"value\":\"\"},{\"name\":\"image-name\",\"type\":\"text\",\"value\":\"code-engine-rag-app\"},{\"name\":\"job-instances\",\"type\":\"text\",\"value\":\"1\"},{\"name\":\"job-maxexecutiontime\",\"type\":\"text\",\"value\":\"7200\"},{\"name\":\"job-retrylimit\",\"type\":\"text\",\"value\":\"3\"},{\"name\":\"memory\",\"type\":\"text\",\"value\":\"0.5G\"},{\"name\":\"opt-in-dynamic-api-scan\",\"type\":\"text\",\"value\":\"1\"},{\"name\":\"opt-in-dynamic-scan\",\"type\":\"text\",\"value\":\"1\"},{\"name\":\"opt-in-dynamic-ui-scan\",\"type\":\"text\",\"value\":\"1\"},{\"name\":\"opt-in-gosec\",\"type\":\"text\",\"value\":\"\"},{\"name\":\"opt-in-sonar\",\"type\":\"text\",\"value\":\"1\"},{\"name\":\"peer-review-compliance\",\"type\":\"text\",\"value\":\"1\"},{\"name\":\"pipeline-config\",\"type\":\"text\",\"value\":\".pipeline-config.yaml\"},{\"name\":\"pipeline-config-branch\",\"type\":\"text\",\"value\":\"\"},{\"name\":\"pipeline-debug\",\"type\":\"single_select\",\"value\":\"0\",\"enum\":\"[0,1]\"},{\"name\":\"print-code-signing-certificate\",\"type\":\"text\",\"value\":\"1\"},{\"name\":\"registry-domain\",\"type\":\"text\",\"value\":\"\"},{\"name\":\"registry-namespace\",\"type\":\"text\",\"value\":\"\"},{\"name\":\"registry-region\",\"type\":\"text\",\"value\":\"\"},{\"name\":\"remove-unspecified-references-to-configuration-resources\",\"type\":\"text\",\"value\":\"false\"},{\"name\":\"service-bindings\",\"type\":\"text\",\"value\":\"\"},{\"name\":\"signing-key\",\"type\":\"secure\",\"value\":\"\"},{\"name\":\"slack-notifications\",\"type\":\"text\",\"value\":\"0\"},{\"name\":\"sonarqube-config\",\"type\":\"text\",\"value\":\"default\"},{\"name\":\"source\",\"type\":\"text\",\"value\":\"\"},{\"name\":\"version\",\"type\":\"text\",\"value\":\"v1\"}]},{\"pipeline_id\":\"pr\",\"properties\":[{\"name\":\"cra-bom-generate\",\"type\":\"single_select\",\"value\":\"1\",\"enum\":\"[0,1]\"},{\"name\":\"cra-deploy-analysis\",\"type\":\"single_select\",\"value\":\"1\",\"enum\":\"[0,1]\"},{\"name\":\"cra-vulnerability-scan\",\"type\":\"single_select\",\"value\":\"1\",\"enum\":\"[0,1]\"},{\"name\":\"git-token\",\"type\":\"secure\",\"value\":\"\"},{\"name\":\"ibmcloud-api-key\",\"type\":\"secure\",\"value\":\"\"},{\"name\":\"pipeline-config\",\"type\":\"text\",\"value\":\".pipeline-config.yaml\"},{\"name\":\"pipeline-config-branch\",\"type\":\"text\",\"value\":\"\"},{\"name\":\"pipeline-debug\",\"type\":\"single_select\",\"value\":\"0\",\"enum\":\"[0,1]\"},{\"name\":\"slack-notifications\",\"type\":\"text\",\"value\":\"1\"}]}]"
         },
         {
           "name": "ci_signing_key_secret_name",
@@ -656,8 +702,8 @@
           "value": true
         },
         {
-          "name": "add_code_engine_prefix",
-          "value": false
+          "name": "ci_pipeline_properties",
+          "value": "[{\"pipeline_id\":\"ci\",\"properties\":[{\"name\":\"cluster-name\",\"type\":\"text\",\"value\":\"\"},{\"name\":\"cos-api-key\",\"type\":\"secure\",\"value\":\"\"},{\"name\":\"cos-bucket-name\",\"type\":\"text\",\"value\":\"\"},{\"name\":\"cos-endpoint\",\"type\":\"text\",\"value\":\"\"},{\"name\":\"cra-bom-generate\",\"type\":\"single_select\",\"value\":\"1\",\"enum\":\"[0,1]\"},{\"name\":\"cra-deploy-analysis\",\"type\":\"single_select\",\"value\":\"1\",\"enum\":\"[0,1]\"},{\"name\":\"cra-generate-cyclonedx-format\",\"type\":\"text\",\"value\":\"1\"},{\"name\":\"cra-vulnerability-scan\",\"type\":\"single_select\",\"value\":\"1\",\"enum\":\"[0,1]\"},{\"name\":\"custom_image_tag\",\"type\":\"text\",\"value\":\"\"},{\"name\":\"dev-cluster-namespace\",\"type\":\"text\",\"value\":\"dev\"},{\"name\":\"dev-region\",\"type\":\"text\",\"value\":\"\"},{\"name\":\"doi-environment\",\"type\":\"text\",\"value\":\"\"},{\"name\":\"doi-ibmcloud-api-key\",\"type\":\"secure\",\"value\":\"\"},{\"name\":\"doi-toolchain-id\",\"type\":\"text\",\"value\":\"\"},{\"name\":\"event-notifications\",\"type\":\"text\",\"value\":\"0\"},{\"name\":\"git-token\",\"type\":\"secure\",\"value\":\"\"},{\"name\":\"ibmcloud-api-key\",\"type\":\"secure\",\"value\":\"\"},{\"name\":\"opt-in-dynamic-api-scan\",\"type\":\"text\",\"value\":\"1\"},{\"name\":\"opt-in-dynamic-scan\",\"type\":\"text\",\"value\":\"1\"},{\"name\":\"opt-in-dynamic-ui-scan\",\"type\":\"text\",\"value\":\"1\"},{\"name\":\"opt-in-gosec\",\"type\":\"text\",\"value\":\"\"},{\"name\":\"opt-in-sonar\",\"type\":\"text\",\"value\":\"1\"},{\"name\":\"peer-review-compliance\",\"type\":\"text\",\"value\":\"1\"},{\"name\":\"pipeline-config\",\"type\":\"text\",\"value\":\".pipeline-config.yaml\"},{\"name\":\"pipeline-config-branch\",\"type\":\"text\",\"value\":\"\"},{\"name\":\"pipeline-debug\",\"type\":\"single_select\",\"value\":\"0\",\"enum\":\"[0,1]\"},{\"name\":\"print-code-signing-certificate\",\"type\":\"text\",\"value\":\"1\"},{\"name\":\"registry-namespace\",\"type\":\"text\",\"value\":\"\"},{\"name\":\"registry-region\",\"type\":\"text\",\"value\":\"\"},{\"name\":\"signing-key\",\"type\":\"secure\",\"value\":\"\"},{\"name\":\"slack-notifications\",\"type\":\"text\",\"value\":\"0\"},{\"name\":\"sonarqube-config\",\"type\":\"text\",\"value\":\"default\"},{\"name\":\"version\",\"type\":\"text\",\"value\":\"v1\"}]},{\"pipeline_id\":\"pr\",\"properties\":[{\"name\":\"git-token\",\"type\":\"secure\",\"value\":\"\"},{\"name\":\"cra-bom-generate\",\"type\":\"single_select\",\"value\":\"1\",\"enum\":\"[0,1]\"},{\"name\":\"cra-deploy-analysis\",\"type\":\"single_select\",\"value\":\"1\",\"enum\":\"[0,1]\"},{\"name\":\"cra-vulnerability-scan\",\"type\":\"single_select\",\"value\":\"1\",\"enum\":\"[0,1]\"},{\"name\":\"ibmcloud-api-key\",\"type\":\"secure\",\"value\":\"\"},{\"name\":\"pipeline-config\",\"type\":\"text\",\"value\":\".pipeline-config.yaml\"},{\"name\":\"pipeline-config-branch\",\"type\":\"text\",\"value\":\"\"},{\"name\":\"pipeline-debug\",\"type\":\"single_select\",\"value\":\"0\",\"enum\":\"[0,1]\"},{\"name\":\"slack-notifications\",\"type\":\"text\",\"value\":\"1\"}]}]"
         }
       ]
     },
@@ -740,6 +786,14 @@
         {
           "name": "cos_kms_crn",
           "value": "ref:../Essential Security - Encryption Key Management/outputs/kms_instance_crn"
+        },
+        {
+          "name": "cluster_name",
+          "value": "ref:../Workload - Compute Red Hat OpenShift Container Platform on VPC/outputs/workload_cluster_name"
+        },
+        {
+          "name": "cluster_zone_count",
+          "value": "ref:../Workload - Compute Red Hat OpenShift Container Platform on VPC/inputs/cluster_zones"
         }
       ]
     }

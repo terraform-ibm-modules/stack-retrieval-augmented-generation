@@ -146,11 +146,11 @@ To monitor the build and deployment of the application, follow these steps:
 There is a known intermittent issue which can cause the deployment of IBM Cloud Logs to timeout with an error like the following:
 ```
 | Error: [ERROR] Error waiting for create resource instance (crn:v1:bluemix:public:logs:us-south:a/abac0df06b644a9cabc6e44f55b3880e:9ea9f0d3-385f-4f8f-aaa9-162874d49775::) to be succeeded: timeout while waiting for state to become 'active' (last state: 'provisioning', timeout: 10m0s)
-| 
+|
 |   with module.observability_instance.module.cloud_logs[0].ibm_resource_instance.cloud_logs,
 |   on .terraform/modules/observability_instance/modules/cloud_logs/main.tf line 7, in resource "ibm_resource_instance" "cloud_logs":
 |    7: resource "ibm_resource_instance" "cloud_logs" {
-| 
+|
 | ---
 | id: terraform-446cc00a
 | summary: '[ERROR] Error waiting for create resource instance

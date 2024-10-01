@@ -141,6 +141,49 @@ To monitor the build and deployment of the application, follow these steps:
 
 ## Troubleshooting
 
+### Why does my IBM Cloud Logs deployment fail?
+
+There is a known intermittent issue which can cause the deployment of IBM Cloud Logs to timeout with an error like the following:
+```
+| Error: [ERROR] Error waiting for create resource instance (crn:v1:bluemix:public:logs:us-south:a/abac0df06b644a9cabc6e44f55b3880e:9ea9f0d3-385f-4f8f-aaa9-162874d49775::) to be succeeded: timeout while waiting for state to become 'active' (last state: 'provisioning', timeout: 10m0s)
+| 
+|   with module.observability_instance.module.cloud_logs[0].ibm_resource_instance.cloud_logs,
+|   on .terraform/modules/observability_instance/modules/cloud_logs/main.tf line 7, in resource "ibm_resource_instance" "cloud_logs":
+|    7: resource "ibm_resource_instance" "cloud_logs" {
+| 
+| ---
+| id: terraform-446cc00a
+| summary: '[ERROR] Error waiting for create resource instance
+| (crn:v1:bluemix:public:logs:us-south:a/abac0df06b644a9cabc6e44f55b3880e:9ea9f0d3-385f-4f8f-aaa9-162874d49775::)
+|   to be succeeded: timeout while waiting for state to become ''active'' (last state:
+|   ''provisioning'', timeout: 10m0s)'
+| severity: error
+| resource: ibm_resource_instance
+| operation: create
+| component:
+|   name: github.com/IBM-Cloud/terraform-provider-ibm
+|   version: 1.69.2
+| ---
+```
+
+If you attempt to re-deploy, or un-deploy, you will face an error like so:
+```
+Error: [ERROR] Error deleting resource instance: An operation 'create' is in progress, please try again once the operation is complete
+```
+
+To fix the issue, follow these steps:
+
+1.  In the {{site.data.keyword.cloud_notm}} console, click the **Navigation menu** icon ![Navigation menu icon](/images/icon_hamburger.svg "Menu") > **Projects**.
+1.  Click the project with your stacked deployable architecture.
+1.  Click the **Configurations** tab.
+1.  Expand the applicable stacked deployable architecture configuration, and select the member named `Essential Security - Logging Monitoring Activity Tracker` that failed deployment.
+1.  Copy the **Workspace** value for this configuration and take note if it.
+1.  Using the [ibmcloud CLI schematics plug-in](https://cloud.ibm.com/docs/schematics?topic=schematics-setup-cli), run the below command where `${WORKSPACE_ID}` is the value of the workspace that was retrived in the previous step:
+    ```
+    ibmcloud schematics workspace state rm --id "${WORKSPACE_ID}" --address "module.observability_instance.module.cloud_logs[0].ibm_resource_instance.cloud_logs"
+    ```
+1.  You will now be able to proceed with a re-deploy of this configuration.
+
 ### Why does my IBM Cloud Secrets Manager deployment fail?
 
 To minimize costs, the automation deploys a Trial pricing plan of Secrets Manager. You can create only one Trial instance of Secrets Manager. You can deploy a Standard plan instance of Secrets Manager from the **Optional settings** of the stack.

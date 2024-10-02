@@ -686,6 +686,10 @@
           "value": "ref:../../inputs/region"
         },
         {
+          "name": "watsonx_admin_api_key",
+          "value": "ref:../../inputs/watsonx_admin_api_key"
+        },
+        {
           "name": "watson_assistant_instance_id",
           "value": "ref:../Gen AI - WatsonX SaaS services/outputs/watsonx_assistant_guid"
         },
@@ -780,6 +784,142 @@
     {
       "name": "watson_discovery_project_id",
       "value": "ref:../Workload - Sample RAG App Configuration/outputs/watson_discovery_project_id"
+    },
+    {
+      "name": "kms_instance_crn",
+      "value": "ref:../Essential Security - Encryption Key Management/outputs/kms_instance_crn"
+    },
+    {
+      "name": "kms_private_endpoint",
+      "value": "ref:../Essential Security - Encryption Key Management/outputs/kms_private_endpoint"
+    },
+    {
+      "name": "kms_public_endpoint",
+      "value": "ref:../Essential Security - Encryption Key Management/outputs/kms_public_endpoint"
+    },
+    {
+      "name": "event_notification_instance_crn",
+      "value": "ref:../Essential Security - Event Notifications/outputs/crn"
+    },
+    {
+      "name": "event_notification_instance_name",
+      "value": "ref:../Essential Security - Event Notifications/outputs/event_notification_instance_name"
+    },
+    {
+      "name": "event_notification_instance_guid",
+      "value": "ref:../Essential Security - Event Notifications/outputs/guid"
+    },
+    {
+      "name": "cloud_logs_crn",
+      "value": "ref:../Essential Security - Logging Monitoring Activity Tracker/outputs/cloud_logs_crn"
+    },
+    {
+      "name": "cloud_logs_guid",
+      "value": "ref:../Essential Security - Logging Monitoring Activity Tracker/outputs/cloud_logs_guid"
+    },
+    {
+      "name": "cloud_monitoring_crn",
+      "value": "ref:../Essential Security - Logging Monitoring Activity Tracker/outputs/cloud_monitoring_crn"
+    },
+    {
+      "name": "cloud_monitoring_guid",
+      "value": "ref:../Essential Security - Logging Monitoring Activity Tracker/outputs/cloud_monitoring_guid"
+    },
+    {
+      "name": "log_analysis_crn",
+      "value": "ref:../Essential Security - Logging Monitoring Activity Tracker/outputs/log_analysis_crn"
+    },
+    {
+      "name": "log_analysis_guid",
+      "value": "ref:../Essential Security - Logging Monitoring Activity Tracker/outputs/log_analysis_guid"
+    },
+    {
+      "name": "secrets_manager_crn",
+      "value": "ref:../Essential Security - Secrets Manager/outputs/secrets_manager_crn"
+    },
+    {
+      "name": "secrets_manager_guid",
+      "value": "ref:../Essential Security - Secrets Manager/outputs/secrets_manager_guid"
+    },
+    {
+      "name": "secrets_manager_name",
+      "value": "ref:../Essential Security - Secrets Manager/outputs/secrets_manager_name"
+    },
+    {
+      "name": "secrets_manager_name",
+      "value": "ref:../Essential Security - Secrets Manager/outputs/secrets_manager_name"
+    },
+    {
+      "name": "scc_crn",
+      "value": "ref:../Essential Security - Security Compliance Center/outputs/scc_crn"
+    },
+    {
+      "name": "scc_guid",
+      "value": "ref:../Essential Security - Security Compliance Center/outputs/scc_guid"
+    },
+    {
+      "name": "scc_workload_protection_crn",
+      "value": "ref:../Essential Security - Security Compliance Center/outputs/scc_workload_protection_crn"
+    },
+    {
+      "name": "watson_discovery_crn",
+      "value": "ref:../Gen AI - WatsonX SaaS services/outputs/watson_discovery_crn"
+    },
+    {
+      "name": "watson_discovery_dashboard_url",
+      "value": "ref:../Gen AI - WatsonX SaaS services/outputs/watson_discovery_dashboard_url"
+    },
+    {
+      "name": "watson_discovery_guid",
+      "value": "ref:../Gen AI - WatsonX SaaS services/outputs/watson_discovery_guid"
+    },
+    {
+      "name": "watson_machine_learning_crn",
+      "value": "ref:../Gen AI - WatsonX SaaS services/outputs/watson_machine_learning_crn"
+    },
+    {
+      "name": "watson_machine_learning_dashboard_url",
+      "value": "ref:../Gen AI - WatsonX SaaS services/outputs/watson_machine_learning_dashboard_url"
+    },
+    {
+      "name": "watson_machine_learning_guid",
+      "value": "ref:../Gen AI - WatsonX SaaS services/outputs/watson_machine_learning_guid"
+    },
+    {
+      "name": "watson_studio_crn",
+      "value": "ref:../Gen AI - WatsonX SaaS services/outputs/watson_studio_crn"
+    },
+    {
+      "name": "watson_studio_dashboard_url",
+      "value": "ref:../Gen AI - WatsonX SaaS services/outputs/watson_studio_dashboard_url"
+    },
+    {
+      "name": "watson_studio_guid",
+      "value": "ref:../Gen AI - WatsonX SaaS services/outputs/watson_studio_guid"
+    },
+    {
+      "name": "watsonx_assistant_crn",
+      "value": "ref:../Gen AI - WatsonX SaaS services/outputs/watsonx_assistant_crn"
+    },
+    {
+      "name": "watsonx_assistant_dashboard_url",
+      "value": "ref:../Gen AI - WatsonX SaaS services/outputs/watsonx_assistant_dashboard_url"
+    },
+    {
+      "name": "watsonx_data_crn",
+      "value": "ref:../Gen AI - WatsonX SaaS services/outputs/watsonx_data_crn"
+    },
+    {
+      "name": "watsonx_data_dashboard_url",
+      "value": "ref:../Gen AI - WatsonX SaaS services/outputs/watsonx_data_dashboard_url"
+    },
+    {
+      "name": "watsonx_data_guid",
+      "value": "ref:../Gen AI - WatsonX SaaS services/outputs/watsonx_data_guid"
+    },
+    {
+      "name": "watson_discovery_guid",
+      "value": "ref:../Gen AI - WatsonX SaaS services/outputs/watson_discovery_guid"
     }
   ]
 }

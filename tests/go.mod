@@ -5,9 +5,9 @@ go 1.22.0
 toolchain go1.23.1
 
 require (
-	github.com/gruntwork-io/terratest v0.47.1
+	github.com/gruntwork-io/terratest v0.47.2
 	github.com/stretchr/testify v1.9.0
-	github.com/terraform-ibm-modules/ibmcloud-terratest-wrapper v1.39.3
+	github.com/terraform-ibm-modules/ibmcloud-terratest-wrapper v1.39.6
 )
 
 require (

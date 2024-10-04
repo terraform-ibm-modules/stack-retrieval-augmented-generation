@@ -629,7 +629,7 @@
         },
         {
           "name": "cc_pipeline_properties",
-          "value": "[{\"app-name\": \"rag-sample-app\"}]"
+          "value": "[{\"pipeline_id\":\"cc\",\"properties\":[{\"name\":\"app-name\",\"type\":\"text\",\"value\":\"rag-sample-app\"}]}]"
         },
         {
           "name": "cd_pipeline_properties",

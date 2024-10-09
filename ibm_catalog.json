@@ -221,7 +221,7 @@
 						{
 							"key": "prefix",
 							"type": "string",
-							"description": "A prefix added to the name of all resources created by this solution. Used to avoid name clashes in the target account when existing this solution multiple times.",
+							"description": "A prefix added to the name of all resources created by this solution. Used to avoid name clashes in the target account when deploying this solution multiple times.",
 							"default_value": "rag",
 							"required": true
 						},
@@ -441,7 +441,8 @@
 						},
 						{
 							"role_crns": [
-								"crn:v1:bluemix:public:iam::::role:Administrator"
+								"crn:v1:bluemix:public:iam::::role:Administrator",
+								"crn:v1:bluemix:public:iam-identity::::serviceRole:UserApiKeyCreator"
 							],
 							"service_name": "iam-identity"
 						},
@@ -590,7 +591,7 @@
 						{
 							"key": "prefix",
 							"type": "string",
-							"description": "A prefix added to the name of all resources created by this solution. Must be 13 characters or less. Used to avoid name clashes in the target account when existing this solution multiple times.",
+							"description": "A prefix added to the name of all resources created by this solution. Must start with a letter, contain only lowercase letters, numbers, or dashes, and be 13 characters or less. Used to avoid name clashes in the target account when deploying this solution multiple times.",
 							"default_value": "rag",
 							"required": true
 						},

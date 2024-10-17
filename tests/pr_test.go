@@ -49,6 +49,8 @@ func TestProjectsBasicFullTest(t *testing.T) {
 		Testing:                t,
 		Prefix:                 "rag-stack",
 		StackConfigurationPath: basicDaStackDefPath,
+		CatalogProductName:     "Retrieval_Augmented_Generation_Pattern",
+		CatalogFlavorName:      "basic",
 	})
 
 	privateKey, _, kerr := common.GenerateTempGPGKeyPairBase64()
@@ -112,6 +114,8 @@ func TestProjectsBasicExistingResourcesTest(t *testing.T) {
 		options := testprojects.TestProjectOptionsDefault(&testprojects.TestProjectsOptions{
 			Testing:                t,
 			StackConfigurationPath: basicDaStackDefPath,
+			CatalogProductName:     "Retrieval_Augmented_Generation_Pattern",
+			CatalogFlavorName:      "basic",
 		})
 
 		privateKey, _, kerr := common.GenerateTempGPGKeyPairBase64()
@@ -160,6 +164,8 @@ func TestProjectsStandardFullTest(t *testing.T) {
 		Testing:                t,
 		Prefix:                 "rag-s",
 		StackConfigurationPath: standardDaStackDefPath,
+		CatalogProductName:     "Retrieval_Augmented_Generation_Pattern",
+		CatalogFlavorName:      "standard",
 	})
 
 	privateKey, _, kerr := common.GenerateTempGPGKeyPairBase64()

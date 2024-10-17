@@ -236,7 +236,7 @@
     },
     {
       "name": "Essential Security - Logging Monitoring Activity Tracker",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.157744e4-5ef1-4e0f-9b8b-8b49b2ee8bb2-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.5036a34b-9925-4d06-932b-c22ce63d3fdf-global",
       "inputs": [
         {
           "name": "ibmcloud_api_key",

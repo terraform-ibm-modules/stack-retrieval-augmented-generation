@@ -198,7 +198,7 @@ To remove a member configuration, select **Remove from Stack** from the Options 
 
 You can add or remove input and output variables at the stack level by following these steps:
 
-1.  In the {{site.data.keyword.cloud_notm}} console, click the **Navigation menu** icon ![Navigation menu icon](/images/icon_hamburger.svg "Menu") > **Projects**.
+1.  In the IBM Cloud console, click the **Navigation menu** icon ![Navigation menu icon](/images/icon_hamburger.svg "Menu") > **Projects**.
 1.  Click the project with the stacked deployable architecture that you want to update.
 1.  Click the **Configurations** tab.
 1.  Select a member configuration.
@@ -208,17 +208,18 @@ You can add or remove input and output variables at the stack level by following
 
 You can selectively provision observability resources such as Activity Tracker routes and targets, and Cloud Monitoring instances by following these steps:
 
-1.  In the {{site.data.keyword.cloud_notm}} console, click the **Navigation menu** icon ![Navigation menu icon](/images/icon_hamburger.svg "Menu") > **Projects**.
+1.  In the IBM Cloud console, click the **Navigation menu** icon ![Navigation menu icon](/images/icon_hamburger.svg "Menu") > **Projects**.
 2.  Click the project with the stacked deployable architecture that you want to update.
 3.  Click the **Configurations** tab.
-4.  **Navigate to the Configurations**: Go to the Projects page and access the "Logging Monitoring Activity Tracker" settings under observability resources.
-5.  **Edit Configuration**: Use the Edit option to access the configuration page.
+4.  **Navigate to the Configurations**: Access the "Essential Security - Logging Monitoring Activity Tracker" configuration by clicking on it.
+5.  **Edit Member Configuration**: On the top right side click on 3 dots, then select Edit option to access the member configuration page.
 6.  **Locate Optional Variables**: Under the Optional tab, you’ll find the specific variable settings.
 7.  From the deployed details window, you can enable or disable the provisioning of specific observability resources. For example:
-    - **IBM Cloud Logs instance** (`cloud_monitoring_provision`): Set this to provision or skip provisioning an IBM Cloud Monitoring instance.
+    - **IBM Cloud Logs instance** (`cloud_logs_provision`): Set this to provision or skip provisioning an IBM Cloud Logs instance.
+     - **IBM Cloud Monitoring instance** (`cloud_monitoring_provision`): Set this to provision or skip provisioning an IBM cloud monitoring instance.
     - **Event routing from Activity Tracker to Object Storage** (`enable_at_event_routing_to_cos_bucket`): Set this to enable or disable event routing from Activity Tracker to the Object Storage bucket.
     - **Event routing from Activity Tracker to Cloud Logs** (`enable_at_event_routing_to_cloud_logs`): Set this to enable or disable event routing from Activity Tracker to Cloud Logs.
-8.  After making the necessary changes, click **Save** to apply the updated configuration.
+8.  After making the necessary changes, click Save, validate the settings, and deploy to apply the updated configuration.
 
 
 

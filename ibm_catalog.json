@@ -1,7 +1,7 @@
 {
 	"products": [
 		{
-			"label": "Retrieval Augmented Generation Pattern",
+			"label": "Retrieval Augmented Generation (RAG) Pattern",
 			"name": "Retrieval_Augmented_Generation_Pattern",
 			"product_kind": "solution",
 			"tags": [
@@ -27,27 +27,27 @@
 				"key protect",
 				"scc"
 			],
-			"short_description": "Deploys a sample Retrieval Augmented Generation application, including all supporting IBM Cloud and Watson services.",
-			"long_description": "This deployable architecture provides a comprehensive foundation for trust, observability, security, and regulatory compliance by configuring and deploying various services, including:\n- Configuring IBM Cloud Account: with recommended values meeting the [IBM Cloud Framework for Financial Services](https://cloud.ibm.com/docs/framework-financial-services?topic=framework-financial-services-about)\n- Deploying Observability Services: for application and platform logging and monitoring\n- Deploying Keys and Secrets Management Services: for storage and management of encryption keys and secrets\n- Deploying CI/CD/CC Pipelines: for secure application lifecycle management\n- Deploying a Suite of Watson AI Services: to provide AI capabilities to the application \n\nThese configured and deployed services enable a secure and trustworthy deployment of Generative AI applications on IBM Cloud.\n\n# Objective\n\nThis deployable architecture is designed to showcase a fully automated deployment of a retrieval augmented generation application through IBM Cloud Project, providing a flexible and customizable foundation for your own Watson-based application deployments on IBM Cloud. This architecture deploys the following [banking sample application](https://github.com/IBM/gen-ai-rag-watsonx-sample-application) by default.\n\nBy leveraging this architecture, you can accelerate your deployment and tailor it to meet your unique business needs and enterprise goals.",
+			"short_description": "Automate RAG deployment with supporting IBM Cloud and watsonx services, embed your enterprise data in generative AI solutions.",
+			"long_description": "Utilize data from your enterprise to achieve productivity gains in activities related to question/answer conversations, content search, summarization and generation. RAG can be deployed in multiple configurations and is applicable to various industry use cases and solutions.\n\nThis deployable architecture provides a comprehensive foundation for trust, observability, security, and regulatory compliance by configuring and deploying various services and a sample application for a [RAG pattern](https://cloud.ibm.com/docs/pattern-genai-rag?topic=pattern-genai-rag-genai-pattern), including:\n- Configuring IBM Cloud Account with best practices from [IBM Cloud Framework for Financial Services](https://cloud.ibm.com/docs/framework-financial-services?topic=framework-financial-services-about)\n- Deploying key and secrets management services for storage and management of encryption keys and secrets\n- Deploying controls for continuous compliance\n- Deploying observability services for application and platform logging and monitoring\n- Deploying a suite of watsonx services to provide generative AI RAG capabilities\n- Deploying content databases for storing vector embeddings of the documents and content search/retrieval\n- Deploying a sample application in a variety of run times including CI/CD/CC pipelines for secure application lifecycle management\n\nThe above configured and deployed services enable a secure and trustworthy deployment of generative AI applications on IBM Cloud.\n\nThe configurations are flexible and be changed to meet the needs for several types of RAG patterns depending on the chosen combination of technologies and services.\n\nThe generative AI RAG pattern services include:\n- [watsonx.ai](https://dataplatform.cloud.ibm.com/docs/content/wsj/getting-started/welcome-main.html?context=wx)\n- [watsonx.data](https://cloud.ibm.com/docs/watsonxdata) (with Milvus)\n- [watsonx.governance](https://dataplatform.cloud.ibm.com/docs/content/svc-welcome/aiopenscale.html?context=wx)\n- [watsonx Assistant](https://cloud.ibm.com/docs/watson-assistant?topic=watson-assistant-welcome-new-assistant)\n- [watsonx Orchestrate](https://www.ibm.com/docs/en/watsonx/watson-orchestrate/current)\n- [Watson Discovery](https://cloud.ibm.com/docs/discovery-data)\n- [Elasticsearch](https://cloud.ibm.com/docs/databases-for-elasticsearch) Enterprise and Platinum edition\n\nThe supporting services include:\n- [Secrets Manager](https://cloud.ibm.com/docs/secrets-manager)\n- [Key Protect](https://cloud.ibm.com/docs/key-protect)\n- [Security and Compliance Center](https://cloud.ibm.com/docs/security-compliance)\n- [Event Notifications](https://cloud.ibm.com/docs/event-notifications?topic=event-notifications-getting-started)\n- [Logs](https://cloud.ibm.com/docs/cloud-logs)\n- [Monitoring](https://cloud.ibm.com/docs/monitoring?topic=monitoring-getting-started)\n- [Object Storage](https://cloud.ibm.com/docs/cloud-object-storage?topic=cloud-object-storage-getting-started-cloud-object-storage)\n- [Continuous Delivery](https://cloud.ibm.com/docs/ContinuousDelivery) toolchains\n- [Container Registry](https://cloud.ibm.com/docs/Registry)\n\nA [sample RAG application](https://github.com/IBM/gen-ai-rag-watsonx-sample-application) is deployed to [Code Engine](https://cloud.ibm.com/docs/codeengine) or [Red Hat OpenShift](https://cloud.ibm.com/docs/openshift) cluster.\n\nBy leveraging this architecture, you can accelerate your deployment and tailor it to meet your unique business needs and enterprise goals.",
 			"offering_docs_url": "https://github.com/terraform-ibm-modules/stack-retrieval-augmented-generation/blob/main/README.md",
 			"offering_icon_url": "https://globalcatalog.cloud.ibm.com/api/v1/1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc/artifacts/solution.svg",
 			"provider_name": "IBM",
 			"features": [
 				{
-					"title": "Retrieval Augmented Generation sample pattern",
-					"description": "Deploy a banking retrieval augmented generation (RAG) sample application to IBM Cloud Code Engine using Continous Delivery."
-				},
-				{
-					"title": "Ensure Observability",
-					"description": "Provides observability by deploying services such as IBM Log Analysis, IBM Monitoring, IBM Activity Tracker, and log retention."
+					"title": "RAG Pattern",
+					"description": "Deploy a RAG pattern with supporting IBM Cloud and watsonx services, and a sample application to Code Engine or Red Hat OpenShift using Continuous Delivery."
 				},
 				{
 					"title": "Implement Security",
-					"description": "The architecture ensures security by deploying IBM Key Protect and IBM Secrets Manager."
+					"description": "The architecture ensures security by deploying Key Protect and Secrets Manager."
 				},
 				{
 					"title": "Achieve Regulatory Compliance",
-					"description": "Ensures regulatory compliance by implementing CI/CD/CC pipelines, along with IBM SCC for secure application lifecycle management."
+					"description": "Ensures regulatory compliance by implementing CI/CD/CC pipelines, along with Security and Compliance Center for continuous compliance."
+				},
+				{
+					"title": "Ensure Observability",
+					"description": "Provides observability by deploying services such as Logs and Monitoring for log analysis and tracking activity."
 				},
 				{
 					"title": "Establish Trust",
@@ -58,14 +58,14 @@
 			"flavors": [
 				{
 					"label": "Basic (Deploy on Code Engine)",
-					"name": "Code-Engine-d7b9",
+					"name": "basic",
 					"working_directory": "solutions/basic",
 					"compliance": {
 						"authority": "scc-v3",
 						"profiles": [
 							{
 								"profile_name": "AI Security Guardrails 2.0",
-								"profile_version": "1.0.0"
+								"profile_version": "1.1.0"
 							}
 						]
 					},
@@ -152,38 +152,57 @@
 								"crn:v1:bluemix:public:iam::::serviceRole:Manager",
 								"crn:v1:bluemix:public:iam::::role:Editor"
 							]
+						},
+						{
+							"role_crns": [
+								"crn:v1:bluemix:public:iam::::serviceRole:Writer",
+								"crn:v1:bluemix:public:iam::::role:Editor"
+							],
+							"service_name": "codeengine"
 						}
 					],
 					"architecture": {
 						"features": [
 							{
-								"title": "Retrieval Augmented Generation sample pattern",
-								"description": "Deploy a banking retrieval augmented generation (RAG) sample application to IBM Cloud Code Engine using Continous Delivery."
+								"title": " ",
+								"description": "Enables:"
 							},
 							{
-								"title": "Ensure Observability",
-								"description": "The architecture provides observability by deploying services such as IBM Log Analysis, IBM Monitoring, IBM Activity Tracker, and log retention through Cloud Object Storage buckets."
+								"title": "1. Code Engine for containerized and serverless workloads",
+								"description": " "
 							},
 							{
-								"title": "Implement Security",
-								"description": "The architecture ensures security by deploying IBM Key Protect and IBM Secrets Manager."
+								"title": "2. Elasticsearch Enterprise for building and storing dense vector indexes or keyword search indexes",
+								"description": " "
 							},
 							{
-								"title": "Achieve Regulatory Compliance",
-								"description": "The architecture ensures regulatory compliance by implementing CI/CD/CC pipelines, along with IBM Security Compliance Center (SCC) for secure application lifecycle management."
+								"title": "3. watsonx.ai in-memory vector store for RAG trial and exploration",
+								"description": " "
 							},
 							{
-								"title": "Establish Trust",
-								"description": "The architecture ensures trust by configuring the IBM Cloud account to align with compliance settings as defined in the Financial Services framework."
+								"title": "4. watsonx.ai UI to upload documents",
+								"description": " "
+							},
+							{
+								"title": "5. watsonx.ai Prompt Lab for inferencing and Prompt Templates",
+								"description": " "
+							},
+							{
+								"title": "6. watsonx Assistant Conversational Search with embedded LLM",
+								"description": " "
+							},
+							{
+								"title": "7. Build your own data processing, ingestion pipeline and indexes",
+								"description": " "
 							}
 						],
 						"diagrams": [
 							{
 								"diagram": {
-									"url": "https://raw.githubusercontent.com/terraform-ibm-modules/stack-retrieval-augmented-generation/main/reference-architecture/RAG Pattern v2-part-2.svg",
+									"url": "https://raw.githubusercontent.com/terraform-ibm-modules/stack-retrieval-augmented-generation/main/reference-architecture/rag-pattern.svg",
 									"caption": "Reference architecture",
 									"type": "image/svg+xml",
-									"thumbnail_url": "https://raw.githubusercontent.com/terraform-ibm-modules/stack-retrieval-augmented-generation/main/reference-architecture/RAG Pattern v2-part-2.svg"
+									"thumbnail_url": "https://raw.githubusercontent.com/terraform-ibm-modules/stack-retrieval-augmented-generation/main/reference-architecture/rag-pattern.svg"
 								},
 								"description": "Reference architecture"
 							},
@@ -250,7 +269,7 @@
 						{
 							"key": "prefix",
 							"type": "string",
-							"description": "A prefix added to the name of all resources created by this solution. Used to avoid name clashes in the target account when existing this solution multiple times.",
+							"description": "A prefix added to the name of all resources created by this solution. Used to avoid name clashes in the target account when deploying this solution multiple times.",
 							"default_value": "rag",
 							"required": true
 						},
@@ -294,7 +313,7 @@
 							"key": "resource_group_name",
 							"type": "string",
 							"default_value": "rag-services",
-							"description": "The name of the resource group that is created by this solution. The actual name is prefixed with the value of the input 'prefix'. All resources created by this solution are deployed in this resource group.",
+							"description": "The name of the resource group that is created by this solution. The actual name is prefixed with the value of the input 'prefix'.  All resources created by this solution are deployed in this resource group.",
 							"required": false
 						},
 						{
@@ -439,7 +458,377 @@
 							"description": "The ID for the Watson Discovery project for the sample RAG application."
 						}
 					],
-					"install_type": "extension"
+					"install_type": "fullstack"
+				},
+				{
+					"label": "Standard (Deploy on Red Hat OpenShift)",
+					"name": "standard",
+					"working_directory": "solutions/standard",
+					"compliance": {
+						"authority": "scc-v3",
+						"profiles": [
+							{
+								"profile_name": "AI Security Guardrails 2.0",
+								"profile_version": "1.1.0"
+							}
+						]
+					},
+					"iam_permissions": [
+						{
+							"service_name": "iam-groups",
+							"role_crns": [
+								"crn:v1:bluemix:public:iam::::role:Administrator"
+							]
+						},
+						{
+							"role_crns": [
+								"crn:v1:bluemix:public:iam::::serviceRole:Manager",
+								"crn:v1:bluemix:public:iam::::role:Editor"
+							],
+							"service_name": "cloud-object-storage"
+						},
+						{
+							"role_crns": [
+								"crn:v1:bluemix:public:iam::::role:Administrator",
+								"crn:v1:bluemix:public:iam-identity::::serviceRole:UserApiKeyCreator"
+							],
+							"service_name": "iam-identity"
+						},
+						{
+							"role_crns": [
+								"crn:v1:bluemix:public:iam::::serviceRole:Writer",
+								"crn:v1:bluemix:public:iam::::role:Administrator"
+							],
+							"service_name": "atracker"
+						},
+						{
+							"role_crns": [
+								"crn:v1:bluemix:public:iam::::serviceRole:Manager",
+								"crn:v1:bluemix:public:iam::::role:Editor"
+							],
+							"service_name": "kms"
+						},
+						{
+							"service_name": "compliance",
+							"role_crns": [
+								"crn:v1:bluemix:public:iam::::serviceRole:Manager",
+								"crn:v1:bluemix:public:iam::::role:Editor"
+							]
+						},
+						{
+							"role_crns": [
+								"crn:v1:bluemix:public:iam::::role:Editor"
+							],
+							"service_name": "pm-20"
+						},
+						{
+							"role_crns": [
+								"crn:v1:bluemix:public:iam::::role:Editor"
+							],
+							"service_name": "data-science-experience"
+						},
+						{
+							"role_crns": [
+								"crn:v1:bluemix:public:iam::::role:Editor"
+							],
+							"service_name": "aiopenscale"
+						},
+						{
+							"role_crns": [
+								"crn:v1:bluemix:public:iam::::role:Editor"
+							],
+							"service_name": "conversation"
+						},
+						{
+							"role_crns": [
+								"crn:v1:bluemix:public:iam::::role:Editor"
+							],
+							"service_name": "discovery"
+						},
+						{
+							"service_name": "databases-for-elasticsearch",
+							"role_crns": [
+								"crn:v1:bluemix:public:iam::::role:Editor"
+							]
+						},
+						{
+							"service_name": "event-notifications",
+							"role_crns": [
+								"crn:v1:bluemix:public:iam::::serviceRole:Manager",
+								"crn:v1:bluemix:public:iam::::role:Editor"
+							]
+						},
+						{
+							"role_crns": [
+								"crn:v1:bluemix:public:iam::::role:Administrator"
+							],
+							"service_name": "containers-kubernetes"
+						},
+						{
+							"role_crns": [
+								"crn:v1:bluemix:public:iam::::role:Administrator"
+							],
+							"service_name": "is.vpc"
+						}
+					],
+					"architecture": {
+						"features": [
+							{
+								"title": " ",
+								"description": "Enables:"
+							},
+							{
+								"title": "1. Red Hat OpenShift cluster for microservices workloads",
+								"description": " "
+							},
+							{
+								"title": "2. Elasticsearch Platinum for building and storing sparse vectors, dense vector indexes or keyword search indexes",
+								"description": " "
+							},
+							{
+								"title": "i. watsonx.ai use of Elasticsearch ELSER2 vector index for RAG",
+								"description": " "
+							},
+							{
+								"title": "ii. watsonx Assistant Conversational Search with UI feature for uploading documents to create or use Elasticsearch ELSER2 vector index for RAG",
+								"description": " "
+							},
+							{
+								"title": "3. watsonx.ai in-memory vector store for RAG trial and exploration",
+								"description": " "
+							},
+							{
+								"title": "4. watsonx.ai UI to upload documents",
+								"description": " "
+							},
+							{
+								"title": "5. watsonx.ai Prompt Lab for inferencing and Prompt Templates",
+								"description": " "
+							},
+							{
+								"title": "6. watsonx Assistant Conversational Search with embedded LLM",
+								"description": " "
+							},
+							{
+								"title": "7. Build your own data processing, ingestion pipeline and indexes",
+								"description": " "
+							}
+						],
+						"diagrams": [
+							{
+								"diagram": {
+									"url": "https://raw.githubusercontent.com/terraform-ibm-modules/stack-retrieval-augmented-generation/main/reference-architecture/rag-pattern.svg",
+									"caption": "Reference architecture",
+									"type": "image/svg+xml",
+									"thumbnail_url": "https://raw.githubusercontent.com/terraform-ibm-modules/stack-retrieval-augmented-generation/main/reference-architecture/rag-pattern.svg"
+								},
+								"description": "Reference architecture"
+							},
+							{
+								"diagram": {
+									"url": "https://raw.githubusercontent.com/terraform-ibm-modules/stack-retrieval-augmented-generation/main/reference-architecture/rag-stack.svg",
+									"caption": "Solution components",
+									"type": "image/svg+xml",
+									"thumbnail_url": "https://raw.githubusercontent.com/terraform-ibm-modules/stack-retrieval-augmented-generation/main/reference-architecture/rag-stack.svg"
+								},
+								"description": "Solution components"
+							}
+						]
+					},
+					"configuration": [
+						{
+							"key": "prefix",
+							"type": "string",
+							"description": "A prefix added to the name of all resources created by this solution. Must start with a letter, contain only lowercase letters, numbers, or dashes, and be 13 characters or less. Used to avoid name clashes in the target account when deploying this solution multiple times.",
+							"default_value": "rag",
+							"required": true
+						},
+						{
+							"key": "ibmcloud_api_key",
+							"type": "password",
+							"description": "The API Key used to provision all resources created in this solution.",
+							"required": true
+						},
+						{
+							"key": "signing_key",
+							"type": "password",
+							"description": "The key used to sign the application image built by the CI pipeline deployed in this solution; please refer to the documentation at https://github.com/terraform-ibm-modules/stack-retrieval-augmented-generation/blob/main/README.md for generating the key; if not set, all resources will deploy successfully, but the initial CI pipeline execution will fail at the signing step.",
+							"display_name": "Multiline secure value",
+							"default_value": "replace",
+							"required": false,
+							"custom_config": {
+								"type": "multiline_secure_value",
+								"grouping": "deployment",
+								"original_grouping": "deployment"
+							}
+						},
+						{
+							"key": "region",
+							"type": "string",
+							"default_value": "us-south",
+							"description": "The region in which all resources are deployed.",
+							"required": false,
+							"options": [
+								{
+									"displayname": "us-south",
+									"value": "us-south"
+								},
+								{
+									"displayname": "eu-de",
+									"value": "eu-de"
+								}
+							]
+						},
+						{
+							"key": "resource_group_name",
+							"type": "string",
+							"default_value": "rag-services",
+							"description": "The name of the resource group that is created by this solution. The actual name is prefixed with the value of the input 'prefix'.  All resources created by this solution are deployed in this resource group.",
+							"required": false
+						},
+						{
+							"key": "existing_resource_group_name",
+							"type": "string",
+							"default_value": "__NULL__",
+							"description": "The name of an existing resource group that is used by this solution, takes precedence over resource_group_name. Prefix is NOT used for existing resource group. All resources created by this solution are deployed in this resource group.",
+							"required": false
+						},
+						{
+							"key": "watsonx_admin_api_key",
+							"type": "password",
+							"description": "The API key used to provision the watson project resources. If not set, the API key used to deploy the solution is used.",
+							"required": false
+						},
+						{
+							"key": "secret_manager_service_plan",
+							"type": "string",
+							"default_value": "trial",
+							"description": "The service/pricing plan to use when provisioning a new Secrets Manager instance. Only one trial instance is allowed per account.",
+							"required": false,
+							"options": [
+								{
+									"displayname": "Trial",
+									"value": "trial"
+								},
+								{
+									"displayname": "Standard",
+									"value": "standard"
+								}
+							]
+						},
+						{
+							"key": "existing_secrets_manager_crn",
+							"type": "string",
+							"default_value": "__NULL__",
+							"description": "The CRN of an existing secret manager instance to use in this solution. If not set, a new secret manager instance is provisioned.",
+							"required": false
+						},
+						{
+							"key": "enable_platform_logs_metrics",
+							"type": "boolean",
+							"default_value": false,
+							"description": "Whether to provision logging and monitoring instances are configured to receive all platform logs and metrics in the target region. There can only be one instance per region provisioned for platform logs/metrics.",
+							"required": false
+						},
+						{
+							"key": "sample_app_git_url",
+							"type": "string",
+							"default_value": "https://github.com/IBM/gen-ai-rag-watsonx-sample-application",
+							"description": "The URL to the public git repository containing the sample rag application code.",
+							"required": false
+						},
+						{
+							"key": "existing_kms_instance_crn",
+							"type": "string",
+							"default_value": "__NULL__",
+							"description": "The CRN of an existing KMS instance to use in this solution. If not set, a new KP instance is provisioned.",
+							"required": false
+						},
+						{
+							"key": "existing_event_notification_instance_crn",
+							"type": "string",
+							"default_value": "__NULL__",
+							"description": "The CRN of an existing event notification instance to use in this solution. If not set, a new event notification instance is provisioned.",
+							"required": false
+						},
+						{
+							"key": "existing_discovery_instance",
+							"type": "string",
+							"default_value": "__NULL__",
+							"description": "The CRN of an existing WatsonX SaaS discovery instance to use in this solution. If not set, a new discovery instance is provisioned depending on which plan is selected.",
+							"required": false
+						},
+						{
+							"key": "existing_assistant_instance_crn",
+							"type": "string",
+							"default_value": "__NULL__",
+							"description": "The CRN of an existing WatsonX SaaS assistant instance to use in this solution. If not set, a new assistant instance is provisioned depending on which plan is selected.",
+							"required": false
+						},
+						{
+							"key": "existing_governance_instance",
+							"type": "string",
+							"default_value": "__NULL__",
+							"description": "The CRN of an existing WatsonX SaaS governance instance to use in this solution. If not set, a new governance instance is provisioned depending on which plan is selected.",
+							"required": false
+						},
+						{
+							"key": "existing_studio_instance",
+							"type": "string",
+							"default_value": "__NULL__",
+							"description": "The CRN of an existing WatsonX SaaS studio instance to use in this solution. If not set, a new studio instance is provisioned depending on which plan is selected.",
+							"required": false
+						},
+						{
+							"key": "existing_machine_learning_instance",
+							"type": "string",
+							"default_value": "__NULL__",
+							"description": "The CRN of an existing WatsonX SaaS machine learning instance to use in this solution. If not set, a new machine learning instance is provisioned depending on which plan is selected.",
+							"required": false
+						},
+						{
+							"key": "existing_elasticsearch_instance_crn",
+							"type": "string",
+							"default_value": "__NULL__",
+							"description": "The CRN of an existing elasticsearch instance to use in this solution. If not set, a new elasticsearch instance is provisioned.",
+							"required": false
+						}
+					],
+					"outputs": [
+						{
+							"key": "elasticsearch_hostname",
+							"description": "The hostname of the Elasticsearch instance."
+						},
+						{
+							"key": "elasticsearch_port",
+							"description": "The port of the Elasticsearch instance."
+						},
+						{
+							"key": "elasticsearch_service_credentials_json",
+							"description": "The service credentials of the Elasticsearch instance."
+						},
+						{
+							"key": "elasticsearch_crn",
+							"description": "The CRN of the Elasticsearch instance."
+						},
+						{
+							"key": "watsonx_project_url",
+							"description": "The URL to the WatsonX project for the sample RAG application."
+						},
+						{
+							"key": "watsonx_project_id",
+							"description": "The ID for the WatsonX project for the sample RAG application."
+						},
+						{
+							"key": "watson_discovery_api_url",
+							"description": "The URL to the Watson Discovery API endpoint."
+						},
+						{
+							"key": "watson_discovery_project_id",
+							"description": "The ID for the Watson Discovery project for the sample RAG application."
+						}
+					],
+					"install_type": "fullstack"
 				}
 			]
 		}

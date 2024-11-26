@@ -1,7 +1,7 @@
 {
 	"products": [
 		{
-			"label": "Retrieval Augmented Generation (RAG) Pattern",
+			"label": "[Preview] - Retrieval Augmented Generation (RAG) Pattern",
 			"name": "testing-customer-care-gen-ai-app-config-stack",
 			"product_kind": "solution",
 			"tags": [

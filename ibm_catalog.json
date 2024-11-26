@@ -228,6 +228,7 @@
 							"id": "bdb533aa-fe34-4f3b-bf35-0007fee74221",
 							"input_mapping": [],
 							"optional": true,
+							"on_by_default": true,
 							"version": "^1.0.6"
 						},
 						{
@@ -239,6 +240,7 @@
 							"id": "4460375e-8a34-46fc-9f06-0eb60e7d4f8c",
 							"input_mapping": [],
 							"optional": true,
+							"on_by_default": true,
 							"version": "^1.0.9"
 						},
 						{
@@ -249,6 +251,7 @@
 								"standard"
 							],
 							"id": "8e851423-4cfc-40e7-a008-fb449d953cb9",
+							"on_by_default": true,
 							"input_mapping": [],
 							"optional": true,
 							"version": "^1.0.3"
@@ -261,6 +264,7 @@
 							],
 							"id": "b773b1d4-69bb-48db-a657-2307015eb9c1",
 							"input_mapping": [],
+							"on_by_default": true,
 							"optional": true,
 							"version": "^1.0.1"
 						}

@@ -220,7 +220,7 @@
 					},
 					"dependencies": [
 						{
-							"name": "testing-customer-care-gen-ai-app-config-da",
+							"name": "dtesting-customer-care-gen-ai-app-config-da",
 							"catalog_id": "f64499c8-eb50-4985-bf91-29f9e605a433",
 							"flavors": [
 								"banking"

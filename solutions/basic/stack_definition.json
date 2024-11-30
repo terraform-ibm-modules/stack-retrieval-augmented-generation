@@ -573,7 +573,7 @@
     },
     {
       "name": "Workload - DevSecOps Application Lifecycle Management",
-      "version_locator": "1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.9974cbde-5213-46d3-9dfb-c0f2716e4464-global",
+      "version_locator": "1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.72e3b0a3-9d6c-4b85-be2c-baed5a5ac732-global",
       "inputs": [
         {
           "name": "ibmcloud_api_key",
@@ -667,7 +667,7 @@
     },
     {
       "name": "Workload - Sample RAG App Configuration",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.9bdc521c-13ad-4d8a-b52a-a066b501678f-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.8fedf6b3-56a4-42e0-87a4-b767eadbe6c8-global",
       "inputs": [
         {
           "name": "toolchain_region",

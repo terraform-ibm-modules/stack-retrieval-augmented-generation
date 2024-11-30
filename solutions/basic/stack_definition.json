@@ -128,7 +128,7 @@
   "members": [
     {
       "name": "Account Infrastructure Base",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.75f26d78-6e7e-4d83-9822-7777ea101706-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.e410c7bc-eee6-4dc1-86b5-1ccbd3fdd1fc-global",
       "inputs": [
         {
           "name": "prefix",
@@ -206,7 +206,7 @@
     },
     {
       "name": "Essential Security - Encryption Key Management",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.7f57ef48-2bb2-4641-8f6e-db27a7eacc38-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.00f91756-7287-4786-9ab0-fd12d30d8919-global",
       "inputs": [
         {
           "name": "resource_group_name",
@@ -278,7 +278,7 @@
     },
     {
       "name": "Essential Security - Event Notifications",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.b5b38d6e-441e-4915-ac00-9a75b442a9f0-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.88d7308d-c2c8-4977-92cf-f85d99e27d00-global",
       "inputs": [
         {
           "name": "kms_endpoint_url",
@@ -316,7 +316,7 @@
     },
     {
       "name": "Essential Security - Secrets Manager",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.03587d2d-38bd-42c3-983b-72469702e038-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.4e7a383f-6295-4edc-b29f-858d28862e6d-global",
       "inputs": [
         {
           "name": "prefix",
@@ -362,7 +362,7 @@
     },
     {
       "name": "Essential Security - Security Compliance Center",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.b27fc8c7-f6ec-4f98-890d-4f7ccfd37aaf-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.0e4e8fc9-8953-4456-a51c-6ed6a3ca1bd7-global",
       "inputs": [
         {
           "name": "ibmcloud_api_key",
@@ -408,7 +408,7 @@
     },
     {
       "name": "Gen AI - Databases for Elasticsearch",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.bd9fa211-0586-4580-90a7-47f22f6b8b4b-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.0166bfff-6cf8-46d1-bb13-e27f7f8ba0db-global",
       "inputs": [
         {
           "name": "use_existing_resource_group",
@@ -540,7 +540,7 @@
     },
     {
       "name": "Workload - Code Engine Projects",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.42a9e379-8a61-4fad-a4c7-09f72a9bfb7c-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.65a474ad-7a19-4219-bdec-eab0dc413404-global",
       "inputs": [
         {
           "name": "ibmcloud_api_key",

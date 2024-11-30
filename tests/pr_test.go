@@ -47,7 +47,7 @@ func TestProjectsBasicFullTest(t *testing.T) {
 
 	options := testprojects.TestProjectOptionsDefault(&testprojects.TestProjectsOptions{
 		Testing:                t,
-		Prefix:                 "rag-stack",
+		Prefix:                 "rag",
 		StackConfigurationPath: basicDaStackDefPath,
 		CatalogProductName:     "Retrieval_Augmented_Generation_Pattern",
 		CatalogFlavorName:      "basic",
@@ -81,7 +81,7 @@ func TestProjectsBasicExistingResourcesTest(t *testing.T) {
 	// Provision RG, EN and SM
 	// ------------------------------------------------------------------------------------
 
-	prefix := fmt.Sprintf("rag-ext-%s", strings.ToLower(random.UniqueId()))
+	prefix := fmt.Sprintf("ragext-%s", strings.ToLower(random.UniqueId()))
 	realTerraformDir := "./resources"
 	tempTerraformDir, _ := files.CopyTerraformFolderToTemp(realTerraformDir, fmt.Sprintf(prefix+"-%s", strings.ToLower(random.UniqueId())))
 

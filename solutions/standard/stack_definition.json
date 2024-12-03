@@ -884,14 +884,6 @@
       "value": "ref:../members/Essential Security - Logging Monitoring Activity Tracker/outputs/cloud_monitoring_guid"
     },
     {
-      "name": "log_analysis_crn",
-      "value": "ref:../members/Essential Security - Logging Monitoring Activity Tracker/outputs/log_analysis_crn"
-    },
-    {
-      "name": "log_analysis_guid",
-      "value": "ref:../members/Essential Security - Logging Monitoring Activity Tracker/outputs/log_analysis_guid"
-    },
-    {
       "name": "secrets_manager_crn",
       "value": "ref:../members/Essential Security - Secrets Manager/outputs/secrets_manager_crn"
     },

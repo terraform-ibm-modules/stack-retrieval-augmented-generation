@@ -896,10 +896,6 @@
       "value": "ref:../members/Essential Security - Secrets Manager/outputs/secrets_manager_name"
     },
     {
-      "name": "secrets_manager_name",
-      "value": "ref:../members/Essential Security - Secrets Manager/outputs/secrets_manager_name"
-    },
-    {
       "name": "scc_crn",
       "value": "ref:../members/Essential Security - Security Compliance Center/outputs/scc_crn"
     },
@@ -918,10 +914,6 @@
     {
       "name": "watson_discovery_dashboard_url",
       "value": "ref:../members/Gen AI - WatsonX SaaS services/outputs/watson_discovery_dashboard_url"
-    },
-    {
-      "name": "watson_discovery_guid",
-      "value": "ref:../members/Gen AI - WatsonX SaaS services/outputs/watson_discovery_guid"
     },
     {
       "name": "watson_machine_learning_crn",

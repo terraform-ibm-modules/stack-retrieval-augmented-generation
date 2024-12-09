@@ -350,7 +350,7 @@
               "required": false
             },
             {
-              "key": "existing_discovery_instance",
+              "key": "existing_discovery_instance_crn",
               "required": false
             },
             {
@@ -358,15 +358,15 @@
               "required": false
             },
             {
-              "key": "existing_governance_instance",
+              "key": "existing_governance_instance_crn",
               "required": false
             },
             {
-              "key": "existing_studio_instance",
+              "key": "existing_studio_instance_crn",
               "required": false
             },
             {
-              "key": "existing_machine_learning_instance",
+              "key": "existing_machine_learning_instance_crn",
               "required": false
             },
             {
@@ -413,7 +413,7 @@
         {
           "label": "Standard (Deploy on Red Hat OpenShift)",
           "name": "standard",
-          "working_directory": "solutions/standard",
+          "working_directory": "solutions/basic",
           "compliance": {
             "authority": "scc-v3",
             "profiles": [

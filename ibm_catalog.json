@@ -276,6 +276,10 @@
               "required": true
             },
             {
+              "key": "ibmcloud_api_key",
+              "required": true
+            },
+            {
               "key": "signing_key",
               "display_name": "Multiline secure value",
               "required": false,

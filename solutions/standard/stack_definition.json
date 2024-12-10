@@ -415,7 +415,7 @@
     },
     {
       "name": "Essential Security - Security Compliance Center Agents",
-      "version_locator": "TODO: UPDATE",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.b1d07357-ed1f-4e64-a6e4-a500844f1941-global",
       "inputs": [
         {
           "name": "ibmcloud_api_key",

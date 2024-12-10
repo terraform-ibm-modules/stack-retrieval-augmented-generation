@@ -123,6 +123,13 @@
       "type": "string",
       "hidden": false,
       "default": null
+    },
+    {
+      "name": "helm_release_name",
+      "required": false,
+      "type": "string",
+      "hidden": false,
+      "default": "ibm-scc-wp-agent"
     }
   ],
   "members": [
@@ -394,7 +401,7 @@
         },
         {
           "name": "provision_scc_workload_protection",
-          "value": false
+          "value": true
         },
         {
           "name": "existing_en_crn",
@@ -403,6 +410,32 @@
         {
           "name": "profile_attachments",
           "value": []
+        }
+      ]
+    },
+    {
+      "name": "Essential Security - Security Compliance Center Agents",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.b1d07357-ed1f-4e64-a6e4-a500844f1941-global",
+      "inputs": [
+        {
+          "name": "ibmcloud_api_key",
+          "value": ""
+        },
+        {
+          "name": "workload_cluster_id",
+          "value": "ref:./members/Workload - Compute Red Hat OpenShift Container Platform on VPC/outputs/workload_cluster_id"
+        },
+        {
+          "name": "region",
+          "value": "ref:../../inputs/region"
+        },
+        {
+          "name": "endpoint_type",
+          "value": "private"
+        },
+        {
+          "name": "name",
+          "value": "ref:../../inputs/helm_release_name"
         }
       ]
     },

@@ -426,10 +426,6 @@
           "value": "ref:./members/Workload - Compute Red Hat OpenShift Container Platform on VPC/outputs/workload_cluster_id"
         },
         {
-          "name": "resource_group_name",
-          "value": "ref:../Account Infrastructure Base/outputs/audit_resource_group_name"
-        },
-        {
           "name": "region",
           "value": "ref:../../inputs/region"
         },

@@ -422,20 +422,20 @@
           "value": ""
         },
         {
-          "name": "workload_cluster_id",
+          "name": "cluster_id",
           "value": "ref:./members/Workload - Compute Red Hat OpenShift Container Platform on VPC/outputs/workload_cluster_id"
+        },
+        {
+          "name": "cluster_resource_group_id",
+          "value": "ref:./members/Workload - Compute Red Hat OpenShift Container Platform on VPC/outputs/workload_rg_id"
+        },
+        {
+          "name": "access_key",
+          "value": "ref:./members/Essential Security - Security Compliance Center/outputs/scc_workload_protection_access_key"
         },
         {
           "name": "region",
           "value": "ref:../../inputs/region"
-        },
-        {
-          "name": "endpoint_type",
-          "value": "private"
-        },
-        {
-          "name": "name",
-          "value": "ref:../../inputs/helm_release_name"
         }
       ]
     },

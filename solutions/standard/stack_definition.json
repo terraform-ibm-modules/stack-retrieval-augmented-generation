@@ -123,13 +123,6 @@
       "type": "string",
       "hidden": false,
       "default": null
-    },
-    {
-      "name": "helm_release_name",
-      "required": false,
-      "type": "string",
-      "hidden": false,
-      "default": "ibm-scc-wp-agent"
     }
   ],
   "members": [

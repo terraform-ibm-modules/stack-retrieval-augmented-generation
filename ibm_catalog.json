@@ -334,6 +334,13 @@
 							"required": false
 						},
 						{
+							"key": "existing_scc_instance_crn",
+							"type": "string",
+							"default_value": "__NULL__",
+							"description": "The CRN of an existing security and compliance center instance to use in this solution. If not set, a new security and compliance center instance is provisioned.",
+							"required": false
+						},
+						{
 							"key": "existing_discovery_instance",
 							"type": "string",
 							"default_value": "__NULL__",

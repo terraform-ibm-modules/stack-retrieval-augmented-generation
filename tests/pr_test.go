@@ -78,7 +78,7 @@ func TestProjectsBasicExistingResourcesTest(t *testing.T) {
 	t.Parallel()
 
 	// ------------------------------------------------------------------------------------
-	// Provision RG, EN and SM
+	// Provision RG, EN, SM, and SCC
 	// ------------------------------------------------------------------------------------
 
 	prefix := fmt.Sprintf("ragext-%s", strings.ToLower(random.UniqueId()))
@@ -108,7 +108,7 @@ func TestProjectsBasicExistingResourcesTest(t *testing.T) {
 	} else {
 
 		// ------------------------------------------------------------------------------------
-		// Test passing an existing SM, RG, EN
+		// Test passing an existing SM, RG, EN, SCC
 		// ------------------------------------------------------------------------------------
 
 		options := testprojects.TestProjectOptionsDefault(&testprojects.TestProjectsOptions{
@@ -134,6 +134,7 @@ func TestProjectsBasicExistingResourcesTest(t *testing.T) {
 			"existing_kms_instance_crn":                terraform.Output(t, existingTerraformOptions, "kms_instance_crn"),
 			"existing_event_notification_instance_crn": terraform.Output(t, existingTerraformOptions, "event_notification_instance_crn"),
 			"en_email_list":                            []string{"GoldenEye.Operations@ibm.com"},
+			"existing_scc_instance_crn":                terraform.Output(t, existingTerraformOptions, "crn"),
 		}
 
 		err := options.RunProjectsTest()

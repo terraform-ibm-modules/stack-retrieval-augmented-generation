@@ -54,3 +54,37 @@ module "key_protect_all_inclusive" {
   key_ring_endpoint_type      = "private"
   key_endpoint_type           = "private"
 }
+
+module "kms_root_key" {
+  source          = "terraform-ibm-modules/kms-key/ibm"
+  kms_instance_id = module.key_protect_all_inclusive.kms_guid
+  key_name        = "${var.prefix}-kms-root-key"
+}
+
+##############################################################################
+# Security and Compliance Center
+##############################################################################
+
+module "cos" {
+  source                     = "terraform-ibm-modules/cos/ibm"
+  version                    = "8.15.11"
+  cos_instance_name          = "${var.prefix}-cos"
+  existing_kms_instance_guid = module.key_protect_all_inclusive.kms_guid
+  retention_enabled          = false
+  resource_group_id          = module.resource_group.resource_group_id
+  bucket_name                = "${var.prefix}-cb"
+  kms_key_crn                = module.kms_root_key.crn
+}
+
+module "security_and_compliance_center" {
+  source                            = "terraform-ibm-modules/scc/ibm"
+  version                           = "1.8.30"
+  instance_name                     = "${var.prefix}-scc-instance"
+  region                            = var.region
+  resource_group_id                 = module.resource_group.resource_group_id
+  resource_tags                     = var.resource_tags
+  cos_bucket                        = module.cos.bucket_name
+  cos_instance_crn                  = module.cos.cos_instance_id
+  en_instance_crn                   = module.event_notifications.crn
+  en_source_name                    = module.event_notifications.event_notification_instance_name
+}

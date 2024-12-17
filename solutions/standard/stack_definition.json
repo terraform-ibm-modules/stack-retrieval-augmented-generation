@@ -69,6 +69,13 @@
       "default": null
     },
     {
+      "name": "existing_scc_instance_crn",
+      "required": false,
+      "type": "string",
+      "hidden": false,
+      "default": null
+    },
+    {
       "name": "existing_event_notification_instance_crn",
       "required": false,
       "type": "string",
@@ -383,6 +390,10 @@
         {
           "name": "resource_group_name",
           "value": "ref:../Account Infrastructure Base/outputs/audit_resource_group_name"
+        },
+        {
+          "name": "existing_scc_instance_crn",
+          "value": "ref:../../inputs/existing_scc_instance_crn"
         },
         {
           "name": "existing_kms_instance_crn",

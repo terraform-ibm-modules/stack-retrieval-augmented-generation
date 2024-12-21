@@ -45,7 +45,7 @@ module "secrets_manager" {
 
 module "key_protect_all_inclusive" {
   source                      = "terraform-ibm-modules/kms-all-inclusive/ibm"
-  version                     = "4.19.0"
+  version                     = "4.19.1"
   resource_group_id           = module.resource_group.resource_group_id
   key_protect_instance_name   = "${var.prefix}-kms"
   region                      = var.region

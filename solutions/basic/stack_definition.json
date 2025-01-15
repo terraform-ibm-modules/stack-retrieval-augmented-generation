@@ -1,5 +1,12 @@
 {
-  "inputs": [],
+  "inputs": [
+    {
+      "name": "ibmcloud_api_key",
+      "required": true,
+      "type": "string",
+      "hidden": false
+    }
+  ],
   "members": [
 		{
 			"name": "testing-deploy-arch-ibm-mock-module",

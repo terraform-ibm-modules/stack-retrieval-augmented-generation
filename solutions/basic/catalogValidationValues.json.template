@@ -1,4 +1,3 @@
 {
-  "ibmcloud_api_key": $VALIDATION_APIKEY,
-  "prefix": $PREFIX
+  "ibmcloud_api_key": $VALIDATION_APIKEY
 }

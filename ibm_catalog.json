@@ -229,7 +229,7 @@
               "input_mapping": [],
               "optional": true,
               "on_by_default": true,
-              "version": ">=1.2.1"
+              "version": "^1.2.0"
             },
             {
               "name": "Testing_Retrieval_Augmented_Generation_Pattern_dev",

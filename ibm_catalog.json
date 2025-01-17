@@ -223,7 +223,7 @@
               "name": "testing-customer-care-gen-ai-app-config-da",
               "catalog_id": "f64499c8-eb50-4985-bf91-29f9e605a433",
               "flavors": [
-                "banking"
+                "banking-ce"
               ],
               "id": "bdb533aa-fe34-4f3b-bf35-0007fee74221",
               "input_mapping": [],
@@ -482,7 +482,7 @@
               "name": "testing-customer-care-gen-ai-app-config-da",
               "catalog_id": "f64499c8-eb50-4985-bf91-29f9e605a433",
               "flavors": [
-                "banking"
+                "banking-roks"
               ],
               "id": "bdb533aa-fe34-4f3b-bf35-0007fee74221",
               "input_mapping": [],

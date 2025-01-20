@@ -296,8 +296,106 @@
           "dependency_version_2": true,
           "configuration": [
             {
+              "key": "prefix",
+              "required": true
+            },
+            {
               "key": "ibmcloud_api_key",
               "required": true
+            },
+            {
+              "key": "signing_key",
+              "display_name": "Multiline secure value",
+              "required": false,
+              "custom_config": {
+                "type": "multiline_secure_value",
+                "grouping": "deployment",
+                "original_grouping": "deployment"
+              }
+            },
+            {
+              "key": "region",
+              "required": false,
+              "options": [
+                {
+                  "displayname": "us-south",
+                  "value": "us-south"
+                },
+                {
+                  "displayname": "eu-de",
+                  "value": "eu-de"
+                }
+              ]
+            },
+            {
+              "key": "resource_group_name",
+              "required": false
+            },
+            {
+              "key": "existing_resource_group_name",
+              "required": false
+            },
+            {
+              "key": "watsonx_admin_api_key",
+              "required": false
+            },
+            {
+              "key": "secret_manager_service_plan",
+              "required": false,
+              "options": [
+                {
+                  "displayname": "Trial",
+                  "value": "trial"
+                },
+                {
+                  "displayname": "Standard",
+                  "value": "standard"
+                }
+              ]
+            },
+            {
+              "key": "existing_secrets_manager_crn",
+              "required": false
+            },
+            {
+              "key": "enable_platform_logs_metrics",
+              "required": false
+            },
+            {
+              "key": "sample_app_git_url",
+              "required": false
+            },
+            {
+              "key": "existing_kms_instance_crn",
+              "required": false
+            },
+            {
+              "key": "existing_event_notification_instance_crn",
+              "required": false
+            },
+            {
+              "key": "existing_discovery_instance_crn",
+              "required": false
+            },
+            {
+              "key": "existing_assistant_instance_crn",
+              "required": false
+            },
+            {
+              "key": "existing_governance_instance_crn",
+              "required": false
+            },
+            {
+              "key": "existing_studio_instance_crn",
+              "required": false
+            },
+            {
+              "key": "existing_machine_learning_instance_crn",
+              "required": false
+            },
+            {
+              "key": "existing_elasticsearch_instance_crn",
+              "required": false
             }
           ],
           "outputs": []
@@ -552,8 +650,106 @@
           "dependency_version_2": true,
           "configuration": [
             {
+              "key": "prefix",
+              "required": true
+            },
+            {
               "key": "ibmcloud_api_key",
               "required": true
+            },
+            {
+              "key": "signing_key",
+              "display_name": "Multiline secure value",
+              "required": false,
+              "custom_config": {
+                "type": "multiline_secure_value",
+                "grouping": "deployment",
+                "original_grouping": "deployment"
+              }
+            },
+            {
+              "key": "region",
+              "required": false,
+              "options": [
+                {
+                  "displayname": "us-south",
+                  "value": "us-south"
+                },
+                {
+                  "displayname": "eu-de",
+                  "value": "eu-de"
+                }
+              ]
+            },
+            {
+              "key": "resource_group_name",
+              "required": false
+            },
+            {
+              "key": "existing_resource_group_name",
+              "required": false
+            },
+            {
+              "key": "watsonx_admin_api_key",
+              "required": false
+            },
+            {
+              "key": "secret_manager_service_plan",
+              "required": false,
+              "options": [
+                {
+                  "displayname": "Trial",
+                  "value": "trial"
+                },
+                {
+                  "displayname": "Standard",
+                  "value": "standard"
+                }
+              ]
+            },
+            {
+              "key": "existing_secrets_manager_crn",
+              "required": false
+            },
+            {
+              "key": "enable_platform_logs_metrics",
+              "required": false
+            },
+            {
+              "key": "sample_app_git_url",
+              "required": false
+            },
+            {
+              "key": "existing_kms_instance_crn",
+              "required": false
+            },
+            {
+              "key": "existing_event_notification_instance_crn",
+              "required": false
+            },
+            {
+              "key": "existing_discovery_instance_crn",
+              "required": false
+            },
+            {
+              "key": "existing_assistant_instance_crn",
+              "required": false
+            },
+            {
+              "key": "existing_governance_instance_crn",
+              "required": false
+            },
+            {
+              "key": "existing_studio_instance_crn",
+              "required": false
+            },
+            {
+              "key": "existing_machine_learning_instance_crn",
+              "required": false
+            },
+            {
+              "key": "existing_elasticsearch_instance_crn",
+              "required": false
             }
           ],
           "outputs": []

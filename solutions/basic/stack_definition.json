@@ -1,10 +1,128 @@
 {
   "inputs": [
-    {
-      "name": "ibmcloud_api_key",
+        {
+      "name": "prefix",
       "required": true,
       "type": "string",
+      "hidden": false,
+      "default": "rag"
+    },
+    {
+      "name": "secret_manager_service_plan",
+      "required": false,
+      "type": "string",
+      "hidden": false,
+      "default": "trial"
+    },
+    {
+      "name": "watsonx_admin_api_key",
+      "required": false,
+      "type": "password",
       "hidden": false
+    },
+    {
+      "name": "resource_group_name",
+      "required": false,
+      "type": "string",
+      "hidden": false
+    },
+    {
+      "name": "existing_resource_group_name",
+      "required": false,
+      "type": "string",
+      "hidden": false,
+      "default": null
+    },
+    {
+      "name": "region",
+      "required": false,
+      "type": "string",
+      "hidden": false,
+      "default": "us-south"
+    },
+    {
+      "name": "sample_app_git_url",
+      "required": false,
+      "type": "string",
+      "hidden": false,
+      "default": "https://github.com/IBM/gen-ai-rag-watsonx-sample-application"
+    },
+    {
+      "name": "signing_key",
+      "required": false,
+      "type": "password",
+      "hidden": false,
+      "default": "replace"
+    },
+    {
+      "name": "existing_secrets_manager_crn",
+      "required": false,
+      "type": "string",
+      "hidden": false,
+      "default": null
+    },
+    {
+      "name": "existing_kms_instance_crn",
+      "required": false,
+      "type": "string",
+      "hidden": false,
+      "default": null
+    },
+    {
+      "name": "existing_event_notification_instance_crn",
+      "required": false,
+      "type": "string",
+      "hidden": false,
+      "default": null
+    },
+    {
+      "name": "enable_platform_logs_metrics",
+      "required": false,
+      "type": "boolean",
+      "hidden": false,
+      "default": false
+    },
+    {
+      "name": "existing_discovery_instance",
+      "required": false,
+      "type": "string",
+      "hidden": false,
+      "default": null
+    },
+    {
+      "name": "existing_assistant_instance_crn",
+      "required": false,
+      "type": "string",
+      "hidden": false,
+      "default": null
+    },
+    {
+      "name": "existing_governance_instance",
+      "required": false,
+      "type": "string",
+      "hidden": false,
+      "default": null
+    },
+    {
+      "name": "existing_studio_instance",
+      "required": false,
+      "type": "string",
+      "hidden": false,
+      "default": null
+    },
+    {
+      "name": "existing_machine_learning_instance",
+      "required": false,
+      "type": "string",
+      "hidden": false,
+      "default": null
+    },
+    {
+      "name": "existing_elasticsearch_instance_crn",
+      "required": false,
+      "type": "string",
+      "hidden": false,
+      "default": null
     }
   ],
   "members": [

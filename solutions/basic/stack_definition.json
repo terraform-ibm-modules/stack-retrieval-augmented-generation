@@ -10,13 +10,7 @@
   "members": [
 		{
 			"name": "testing-deploy-arch-ibm-mock-module",
-			"version_locator": "f64499c8-eb50-4985-bf91-29f9e605a433.7eaba03d-e5bb-4b74-a75f-84975694b945",
-        "inputs": [
-        {
-          "name": "ibmcloud_api_key",
-          "value": "ref:../../inputs/ibmcloud_api_key"
-        }
-      ]
+			"version_locator": "f64499c8-eb50-4985-bf91-29f9e605a433.8f1cc808-4f55-4315-a7fd-c458953403b7"
 		}
 	],
   "outputs": []

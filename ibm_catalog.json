@@ -233,17 +233,17 @@
                 {
                   "dependency_input": "resource_group_name",
                   "version_input": "resource_group_name",
-                  "reference_version:": true
+                  "reference_version": true
                 },
                 {
                   "dependency_input": "use_existing_resource_group",
                   "version_input": "use_existing_resource_group",
-                  "reference_version:": true
+                  "reference_version": true
                 },
                 {
                   "dependency_input": "prefix",
                   "version_input": "prefix",
-                  "reference_version:": true
+                  "reference_version": true
                 }
               ],
               "optional": true,
@@ -266,12 +266,12 @@
                 {
                   "dependency_input": "resource_group_name",
                   "version_input": "resource_group_name",
-                  "reference_version:": true
+                  "reference_version": true
                 },
                 {
                   "dependency_input": "use_existing_resource_group",
                   "version_input": "use_existing_resource_group",
-                  "reference_version:": true
+                  "reference_version": true
                 }
               ],
               "optional": false,

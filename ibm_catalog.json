@@ -242,7 +242,7 @@
                 {
                   "dependency_input": "prefix",
                   "version_input": "prefix",
-                  "reference_version": true
+                  "reference_version": false
                 }
               ],
               "optional": true,
@@ -765,7 +765,7 @@
                 {
                   "dependency_input": "prefix",
                   "version_input": "prefix",
-                  "reference_version": true
+                  "reference_version": false
                 }
               ],
               "optional": true,

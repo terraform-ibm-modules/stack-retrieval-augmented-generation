@@ -237,8 +237,7 @@
                 },
                 {
                   "dependency_input": "use_existing_resource_group",
-                  "version_input": "use_existing_resource_group",
-                  "reference_version": true
+                  "value": true
                 },
                 {
                   "dependency_input": "prefix",
@@ -270,8 +269,17 @@
                 },
                 {
                   "dependency_input": "use_existing_resource_group",
-                  "version_input": "use_existing_resource_group",
-                  "reference_version": true
+                  "value": true
+                },
+                {
+                  "dependency_input": "prefix",
+                  "version_input": "prefix",
+                  "reference_version": false
+                },
+                {
+                  "dependency_input": "region",
+                  "version_input": "region",
+                  "reference_version": false
                 }
               ],
               "optional": false,
@@ -295,8 +303,17 @@
                 },
                 {
                   "dependency_input": "use_existing_resource_group",
-                  "version_input": "use_existing_resource_group",
-                  "reference_version": true
+                  "value": true
+                },
+                {
+                  "dependency_input": "prefix",
+                  "version_input": "prefix",
+                  "reference_version": false
+                },
+                {
+                  "dependency_input": "scc_region",
+                  "version_input": "region",
+                  "reference_version": false
                 }
               ],
               "on_by_default": true,
@@ -306,6 +323,76 @@
             {
               "name": "deploy-arch-ibm-watsonx-assistant",
               "id": "f0eab251-febe-4ae4-99ba-04d698fb6d20",
+              "ignore_auto_referencing": [
+                "*"
+              ],
+              "version": "^v1.1.3",
+              "flavors": [
+                "standard"
+              ],
+              "catalog_id": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd",
+              "optional": true,
+              "on_by_default": true,
+              "input_mapping": [
+                {
+                  "dependency_input": "resource_group_name",
+                  "version_input": "resource_group_name",
+                  "reference_version": true
+                },
+                {
+                  "dependency_input": "use_existing_resource_group",
+                  "value": true
+                },
+                {
+                  "dependency_input": "prefix",
+                  "version_input": "prefix",
+                  "reference_version": false
+                },
+                {
+                  "dependency_input": "region",
+                  "version_input": "region",
+                  "reference_version": false
+                }
+              ]
+            },
+            {
+              "name": "deploy-arch-ibm-watson-discovery",
+              "id": "0f616276-a8a4-4399-bcbf-d3129f30295e",
+              "version": "^v1.1.2",
+              "flavors": [
+                "standard"
+              ],
+              "catalog_id": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd",
+              "optional": true,
+              "on_by_default": true,
+              "ignore_auto_referencing": [
+                "*"
+              ],
+              "input_mapping": [
+                {
+                  "dependency_input": "resource_group_name",
+                  "version_input": "resource_group_name",
+                  "reference_version": true
+                },
+                {
+                  "dependency_input": "use_existing_resource_group",
+                  "value": true
+                },
+                {
+                  "dependency_input": "region",
+                  "version_input": "region",
+                  "reference_version": false
+                },
+                {
+                  "dependency_input": "prefix",
+                  "version_input": "prefix",
+                  "reference_version": false
+                }
+              ]
+            },
+            {
+              "name": "deploy-arch-ibm-watsonx-ai",
+              "id": "85b7c3d8-c947-408c-896c-52b375ceb1c0",
               "ignore_auto_referencing": [
                 "*"
               ],
@@ -324,60 +411,49 @@
                 },
                 {
                   "dependency_input": "use_existing_resource_group",
-                  "version_input": "use_existing_resource_group",
-                  "reference_version": true
+                  "value": true
+                },
+                {
+                  "dependency_input": "prefix",
+                  "version_input": "prefix",
+                  "reference_version": false
+                },
+                {
+                  "dependency_input": "region",
+                  "version_input": "region",
+                  "reference_version": false
+                },
+                {
+                  "dependency_input": "existing_kms_instance_crn",
+                  "version_input": "existing_kms_instance_crn",
+                  "reference_version": false
                 }
               ]
             },
             {
-              "name": "deploy-arch-ibm-watson-discovery",
-              "id": "0f616276-a8a4-4399-bcbf-d3129f30295e",
-              "version": "^v1.1.1",
+              "name": "deploy-arch-ibm-account-infra-base",
+              "id": "63641cec-6093-4b4f-b7b0-98d2f4185cd6-global",
+              "version": "^v1.18.0",
               "flavors": [
                 "standard"
               ],
-              "catalog_id": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd",
-              "optional": true,
-              "on_by_default": true,
-              "ignore_auto_referencing": [
-                "*"
-              ],
-              "input_mapping": [
-                {
-                  "dependency_input": "resource_group_name",
-                  "version_input": "resource_group_name",
-                  "reference_version": true
-                },
-                {
-                  "dependency_input": "use_existing_resource_group",
-                  "version_input": "use_existing_resource_group",
-                  "reference_version": true
-                }
-              ]
-            },
-            {
-              "name": "deploy-arch-ibm-watsonx-ai",
-              "id": "85b7c3d8-c947-408c-896c-52b375ceb1c0",
-              "ignore_auto_referencing": [
-                "*"
-              ],
-              "version": "^v1.1.1",
-              "flavors": [
-                "standard"
-              ],
-              "catalog_id": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd",
+              "catalog_id": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3",
               "optional": true,
               "on_by_default": true,
               "input_mapping": [
                 {
-                  "dependency_input": "resource_group_name",
-                  "version_input": "resource_group_name",
-                  "reference_version": true
+                  "dependency_output": "workload_resource_group_name",
+                  "version_input": "resource_group_name"
                 },
                 {
-                  "dependency_input": "use_existing_resource_group",
-                  "version_input": "use_existing_resource_group",
-                  "reference_version": true
+                  "dependency_input": "prefix",
+                  "version_input": "prefix",
+                  "reference_version": false
+                },
+                {
+                  "dependency_input": "region",
+                  "version_input": "region",
+                  "reference_version": false
                 }
               ]
             }
@@ -684,11 +760,16 @@
                 },
                 {
                   "dependency_input": "use_existing_resource_group",
-                  "version_input": "use_existing_resource_group",
+                  "value": true
+                },
+                {
+                  "dependency_input": "prefix",
+                  "version_input": "prefix",
                   "reference_version": true
                 }
               ],
               "optional": true,
+              "on_by_default": true,
               "version": "^1.4.1"
             },
             {
@@ -702,6 +783,7 @@
               "ignore_auto_referencing": [
                 "*"
               ],
+              "on_by_default": true,
               "input_mapping": [
                 {
                   "dependency_input": "resource_group_name",
@@ -710,11 +792,20 @@
                 },
                 {
                   "dependency_input": "use_existing_resource_group",
-                  "version_input": "use_existing_resource_group",
-                  "reference_version": true
+                  "value": true
+                },
+                {
+                  "dependency_input": "prefix",
+                  "version_input": "prefix",
+                  "reference_version": false
+                },
+                {
+                  "dependency_input": "region",
+                  "version_input": "region",
+                  "reference_version": false
                 }
               ],
-              "optional": true,
+              "optional": false,
               "version": "^1.2.12"
             },
             {
@@ -735,16 +826,96 @@
                 },
                 {
                   "dependency_input": "use_existing_resource_group",
-                  "version_input": "use_existing_resource_group",
-                  "reference_version": true
+                  "value": true
+                },
+                {
+                  "dependency_input": "prefix",
+                  "version_input": "prefix",
+                  "reference_version": false
+                },
+                {
+                  "dependency_input": "scc_region",
+                  "version_input": "region",
+                  "reference_version": false
                 }
               ],
+              "on_by_default": true,
               "optional": true,
               "version": "^1.0.8"
             },
             {
               "name": "deploy-arch-ibm-watsonx-assistant",
               "id": "f0eab251-febe-4ae4-99ba-04d698fb6d20",
+              "ignore_auto_referencing": [
+                "*"
+              ],
+              "version": "^v1.1.3",
+              "flavors": [
+                "standard"
+              ],
+              "catalog_id": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd",
+              "optional": true,
+              "on_by_default": true,
+              "input_mapping": [
+                {
+                  "dependency_input": "resource_group_name",
+                  "version_input": "resource_group_name",
+                  "reference_version": true
+                },
+                {
+                  "dependency_input": "use_existing_resource_group",
+                  "value": true
+                },
+                {
+                  "dependency_input": "prefix",
+                  "version_input": "prefix",
+                  "reference_version": false
+                },
+                {
+                  "dependency_input": "region",
+                  "version_input": "region",
+                  "reference_version": false
+                }
+              ]
+            },
+            {
+              "name": "deploy-arch-ibm-watson-discovery",
+              "id": "0f616276-a8a4-4399-bcbf-d3129f30295e",
+              "version": "^v1.1.2",
+              "flavors": [
+                "standard"
+              ],
+              "catalog_id": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd",
+              "optional": true,
+              "on_by_default": true,
+              "ignore_auto_referencing": [
+                "*"
+              ],
+              "input_mapping": [
+                {
+                  "dependency_input": "resource_group_name",
+                  "version_input": "resource_group_name",
+                  "reference_version": true
+                },
+                {
+                  "dependency_input": "use_existing_resource_group",
+                  "value": true
+                },
+                {
+                  "dependency_input": "region",
+                  "version_input": "region",
+                  "reference_version": false
+                },
+                {
+                  "dependency_input": "prefix",
+                  "version_input": "prefix",
+                  "reference_version": false
+                }
+              ]
+            },
+            {
+              "name": "deploy-arch-ibm-watsonx-ai",
+              "id": "85b7c3d8-c947-408c-896c-52b375ceb1c0",
               "ignore_auto_referencing": [
                 "*"
               ],
@@ -763,60 +934,49 @@
                 },
                 {
                   "dependency_input": "use_existing_resource_group",
-                  "version_input": "use_existing_resource_group",
-                  "reference_version": true
+                  "value": true
+                },
+                {
+                  "dependency_input": "prefix",
+                  "version_input": "prefix",
+                  "reference_version": false
+                },
+                {
+                  "dependency_input": "region",
+                  "version_input": "region",
+                  "reference_version": false
+                },
+                {
+                  "dependency_input": "existing_kms_instance_crn",
+                  "version_input": "existing_kms_instance_crn",
+                  "reference_version": false
                 }
               ]
             },
             {
-              "name": "deploy-arch-ibm-watson-discovery",
-              "id": "0f616276-a8a4-4399-bcbf-d3129f30295e",
-              "ignore_auto_referencing": [
-                "*"
-              ],
-              "version": "^v1.1.1",
+              "name": "deploy-arch-ibm-account-infra-base",
+              "id": "63641cec-6093-4b4f-b7b0-98d2f4185cd6-global",
+              "version": "^v1.18.0",
               "flavors": [
                 "standard"
               ],
-              "catalog_id": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd",
+              "catalog_id": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3",
               "optional": true,
               "on_by_default": true,
               "input_mapping": [
                 {
-                  "dependency_input": "resource_group_name",
-                  "version_input": "resource_group_name",
-                  "reference_version": true
+                  "dependency_output": "workload_resource_group_name",
+                  "version_input": "resource_group_name"
                 },
                 {
-                  "dependency_input": "use_existing_resource_group",
-                  "version_input": "use_existing_resource_group",
-                  "reference_version": true
-                }
-              ]
-            },
-            {
-              "name": "deploy-arch-ibm-watsonx-ai",
-              "id": "85b7c3d8-c947-408c-896c-52b375ceb1c0",
-              "ignore_auto_referencing": [
-                "*"
-              ],
-              "version": "^v1.1.1",
-              "flavors": [
-                "standard"
-              ],
-              "catalog_id": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd",
-              "optional": true,
-              "on_by_default": true,
-              "input_mapping": [
-                {
-                  "dependency_input": "resource_group_name",
-                  "version_input": "resource_group_name",
-                  "reference_version": true
+                  "dependency_input": "prefix",
+                  "version_input": "prefix",
+                  "reference_version": false
                 },
                 {
-                  "dependency_input": "use_existing_resource_group",
-                  "version_input": "use_existing_resource_group",
-                  "reference_version": true
+                  "dependency_input": "region",
+                  "version_input": "region",
+                  "reference_version": false
                 }
               ]
             }

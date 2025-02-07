@@ -236,10 +236,6 @@
                   "reference_version": true
                 },
                 {
-                  "dependency_input": "use_existing_resource_group",
-                  "value": true
-                },
-                {
                   "dependency_input": "prefix",
                   "version_input": "prefix",
                   "reference_version": true
@@ -248,6 +244,15 @@
                   "dependency_input": "watson_assistant_region",
                   "version_input": "region",
                   "reference_version": true
+                },
+                {
+                  "dependency_input": "use_existing_resource_group",
+                  "version_input": "watsonx_ai_use_existing_resource_group_name",
+                  "reference_version": true
+                },
+                {
+                  "dependency_output": "cos_instance_crn",
+                  "version_input": "sample_app_git_url"
                 }
               ],
               "optional": true,
@@ -273,10 +278,6 @@
                   "reference_version": true
                 },
                 {
-                  "dependency_input": "use_existing_resource_group",
-                  "value": true
-                },
-                {
                   "dependency_input": "prefix",
                   "version_input": "prefix",
                   "reference_version": true
@@ -285,10 +286,15 @@
                   "dependency_input": "region",
                   "version_input": "region",
                   "reference_version": true
+                },
+                {
+                  "dependency_input": "existing_resource_group_name",
+                  "version_input": "watsonx_ai_use_existing_resource_group_name",
+                  "reference_version": true
                 }
               ],
               "optional": false,
-              "version": "^1.2.12"
+              "version": "^1.2.13"
             },
             {
               "name": "testing-deploy-arch-ibm-scc",
@@ -472,6 +478,18 @@
                 {
                   "dependency_output": "workload_resource_group_name",
                   "version_input": "watson_discovery_resource_group_name"
+                },
+                {
+                  "value": true,
+                  "version_input": "watsonx_ai_use_existing_resource_group_name"
+                },
+                {
+                  "value": true,
+                  "version_input": "watson_assistant_use_existing_resource_group_name"
+                },
+                {
+                  "value": true,
+                  "version_input": "watson_discovery_use_existing_resource_group_name"
                 }
               ]
             }
@@ -512,11 +530,7 @@
             },
             {
               "key": "resource_group_name",
-              "required": false
-            },
-            {
-              "key": "use_existing_resource_group",
-              "required": false
+              "required": true
             },
             {
               "key": "watsonx_admin_api_key",
@@ -585,12 +599,27 @@
               "required": false
             },
             {
+              "key": "watsonx_ai_use_existing_resource_group_name",
+              "required": false,
+              "default_value": false
+            },
+            {
               "key": "watson_assistant_resource_group_name",
               "required": false
             },
             {
+              "key": "watson_assistant_use_existing_resource_group_name",
+              "required": false,
+              "default_value": false
+            },
+            {
               "key": "watson_discovery_resource_group_name",
               "required": false
+            },
+            {
+              "key": "watson_discovery_use_existing_resource_group_name",
+              "required": false,
+              "default_value": false
             }
           ],
           "outputs": [],
@@ -1060,11 +1089,7 @@
             },
             {
               "key": "resource_group_name",
-              "required": false
-            },
-            {
-              "key": "existing_resource_group_name",
-              "required": false
+              "required": true
             },
             {
               "key": "watsonx_admin_api_key",

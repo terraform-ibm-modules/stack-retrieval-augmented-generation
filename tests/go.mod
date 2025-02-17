@@ -2,7 +2,7 @@ module github.com/terraform-ibm-modules/stack-retrieval-augmented-generation
 
 go 1.22.4
 
-toolchain go1.23.4
+toolchain go1.24.0
 
 require (
 	github.com/gruntwork-io/terratest v0.47.2

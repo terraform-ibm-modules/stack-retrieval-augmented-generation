@@ -128,7 +128,7 @@ func TestProjectsBasicExistingResourcesTest(t *testing.T) {
 			"region":                                   terraform.Output(t, existingTerraformOptions, "region"),
 			"existing_resource_group_name":             terraform.Output(t, existingTerraformOptions, "resource_group_name"),
 			"ibmcloud_api_key":                         options.RequiredEnvironmentVars["TF_VAR_ibmcloud_api_key"], // always required by the stack
-			"enable_platform_logs_metrics":             false,
+			"enable_platform_metrics":                  false,
 			"existing_secrets_manager_crn":             terraform.Output(t, existingTerraformOptions, "secrets_manager_instance_crn"),
 			"signing_key":                              privateKey,
 			"existing_kms_instance_crn":                terraform.Output(t, existingTerraformOptions, "kms_instance_crn"),

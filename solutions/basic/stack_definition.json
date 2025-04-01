@@ -76,11 +76,18 @@
       "default": null
     },
     {
-      "name": "enable_platform_logs_metrics",
+      "name": "enable_platform_metrics",
       "required": false,
       "type": "boolean",
       "hidden": false,
       "default": false
+    },
+    {
+      "name": "logs_routing_tenant_regions",
+      "required": false,
+      "type": "array",
+      "hidden": false,
+      "default": []
     },
     {
       "name": "existing_discovery_instance",
@@ -231,12 +238,16 @@
         {
           "name": "prefix",
           "value": "ref:../../inputs/prefix"
+        },
+        {
+          "name": "key_protect_instance_name",
+          "value": "base-security-services-kms"
         }
       ]
     },
     {
       "name": "Essential Security - Logging Monitoring Activity Tracker",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.7f41c2cd-2427-478b-923e-52491d2c871e-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.68148a25-2996-4a8c-b188-8453a06b8986-global",
       "inputs": [
         {
           "name": "ibmcloud_api_key",
@@ -271,8 +282,8 @@
           "value": "ref:../../inputs/enable_platform_logs_metrics"
         },
         {
-          "name": "enable_platform_logs",
-          "value": "ref:../../inputs/enable_platform_logs_metrics"
+          "name": "logs_routing_tenant_regions",
+          "value": "ref:../../inputs/logs_routing_tenant_regions"
         }
       ]
     },
@@ -316,7 +327,7 @@
     },
     {
       "name": "Essential Security - Secrets Manager",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.ac883936-6a22-4882-aa2b-fca61ccda723-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.fbd09478-3e60-4d70-8af2-3232418072c5-global",
       "inputs": [
         {
           "name": "prefix",
@@ -351,12 +362,24 @@
           "value": "ref:../../inputs/secret_manager_service_plan"
         },
         {
-          "name": "existing_event_notification_instance_crn",
+          "name": "existing_event_notifications_instance_crn",
           "value": "ref:../Essential Security - Event Notifications/outputs/crn"
         },
         {
-          "name": "enable_event_notification",
+          "name": "enable_event_notifications",
           "value": true
+        },
+        {
+          "name": "kms_key_ring_name",
+          "value": "sm-cos-key-ring"
+        },
+        {
+          "name": "kms_key_name",
+          "value": "sm-cos-key"
+        },
+        {
+          "name": "secrets_manager_instance_name",
+          "value": "base-security-services-sm"
         }
       ]
     },
@@ -397,7 +420,7 @@
           "value": false
         },
         {
-          "name": "existing_en_crn",
+          "name": "existing_event_notifications_crn",
           "value": "ref:../Essential Security - Event Notifications/outputs/crn"
         },
         {
@@ -535,6 +558,10 @@
         {
           "name": "cos_kms_crn",
           "value": "ref:../Essential Security - Encryption Key Management/outputs/kms_instance_crn"
+        },
+        {
+          "name": "enable_cos_kms_encryption",
+          "value": true
         }
       ]
     },

@@ -305,6 +305,14 @@
 							"required": false
 						},
 						{
+							"key": "skip_iam_authorization_policy",
+							"display_name": "Disable Secrets Manager IAM credentials engine auth policy creation?",
+							"type": "boolean",
+							"default_value": false,
+							"description": "Whether to skip the creation of the IAM authorization policies required to enable the Secrets Manager IAM credentials engine. If set to false, policies will be created that grants the Secrets Manager instance 'Operator' access to the IAM identity service, and 'Groups Service Member Manage' access to the IAM groups service.",
+							"required": false
+						},
+						{
 							"key": "enable_platform_metrics",
 							"type": "boolean",
 							"default_value": false,
@@ -678,6 +686,14 @@
 							"type": "string",
 							"default_value": "__NULL__",
 							"description": "The CRN of an existing secret manager instance to use in this solution. If not set, a new secret manager instance is provisioned.",
+							"required": false
+						},
+						{
+							"key": "skip_iam_authorization_policy",
+							"display_name": "Disable Secrets Manager IAM credentials engine auth policy creation?",
+							"type": "boolean",
+							"default_value": false,
+							"description": "Whether to skip the creation of the IAM authorization policies required to enable the Secrets Manager IAM credentials engine. If set to false, policies will be created that grants the Secrets Manager instance 'Operator' access to the IAM identity service, and 'Groups Service Member Manage' access to the IAM groups service.",
 							"required": false
 						},
 						{

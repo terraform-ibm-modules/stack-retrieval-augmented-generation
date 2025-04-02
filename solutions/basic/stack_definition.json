@@ -15,6 +15,13 @@
       "default": "trial"
     },
     {
+      "name": "skip_iam_authorization_policy",
+      "required": false,
+      "type": "boolean",
+      "hidden": false,
+      "default": false
+    },
+    {
       "name": "watsonx_admin_api_key",
       "required": false,
       "type": "password",
@@ -327,7 +334,7 @@
     },
     {
       "name": "Essential Security - Secrets Manager",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.fbd09478-3e60-4d70-8af2-3232418072c5-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.db823650-3010-4482-b807-45145f273553-global",
       "inputs": [
         {
           "name": "prefix",
@@ -356,6 +363,10 @@
         {
           "name": "existing_secrets_manager_crn",
           "value": "ref:../../inputs/existing_secrets_manager_crn"
+        },
+        {
+          "name": "skip_iam_authorization_policy",
+          "value": "ref:../../inputs/skip_iam_authorization_policy"
         },
         {
           "name": "service_plan",

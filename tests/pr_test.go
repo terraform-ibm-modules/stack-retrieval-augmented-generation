@@ -130,6 +130,7 @@ func TestProjectsBasicExistingResourcesTest(t *testing.T) {
 			"ibmcloud_api_key":                         options.RequiredEnvironmentVars["TF_VAR_ibmcloud_api_key"], // always required by the stack
 			"enable_platform_metrics":                  false,
 			"existing_secrets_manager_crn":             terraform.Output(t, existingTerraformOptions, "secrets_manager_instance_crn"),
+			"skip_iam_authorization_policy":            true, // skip as s2s auth policy was already created for existing instance
 			"signing_key":                              privateKey,
 			"existing_kms_instance_crn":                terraform.Output(t, existingTerraformOptions, "kms_instance_crn"),
 			"existing_event_notification_instance_crn": terraform.Output(t, existingTerraformOptions, "event_notification_instance_crn"),

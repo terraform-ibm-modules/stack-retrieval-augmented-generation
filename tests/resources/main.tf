@@ -57,6 +57,7 @@ module "key_protect_all_inclusive" {
 
 module "kms_root_key" {
   source          = "terraform-ibm-modules/kms-key/ibm"
+  version         = "1.4.0"
   kms_instance_id = module.key_protect_all_inclusive.kms_guid
   key_name        = "${var.prefix}-kms-root-key"
 }

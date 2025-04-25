@@ -286,7 +286,7 @@
         },
         {
           "name": "enable_platform_metrics",
-          "value": "ref:../../inputs/enable_platform_logs_metrics"
+          "value": "ref:../../inputs/enable_platform_metrics"
         },
         {
           "name": "logs_routing_tenant_regions",

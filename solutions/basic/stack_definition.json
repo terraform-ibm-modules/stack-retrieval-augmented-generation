@@ -15,6 +15,13 @@
       "default": "trial"
     },
     {
+      "name": "skip_iam_authorization_policy",
+      "required": false,
+      "type": "boolean",
+      "hidden": false,
+      "default": false
+    },
+    {
       "name": "watsonx_admin_api_key",
       "required": false,
       "type": "password",
@@ -76,11 +83,18 @@
       "default": null
     },
     {
-      "name": "enable_platform_logs_metrics",
+      "name": "enable_platform_metrics",
       "required": false,
       "type": "boolean",
       "hidden": false,
       "default": false
+    },
+    {
+      "name": "logs_routing_tenant_regions",
+      "required": false,
+      "type": "array",
+      "hidden": false,
+      "default": []
     },
     {
       "name": "existing_discovery_instance",
@@ -128,7 +142,7 @@
   "members": [
     {
       "name": "Account Infrastructure Base",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.e410c7bc-eee6-4dc1-86b5-1ccbd3fdd1fc-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.fa88886a-209c-4fbf-b06c-d5f1a96e0ffc-global",
       "inputs": [
         {
           "name": "prefix",
@@ -206,7 +220,7 @@
     },
     {
       "name": "Essential Security - Encryption Key Management",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.00f91756-7287-4786-9ab0-fd12d30d8919-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.efaad0d0-9028-4d39-90e7-7e0f9d6e7569-global",
       "inputs": [
         {
           "name": "resource_group_name",
@@ -231,12 +245,16 @@
         {
           "name": "prefix",
           "value": "ref:../../inputs/prefix"
+        },
+        {
+          "name": "key_protect_instance_name",
+          "value": "base-security-services-kms"
         }
       ]
     },
     {
       "name": "Essential Security - Logging Monitoring Activity Tracker",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.5036a34b-9925-4d06-932b-c22ce63d3fdf-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.50624578-9e5c-408c-90ea-ce412899b5dc-global",
       "inputs": [
         {
           "name": "ibmcloud_api_key",
@@ -268,17 +286,17 @@
         },
         {
           "name": "enable_platform_metrics",
-          "value": "ref:../../inputs/enable_platform_logs_metrics"
+          "value": "ref:../../inputs/enable_platform_metrics"
         },
         {
-          "name": "enable_platform_logs",
-          "value": "ref:../../inputs/enable_platform_logs_metrics"
+          "name": "logs_routing_tenant_regions",
+          "value": "ref:../../inputs/logs_routing_tenant_regions"
         }
       ]
     },
     {
       "name": "Essential Security - Event Notifications",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.88d7308d-c2c8-4977-92cf-f85d99e27d00-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.1c3a9873-77b2-4ab4-89c7-26d9899b1edb-global",
       "inputs": [
         {
           "name": "kms_endpoint_url",
@@ -316,7 +334,7 @@
     },
     {
       "name": "Essential Security - Secrets Manager",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.4e7a383f-6295-4edc-b29f-858d28862e6d-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.db823650-3010-4482-b807-45145f273553-global",
       "inputs": [
         {
           "name": "prefix",
@@ -347,22 +365,38 @@
           "value": "ref:../../inputs/existing_secrets_manager_crn"
         },
         {
+          "name": "skip_iam_authorization_policy",
+          "value": "ref:../../inputs/skip_iam_authorization_policy"
+        },
+        {
           "name": "service_plan",
           "value": "ref:../../inputs/secret_manager_service_plan"
         },
         {
-          "name": "existing_event_notification_instance_crn",
+          "name": "existing_event_notifications_instance_crn",
           "value": "ref:../Essential Security - Event Notifications/outputs/crn"
         },
         {
-          "name": "enable_event_notification",
+          "name": "enable_event_notifications",
           "value": true
+        },
+        {
+          "name": "kms_key_ring_name",
+          "value": "sm-cos-key-ring"
+        },
+        {
+          "name": "kms_key_name",
+          "value": "sm-cos-key"
+        },
+        {
+          "name": "secrets_manager_instance_name",
+          "value": "base-security-services-sm"
         }
       ]
     },
     {
       "name": "Essential Security - Security Compliance Center",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.0e4e8fc9-8953-4456-a51c-6ed6a3ca1bd7-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.03c63154-2430-4154-9033-9f8e6f80d93b-global",
       "inputs": [
         {
           "name": "ibmcloud_api_key",
@@ -397,7 +431,7 @@
           "value": false
         },
         {
-          "name": "existing_en_crn",
+          "name": "existing_event_notifications_crn",
           "value": "ref:../Essential Security - Event Notifications/outputs/crn"
         },
         {
@@ -408,7 +442,7 @@
     },
     {
       "name": "Gen AI - Databases for Elasticsearch",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.0166bfff-6cf8-46d1-bb13-e27f7f8ba0db-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.68a66140-e2e8-40ef-be86-c46e6f3442a3-global",
       "inputs": [
         {
           "name": "use_existing_resource_group",
@@ -466,7 +500,7 @@
     },
     {
       "name": "Gen AI - WatsonX SaaS services",
-      "version_locator": "1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.898b1113-985e-4524-9b69-279f0dc0fef2-global",
+      "version_locator": "1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.c784a77d-cf67-4287-9284-a126e4a053a7-global",
       "inputs": [
         {
           "name": "ibmcloud_api_key",
@@ -535,12 +569,16 @@
         {
           "name": "cos_kms_crn",
           "value": "ref:../Essential Security - Encryption Key Management/outputs/kms_instance_crn"
+        },
+        {
+          "name": "enable_cos_kms_encryption",
+          "value": true
         }
       ]
     },
     {
       "name": "Workload - Code Engine Projects",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.65a474ad-7a19-4219-bdec-eab0dc413404-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.c27eeec3-a83c-4ca0-9b26-c16a6a883fd7-global",
       "inputs": [
         {
           "name": "ibmcloud_api_key",
@@ -573,7 +611,7 @@
     },
     {
       "name": "Workload - DevSecOps Application Lifecycle Management",
-      "version_locator": "1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.72e3b0a3-9d6c-4b85-be2c-baed5a5ac732-global",
+      "version_locator": "1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.3bf38800-70e9-40db-aeca-016c9911364f-global",
       "inputs": [
         {
           "name": "ibmcloud_api_key",
@@ -667,7 +705,7 @@
     },
     {
       "name": "Workload - Sample RAG App Configuration",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.8fedf6b3-56a4-42e0-87a4-b767eadbe6c8-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.78aab24a-ba1c-4d72-91fb-131d718dfeb6-global",
       "inputs": [
         {
           "name": "toolchain_region",

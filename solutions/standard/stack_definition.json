@@ -428,7 +428,7 @@
         },
         {
           "name": "provision_scc_workload_protection",
-          "value": false
+          "value": true
         },
         {
           "name": "existing_event_notifications_crn",
@@ -437,6 +437,32 @@
         {
           "name": "profile_attachments",
           "value": []
+        }
+      ]
+    },
+    {
+      "name": "Essential Security - Security Compliance Center Agents",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.b1d07357-ed1f-4e64-a6e4-a500844f1941-global",
+      "inputs": [
+        {
+          "name": "ibmcloud_api_key",
+          "value": ""
+        },
+        {
+          "name": "cluster_id",
+          "value": "ref:../Workload - Compute Red Hat OpenShift Container Platform on VPC/outputs/workload_cluster_id"
+        },
+        {
+          "name": "cluster_resource_group_id",
+          "value": "ref:../Workload - Compute Red Hat OpenShift Container Platform on VPC/outputs/workload_rg_id"
+        },
+        {
+          "name": "access_key",
+          "value": "ref:../Essential Security - Security Compliance Center/outputs/scc_workload_protection_access_key"
+        },
+        {
+          "name": "region",
+          "value": "ref:../../inputs/region"
         }
       ]
     },

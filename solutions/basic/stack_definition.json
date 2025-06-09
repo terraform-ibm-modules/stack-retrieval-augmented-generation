@@ -159,7 +159,7 @@
   "members": [
     {
       "name": "Account Infrastructure Base",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.fa88886a-209c-4fbf-b06c-d5f1a96e0ffc-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.24459be4-397b-4dce-b2d1-555ccd576c14-global",
       "inputs": [
         {
           "name": "prefix",

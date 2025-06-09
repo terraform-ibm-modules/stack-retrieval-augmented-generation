@@ -366,8 +366,12 @@
           "value": "private"
         },
         {
-          "name": "existing_resource_group_name",
+          "name": "resource_group_name",
           "value": "ref:../Account Infrastructure Base/outputs/observability_resource_group_name"
+        },
+        {
+          "name": "use_existing_resource_group",
+          "value": true
         },
         {
           "name": "region",

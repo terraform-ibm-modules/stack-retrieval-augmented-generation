@@ -748,7 +748,7 @@
     },
     {
       "name": "Workload - Sample RAG App Configuration",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.78aab24a-ba1c-4d72-91fb-131d718dfeb6-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.b1bf8a3d-3d51-4362-a13b-eb528a38c6f3-global",
       "inputs": [
         {
           "name": "toolchain_region",

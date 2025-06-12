@@ -31,7 +31,7 @@ This architecture can help you achieve the following goals:
 - Establish trust: The architecture configures the IBM Cloud account to align with the compliance settings that are defined in the [IBM Cloud for Financial Services](https://cloud.ibm.com/docs/framework-financial-services?topic=framework-financial-services-about) framework, and the [AI Security Guardrails 2.0](https://cloud.ibm.com/docs/security-compliance?topic=security-compliance-ai-security-change-log) profile.
 - Ensure observability: The architecture provides observability by deploying services such as IBM Log Analysis, IBM Monitoring, IBM Activity Tracker, and log retention through IBM Cloud Object Storage buckets.
 - Implement security: The architecture deploys instances of IBM Key Protect and IBM Secrets Manager.
-- Achieve regulatory compliance: The architecture implements CI, CD, and CC pipelines along with IBM Security Compliance Center (SCC) for secure application lifecycle management.
+- Achieve regulatory compliance: The architecture implements CI, CD, and CC pipelines along with IBM Security Compliance Center Workload Protection for secure application lifecycle management.
 
 ## Before you begin
 

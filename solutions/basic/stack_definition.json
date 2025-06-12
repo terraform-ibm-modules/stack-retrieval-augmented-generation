@@ -4,22 +4,19 @@
       "name": "prefix",
       "required": true,
       "type": "string",
-      "hidden": false,
-      "default": "rag"
+      "hidden": false
     },
     {
       "name": "secret_manager_service_plan",
       "required": false,
       "type": "string",
-      "hidden": false,
-      "default": "trial"
+      "hidden": false
     },
     {
       "name": "skip_iam_authorization_policy",
       "required": false,
       "type": "boolean",
-      "hidden": false,
-      "default": false
+      "hidden": false
     },
     {
       "name": "watsonx_admin_api_key",
@@ -37,112 +34,132 @@
       "name": "existing_resource_group_name",
       "required": false,
       "type": "string",
-      "hidden": false,
-      "default": null
+      "hidden": false
     },
     {
       "name": "region",
       "required": false,
       "type": "string",
-      "hidden": false,
-      "default": "us-south"
+      "hidden": false
     },
     {
       "name": "sample_app_git_url",
       "required": false,
       "type": "string",
-      "hidden": false,
-      "default": "https://github.com/IBM/gen-ai-rag-watsonx-sample-application"
+      "hidden": false
     },
     {
       "name": "signing_key",
       "required": false,
       "type": "password",
-      "hidden": false,
-      "default": "replace"
+      "hidden": false
     },
     {
       "name": "existing_secrets_manager_crn",
       "required": false,
       "type": "string",
-      "hidden": false,
-      "default": null
+      "hidden": false
     },
     {
       "name": "existing_kms_instance_crn",
       "required": false,
       "type": "string",
-      "hidden": false,
-      "default": null
+      "hidden": false
     },
     {
       "name": "existing_event_notification_instance_crn",
       "required": false,
       "type": "string",
-      "hidden": false,
-      "default": null
+      "hidden": false
     },
     {
       "name": "enable_platform_metrics",
       "required": false,
       "type": "boolean",
-      "hidden": false,
-      "default": false
+      "hidden": false
     },
     {
       "name": "logs_routing_tenant_regions",
       "required": false,
       "type": "array",
+      "hidden": false
+    },
+    {
+      "name": "app_config_service_plan",
+      "required": false,
+      "type": "string",
       "hidden": false,
-      "default": []
+      "custom_config": {}
+    },
+    {
+      "name": "scc_workload_protection_service_plan",
+      "required": false,
+      "type": "string",
+      "hidden": false,
+      "custom_config": {}
+    },
+    {
+      "name": "enterprise_id",
+      "required": false,
+      "type": "string",
+      "hidden": false,
+      "custom_config": {}
+    },
+    {
+      "name": "enterprise_account_group_ids_to_assign",
+      "required": false,
+      "type": "array",
+      "hidden": false,
+      "custom_config": {}
+    },
+    {
+      "name": "enterprise_account_ids_to_assign",
+      "required": false,
+      "type": "array",
+      "hidden": false,
+      "custom_config": {}
     },
     {
       "name": "existing_discovery_instance",
       "required": false,
       "type": "string",
-      "hidden": false,
-      "default": null
+      "hidden": false
     },
     {
       "name": "existing_assistant_instance_crn",
       "required": false,
       "type": "string",
-      "hidden": false,
-      "default": null
+      "hidden": false
     },
     {
       "name": "existing_governance_instance",
       "required": false,
       "type": "string",
-      "hidden": false,
-      "default": null
+      "hidden": false
     },
     {
       "name": "existing_studio_instance",
       "required": false,
       "type": "string",
-      "hidden": false,
-      "default": null
+      "hidden": false
     },
     {
       "name": "existing_machine_learning_instance",
       "required": false,
       "type": "string",
-      "hidden": false,
-      "default": null
+      "hidden": false
     },
     {
       "name": "existing_elasticsearch_instance_crn",
       "required": false,
       "type": "string",
-      "hidden": false,
-      "default": null
+      "hidden": false
     }
   ],
   "members": [
     {
       "name": "Account Infrastructure Base",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.fa88886a-209c-4fbf-b06c-d5f1a96e0ffc-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.24459be4-397b-4dce-b2d1-555ccd576c14-global",
       "inputs": [
         {
           "name": "prefix",
@@ -219,8 +236,46 @@
       ]
     },
     {
+      "name": "Essential Security - App Configuration",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.c160fa36-fd40-42de-8553-1233e0c5e971-global",
+      "inputs": [
+        {
+          "name": "existing_resource_group_name",
+          "value": "ref:../Account Infrastructure Base/outputs/audit_resource_group_name"
+        },
+        {
+          "name": "region",
+          "value": "ref:../../inputs/region"
+        },
+        {
+          "name": "prefix",
+          "value": "ref:../../inputs/prefix"
+        },
+        {
+          "name": "app_config_plan",
+          "value": "ref:../../inputs/app_config_service_plan"
+        },
+        {
+          "name": "enable_config_aggregator",
+          "value": true
+        },
+        {
+          "name": "config_aggregator_enterprise_id",
+          "value": "ref:../../inputs/enterprise_id"
+        },
+        {
+          "name": "config_aggregator_enterprise_account_group_ids_to_assign",
+          "value": "ref:../../inputs/enterprise_account_group_ids_to_assign"
+        },
+        {
+          "name": "config_aggregator_enterprise_account_ids_to_assign",
+          "value": "ref:../../inputs/enterprise_account_ids_to_assign"
+        }
+      ]
+    },
+    {
       "name": "Essential Security - Encryption Key Management",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.efaad0d0-9028-4d39-90e7-7e0f9d6e7569-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.93bf5d12-a435-4510-8888-1c32db20b82b-global",
       "inputs": [
         {
           "name": "resource_group_name",
@@ -254,7 +309,7 @@
     },
     {
       "name": "Essential Security - Logging Monitoring Activity Tracker",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.50624578-9e5c-408c-90ea-ce412899b5dc-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.39562a8a-1b92-4342-b990-1944ae583df9-global",
       "inputs": [
         {
           "name": "ibmcloud_api_key",
@@ -296,7 +351,7 @@
     },
     {
       "name": "Essential Security - Event Notifications",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.1c3a9873-77b2-4ab4-89c7-26d9899b1edb-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.b02f9aa4-b40f-41d5-8039-8e87742d756e-global",
       "inputs": [
         {
           "name": "kms_endpoint_url",
@@ -395,48 +450,36 @@
       ]
     },
     {
-      "name": "Essential Security - Security Compliance Center",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.03c63154-2430-4154-9033-9f8e6f80d93b-global",
+      "name": "Essential Security - Security and Compliance Center Workload Protection",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.e436bb10-8b6c-4b3b-b4c5-523929d13686-global",
       "inputs": [
         {
-          "name": "ibmcloud_api_key",
-          "value": ""
+          "name": "existing_resource_group_name",
+          "value": "ref:../Account Infrastructure Base/outputs/audit_resource_group_name"
+        },
+        {
+          "name": "region",
+          "value": "ref:../../inputs/region"
         },
         {
           "name": "prefix",
           "value": "ref:../../inputs/prefix"
         },
         {
-          "name": "cos_region",
-          "value": "ref:../../inputs/region"
+          "name": "scc_workload_protection_service_plan",
+          "value": "ref:../../inputs/scc_workload_protection_service_plan"
         },
         {
-          "name": "scc_region",
-          "value": "ref:../../inputs/region"
-        },
-        {
-          "name": "resource_group_name",
-          "value": "ref:../Account Infrastructure Base/outputs/audit_resource_group_name"
-        },
-        {
-          "name": "existing_kms_instance_crn",
-          "value": "ref:../Essential Security - Encryption Key Management/outputs/kms_instance_crn"
-        },
-        {
-          "name": "use_existing_resource_group",
+          "name": "cspm_enabled",
           "value": true
         },
         {
-          "name": "provision_scc_workload_protection",
-          "value": false
+          "name": "app_config_crn",
+          "value": "ref:../../members/Essential Security - App Configuration/outputs/app_config_crn"
         },
         {
-          "name": "existing_event_notifications_crn",
-          "value": "ref:../Essential Security - Event Notifications/outputs/crn"
-        },
-        {
-          "name": "profile_attachments",
-          "value": []
+          "name": "existing_monitoring_crn",
+          "value": "ref:../../members/Essential Security - Logging Monitoring Activity Tracker/outputs/cloud_monitoring_crn"
         }
       ]
     },
@@ -705,7 +748,7 @@
     },
     {
       "name": "Workload - Sample RAG App Configuration",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.78aab24a-ba1c-4d72-91fb-131d718dfeb6-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.b1bf8a3d-3d51-4362-a13b-eb528a38c6f3-global",
       "inputs": [
         {
           "name": "toolchain_region",
@@ -876,16 +919,20 @@
       "value": "ref:./members/Essential Security - Secrets Manager/outputs/secrets_manager_name"
     },
     {
-      "name": "scc_crn",
-      "value": "ref:./members/Essential Security - Security Compliance Center/outputs/scc_crn"
+      "name": "app_config_crn",
+      "value": "ref:./members/Essential Security - App Configuration/outputs/app_config_crn"
     },
     {
-      "name": "scc_guid",
-      "value": "ref:./members/Essential Security - Security Compliance Center/outputs/scc_guid"
+      "name": "app_config_guid",
+      "value": "ref:./members/Essential Security - App Configuration/outputs/app_config_guid"
     },
     {
       "name": "scc_workload_protection_crn",
-      "value": "ref:./members/Essential Security - Security Compliance Center/outputs/scc_workload_protection_crn"
+      "value": "ref:./members/Essential Security - Security and Compliance Center Workload Protection/outputs/crn"
+    },
+    {
+      "name": "scc_workload_protection_guid",
+      "value": "ref:./members/Essential Security - Security and Compliance Center Workload Protection/outputs/guid"
     },
     {
       "name": "watson_discovery_crn",

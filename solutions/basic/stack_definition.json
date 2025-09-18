@@ -159,15 +159,11 @@
   "members": [
     {
       "name": "Account Infrastructure Base",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.24459be4-397b-4dce-b2d1-555ccd576c14-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.0aabb41f-a26c-42c7-8518-707440670067-global",
       "inputs": [
         {
           "name": "prefix",
           "value": "ref:../../inputs/prefix"
-        },
-        {
-          "name": "ibmcloud_api_key",
-          "value": ""
         },
         {
           "name": "region",
@@ -202,34 +198,6 @@
           "value": "ref:../../inputs/resource_group_name"
         },
         {
-          "name": "existing_security_resource_group_name",
-          "value": "ref:../../inputs/existing_resource_group_name"
-        },
-        {
-          "name": "existing_audit_resource_group_name",
-          "value": "ref:../../inputs/existing_resource_group_name"
-        },
-        {
-          "name": "existing_observability_resource_group_name",
-          "value": "ref:../../inputs/existing_resource_group_name"
-        },
-        {
-          "name": "existing_management_resource_group_name",
-          "value": "ref:../../inputs/existing_resource_group_name"
-        },
-        {
-          "name": "existing_workload_resource_group_name",
-          "value": "ref:../../inputs/existing_resource_group_name"
-        },
-        {
-          "name": "existing_edge_resource_group_name",
-          "value": "ref:../../inputs/existing_resource_group_name"
-        },
-        {
-          "name": "existing_devops_resource_group_name",
-          "value": "ref:../../inputs/existing_resource_group_name"
-        },
-        {
           "name": "provision_trusted_profile_projects",
           "value": false
         }
@@ -237,7 +205,7 @@
     },
     {
       "name": "Essential Security - App Configuration",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.c160fa36-fd40-42de-8553-1233e0c5e971-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.8dbc8c6a-12f3-4e56-8f5b-deec5bb36b76-global",
       "inputs": [
         {
           "name": "existing_resource_group_name",
@@ -275,19 +243,11 @@
     },
     {
       "name": "Essential Security - Encryption Key Management",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.93bf5d12-a435-4510-8888-1c32db20b82b-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.0775fe25-3fe8-49d4-b86a-9502e4bc533e-global",
       "inputs": [
         {
-          "name": "resource_group_name",
+          "name": "existing_resource_group_name",
           "value": "ref:../Account Infrastructure Base/outputs/security_resource_group_name"
-        },
-        {
-          "name": "use_existing_resource_group",
-          "value": true
-        },
-        {
-          "name": "ibmcloud_api_key",
-          "value": ""
         },
         {
           "name": "region",
@@ -311,10 +271,6 @@
       "name": "Essential Security - Logging Monitoring Activity Tracker",
       "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.39562a8a-1b92-4342-b990-1944ae583df9-global",
       "inputs": [
-        {
-          "name": "ibmcloud_api_key",
-          "value": ""
-        },
         {
           "name": "region",
           "value": "ref:../../inputs/region"
@@ -398,10 +354,6 @@
         {
           "name": "resource_group_name",
           "value": "ref:../Account Infrastructure Base/outputs/security_resource_group_name"
-        },
-        {
-          "name": "ibmcloud_api_key",
-          "value": ""
         },
         {
           "name": "region",
@@ -546,10 +498,6 @@
       "version_locator": "1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.c784a77d-cf67-4287-9284-a126e4a053a7-global",
       "inputs": [
         {
-          "name": "ibmcloud_api_key",
-          "value": ""
-        },
-        {
           "name": "watsonx_admin_api_key",
           "value": "ref:../../inputs/watsonx_admin_api_key"
         },
@@ -624,10 +572,6 @@
       "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.c27eeec3-a83c-4ca0-9b26-c16a6a883fd7-global",
       "inputs": [
         {
-          "name": "ibmcloud_api_key",
-          "value": ""
-        },
-        {
           "name": "resource_group_name",
           "value": "ref:../Account Infrastructure Base/outputs/workload_resource_group_name"
         },
@@ -656,10 +600,6 @@
       "name": "Workload - DevSecOps Application Lifecycle Management",
       "version_locator": "1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.3bf38800-70e9-40db-aeca-016c9911364f-global",
       "inputs": [
-        {
-          "name": "ibmcloud_api_key",
-          "value": ""
-        },
         {
           "name": "toolchain_name",
           "value": "rag-sample-app"
@@ -753,10 +693,6 @@
         {
           "name": "toolchain_region",
           "value": "ref:../../inputs/region"
-        },
-        {
-          "name": "ibmcloud_api_key",
-          "value": ""
         },
         {
           "name": "watson_discovery_region",

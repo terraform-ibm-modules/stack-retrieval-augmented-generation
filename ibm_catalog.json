@@ -63,7 +63,8 @@
 			"flavors": [
 				{
 					"label": "Basic (Deploy on Code Engine)",
-					"name": "basic",
+					"name": "basic-fully-config",
+					"index": 1,
 					"working_directory": "solutions/basic",
 					"compliance": {
 						"authority": "scc-v3",
@@ -503,7 +504,8 @@
 				},
 				{
 					"label": "Standard (Deploy on Red Hat OpenShift)",
-					"name": "standard",
+					"name": "standard-fully-config",
+					"index": 2,
 					"working_directory": "solutions/standard",
 					"compliance": {
 						"authority": "scc-v3",

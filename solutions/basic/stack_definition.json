@@ -159,15 +159,11 @@
   "members": [
     {
       "name": "Account Infrastructure Base",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.0aabb41f-a26c-42c7-8518-707440670067-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.be71d2f4-262c-4186-9b07-30dc1b1517bb-global",
       "inputs": [
         {
           "name": "prefix",
           "value": "ref:../../inputs/prefix"
-        },
-        {
-          "name": "region",
-          "value": "ref:../../inputs/region"
         },
         {
           "name": "security_resource_group_name",
@@ -205,7 +201,7 @@
     },
     {
       "name": "Essential Security - App Configuration",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.8dbc8c6a-12f3-4e56-8f5b-deec5bb36b76-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.501720d8-c56f-44c9-a4a3-5d1555578749-global",
       "inputs": [
         {
           "name": "existing_resource_group_name",
@@ -243,7 +239,7 @@
     },
     {
       "name": "Essential Security - Encryption Key Management",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.0775fe25-3fe8-49d4-b86a-9502e4bc533e-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.bb044371-6bf6-491b-a0fd-1bf77b97c915-global",
       "inputs": [
         {
           "name": "existing_resource_group_name",
@@ -268,19 +264,15 @@
       ]
     },
     {
-      "name": "Essential Security - Logging Monitoring Activity Tracker",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.39562a8a-1b92-4342-b990-1944ae583df9-global",
+      "name": "Essential Security - Cloud Monitoring",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.8028a206-0824-4ad6-af24-b9fb70cce2ac-global",
       "inputs": [
         {
           "name": "region",
           "value": "ref:../../inputs/region"
         },
         {
-          "name": "existing_kms_instance_crn",
-          "value": "ref:../Essential Security - Encryption Key Management/outputs/kms_instance_crn"
-        },
-        {
-          "name": "resource_group_name",
+          "name": "existing_resource_group_name",
           "value": "ref:../Account Infrastructure Base/outputs/observability_resource_group_name"
         },
         {
@@ -288,26 +280,14 @@
           "value": "ref:../../inputs/prefix"
         },
         {
-          "name": "use_existing_resource_group",
-          "value": true
-        },
-        {
-          "name": "existing_en_instance_crn",
-          "value": "ref:../Essential Security - Event Notifications/outputs/crn"
-        },
-        {
           "name": "enable_platform_metrics",
           "value": "ref:../../inputs/enable_platform_metrics"
-        },
-        {
-          "name": "logs_routing_tenant_regions",
-          "value": "ref:../../inputs/logs_routing_tenant_regions"
         }
       ]
     },
     {
       "name": "Essential Security - Event Notifications",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.b02f9aa4-b40f-41d5-8039-8e87742d756e-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.c1468b78-5772-402c-89ff-8c3bd46586a6-global",
       "inputs": [
         {
           "name": "kms_endpoint_url",
@@ -322,12 +302,8 @@
           "value": "private"
         },
         {
-          "name": "resource_group_name",
+          "name": "existing_resource_group_name",
           "value": "ref:../Account Infrastructure Base/outputs/observability_resource_group_name"
-        },
-        {
-          "name": "use_existing_resource_group",
-          "value": true
         },
         {
           "name": "region",
@@ -338,21 +314,69 @@
           "value": "ref:../../inputs/prefix"
         },
         {
-          "name": "existing_en_instance_crn",
+          "name": "existing_event_notifications_instance_crn",
           "value": "ref:../../inputs/existing_event_notification_instance_crn"
         }
       ]
     },
     {
+      "name": "Essential Security - Cloud Logs for logging",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.383621a0-d340-4f3c-996e-7c72a46d68a3-global",
+      "inputs": [
+        {
+          "name": "region",
+          "value": "ref:../../inputs/region"
+        },
+        {
+          "name": "existing_kms_instance_crn",
+          "value": "ref:../Essential Security - Encryption Key Management/outputs/kms_instance_crn"
+        },
+        {
+          "name": "existing_resource_group_name",
+          "value": "ref:../Account Infrastructure Base/outputs/observability_resource_group_name"
+        },
+        {
+          "name": "prefix",
+          "value": "ref:../../inputs/prefix"
+        },
+        {
+          "name": "existing_event_notifications_instances",
+          "value": "ref:../Essential Security - Event Notifications/outputs/crn_list_object"
+        },
+        {
+          "name": "logs_routing_tenant_regions",
+          "value": "ref:../../inputs/logs_routing_tenant_regions"
+        }
+      ]
+    },
+    {
+      "name": "Essential Security - Cloud Logs for activity tracking",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.e4ea0728-5f34-47c2-b921-b6f61223a6ed-global",
+      "inputs": [
+        {
+          "name": "region",
+          "value": "ref:../../inputs/region"
+        },
+        {
+          "name": "existing_kms_instance_crn",
+          "value": "ref:../Essential Security - Encryption Key Management/outputs/kms_instance_crn"
+        },
+        {
+          "name": "prefix",
+          "value": "ref:../../inputs/prefix"
+        }
+      ]
+    },
+    {
       "name": "Essential Security - Secrets Manager",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.db823650-3010-4482-b807-45145f273553-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.63d15a72-ea75-4cc9-841a-83908095eef3-global",
       "inputs": [
         {
           "name": "prefix",
           "value": "ref:../../inputs/prefix"
         },
         {
-          "name": "resource_group_name",
+          "name": "existing_resource_group_name",
           "value": "ref:../Account Infrastructure Base/outputs/security_resource_group_name"
         },
         {
@@ -364,15 +388,11 @@
           "value": "ref:../Essential Security - Encryption Key Management/outputs/kms_instance_crn"
         },
         {
-          "name": "use_existing_resource_group",
-          "value": true
-        },
-        {
           "name": "existing_secrets_manager_crn",
           "value": "ref:../../inputs/existing_secrets_manager_crn"
         },
         {
-          "name": "skip_iam_authorization_policy",
+          "name": "skip_secrets_manager_iam_auth_policy",
           "value": "ref:../../inputs/skip_iam_authorization_policy"
         },
         {
@@ -382,10 +402,6 @@
         {
           "name": "existing_event_notifications_instance_crn",
           "value": "ref:../Essential Security - Event Notifications/outputs/crn"
-        },
-        {
-          "name": "enable_event_notifications",
-          "value": true
         },
         {
           "name": "kms_key_ring_name",
@@ -403,7 +419,7 @@
     },
     {
       "name": "Essential Security - Security and Compliance Center Workload Protection",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.e436bb10-8b6c-4b3b-b4c5-523929d13686-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.06cc5a6b-bbad-4319-a943-c97318a4f83d-global",
       "inputs": [
         {
           "name": "existing_resource_group_name",
@@ -431,20 +447,16 @@
         },
         {
           "name": "existing_monitoring_crn",
-          "value": "ref:../../members/Essential Security - Logging Monitoring Activity Tracker/outputs/cloud_monitoring_crn"
+          "value": "ref:../../members/Essential Security - Cloud Monitoring/outputs/cloud_monitoring_crn"
         }
       ]
     },
     {
       "name": "Gen AI - Databases for Elasticsearch",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.68a66140-e2e8-40ef-be86-c46e6f3442a3-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.55d77b5b-6866-4f7c-b216-2bb86d74d5e5-global",
       "inputs": [
         {
-          "name": "use_existing_resource_group",
-          "value": true
-        },
-        {
-          "name": "resource_group_name",
+          "name": "existing_resource_group_name",
           "value": "ref:../../members/Account Infrastructure Base/outputs/workload_resource_group_name"
         },
         {
@@ -461,7 +473,7 @@
         },
         {
           "name": "elasticsearch_version",
-          "value": "8.12"
+          "value": "8.15"
         },
         {
           "name": "existing_kms_instance_crn",
@@ -488,7 +500,7 @@
           }
         },
         {
-          "name": "existing_db_instance_crn",
+          "name": "existing_elasticsearch_instance_crn",
           "value": "ref:../../inputs/existing_elasticsearch_instance_crn"
         }
       ]
@@ -828,19 +840,19 @@
     },
     {
       "name": "cloud_logs_crn",
-      "value": "ref:./members/Essential Security - Logging Monitoring Activity Tracker/outputs/cloud_logs_crn"
+      "value": "ref:./members/Essential Security - Cloud Logs for logging/outputs/cloud_logs_crn"
     },
     {
       "name": "cloud_logs_guid",
-      "value": "ref:./members/Essential Security - Logging Monitoring Activity Tracker/outputs/cloud_logs_guid"
+      "value": "ref:./members/Essential Security - Cloud Logs for logging/outputs/cloud_logs_guid"
     },
     {
       "name": "cloud_monitoring_crn",
-      "value": "ref:./members/Essential Security - Logging Monitoring Activity Tracker/outputs/cloud_monitoring_crn"
+      "value": "ref:./members/Essential Security - Cloud Monitoring/outputs/cloud_monitoring_crn"
     },
     {
       "name": "cloud_monitoring_guid",
-      "value": "ref:./members/Essential Security - Logging Monitoring Activity Tracker/outputs/cloud_monitoring_guid"
+      "value": "ref:./members/Essential Security - Cloud Monitoring/outputs/cloud_monitoring_guid"
     },
     {
       "name": "secrets_manager_crn",
@@ -864,11 +876,11 @@
     },
     {
       "name": "scc_workload_protection_crn",
-      "value": "ref:./members/Essential Security - Security and Compliance Center Workload Protection/outputs/crn"
+      "value": "ref:./members/Essential Security - Security and Compliance Center Workload Protection/outputs/scc_workload_protection_crn"
     },
     {
-      "name": "scc_workload_protection_guid",
-      "value": "ref:./members/Essential Security - Security and Compliance Center Workload Protection/outputs/guid"
+      "name": "scc_workload_protection_id",
+      "value": "ref:./members/Essential Security - Security and Compliance Center Workload Protection/outputs/scc_workload_protection_id"
     },
     {
       "name": "watson_discovery_crn",

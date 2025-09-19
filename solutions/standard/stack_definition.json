@@ -159,15 +159,11 @@
   "members": [
     {
       "name": "Account Infrastructure Base",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.24459be4-397b-4dce-b2d1-555ccd576c14-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.be71d2f4-262c-4186-9b07-30dc1b1517bb-global",
       "inputs": [
         {
           "name": "prefix",
           "value": "ref:../../inputs/prefix"
-        },
-        {
-          "name": "ibmcloud_api_key",
-          "value": ""
         },
         {
           "name": "region",
@@ -286,10 +282,6 @@
           "value": true
         },
         {
-          "name": "ibmcloud_api_key",
-          "value": ""
-        },
-        {
           "name": "region",
           "value": "ref:../../inputs/region"
         },
@@ -311,10 +303,6 @@
       "name": "Essential Security - Logging Monitoring Activity Tracker",
       "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.39562a8a-1b92-4342-b990-1944ae583df9-global",
       "inputs": [
-        {
-          "name": "ibmcloud_api_key",
-          "value": ""
-        },
         {
           "name": "region",
           "value": "ref:../../inputs/region"
@@ -398,10 +386,6 @@
         {
           "name": "resource_group_name",
           "value": "ref:../Account Infrastructure Base/outputs/security_resource_group_name"
-        },
-        {
-          "name": "ibmcloud_api_key",
-          "value": ""
         },
         {
           "name": "region",
@@ -554,10 +538,6 @@
       "version_locator": "1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.c784a77d-cf67-4287-9284-a126e4a053a7-global",
       "inputs": [
         {
-          "name": "ibmcloud_api_key",
-          "value": ""
-        },
-        {
           "name": "watsonx_admin_api_key",
           "value": "ref:../../inputs/watsonx_admin_api_key"
         },
@@ -631,10 +611,6 @@
       "name": "Workload - Compute Red Hat OpenShift Container Platform on VPC",
       "version_locator": "1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.c15a99be-f334-4dfe-b1d2-b650ae01c9ca-global",
       "inputs": [
-        {
-          "name": "ibmcloud_api_key",
-          "value": ""
-        },
         {
           "name": "prefix",
           "value": "ref:../../inputs/prefix"
@@ -710,10 +686,6 @@
       "name": "Workload - DevSecOps Application Lifecycle Management",
       "version_locator": "1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.40c697e5-a339-4bf2-90ed-c598f103c16b-global",
       "inputs": [
-        {
-          "name": "ibmcloud_api_key",
-          "value": ""
-        },
         {
           "name": "toolchain_name",
           "value": "rag-sample-app"
@@ -803,10 +775,6 @@
         {
           "name": "toolchain_region",
           "value": "ref:../../inputs/region"
-        },
-        {
-          "name": "ibmcloud_api_key",
-          "value": ""
         },
         {
           "name": "watson_discovery_region",

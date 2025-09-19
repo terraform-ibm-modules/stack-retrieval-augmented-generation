@@ -319,6 +319,28 @@
         }
       ]
     },
+    {"name":  "Essential Security - Cloud Object Storage",
+     "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.30851389-2ab5-4be5-8674-7ef756cb372d-global",
+     "inputs": [
+       {
+         "name": "prefix",
+         "value": "ref:../../inputs/prefix"
+       },
+       {
+         "name": "existing_resource_group_name",
+         "value": "ref:../Account Infrastructure Base/outputs/observability_resource_group_name"
+       },
+       {
+         "name": "instance_name",
+         "value": "rag-cos-instance"
+       },
+       {
+         "name": "plan",
+         "value": "standard"
+       }
+     ]
+
+    },
     {
       "name": "Essential Security - Cloud Logs for logging",
       "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.383621a0-d340-4f3c-996e-7c72a46d68a3-global",
@@ -334,6 +356,10 @@
         {
           "name": "existing_resource_group_name",
           "value": "ref:../Account Infrastructure Base/outputs/observability_resource_group_name"
+        },
+        {
+          "name": "existing_cos_instance_crn",
+          "value": "ref:../Essential Security - Cloud Object Storage/outputs/cos_instance_crn"
         },
         {
           "name": "prefix",

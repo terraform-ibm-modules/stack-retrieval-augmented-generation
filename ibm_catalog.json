@@ -311,6 +311,40 @@
 							]
 						},
 						{
+							"key": "key_protect_plan",
+							"type": "string",
+							"default_value": "tiered-pricing",
+							"description": "The service plan of the Key Protect instance that will be provisioned by this solution. Only used if not supplying `existing_kms_instance_crn`. [Learn more](https://cloud.ibm.com/docs/key-protect?topic=key-protect-pricing-plan).",
+							"required": false,
+							"options": [
+								{
+									"displayname": "Standard",
+									"value": "tiered-pricing"
+								},
+								{
+									"displayname": "Cross-region Resiliency",
+									"value": "cross-region-resiliency"
+								}
+							]
+						},
+						{
+							"key": "cloud_monitoring_plan",
+							"type": "string",
+							"default_value": "graduated-tier",
+							"description": "The IBM Cloud Monitoring plan to provision. Available values are `lite` and `graduated-tier` and `graduated-tier-sysdig-secure-plus-monitor` (available in region eu-fr2 only). [Learn more](https://cloud.ibm.com/docs/monitoring?topic=monitoring-service_plans)",
+							"required": false,
+							"options": [
+								{
+									"displayname": "Lite",
+									"value": "lite"
+								},
+								{
+									"displayname": "Graduated Tier",
+									"value": "graduated-tier"
+								}
+							]
+						},
+						{
 							"key": "existing_secrets_manager_crn",
 							"type": "string",
 							"default_value": "__NULL__",
@@ -340,9 +374,9 @@
 							"required": false
 						},
 						{
-							"key": "app_config_service_plan",
+							"key": "app_config_plan",
 							"type": "string",
-							"default_value": "basic",
+							"default_value": "enterprise",
 							"description": "The pricing plan to use for the IBM Cloud App Configuration instance.",
 							"required": false,
 							"options": [
@@ -795,9 +829,9 @@
 							"required": false
 						},
 					    {
-							"key": "app_config_service_plan",
+							"key": "app_config_plan",
 							"type": "string",
-							"default_value": "basic",
+							"default_value": "enterprise",
 							"description": "The pricing plan to use for the IBM Cloud App Configuration instance.",
 							"required": false,
 							"options": [
@@ -859,9 +893,9 @@
 						},
 						{
 
-							"key": "app_config_service_plan",
+							"key": "app_config_plan",
 							"type": "string",
-							"default_value": "basic",
+							"default_value": "enterprise",
 							"description": "The pricing plan to use for the IBM Cloud App Configuration instance.",
 							"required": false,
 							"options": [
@@ -877,6 +911,24 @@
 								"displayname": "Enterprise",
 								"value": "enterprise"
 							  }
+							]
+						},
+						{
+
+							"key": "elasticsearch_plan",
+							"type": "string",
+							"default_value": "enterprise",
+							"description": "The name of the service plan for your Databases for Elasticsearch instance. [Learn more](https://cloud.ibm.com/docs/databases-for-elasticsearch?topic=databases-for-elasticsearch-elastic-offerings).",
+							"required": false,
+							"options": [
+								{
+									"displayname": "Enterprise",
+									"value": "enterprise"
+								},
+								{
+									"displayname": "Platinum",
+									"value": "platinum"
+								}
 							]
 						},
 						{

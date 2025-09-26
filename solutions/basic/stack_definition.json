@@ -483,7 +483,7 @@
         },
         {
           "name": "existing_monitoring_crn",
-          "value": "ref:../../members/1c - Cloud Monitoring/outputs/cloud_monitoring_crn"
+          "value": "ref:../../members/2c - Cloud Monitoring/outputs/cloud_monitoring_crn"
         },
         {
           "name": "prefix",

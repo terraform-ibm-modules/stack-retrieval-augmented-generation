@@ -541,11 +541,11 @@
         },
         {
           "name": "existing_kms_instance_crn",
-          "value": "ref:../../members/1a - Key management/outputs/kms_instance_crn"
+          "value": "ref:../../members/2a - Essential Security - Encryption Key Management/outputs/kms_instance_crn"
         },
         {
           "name": "kms_endpoint_url",
-          "value": "ref:../../members/1a - Key management/outputs/kms_private_endpoint"
+          "value": "ref:../../members/2a - Essential Security - Encryption Key Management/outputs/kms_private_endpoint"
         },
         {
           "name": "enable_event_notifications",
@@ -553,11 +553,11 @@
         },
         {
           "name": "existing_event_notifications_instance_crn",
-          "value": "ref:../../members/2 - Event Notifications/outputs/crn"
+          "value": "ref:../../members/3a - Essential Security - Event Notifications/outputs/crn"
         },
         {
           "name": "event_notifications_endpoint_url",
-          "value": "ref:../../members/2 - Event Notifications/outputs/event_notifications_private_endpoint"
+          "value": "ref:../../members/3a - Essential Security - Event Notifications/outputs/event_notifications_private_endpoint"
         },
         {
           "name": "event_notifications_email_list",

@@ -374,6 +374,13 @@
 							"required": false
 						},
 						{
+							"key": "event_notifications_email_list",
+							"type": "array",
+							"default_value": [],
+							"description": "List of emails to configure event notifications.",
+							"required": false
+						},
+						{
 							"key": "app_config_plan",
 							"type": "string",
 							"default_value": "enterprise",
@@ -785,7 +792,7 @@
 						{
 							"key": "secret_manager_service_plan",
 							"type": "string",
-							"default_value": "trial",
+							"default_value": "standard",
 							"description": "The service/pricing plan to use when provisioning a new Secrets Manager instance. Only one trial instance is allowed per account.",
 							"required": false,
 							"options": [

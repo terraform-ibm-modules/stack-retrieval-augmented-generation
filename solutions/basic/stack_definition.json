@@ -75,6 +75,13 @@
       "hidden": false
     },
     {
+      "name": "event_notifications_email_list",
+      "required": false,
+      "type": "array",
+      "hidden": false,
+      "custom_config": {}
+    },
+    {
       "name": "existing_kms_instance_crn",
       "required": false,
       "type": "string",

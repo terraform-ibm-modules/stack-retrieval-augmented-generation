@@ -335,7 +335,7 @@
       "inputs": [
         {
           "name": "existing_cos_instance_crn",
-          "value": "ref:../../members/1b - Object storage/outputs/cos_instance_id"
+          "value": "ref:../../members/2b - Object storage/outputs/cos_instance_id"
         },
         {
           "name": "enable_collecting_failed_events",
@@ -375,7 +375,7 @@
         },
         {
           "name": "existing_monitoring_crn",
-          "value": "ref:../../members/1c - Cloud Monitoring/outputs/cloud_monitoring_crn"
+          "value": "ref:../../members/2c - Cloud Monitoring/outputs/cloud_monitoring_crn"
         }
       ]
     },

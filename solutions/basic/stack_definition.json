@@ -508,7 +508,7 @@
     },
     {
       "name": "4b - Essential Security - App Configuration",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.7b563b79-03ab-4275-b8d5-54c2ba4f27f3-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.430291dd-8a78-46c2-8d02-e951da977582-global",
       "inputs": [
         {
           "name": "existing_resource_group_name",
@@ -574,7 +574,7 @@
     },
     {
       "name": "4c - Essential Security - Secrets Manager",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.63d15a72-ea75-4cc9-841a-83908095eef3-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.3d0da0a9-0327-44fc-8796-edf8e0017e25-global",
       "inputs": [
         {
           "name": "prefix",
@@ -702,7 +702,7 @@
         },
         {
           "name": "existing_secrets_manager_instance_crn",
-          "value": "ref:./members/4c - Essential Security - Secrets Manager/outputs/secrets_manager_crn"
+          "value": "ref:../members/4c - Essential Security - Secrets Manager/outputs/secrets_manager_crn"
         }
       ]
     },

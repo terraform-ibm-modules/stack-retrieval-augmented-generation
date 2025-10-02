@@ -352,7 +352,7 @@
               "required": false
             },
             {
-              "key": "skip_iam_authorization_policy",
+              "key": "skip_secrets_manager_iam_auth_policy",
               "display_name": "disable_secrets_manager_iam_credentials_engine",
               "type": "boolean",
               "default_value": false,
@@ -458,14 +458,14 @@
               "required": false
             },
             {
-              "key": "existing_event_notification_instance_crn",
+              "key": "existing_event_notifications_instance_crn",
               "type": "string",
               "default_value": "__NULL__",
               "description": "The CRN of an existing event notification instance to use in this solution. If not set, a new event notification instance is provisioned.",
               "required": false
             },
             {
-              "key": "existing_discovery_instance",
+              "key": "existing_discovery_instance_crn",
               "type": "string",
               "default_value": "__NULL__",
               "description": "The CRN of an existing WatsonX SaaS discovery instance to use in this solution. If not set, a new discovery instance is provisioned depending on which plan is selected.",
@@ -479,14 +479,14 @@
               "required": false
             },
             {
-              "key": "existing_governance_instance",
+              "key": "existing_governance_instance_crn",
               "type": "string",
               "default_value": "__NULL__",
               "description": "The CRN of an existing WatsonX SaaS governance instance to use in this solution. If not set, a new governance instance is provisioned depending on which plan is selected.",
               "required": false
             },
             {
-              "key": "existing_studio_instance",
+              "key": "existing_studio_instance_crn",
               "type": "string",
               "default_value": "__NULL__",
               "description": "The CRN of an existing WatsonX SaaS studio instance to use in this solution. If not set, a new studio instance is provisioned depending on which plan is selected.",
@@ -976,14 +976,14 @@
               "required": false
             },
             {
-              "key": "existing_event_notification_instance_crn",
+              "key": "existing_event_notifications_instance_crn",
               "type": "string",
               "default_value": "__NULL__",
               "description": "The CRN of an existing event notification instance to use in this solution. If not set, a new event notification instance is provisioned.",
               "required": false
             },
             {
-              "key": "existing_discovery_instance",
+              "key": "existing_discovery_instance_crn",
               "type": "string",
               "default_value": "__NULL__",
               "description": "The CRN of an existing WatsonX SaaS discovery instance to use in this solution. If not set, a new discovery instance is provisioned depending on which plan is selected.",
@@ -997,14 +997,14 @@
               "required": false
             },
             {
-              "key": "existing_governance_instance",
+              "key": "existing_governance_instance_crn",
               "type": "string",
               "default_value": "__NULL__",
               "description": "The CRN of an existing WatsonX SaaS governance instance to use in this solution. If not set, a new governance instance is provisioned depending on which plan is selected.",
               "required": false
             },
             {
-              "key": "existing_studio_instance",
+              "key": "existing_studio_instance_crn",
               "type": "string",
               "default_value": "__NULL__",
               "description": "The CRN of an existing WatsonX SaaS studio instance to use in this solution. If not set, a new studio instance is provisioned depending on which plan is selected.",

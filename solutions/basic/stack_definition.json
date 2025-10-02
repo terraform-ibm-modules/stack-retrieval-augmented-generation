@@ -27,7 +27,7 @@
       "custom_config": {}
     },
     {
-      "name": "skip_iam_authorization_policy",
+      "name": "skip_secrets_manager_iam_auth_policy",
       "required": false,
       "type": "boolean",
       "hidden": false
@@ -88,7 +88,7 @@
       "hidden": false
     },
     {
-      "name": "existing_event_notification_instance_crn",
+      "name": "existing_event_notifications_instance_crn",
       "required": false,
       "type": "string",
       "hidden": false
@@ -141,7 +141,7 @@
       "custom_config": {}
     },
     {
-      "name": "existing_discovery_instance",
+      "name": "existing_discovery_instance_crn",
       "required": false,
       "type": "string",
       "hidden": false
@@ -153,13 +153,13 @@
       "hidden": false
     },
     {
-      "name": "existing_governance_instance",
+      "name": "existing_governance_instance_crn",
       "required": false,
       "type": "string",
       "hidden": false
     },
     {
-      "name": "existing_studio_instance",
+      "name": "existing_studio_instance_crn",
       "required": false,
       "type": "string",
       "hidden": false
@@ -185,6 +185,10 @@
         {
           "name": "prefix",
           "value": "ref:../../inputs/prefix"
+        },
+        {
+          "name": "single_resource_group_name",
+          "value": "ref:../../inputs/existing_resource_group_name"
         },
         {
           "name": "security_resource_group_name",
@@ -372,7 +376,7 @@
         },
         {
           "name": "existing_event_notifications_instance_crn",
-          "value": "ref:../../inputs/existing_event_notification_instance_crn"
+          "value": "ref:../../inputs/existing_event_notifications_instance_crn"
         },
         {
           "name": "existing_monitoring_crn",
@@ -418,7 +422,7 @@
         },
         {
           "name": "existing_studio_instance",
-          "value": "ref:../../inputs/existing_studio_instance"
+          "value": "ref:../../inputs/existing_studio_instance_crn"
         },
         {
           "name": "watson_discovery_plan",
@@ -426,7 +430,7 @@
         },
         {
           "name": "existing_discovery_instance",
-          "value": "ref:../../inputs/existing_discovery_instance"
+          "value": "ref:../../inputs/existing_discovery_instance_crn"
         },
         {
           "name": "watsonx_assistant_plan",
@@ -442,7 +446,7 @@
         },
         {
           "name": "existing_governance_instance",
-          "value": "ref:../../inputs/existing_governance_instance"
+          "value": "ref:../../inputs/existing_governance_instance_crn"
         },
         {
           "name": "cos_kms_crn",
@@ -596,7 +600,7 @@
         },
         {
           "name": "skip_secrets_manager_iam_auth_policy",
-          "value": "ref:../../inputs/skip_iam_authorization_policy"
+          "value": "ref:../../inputs/skip_secrets_manager_iam_auth_policy"
         },
         {
           "name": "service_plan",
@@ -919,15 +923,15 @@
       "value": "ref:./members/2a - Essential Security - Encryption Key Management/outputs/kms_public_endpoint"
     },
     {
-      "name": "event_notification_instance_crn",
+      "name": "event_notifications_instance_crn",
       "value": "ref:./members/3a - Essential Security - Event Notifications/outputs/crn"
     },
     {
-      "name": "event_notification_instance_name",
+      "name": "event_notifications_instance_name",
       "value": "ref:./members/3a - Essential Security - Event Notifications/outputs/event_notification_instance_name"
     },
     {
-      "name": "event_notification_instance_guid",
+      "name": "event_notifications_instance_guid",
       "value": "ref:./members/3a - Essential Security - Event Notifications/outputs/guid"
     },
     {

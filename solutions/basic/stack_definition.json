@@ -340,7 +340,7 @@
       "inputs": [
         {
           "name": "existing_cos_instance_crn",
-          "value": "ref:../../members/2b - Object storage/outputs/cos_instance_id"
+          "value": "ref:../2b - Object storage/outputs/cos_instance_id"
         },
         {
           "name": "enable_collecting_failed_events",
@@ -380,7 +380,7 @@
         },
         {
           "name": "existing_monitoring_crn",
-          "value": "ref:../../members/2c - Cloud Monitoring/outputs/cloud_monitoring_crn"
+          "value": "ref:../2c - Essential Security - Cloud Monitoring/outputs/cloud_monitoring_crn"
         }
       ]
     },
@@ -488,7 +488,7 @@
         },
         {
           "name": "existing_monitoring_crn",
-          "value": "ref:../../members/2c - Cloud Monitoring/outputs/cloud_monitoring_crn"
+          "value": "ref:../2c - Essential Security - Cloud Monitoring/outputs/cloud_monitoring_crn"
         },
         {
           "name": "prefix",
@@ -546,11 +546,11 @@
         },
         {
           "name": "existing_kms_instance_crn",
-          "value": "ref:../../members/2a - Essential Security - Encryption Key Management/outputs/kms_instance_crn"
+          "value": "ref:../2a - Essential Security - Encryption Key Management/outputs/kms_instance_crn"
         },
         {
           "name": "kms_endpoint_url",
-          "value": "ref:../../members/2a - Essential Security - Encryption Key Management/outputs/kms_private_endpoint"
+          "value": "ref:../2a - Essential Security - Encryption Key Management/outputs/kms_private_endpoint"
         },
         {
           "name": "enable_event_notifications",
@@ -558,11 +558,11 @@
         },
         {
           "name": "existing_event_notifications_instance_crn",
-          "value": "ref:../../members/3a - Essential Security - Event Notifications/outputs/crn"
+          "value": "ref:../3a - Essential Security - Event Notifications/outputs/crn"
         },
         {
           "name": "event_notifications_endpoint_url",
-          "value": "ref:../../members/3a - Essential Security - Event Notifications/outputs/event_notifications_private_endpoint"
+          "value": "ref:../3a - Essential Security - Event Notifications/outputs/event_notifications_private_endpoint"
         },
         {
           "name": "event_notifications_email_list",
@@ -638,11 +638,11 @@
         },
         {
           "name": "app_config_crn",
-          "value": "ref:../../members/4b - Essential Security - App Configuration/outputs/app_config_crn"
+          "value": "ref:../4b - Essential Security - App Configuration/outputs/app_config_crn"
         },
         {
           "name": "existing_monitoring_crn",
-          "value": "ref:../../members/2c - Essential Security - Cloud Monitoring/outputs/cloud_monitoring_crn"
+          "value": "ref:../2c - Essential Security - Cloud Monitoring/outputs/cloud_monitoring_crn"
         }
       ]
     },
@@ -652,7 +652,7 @@
       "inputs": [
         {
           "name": "existing_resource_group_name",
-          "value": "ref:../../members/1 - Account Configuration/outputs/workload_resource_group_name"
+          "value": "ref:../1 - Account Configuration/outputs/workload_resource_group_name"
         },
         {
           "name": "region",
@@ -672,7 +672,7 @@
         },
         {
           "name": "existing_kms_instance_crn",
-          "value": "ref:../../members/2a - Essential Security - Encryption Key Management/outputs/kms_instance_crn"
+          "value": "ref:../2a - Essential Security - Encryption Key Management/outputs/kms_instance_crn"
         },
         {
           "name": "kms_endpoint_type",
@@ -700,7 +700,7 @@
         },
         {
           "name": "existing_secrets_manager_instance_crn",
-          "value": "ref:../members/4c - Essential Security - Secrets Manager/outputs/secrets_manager_crn"
+          "value": "ref:../4c - Essential Security - Secrets Manager/outputs/secrets_manager_crn"
         }
       ]
     },

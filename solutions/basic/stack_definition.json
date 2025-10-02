@@ -340,7 +340,7 @@
       "inputs": [
         {
           "name": "existing_cos_instance_crn",
-          "value": "ref:../2b - Object storage/outputs/cos_instance_id"
+          "value": "ref:../2b - Essential Security - Cloud Object Storage/outputs/cos_instance_id"
         },
         {
           "name": "enable_collecting_failed_events",

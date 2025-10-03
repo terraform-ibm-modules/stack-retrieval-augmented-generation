@@ -6,7 +6,7 @@ offerings:
     catalog_id: 7df1e4ca-d54c-4fd0-82ce-3d13247308cd
     offering_id: 5fdd0045-30fc-4013-a8bc-6db9d5447a52
     variations:
-      - name: basic
+      - name: basic-fully-config
         mark_ready: false
         install_type: fullstack
         format_kind: stack

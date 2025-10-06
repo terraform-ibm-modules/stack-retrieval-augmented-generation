@@ -343,7 +343,7 @@
     },
     {
       "name": "3a - Essential Security - Event Notifications",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.fa8ebdf4-db44-4e25-9846-9278b516cd73-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.dcb7092c-99fd-425c-af23-0d03a85fa7d7-global",
       "inputs": [
         {
           "name": "existing_cos_instance_crn",
@@ -885,7 +885,7 @@
         },
         {
           "name": "existing_kms_instance_crn",
-          "value": "ref:../../members/2a - Key management/outputs/kms_instance_crn"
+          "value": "ref:../2a - Essential Security - Encryption Key Management/outputs/kms_instance_crn"
         },
         {
           "name": "kms_encryption_enabled_buckets",
@@ -897,11 +897,11 @@
         },
         {
           "name": "existing_cos_instance_crn",
-          "value": "ref:../../members/2b - Object storage/outputs/cos_instance_crn"
+          "value": "ref:../2b - Essential Security - Cloud Object Storage/outputs/cos_instance_crn"
         },
         {
           "name": "existing_cloud_logs_instance_crn",
-          "value": "ref:../../members/4d - Cloud Logs for activity tracking/outputs/cloud_logs_crn"
+          "value": "ref:../4d - Essential Security - Cloud Logs for activity tracking/outputs/cloud_logs_crn"
         },
         {
           "name": "enable_activity_tracker_event_routing_to_cos_bucket",

@@ -269,6 +269,10 @@
         {
           "name": "existing_resource_group_name",
           "value": "ref:../1 - Account Configuration/outputs/observability_resource_group_name"
+        },
+        {
+          "name": "instance_name",
+          "value": "essential-cos"
         }
       ]
     },

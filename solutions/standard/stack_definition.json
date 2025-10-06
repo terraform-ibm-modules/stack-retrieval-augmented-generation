@@ -874,6 +874,10 @@
           "value": "ibmcloud-api-key"
         },
         {
+          "name": "use_legacy_ref",
+          "value": false
+        },
+        {
           "name": "prefix",
           "value": "ref:../../inputs/prefix"
         },

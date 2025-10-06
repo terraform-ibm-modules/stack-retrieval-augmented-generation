@@ -814,6 +814,10 @@
           "value": "ref:../2d - Workload - Code Engine Projects for CI/outputs/project_name"
         },
         {
+          "name": "use_legacy_ref",
+          "value": false
+        },
+        {
           "name": "cd_code_engine_project",
           "value": "ref:../2e - Workload - Code Engine Projects for CD/outputs/project_name"
         },

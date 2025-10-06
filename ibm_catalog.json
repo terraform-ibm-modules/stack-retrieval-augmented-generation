@@ -234,8 +234,8 @@
             {
               "key": "prefix",
               "type": "string",
+              "default_value": "__NOT_SET__",
               "description": "A prefix added to the name of all resources created by this solution. Used to avoid name clashes in the target account when deploying this solution multiple times.",
-              "default_value": "rag",
               "required": true
             },
             {
@@ -285,7 +285,15 @@
               "type": "string",
               "default_value": "__NULL__",
               "description": "The name of an existing resource group that is used by this solution, takes precedence over resource_group_name. Prefix is NOT used for existing resource group. All resources created by this solution are deployed in this resource group.",
-              "required": false
+              "required": false,
+              "custom_config": {
+                "type": "resource_group",
+                "grouping": "deployment",
+                "original_grouping": "deployment",
+                "config_constraints": {
+                  "identifier": "rg_name"
+                }
+              }
             },
             {
               "key": "watsonx_admin_api_key",
@@ -294,7 +302,7 @@
               "required": false
             },
             {
-              "key": "secret_manager_service_plan",
+              "key": "secrets_manager_service_plan",
               "type": "string",
               "default_value": "trial",
               "description": "The service/pricing plan to use when provisioning a new Secrets Manager instance. Only one trial instance is allowed per account.",
@@ -328,10 +336,21 @@
               ]
             },
             {
+              "key": "secrets_manager_secret_groups",
+              "type": "array",
+              "default_value": "[\n    {\n      secret_group_name        = \"General\"\n      secret_group_description = \"A general purpose secrets group with an associated access group which has a secrets reader role\"\n      create_access_group      = true\n      access_group_name        = \"general-secrets-group-access-group\"\n      access_group_roles       = [\"SecretsReader\"]\n    }\n  ]",
+              "description": "Secret Manager secret group and access group configurations. If a prefix input variable is specified, it is added to the `access_group_name` value in the `<prefix>-value` format. If you do not wish to create any groups, set the value to `[]`. [Learn more](https://github.com/terraform-ibm-modules/terraform-ibm-secrets-manager/tree/main/solutions/fully-configurable/provisioning_secrets_groups.md).",
+              "custom_config": {
+                "type": "code_editor",
+                "grouping": "deployment",
+                "original_grouping": "deployment"
+              }
+            },
+            {
               "key": "cloud_monitoring_plan",
               "type": "string",
               "default_value": "graduated-tier",
-              "description": "The IBM Cloud Monitoring plan to provision. Available values are `lite` and `graduated-tier` and `graduated-tier-sysdig-secure-plus-monitor` (available in region eu-fr2 only). [Learn more](https://cloud.ibm.com/docs/monitoring?topic=monitoring-service_plans)",
+              "description": "The IBM Cloud Monitoring plan to provision. Available values are `lite` and `graduated-tier`. [Learn more](https://cloud.ibm.com/docs/monitoring?topic=monitoring-service_plans)",
               "required": false,
               "options": [
                 {
@@ -730,8 +749,8 @@
             {
               "key": "prefix",
               "type": "string",
+              "default_value": "__NOT_SET__",
               "description": "A prefix added to the name of all resources created by this solution. Must start with a letter, contain only lowercase letters, numbers, or dashes, and be 13 characters or less. Used to avoid name clashes in the target account when deploying this solution multiple times.",
-              "default_value": "rag",
               "required": true
             },
             {
@@ -781,7 +800,15 @@
               "type": "string",
               "default_value": "__NULL__",
               "description": "The name of an existing resource group that is used by this solution, takes precedence over resource_group_name. Prefix is NOT used for existing resource group. All resources created by this solution are deployed in this resource group.",
-              "required": false
+              "required": false,
+              "custom_config": {
+                "type": "resource_group",
+                "grouping": "deployment",
+                "original_grouping": "deployment",
+                "config_constraints": {
+                  "identifier": "rg_name"
+                }
+              }
             },
             {
               "key": "watsonx_admin_api_key",
@@ -790,7 +817,7 @@
               "required": false
             },
             {
-              "key": "secret_manager_service_plan",
+              "key": "secrets_manager_service_plan",
               "type": "string",
               "default_value": "standard",
               "description": "The service/pricing plan to use when provisioning a new Secrets Manager instance. Only one trial instance is allowed per account.",
@@ -805,6 +832,17 @@
                   "value": "standard"
                 }
               ]
+            },
+            {
+              "key": "secrets_manager_secret_groups",
+              "type": "array",
+              "default_value": "[\n    {\n      secret_group_name        = \"General\"\n      secret_group_description = \"A general purpose secrets group with an associated access group which has a secrets reader role\"\n      create_access_group      = true\n      access_group_name        = \"general-secrets-group-access-group\"\n      access_group_roles       = [\"SecretsReader\"]\n    }\n  ]",
+              "description": "Secret Manager secret group and access group configurations. If a prefix input variable is specified, it is added to the `access_group_name` value in the `<prefix>-value` format. If you do not wish to create any groups, set the value to `[]`. [Learn more](https://github.com/terraform-ibm-modules/terraform-ibm-secrets-manager/tree/main/solutions/fully-configurable/provisioning_secrets_groups.md).",
+              "custom_config": {
+                "type": "code_editor",
+                "grouping": "deployment",
+                "original_grouping": "deployment"
+              }
             },
             {
               "key": "key_protect_plan",
@@ -827,7 +865,7 @@
               "key": "cloud_monitoring_plan",
               "type": "string",
               "default_value": "graduated-tier",
-              "description": "The IBM Cloud Monitoring plan to provision. Available values are `lite` and `graduated-tier` and `graduated-tier-sysdig-secure-plus-monitor` (available in region eu-fr2 only). [Learn more](https://cloud.ibm.com/docs/monitoring?topic=monitoring-service_plans)",
+              "description": "The IBM Cloud Monitoring plan to provision. Available values are `lite` and `graduated-tier`. [Learn more](https://cloud.ibm.com/docs/monitoring?topic=monitoring-service_plans)",
               "required": false,
               "options": [
                 {
@@ -1098,6 +1136,154 @@
             {
               "key": "watson_discovery_project_id",
               "description": "The ID for the Watson Discovery project for the sample RAG application."
+            },
+            {
+              "key": "kms_instance_crn",
+              "description": "The CRN of the Hyper Protect Crypto Service instance or Key Protect instance"
+            },
+            {
+              "key": "kms_private_endpoint",
+              "description": "Key Management Service instance private endpoint URL."
+            },
+            {
+              "key": "kms_public_endpoint",
+              "description": "Key Management Service instance public endpoint URL."
+            },
+            {
+              "key": "event_notifications_instance_crn",
+              "description": "Event Notifications crn"
+            },
+            {
+              "key": "event_notifications_instance_name",
+              "description": "Event Notifications name"
+            },
+            {
+              "key": "event_notifications_instance_guid",
+              "description": "Event Notifications guid"
+            },
+            {
+              "key": "cloud_logs_for_logging_crn",
+              "description": "The id of the provisioned IBM Cloud Logs for logging instance."
+            },
+            {
+              "key": "cloud_logs_for_logging_guid",
+              "description": "The guid of the provisioned IBM Cloud Logs for logging instance."
+            },
+            {
+              "key": "cloud_logs_for_activity_tracking_crn",
+              "description": "The id of the provisioned IBM Cloud Logs for activity tracking instance."
+            },
+            {
+              "key": "cloud_logs_for_activity_tracking_guid",
+              "description": "The guid of the provisioned IBM Cloud Logs for activity tracking instance."
+            },
+            {
+              "key": "cloud_monitoring_crn",
+              "description": "The id of the provisioned IBM cloud monitoring instance."
+            },
+            {
+              "key": "cloud_monitoring_guid",
+              "description": "The guid of the provisioned IBM cloud monitoring instance."
+            },
+            {
+              "key": "secrets_manager_crn",
+              "description": "CRN of the Secrets Manager instance"
+            },
+            {
+              "key": "secrets_manager_guid",
+              "description": "GUID of Secrets Manager instance"
+            },
+            {
+              "key": "secrets_manager_name",
+              "description": "Name of the Secrets Manager instance"
+            },
+            {
+              "key": "app_config_crn",
+              "description": "CRN of the App Configuration instance"
+            },
+            {
+              "key": "app_config_guid",
+              "description": "GUID of the App Configuration instance"
+            },
+            {
+              "key": "scc_workload_protection_crn",
+              "description": "SCC Workload Protection instance CRN"
+            },
+            {
+              "key": "scc_workload_protection_guid",
+              "description": "SCC Workload Protection instance ID"
+            },
+            {
+              "key": "watson_discovery_crn",
+              "description": "The CRN of the Watson Discovery instance."
+            },
+            {
+              "key": "watson_discovery_dashboard_url",
+              "description": "The dashboard URL of the Watson Discovery instance."
+            },
+            {
+              "key": "watson_machine_learning_crn",
+              "description": "The CRN of the Watson Machine Learning instance."
+            },
+            {
+              "key": "watson_machine_learning_dashboard_url",
+              "description": "The dashboard URL of the Watson Machine Learning instance."
+            },
+            {
+              "key": "watson_machine_learning_guid",
+              "description": "The GUID of the Watson Machine Learning instance."
+            },
+            {
+              "key": "watson_studio_crn",
+              "description": "The CRN of the Watson Studio instance."
+            },
+            {
+              "key": "watson_studio_dashboard_url",
+              "description": "The dashboard URL of the Watson Studio instance."
+            },
+            {
+              "key": "watson_studio_guid",
+              "description": "The GUID of the Watson Studio instance."
+            },
+            {
+              "key": "watsonx_assistant_crn",
+              "description": "The CRN of the watsonx Assistant instance."
+            },
+            {
+              "key": "watsonx_assistant_dashboard_url",
+              "description": "The dashboard URL of the watsonx Assistant instance."
+            },
+            {
+              "key": "watsonx_data_crn",
+              "description": "The CRN of the watsonx.data instance."
+            },
+            {
+              "key": "watsonx_data_dashboard_url",
+              "description": "The dashboard URL of the watsonx.data instance."
+            },
+            {
+              "key": "watsonx_data_guid",
+              "description": "The GUID of the watsonx.data instance."
+            },
+            {
+              "key": "watson_discovery_guid",
+              "description": "The GUID of the Watson Discovery instance."
+            },
+            {
+              "key": "workload_cluster_name",
+              "description": "The name of the workload cluster. If the cluster name does not exactly match the prefix-workload-cluster pattern it will be null."
+            },
+            {
+              "key": "workload_cluster_id",
+              "description": "The id of the workload cluster. If the cluster name does not exactly match the prefix-workload-cluster pattern it will be null."
+            },
+            {
+              "key": "workload_cluster_private_service_endpoint_url",
+              "description": "The private service endpoint URL of the Workload cluster, if not then null."
+            },
+            {
+              "key": "workload_cluster_public_service_endpoint_url",
+              "description": "The public service endpoint URL of the Workload cluster, if not then null."
             }
           ],
           "install_type": "fullstack"

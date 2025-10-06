@@ -58,12 +58,12 @@ func TestProjectsBasicFullTest(t *testing.T) {
 		t.Fatal(kerr)
 	}
 	options.StackInputs = map[string]interface{}{
-		"resource_group_name":         options.ResourceGroup,
-		"region":                      validRegions[rand.Intn(len(validRegions))],
-		"ibmcloud_api_key":            options.RequiredEnvironmentVars["TF_VAR_ibmcloud_api_key"],
-		"prefix":                      options.Prefix,
-		"signing_key":                 privateKey,
-		"secret_manager_service_plan": "trial",
+		"resource_group_name":          options.ResourceGroup,
+		"region":                       validRegions[rand.Intn(len(validRegions))],
+		"ibmcloud_api_key":             options.RequiredEnvironmentVars["TF_VAR_ibmcloud_api_key"],
+		"prefix":                       options.Prefix,
+		"signing_key":                  privateKey,
+		"secrets_manager_service_plan": "trial",
 	}
 
 	err := options.RunProjectsTest()
@@ -78,7 +78,7 @@ func TestProjectsBasicExistingResourcesTest(t *testing.T) {
 	t.Parallel()
 
 	// ------------------------------------------------------------------------------------
-	// Provision RG, EN and SM
+	// Provision RG, EN and KMS
 	// ------------------------------------------------------------------------------------
 
 	prefix := fmt.Sprintf("ragext-%s", strings.ToLower(random.UniqueId()))
@@ -124,19 +124,18 @@ func TestProjectsBasicExistingResourcesTest(t *testing.T) {
 		}
 
 		options.StackInputs = map[string]interface{}{
-			"prefix":                                   terraform.Output(t, existingTerraformOptions, "prefix"),
-			"region":                                   terraform.Output(t, existingTerraformOptions, "region"),
-			"existing_resource_group_name":             terraform.Output(t, existingTerraformOptions, "resource_group_name"),
-			"ibmcloud_api_key":                         options.RequiredEnvironmentVars["TF_VAR_ibmcloud_api_key"], // always required by the stack
-			"enable_platform_metrics":                  false,
-			"existing_secrets_manager_crn":             terraform.Output(t, existingTerraformOptions, "secrets_manager_instance_crn"),
-			"skip_secrets_manager_iam_auth_policy":     true, // skip as s2s auth policy was already created for existing instance
-			"signing_key":                              privateKey,
-			"existing_kms_instance_crn":                terraform.Output(t, existingTerraformOptions, "kms_instance_crn"),
-			"existing_event_notification_instance_crn": terraform.Output(t, existingTerraformOptions, "event_notification_instance_crn"),
-			"event_notifications_email_list":           []string{"GoldenEye.Operations@ibm.com"},
-			"secrets_manager_secret_groups":            []string{}, // Don't create any secret groups in existing instance (The default 'General' group already exists)
-
+			"prefix":                                    terraform.Output(t, existingTerraformOptions, "prefix"),
+			"region":                                    terraform.Output(t, existingTerraformOptions, "region"),
+			"existing_resource_group_name":              terraform.Output(t, existingTerraformOptions, "resource_group_name"),
+			"ibmcloud_api_key":                          options.RequiredEnvironmentVars["TF_VAR_ibmcloud_api_key"], // always required by the stack
+			"enable_platform_metrics":                   false,
+			"existing_secrets_manager_crn":              permanentResources["privateOnlySecMgrCRN"],
+			"skip_secrets_manager_iam_auth_policy":      true, // skip as s2s auth policy was already created for existing instance
+			"signing_key":                               privateKey,
+			"existing_kms_instance_crn":                 terraform.Output(t, existingTerraformOptions, "kms_instance_crn"),
+			"existing_event_notifications_instance_crn": terraform.Output(t, existingTerraformOptions, "event_notifications_instance_crn"),
+			"event_notifications_email_list":            []string{"GoldenEye.Operations@ibm.com"},
+			"secrets_manager_secret_groups":             []string{}, // Don't create any secret groups in existing instance (The default 'General' group already exists)
 		}
 
 		err := options.RunProjectsTest()
@@ -176,12 +175,12 @@ func TestProjectsStandardFullTest(t *testing.T) {
 		t.Fatal(kerr)
 	}
 	options.StackInputs = map[string]interface{}{
-		"resource_group_name":         options.ResourceGroup,
-		"region":                      validRegions[rand.Intn(len(validRegions))],
-		"ibmcloud_api_key":            options.RequiredEnvironmentVars["TF_VAR_ibmcloud_api_key"],
-		"prefix":                      options.Prefix,
-		"signing_key":                 privateKey,
-		"secret_manager_service_plan": "trial",
+		"resource_group_name":          options.ResourceGroup,
+		"region":                       validRegions[rand.Intn(len(validRegions))],
+		"ibmcloud_api_key":             options.RequiredEnvironmentVars["TF_VAR_ibmcloud_api_key"],
+		"prefix":                       options.Prefix,
+		"signing_key":                  privateKey,
+		"secrets_manager_service_plan": "trial",
 	}
 
 	err := options.RunProjectsTest()

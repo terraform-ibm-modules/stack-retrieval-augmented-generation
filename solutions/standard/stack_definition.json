@@ -7,7 +7,7 @@
       "hidden": false
     },
     {
-      "name": "secret_manager_service_plan",
+      "name": "secrets_manager_service_plan",
       "required": false,
       "type": "string",
       "hidden": false
@@ -61,6 +61,13 @@
       "required": false,
       "type": "string",
       "hidden": false
+    },
+    {
+      "name": "secrets_manager_secret_groups",
+      "required": false,
+      "type": "array",
+      "hidden": false,
+      "custom_config": {}
     },
     {
       "name": "signing_key",
@@ -466,11 +473,7 @@
         },
         {
           "name": "existing_cos_resource_group",
-          "value": "ref:../1 - Account Configuration/outputs/observability_resource_group_name"
-        },
-        {
-          "name": "existing_cos_endpoint_type",
-          "value": "private"
+          "value": "ref:../2b - Essential Security - Cloud Object Storage/outputs/resource_group_name"
         },
         {
           "name": "use_existing_cos_for_vpc_flowlogs",
@@ -636,11 +639,61 @@
         },
         {
           "name": "service_plan",
-          "value": "ref:../../inputs/secret_manager_service_plan"
+          "value": "ref:../../inputs/secrets_manager_service_plan"
+        },
+        {
+          "name": "secret_groups",
+          "value": "ref:../../inputs/secrets_manager_secret_groups"
         },
         {
           "name": "existing_event_notifications_instance_crn",
           "value": "ref:../3a - Essential Security - Event Notifications/outputs/crn"
+        }
+      ]
+    },
+    {
+      "name": "4d - Essential Security - Cloud Logs for activity tracking",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.ee855d83-2f87-4d0e-bc0d-66c11ba66902-global",
+      "inputs": [
+        {
+          "name": "region",
+          "value": "ref:../../inputs/region"
+        },
+        {
+          "name": "existing_kms_instance_crn",
+          "value": "ref:../2a - Essential Security - Encryption Key Management/outputs/kms_instance_crn"
+        },
+        {
+          "name": "kms_encryption_enabled_buckets",
+          "value": true
+        },
+        {
+          "name": "kms_endpoint_type",
+          "value": "private"
+        },
+        {
+          "name": "existing_resource_group_name",
+          "value": "ref:../1 - Account Configuration/outputs/observability_resource_group_name"
+        },
+        {
+          "name": "existing_cos_instance_crn",
+          "value": "ref:../2b - Essential Security - Cloud Object Storage/outputs/cos_instance_crn"
+        },
+        {
+          "name": "existing_monitoring_crn",
+          "value": "ref:../2c - Essential Security - Cloud Monitoring/outputs/cloud_monitoring_crn"
+        },
+        {
+          "name": "prefix",
+          "value": "ref:../../inputs/prefix"
+        },
+        {
+          "name": "existing_event_notifications_instances",
+          "value": "ref:../3a - Essential Security - Event Notifications/outputs/crn_list_object"
+        },
+        {
+          "name": "logs_routing_tenant_regions",
+          "value": "ref:../../inputs/logs_routing_tenant_regions"
         }
       ]
     },
@@ -701,6 +754,10 @@
         {
           "name": "plan",
           "value": "enterprise"
+        },
+        {
+          "name": "elasticsearch_version",
+          "value": "8.15"
         },
         {
           "name": "kms_encryption_enabled",
@@ -823,6 +880,44 @@
         {
           "name": "ci_pipeline_properties",
           "value": "[{\"pipeline_id\":\"ci\",\"properties\":[{\"name\":\"cluster-name\",\"type\":\"text\",\"value\":\"\"},{\"name\":\"cos-api-key\",\"type\":\"secure\",\"value\":\"\"},{\"name\":\"cos-bucket-name\",\"type\":\"text\",\"value\":\"\"},{\"name\":\"cos-endpoint\",\"type\":\"text\",\"value\":\"\"},{\"name\":\"cra-bom-generate\",\"type\":\"single_select\",\"value\":\"1\",\"enum\":\"[0,1]\"},{\"name\":\"cra-deploy-analysis\",\"type\":\"single_select\",\"value\":\"1\",\"enum\":\"[0,1]\"},{\"name\":\"cra-generate-cyclonedx-format\",\"type\":\"text\",\"value\":\"1\"},{\"name\":\"cra-vulnerability-scan\",\"type\":\"single_select\",\"value\":\"1\",\"enum\":\"[0,1]\"},{\"name\":\"custom_image_tag\",\"type\":\"text\",\"value\":\"\"},{\"name\":\"dev-cluster-namespace\",\"type\":\"text\",\"value\":\"dev\"},{\"name\":\"dev-region\",\"type\":\"text\",\"value\":\"\"},{\"name\":\"doi-environment\",\"type\":\"text\",\"value\":\"\"},{\"name\":\"doi-ibmcloud-api-key\",\"type\":\"secure\",\"value\":\"\"},{\"name\":\"doi-toolchain-id\",\"type\":\"text\",\"value\":\"\"},{\"name\":\"event-notifications\",\"type\":\"text\",\"value\":\"0\"},{\"name\":\"git-token\",\"type\":\"secure\",\"value\":\"\"},{\"name\":\"ibmcloud-api-key\",\"type\":\"secure\",\"value\":\"\"},{\"name\":\"opt-in-dynamic-api-scan\",\"type\":\"text\",\"value\":\"1\"},{\"name\":\"opt-in-dynamic-scan\",\"type\":\"text\",\"value\":\"1\"},{\"name\":\"opt-in-dynamic-ui-scan\",\"type\":\"text\",\"value\":\"1\"},{\"name\":\"opt-in-gosec\",\"type\":\"text\",\"value\":\"\"},{\"name\":\"opt-in-sonar\",\"type\":\"text\",\"value\":\"1\"},{\"name\":\"peer-review-compliance\",\"type\":\"text\",\"value\":\"1\"},{\"name\":\"pipeline-config\",\"type\":\"text\",\"value\":\".pipeline-config.yaml\"},{\"name\":\"pipeline-config-branch\",\"type\":\"text\",\"value\":\"\"},{\"name\":\"pipeline-debug\",\"type\":\"single_select\",\"value\":\"0\",\"enum\":\"[0,1]\"},{\"name\":\"print-code-signing-certificate\",\"type\":\"text\",\"value\":\"1\"},{\"name\":\"registry-namespace\",\"type\":\"text\",\"value\":\"\"},{\"name\":\"registry-region\",\"type\":\"text\",\"value\":\"\"},{\"name\":\"signing-key\",\"type\":\"secure\",\"value\":\"\"},{\"name\":\"slack-notifications\",\"type\":\"text\",\"value\":\"0\"},{\"name\":\"sonarqube-config\",\"type\":\"text\",\"value\":\"default\"},{\"name\":\"version\",\"type\":\"text\",\"value\":\"v1\"}]},{\"pipeline_id\":\"pr\",\"properties\":[{\"name\":\"git-token\",\"type\":\"secure\",\"value\":\"\"},{\"name\":\"cra-bom-generate\",\"type\":\"single_select\",\"value\":\"1\",\"enum\":\"[0,1]\"},{\"name\":\"cra-deploy-analysis\",\"type\":\"single_select\",\"value\":\"1\",\"enum\":\"[0,1]\"},{\"name\":\"cra-vulnerability-scan\",\"type\":\"single_select\",\"value\":\"1\",\"enum\":\"[0,1]\"},{\"name\":\"ibmcloud-api-key\",\"type\":\"secure\",\"value\":\"\"},{\"name\":\"pipeline-config\",\"type\":\"text\",\"value\":\".pipeline-config.yaml\"},{\"name\":\"pipeline-config-branch\",\"type\":\"text\",\"value\":\"\"},{\"name\":\"pipeline-debug\",\"type\":\"single_select\",\"value\":\"0\",\"enum\":\"[0,1]\"},{\"name\":\"slack-notifications\",\"type\":\"text\",\"value\":\"1\"}]}]"
+        }
+      ]
+    },
+    {
+      "name": "5d - Essential Security - Activity Tracker Event Routing",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.6cec6dd7-d4e4-4bec-8f94-da26611d42a5-global",
+      "inputs": [
+        {
+          "name": "region",
+          "value": "ref:../../inputs/region"
+        },
+        {
+          "name": "prefix",
+          "value": "ref:../../inputs/prefix"
+        },
+        {
+          "name": "existing_kms_instance_crn",
+          "value": "ref:../../members/2a - Key management/outputs/kms_instance_crn"
+        },
+        {
+          "name": "kms_encryption_enabled_buckets",
+          "value": true
+        },
+        {
+          "name": "kms_endpoint_type",
+          "value": "private"
+        },
+        {
+          "name": "existing_cos_instance_crn",
+          "value": "ref:../../members/2b - Object storage/outputs/cos_instance_crn"
+        },
+        {
+          "name": "existing_cloud_logs_instance_crn",
+          "value": "ref:../../members/4d - Cloud Logs for activity tracking/outputs/cloud_logs_crn"
+        },
+        {
+          "name": "enable_activity_tracker_event_routing_to_cos_bucket",
+          "value": true
         }
       ]
     },
@@ -955,24 +1050,32 @@
       "value": "ref:./members/2a - Essential Security - Encryption Key Management/outputs/kms_public_endpoint"
     },
     {
-      "name": "event_notification_instance_crn",
+      "name": "event_notifications_instance_crn",
       "value": "ref:./members/3a - Essential Security - Event Notifications/outputs/crn"
     },
     {
-      "name": "event_notification_instance_name",
+      "name": "event_notifications_instance_name",
       "value": "ref:./members/3a - Essential Security - Event Notifications/outputs/event_notification_instance_name"
     },
     {
-      "name": "event_notification_instance_guid",
+      "name": "event_notifications_instance_guid",
       "value": "ref:./members/3a - Essential Security - Event Notifications/outputs/guid"
     },
     {
-      "name": "cloud_logs_crn",
+      "name": "cloud_logs_for_logging_crn",
       "value": "ref:./members/4a - Essential Security - Cloud Logs for logging/outputs/cloud_logs_crn"
     },
     {
-      "name": "cloud_logs_guid",
+      "name": "cloud_logs_for_logging_guid",
       "value": "ref:./members/4a - Essential Security - Cloud Logs for logging/outputs/cloud_logs_guid"
+    },
+    {
+      "name": "cloud_logs_for_activity_tracking_crn",
+      "value": "ref:./members/4d - Essential Security - Cloud Logs for activity tracking/outputs/cloud_logs_crn"
+    },
+    {
+      "name": "cloud_logs_for_activity_tracking_guid",
+      "value": "ref:./members/4d - Essential Security - Cloud Logs for activity tracking/outputs/cloud_logs_guid"
     },
     {
       "name": "cloud_monitoring_crn",
@@ -1004,11 +1107,11 @@
     },
     {
       "name": "scc_workload_protection_crn",
-      "value": "ref:./members/5a - Essential Security - Security and Compliance Center Workload Protection/outputs/crn"
+      "value": "ref:./members/5a - Essential Security - Security and Compliance Center Workload Protection/outputs/scc_workload_protection_crn"
     },
     {
       "name": "scc_workload_protection_guid",
-      "value": "ref:./members/5a - Essential Security - Security and Compliance Center Workload Protection/outputs/guid"
+      "value": "ref:./members/5a - Essential Security - Security and Compliance Center Workload Protection/outputs/scc_workload_protection_id"
     },
     {
       "name": "watson_discovery_crn",

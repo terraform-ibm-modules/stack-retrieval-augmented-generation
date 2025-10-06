@@ -2,3 +2,5 @@
 .terraform
 *.tfstate
 *.lock.hcl
+.DS_Store
+.idea

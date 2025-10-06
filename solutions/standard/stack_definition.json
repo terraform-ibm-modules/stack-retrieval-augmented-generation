@@ -698,6 +698,18 @@
         {
           "name": "logs_routing_tenant_regions",
           "value": "ref:../../inputs/logs_routing_tenant_regions"
+        },
+        {
+          "name": "cloud_logs_data_cos_bucket_name",
+          "value": "at-cloud-logs-logs-bucket"
+        },
+        {
+          "name": "cloud_logs_metrics_cos_bucket_name",
+          "value": "at-cloud-logs-metrics-bucket"
+        },
+        {
+          "name": "cloud_logs_instance_name",
+          "value": "at-cloud-logs"
         }
       ]
     },

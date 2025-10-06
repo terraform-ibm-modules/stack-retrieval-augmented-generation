@@ -136,6 +136,7 @@ func TestProjectsBasicExistingResourcesTest(t *testing.T) {
 			"existing_event_notification_instance_crn": terraform.Output(t, existingTerraformOptions, "event_notification_instance_crn"),
 			"event_notifications_email_list":           []string{"GoldenEye.Operations@ibm.com"},
 			"secrets_manager_secret_groups":            []string{}, // Don't create any secret groups in existing instance (The default 'General' group already exists)
+
 		}
 
 		err := options.RunProjectsTest()

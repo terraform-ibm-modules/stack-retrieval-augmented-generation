@@ -659,6 +659,10 @@
           "value": "ref:../../inputs/region"
         },
         {
+          "name": "deletion_protection",
+          "value": false
+        },
+        {
           "name": "prefix",
           "value": "ref:../../inputs/prefix"
         },

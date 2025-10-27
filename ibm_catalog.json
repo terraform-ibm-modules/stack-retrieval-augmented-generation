@@ -1,7 +1,7 @@
 {
   "products": [
     {
-      "label": "Retrieval Augmented Generation (RAG) Pattern",
+      "label": "Cloud-native AI",
       "name": "Retrieval_Augmented_Generation_Pattern",
       "product_kind": "solution",
       "tags": [
@@ -12,6 +12,7 @@
         "ibm_created"
       ],
       "keywords": [
+        "cloud-native",
         "rag",
         "watson",
         "ai",
@@ -32,8 +33,8 @@
         "config aggregator",
         "app config"
       ],
-      "short_description": "Automate RAG deployment with supporting IBM Cloud and watsonx services, embed your enterprise data in generative AI solutions.",
-      "long_description": "Utilize data from your enterprise to achieve productivity gains in activities related to question/answer conversations, content search, summarization and generation. RAG can be deployed in multiple configurations and is applicable to various industry use cases and solutions.\n\nThis deployable architecture provides a comprehensive foundation for trust, observability, security, and regulatory compliance by configuring and deploying various services and a sample application for a [RAG pattern](https://cloud.ibm.com/docs/pattern-genai-rag?topic=pattern-genai-rag-genai-pattern), including:\n- Configuring IBM Cloud Account with best practices from [IBM Cloud Framework for Financial Services](https://cloud.ibm.com/docs/framework-financial-services?topic=framework-financial-services-about)\n- Deploying key and secrets management services for storage and management of encryption keys and secrets\n- Deploying controls for continuous compliance\n- Deploying observability services for application and platform logging and monitoring\n- Deploying a suite of watsonx services to provide generative AI RAG capabilities\n- Deploying content databases for storing vector embeddings of the documents and content search/retrieval\n- Deploying a sample application in a variety of run times including CI/CD/CC pipelines for secure application lifecycle management\n\nThe above configured and deployed services enable a secure and trustworthy deployment of generative AI applications on IBM Cloud.\n\nThe configurations are flexible and be changed to meet the needs for several types of RAG patterns depending on the chosen combination of technologies and services.\n\nThe generative AI RAG pattern services include:\n- [watsonx.ai](https://dataplatform.cloud.ibm.com/docs/content/wsj/getting-started/welcome-main.html?context=wx)\n- [watsonx.data](https://cloud.ibm.com/docs/watsonxdata) (with Milvus)\n- [watsonx.governance](https://dataplatform.cloud.ibm.com/docs/content/svc-welcome/aiopenscale.html?context=wx)\n- [watsonx Assistant](https://cloud.ibm.com/docs/watson-assistant?topic=watson-assistant-welcome-new-assistant)\n- [watsonx Orchestrate](https://www.ibm.com/docs/en/watsonx/watson-orchestrate/current)\n- [Watson Discovery](https://cloud.ibm.com/docs/discovery-data)\n- [Elasticsearch](https://cloud.ibm.com/docs/databases-for-elasticsearch) Enterprise and Platinum edition\n\nThe supporting services include:\n- [Secrets Manager](https://cloud.ibm.com/docs/secrets-manager)\n- [Key Protect](https://cloud.ibm.com/docs/key-protect)\n- [Security and Compliance Center](https://cloud.ibm.com/docs/security-compliance)\n- [Event Notifications](https://cloud.ibm.com/docs/event-notifications?topic=event-notifications-getting-started)\n- [Logs](https://cloud.ibm.com/docs/cloud-logs)\n- [Monitoring](https://cloud.ibm.com/docs/monitoring?topic=monitoring-getting-started)\n- [Object Storage](https://cloud.ibm.com/docs/cloud-object-storage?topic=cloud-object-storage-getting-started-cloud-object-storage)\n- [Continuous Delivery](https://cloud.ibm.com/docs/ContinuousDelivery) toolchains\n- [Container Registry](https://cloud.ibm.com/docs/Registry)\n\nA [sample RAG application](https://github.com/IBM/gen-ai-rag-watsonx-sample-application) is deployed to [Code Engine](https://cloud.ibm.com/docs/codeengine) or [Red Hat OpenShift](https://cloud.ibm.com/docs/openshift) cluster.\n\nBy leveraging this architecture, you can accelerate your deployment and tailor it to meet your unique business needs and enterprise goals.",
+      "short_description": "Automate a cloud-native AI deployment with supporting IBM Cloud and watsonx services, embed your enterprise data in generative AI solutions.",
+      "long_description": "Utilize data from your enterprise to achieve productivity gains in activities related to question/answer conversations, content search, summarization and generation. Cloud-native AI can be deployed in multiple configurations and is applicable to various industry use cases and solutions.\n\nThis deployable architecture provides a comprehensive foundation for trust, observability, security, and regulatory compliance by configuring and deploying various services and a sample application for a [RAG pattern](https://cloud.ibm.com/docs/pattern-genai-rag?topic=pattern-genai-rag-genai-pattern), including:\n- Configuring IBM Cloud Account with best practices from [IBM Cloud Framework for Financial Services](https://cloud.ibm.com/docs/framework-financial-services?topic=framework-financial-services-about)\n- Deploying key and secrets management services for storage and management of encryption keys and secrets\n- Deploying controls for continuous compliance\n- Deploying observability services for application and platform logging and monitoring\n- Deploying a suite of watsonx services to provide generative AI RAG capabilities\n- Deploying content databases for storing vector embeddings of the documents and content search/retrieval\n- Deploying a sample application in a variety of run times including CI/CD/CC pipelines for secure application lifecycle management\n\nThe above configured and deployed services enable a secure and trustworthy deployment of generative AI applications on IBM Cloud.\n\nThe configurations are flexible and be changed to meet the needs for several types of RAG patterns depending on the chosen combination of technologies and services.\n\nThe generative AI RAG pattern services include:\n- [watsonx.ai](https://dataplatform.cloud.ibm.com/docs/content/wsj/getting-started/welcome-main.html?context=wx)\n- [watsonx.data](https://cloud.ibm.com/docs/watsonxdata) (with Milvus)\n- [watsonx.governance](https://dataplatform.cloud.ibm.com/docs/content/svc-welcome/aiopenscale.html?context=wx)\n- [watsonx Assistant](https://cloud.ibm.com/docs/watson-assistant?topic=watson-assistant-welcome-new-assistant)\n- [watsonx Orchestrate](https://www.ibm.com/docs/en/watsonx/watson-orchestrate/current)\n- [Watson Discovery](https://cloud.ibm.com/docs/discovery-data)\n- [Elasticsearch](https://cloud.ibm.com/docs/databases-for-elasticsearch) Enterprise and Platinum edition\n\nThe supporting services include:\n- [Secrets Manager](https://cloud.ibm.com/docs/secrets-manager)\n- [Key Protect](https://cloud.ibm.com/docs/key-protect)\n- [Security and Compliance Center](https://cloud.ibm.com/docs/security-compliance)\n- [Event Notifications](https://cloud.ibm.com/docs/event-notifications?topic=event-notifications-getting-started)\n- [Logs](https://cloud.ibm.com/docs/cloud-logs)\n- [Monitoring](https://cloud.ibm.com/docs/monitoring?topic=monitoring-getting-started)\n- [Object Storage](https://cloud.ibm.com/docs/cloud-object-storage?topic=cloud-object-storage-getting-started-cloud-object-storage)\n- [Continuous Delivery](https://cloud.ibm.com/docs/ContinuousDelivery) toolchains\n- [Container Registry](https://cloud.ibm.com/docs/Registry)\n\nA [sample RAG application](https://github.com/IBM/gen-ai-rag-watsonx-sample-application) is deployed to [Code Engine](https://cloud.ibm.com/docs/codeengine) or [Red Hat OpenShift](https://cloud.ibm.com/docs/openshift) cluster.\n\nBy leveraging this architecture, you can accelerate your deployment and tailor it to meet your unique business needs and enterprise goals.",
       "offering_docs_url": "https://github.com/terraform-ibm-modules/stack-retrieval-augmented-generation/blob/main/README.md",
       "offering_icon_url": "https://globalcatalog.cloud.ibm.com/api/v1/1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc/artifacts/solution.svg",
       "provider_name": "IBM",
@@ -63,7 +64,7 @@
       "flavors": [
         {
           "label": "Basic with sample application (Deploy on Code Engine)",
-          "name": "basic-fully-config",
+          "name": "basic",
           "index": 1,
           "working_directory": "solutions/basic",
           "compliance": {
@@ -212,19 +213,19 @@
             "diagrams": [
               {
                 "diagram": {
-                  "url": "https://raw.githubusercontent.com/terraform-ibm-modules/stack-retrieval-augmented-generation/main/reference-architecture/rag-pattern.svg",
+                  "url": "https://raw.githubusercontent.com/terraform-ibm-modules/stack-retrieval-augmented-generation/main/reference-architectures/rag-pattern.svg",
                   "caption": "Reference architecture",
                   "type": "image/svg+xml",
-                  "thumbnail_url": "https://raw.githubusercontent.com/terraform-ibm-modules/stack-retrieval-augmented-generation/main/reference-architecture/rag-pattern.svg"
+                  "thumbnail_url": "https://raw.githubusercontent.com/terraform-ibm-modules/stack-retrieval-augmented-generation/main/reference-architectures/rag-pattern.svg"
                 },
                 "description": "Reference architecture"
               },
               {
                 "diagram": {
-                  "url": "https://raw.githubusercontent.com/terraform-ibm-modules/stack-retrieval-augmented-generation/main/reference-architecture/rag-stack.svg",
+                  "url": "https://raw.githubusercontent.com/terraform-ibm-modules/stack-retrieval-augmented-generation/main/reference-architectures/rag-stack.svg",
                   "caption": "Solution components",
                   "type": "image/svg+xml",
-                  "thumbnail_url": "https://raw.githubusercontent.com/terraform-ibm-modules/stack-retrieval-augmented-generation/main/reference-architecture/rag-stack.svg"
+                  "thumbnail_url": "https://raw.githubusercontent.com/terraform-ibm-modules/stack-retrieval-augmented-generation/main/reference-architectures/rag-stack.svg"
                 },
                 "description": "Solution components"
               }
@@ -234,9 +235,19 @@
             {
               "key": "prefix",
               "type": "string",
-              "default_value": "__NOT_SET__",
-              "description": "A prefix added to the name of all resources created by this solution. Used to avoid name clashes in the target account when deploying this solution multiple times.",
-              "required": true
+              "default_value": "dev",
+              "random_string" : {
+                "length": 4
+              },
+              "description": "The prefix to add to all resources that this solution creates (e.g `prod`, `test`, `dev`). Used to avoid name clashes in the target account when deploying this solution multiple times.",
+              "required": true,
+              "value_constraints": [
+                {
+                  "type": "regex",
+                  "description": "Prefix must begin with a lowercase letter and may contain only lowercase letters, digits, and hyphens '-'. It must not end with a hyphen('-'), and cannot contain consecutive hyphens ('--'). It should not exceed 16 characters",
+                  "value": "^$|^__NULL__$|^[a-z](?!.*--)(?:[a-z0-9-]{0,14}[a-z0-9])?$"
+                }
+              ]
             },
             {
               "key": "ibmcloud_api_key",
@@ -264,12 +275,28 @@
               "required": false,
               "options": [
                 {
-                  "displayname": "us-south",
+                  "displayname": "Dallas (us-south)",
                   "value": "us-south"
                 },
                 {
-                  "displayname": "eu-de",
+                  "displayname": "Frankfurt (eu-de)",
                   "value": "eu-de"
+                },
+                {
+                  "displayname": "London (eu-gb)",
+                  "value": "eu-gb"
+                },
+                {
+                  "displayname": "Sydney (au-syd)",
+                  "value": "au-syd"
+                },
+                {
+                  "displayname": "Tokyo (jp-tok)",
+                  "value": "jp-tok"
+                },
+                {
+                  "displayname": "Toronto (ca-tor)",
+                  "value": "ca-tor"
                 }
               ]
             },
@@ -277,14 +304,14 @@
               "key": "resource_group_name",
               "type": "string",
               "default_value": "rag-services",
-              "description": "The name of the resource group that is created by this solution. The actual name is prefixed with the value of the input 'prefix'.  All resources created by this solution are deployed in this resource group.",
+              "description": "The name of the resource group that is created by this solution. The actual name is prefixed with the value of the input 'prefix'. All resources created by this solution are deployed in this resource group.",
               "required": false
             },
             {
               "key": "existing_resource_group_name",
               "type": "string",
               "default_value": "__NULL__",
-              "description": "The name of an existing resource group that is used by this solution, takes precedence over resource_group_name. Prefix is NOT used for existing resource group. All resources created by this solution are deployed in this resource group.",
+              "description": "The name of an existing resource group that is used by this solution, takes precedence over `resource_group_name`. Prefix is NOT used for existing resource group. All resources created by this solution are deployed in this resource group.",
               "required": false,
               "custom_config": {
                 "type": "resource_group",
@@ -336,17 +363,6 @@
               ]
             },
             {
-              "key": "secrets_manager_secret_groups",
-              "type": "array",
-              "default_value": "[\n    {\n      secret_group_name        = \"General\"\n      secret_group_description = \"A general purpose secrets group with an associated access group which has a secrets reader role\"\n      create_access_group      = true\n      access_group_name        = \"general-secrets-group-access-group\"\n      access_group_roles       = [\"SecretsReader\"]\n    }\n  ]",
-              "description": "Secret Manager secret group and access group configurations. If a prefix input variable is specified, it is added to the `access_group_name` value in the `<prefix>-value` format. If you do not wish to create any groups, set the value to `[]`. [Learn more](https://github.com/terraform-ibm-modules/terraform-ibm-secrets-manager/tree/main/solutions/fully-configurable/provisioning_secrets_groups.md).",
-              "custom_config": {
-                "type": "code_editor",
-                "grouping": "deployment",
-                "original_grouping": "deployment"
-              }
-            },
-            {
               "key": "cloud_monitoring_plan",
               "type": "string",
               "default_value": "graduated-tier",
@@ -364,11 +380,33 @@
               ]
             },
             {
-              "key": "existing_secrets_manager_crn",
+              "key": "scc_workload_protection_service_plan",
               "type": "string",
-              "default_value": "__NULL__",
-              "description": "The CRN of an existing secret manager instance to use in this solution. If not set, a new secret manager instance is provisioned.",
-              "required": false
+              "default_value": "graduated-tier",
+              "description": "The pricing plan to use for the IBM Cloud Security and Compliance Center Workload Protection instance.",
+              "required": false,
+              "options": [
+                {
+                  "displayname": "Graduated Tier",
+                  "value": "graduated-tier"
+                },
+                {
+                  "displayname": "Free Trial",
+                  "value": "free-trial"
+                }
+              ]
+            },
+            {
+              "key": "secrets_manager_secret_groups",
+              "type": "array",
+              "default_value": "[\n    {\n      secret_group_name        = \"General\"\n      secret_group_description = \"A general purpose secrets group with an associated access group which has a secrets reader role\"\n      create_access_group      = true\n      access_group_name        = \"general-secrets-group-access-group\"\n      access_group_roles       = [\"SecretsReader\"]\n    }\n  ]",
+              "description": "Secret Manager secret group and access group configurations. If a prefix input variable is specified, it is added to the `access_group_name` value in the `<prefix>-value` format. If you do not wish to create any groups, set the value to `[]`. [Learn more](https://github.com/terraform-ibm-modules/terraform-ibm-secrets-manager/tree/main/solutions/fully-configurable/provisioning_secrets_groups.md).",
+              "required": false,
+              "custom_config": {
+                "type": "code_editor",
+                "grouping": "deployment",
+                "original_grouping": "deployment"
+              }
             },
             {
               "key": "skip_secrets_manager_iam_auth_policy",
@@ -400,44 +438,6 @@
               "required": false
             },
             {
-              "key": "app_config_service_plan",
-              "type": "string",
-              "default_value": "enterprise",
-              "description": "The pricing plan to use for the IBM Cloud App Configuration instance.",
-              "required": false,
-              "options": [
-                {
-                  "displayname": "Basic",
-                  "value": "basic"
-                },
-                {
-                  "displayname": "Standard",
-                  "value": "standardv2"
-                },
-                {
-                  "displayname": "Enterprise",
-                  "value": "enterprise"
-                }
-              ]
-            },
-            {
-              "key": "scc_workload_protection_service_plan",
-              "type": "string",
-              "default_value": "graduated-tier",
-              "description": "The pricing plan to use for the IBM Cloud Security and Compliance Center Workload Protection instance.",
-              "required": false,
-              "options": [
-                {
-                  "displayname": "Graduated Tier",
-                  "value": "graduated-tier"
-                },
-                {
-                  "displayname": "Free Trial",
-                  "value": "free-trial"
-                }
-              ]
-            },
-            {
               "key": "enterprise_id",
               "type": "string",
               "default_value": "__NULL__",
@@ -466,7 +466,14 @@
               "key": "sample_app_git_url",
               "type": "string",
               "default_value": "https://github.com/IBM/gen-ai-rag-watsonx-sample-application",
-              "description": "The URL to the public git repository containing the sample rag application code.",
+              "description": "The URL to the public git repository containing the sample RAG application code.",
+              "required": false
+            },
+            {
+              "key": "existing_secrets_manager_crn",
+              "type": "string",
+              "default_value": "__NULL__",
+              "description": "The CRN of an existing secret manager instance to use in this solution. If not set, a new secret manager instance is provisioned.",
               "required": false
             },
             {
@@ -528,6 +535,18 @@
           ],
           "outputs": [
             {
+              "name": "cos_instance_crn",
+              "description": "Cloud Object Storage instance CRN"
+            },
+            {
+              "name": "cos_instance_guid",
+              "description": "Cloud Object Storage instance GUID"
+            },
+            {
+              "name": "cos_instance_name",
+              "description": "Cloud Object Storage instance name"
+            },
+            {
               "key": "elasticsearch_hostname",
               "description": "The hostname of the Elasticsearch instance."
             },
@@ -564,7 +583,7 @@
         },
         {
           "label": "Standard with sample application (Deploy on Red Hat OpenShift)",
-          "name": "standard-fully-config",
+          "name": "standard",
           "index": 2,
           "working_directory": "solutions/standard",
           "compliance": {
@@ -727,19 +746,19 @@
             "diagrams": [
               {
                 "diagram": {
-                  "url": "https://raw.githubusercontent.com/terraform-ibm-modules/stack-retrieval-augmented-generation/main/reference-architecture/rag-pattern.svg",
+                  "url": "https://raw.githubusercontent.com/terraform-ibm-modules/stack-retrieval-augmented-generation/main/reference-architectures/rag-pattern.svg",
                   "caption": "Reference architecture",
                   "type": "image/svg+xml",
-                  "thumbnail_url": "https://raw.githubusercontent.com/terraform-ibm-modules/stack-retrieval-augmented-generation/main/reference-architecture/rag-pattern.svg"
+                  "thumbnail_url": "https://raw.githubusercontent.com/terraform-ibm-modules/stack-retrieval-augmented-generation/main/reference-architectures/rag-pattern.svg"
                 },
                 "description": "Reference architecture"
               },
               {
                 "diagram": {
-                  "url": "https://raw.githubusercontent.com/terraform-ibm-modules/stack-retrieval-augmented-generation/main/reference-architecture/rag-stack.svg",
+                  "url": "https://raw.githubusercontent.com/terraform-ibm-modules/stack-retrieval-augmented-generation/main/reference-architectures/rag-stack.svg",
                   "caption": "Solution components",
                   "type": "image/svg+xml",
-                  "thumbnail_url": "https://raw.githubusercontent.com/terraform-ibm-modules/stack-retrieval-augmented-generation/main/reference-architecture/rag-stack.svg"
+                  "thumbnail_url": "https://raw.githubusercontent.com/terraform-ibm-modules/stack-retrieval-augmented-generation/main/reference-architectures/rag-stack.svg"
                 },
                 "description": "Solution components"
               }
@@ -749,9 +768,19 @@
             {
               "key": "prefix",
               "type": "string",
-              "default_value": "__NOT_SET__",
-              "description": "A prefix added to the name of all resources created by this solution. Must start with a letter, contain only lowercase letters, numbers, or dashes, and be 13 characters or less. Used to avoid name clashes in the target account when deploying this solution multiple times.",
-              "required": true
+              "default_value": "rag",
+              "random_string" : {
+                          "length": 3
+                      },
+              "description": "The prefix to add to all resources that this solution creates (e.g `prod`, `test`, `dev`). Used to avoid name clashes in the target account when deploying this solution multiple times.",
+              "required": true,
+              "value_constraints": [
+                {
+                  "type": "regex",
+                  "description": "Prefix must begin with a lowercase letter and may contain only lowercase letters, digits, and hyphens '-'. It must not end with a hyphen('-'), and cannot contain consecutive hyphens ('--'). It should not exceed 16 characters",
+                  "value": "^$|^__NULL__$|^[a-z](?!.*--)(?:[a-z0-9-]{0,14}[a-z0-9])?$"
+                }
+              ]
             },
             {
               "key": "ibmcloud_api_key",
@@ -779,12 +808,28 @@
               "required": false,
               "options": [
                 {
-                  "displayname": "us-south",
+                  "displayname": "Dallas (us-south)",
                   "value": "us-south"
                 },
                 {
-                  "displayname": "eu-de",
+                  "displayname": "Frankfurt (eu-de)",
                   "value": "eu-de"
+                },
+                {
+                  "displayname": "London (eu-gb)",
+                  "value": "eu-gb"
+                },
+                {
+                  "displayname": "Sydney (au-syd)",
+                  "value": "au-syd"
+                },
+                {
+                  "displayname": "Tokyo (jp-tok)",
+                  "value": "jp-tok"
+                },
+                {
+                  "displayname": "Toronto (ca-tor)",
+                  "value": "ca-tor"
                 }
               ]
             },
@@ -834,17 +879,6 @@
               ]
             },
             {
-              "key": "secrets_manager_secret_groups",
-              "type": "array",
-              "default_value": "[\n    {\n      secret_group_name        = \"General\"\n      secret_group_description = \"A general purpose secrets group with an associated access group which has a secrets reader role\"\n      create_access_group      = true\n      access_group_name        = \"general-secrets-group-access-group\"\n      access_group_roles       = [\"SecretsReader\"]\n    }\n  ]",
-              "description": "Secret Manager secret group and access group configurations. If a prefix input variable is specified, it is added to the `access_group_name` value in the `<prefix>-value` format. If you do not wish to create any groups, set the value to `[]`. [Learn more](https://github.com/terraform-ibm-modules/terraform-ibm-secrets-manager/tree/main/solutions/fully-configurable/provisioning_secrets_groups.md).",
-              "custom_config": {
-                "type": "code_editor",
-                "grouping": "deployment",
-                "original_grouping": "deployment"
-              }
-            },
-            {
               "key": "key_protect_plan",
               "type": "string",
               "default_value": "tiered-pricing",
@@ -879,11 +913,33 @@
               ]
             },
             {
-              "key": "existing_secrets_manager_crn",
+              "key": "scc_workload_protection_service_plan",
               "type": "string",
-              "default_value": "__NULL__",
-              "description": "The CRN of an existing secret manager instance to use in this solution. If not set, a new secret manager instance is provisioned.",
-              "required": false
+              "default_value": "graduated-tier",
+              "description": "The pricing plan to use for the IBM Cloud Security and Compliance Center Workload Protection instance.",
+              "required": false,
+              "options": [
+                {
+                  "displayname": "Graduated Tier",
+                  "value": "graduated-tier"
+                },
+                {
+                  "displayname": "Free Trial",
+                  "value": "free-trial"
+                }
+              ]
+            },
+            {
+              "key": "secrets_manager_secret_groups",
+              "type": "array",
+              "default_value": "[\n    {\n      secret_group_name        = \"General\"\n      secret_group_description = \"A general purpose secrets group with an associated access group which has a secrets reader role\"\n      create_access_group      = true\n      access_group_name        = \"general-secrets-group-access-group\"\n      access_group_roles       = [\"SecretsReader\"]\n    }\n  ]",
+              "description": "Secret Manager secret group and access group configurations. If a prefix input variable is specified, it is added to the `access_group_name` value in the `<prefix>-value` format. If you do not wish to create any groups, set the value to `[]`. [Learn more](https://github.com/terraform-ibm-modules/terraform-ibm-secrets-manager/tree/main/solutions/fully-configurable/provisioning_secrets_groups.md).",
+              "required": false,
+              "custom_config": {
+                "type": "code_editor",
+                "grouping": "deployment",
+                "original_grouping": "deployment"
+              }
             },
             {
               "key": "skip_secrets_manager_iam_auth_policy",
@@ -915,44 +971,6 @@
               "required": false
             },
             {
-              "key": "app_config_service_plan",
-              "type": "string",
-              "default_value": "enterprise",
-              "description": "The pricing plan to use for the IBM Cloud App Configuration instance.",
-              "required": false,
-              "options": [
-                {
-                  "displayname": "Basic",
-                  "value": "basic"
-                },
-                {
-                  "displayname": "Standard",
-                  "value": "standardv2"
-                },
-                {
-                  "displayname": "Enterprise",
-                  "value": "enterprise"
-                }
-              ]
-            },
-            {
-              "key": "scc_workload_protection_service_plan",
-              "type": "string",
-              "default_value": "graduated-tier",
-              "description": "The pricing plan to use for the IBM Cloud Security and Compliance Center Workload Protection instance.",
-              "required": false,
-              "options": [
-                {
-                  "displayname": "Graduated Tier",
-                  "value": "graduated-tier"
-                },
-                {
-                  "displayname": "Free Trial",
-                  "value": "free-trial"
-                }
-              ]
-            },
-            {
               "key": "enterprise_id",
               "type": "string",
               "default_value": "__NULL__",
@@ -976,44 +994,6 @@
               ],
               "description": "A list of enterprise account IDs to assign the trusted profile template to in order for the accounts to be scanned. Supports passing the string 'all' in the list to assign to all accounts. Only applies if a value is being passed for `enterprise_id`.",
               "required": false
-            },
-            {
-              "key": "app_config_service_plan",
-              "type": "string",
-              "default_value": "enterprise",
-              "description": "The pricing plan to use for the IBM Cloud App Configuration instance.",
-              "required": false,
-              "options": [
-                {
-                  "displayname": "Basic",
-                  "value": "basic"
-                },
-                {
-                  "displayname": "Standard",
-                  "value": "standardv2"
-                },
-                {
-                  "displayname": "Enterprise",
-                  "value": "enterprise"
-                }
-              ]
-            },
-            {
-              "key": "scc_workload_protection_service_plan",
-              "type": "string",
-              "default_value": "graduated-tier",
-              "description": "The pricing plan to use for the IBM Cloud Security and Compliance Center Workload Protection instance.",
-              "required": false,
-              "options": [
-                {
-                  "displayname": "Graduated Tier",
-                  "value": "graduated-tier"
-                },
-                {
-                  "displayname": "Free Trial",
-                  "value": "free-trial"
-                }
-              ]
             },
             {
               "key": "enterprise_id",
@@ -1044,7 +1024,14 @@
               "key": "sample_app_git_url",
               "type": "string",
               "default_value": "https://github.com/IBM/gen-ai-rag-watsonx-sample-application",
-              "description": "The URL to the public git repository containing the sample rag application code.",
+              "description": "The URL to the public git repository containing the sample RAG application code.",
+              "required": false
+            },
+            {
+              "key": "existing_secrets_manager_crn",
+              "type": "string",
+              "default_value": "__NULL__",
+              "description": "The CRN of an existing secret manager instance to use in this solution. If not set, a new secret manager instance is provisioned.",
               "required": false
             },
             {
@@ -1105,6 +1092,18 @@
             }
           ],
           "outputs": [
+            {
+              "name": "cos_instance_crn",
+              "description": "Cloud Object Storage instance CRN"
+            },
+            {
+              "name": "cos_instance_guid",
+              "description": "Cloud Object Storage instance GUID"
+            },
+            {
+              "name": "cos_instance_name",
+              "description": "Cloud Object Storage instance name"
+            },
             {
               "key": "elasticsearch_hostname",
               "description": "The hostname of the Elasticsearch instance."

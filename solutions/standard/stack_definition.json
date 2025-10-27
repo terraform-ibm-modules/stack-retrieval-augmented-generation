@@ -113,14 +113,6 @@
       "hidden": false
     },
     {
-      "name": "app_config_service_plan",
-      "required": false,
-      "type": "string",
-      "hidden": false,
-      "custom_config": {}
-    },
-
-    {
       "name": "scc_workload_protection_service_plan",
       "required": false,
       "type": "string",
@@ -188,7 +180,7 @@
   "members": [
     {
       "name": "1 - Account Configuration",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.be71d2f4-262c-4186-9b07-30dc1b1517bb-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.63df805b-f866-4a3e-a168-faa43d4c8a2b-global",
       "inputs": [
         {
           "name": "prefix",
@@ -234,7 +226,7 @@
     },
     {
       "name": "2a - Essential Security - Encryption Key Management",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.09dab2dd-6383-4257-8cc4-ba5bf567cd5e-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.23e68097-1552-41e2-a8e3-a493e1427ebb-global",
       "inputs": [
         {
           "name": "existing_resource_group_name",
@@ -260,7 +252,7 @@
     },
     {
       "name": "2b - Essential Security - Cloud Object Storage",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.410e4ac2-fe70-4813-ac27-4f5c460cbb55-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.6722b081-5cec-4234-82bf-fc1d036ef51e-global",
       "inputs": [
         {
           "name": "prefix",
@@ -269,16 +261,12 @@
         {
           "name": "existing_resource_group_name",
           "value": "ref:../1 - Account Configuration/outputs/observability_resource_group_name"
-        },
-        {
-          "name": "instance_name",
-          "value": "essential-cos"
         }
       ]
     },
     {
       "name": "2c - Essential Security - Cloud Monitoring",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.8028a206-0824-4ad6-af24-b9fb70cce2ac-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.5a46e96b-8776-4e9a-9290-21c4217069e1-global",
       "inputs": [
         {
           "name": "region",
@@ -304,11 +292,11 @@
     },
     {
       "name": "3a - Essential Security - Event Notifications",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.dcb7092c-99fd-425c-af23-0d03a85fa7d7-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.86dd9347-d1b4-4dc3-b520-f747557c9a42-global",
       "inputs": [
         {
           "name": "existing_cos_instance_crn",
-          "value": "ref:../2b - Essential Security - Cloud Object Storage/outputs/cos_instance_id"
+          "value": "ref:../2b - Essential Security - Cloud Object Storage/outputs/cos_instance_crn"
         },
         {
           "name": "enable_collecting_failed_events",
@@ -417,6 +405,10 @@
           "value": "ref:../../inputs/existing_governance_instance_crn"
         },
         {
+          "name": "existing_cos_instance_crn",
+          "value": "ref:../2b - Essential Security - Cloud Object Storage/outputs/cos_instance_crn"
+        },
+        {
           "name": "cos_kms_crn",
           "value": "ref:../2a - Essential Security - Encryption Key Management/outputs/kms_instance_crn"
         },
@@ -428,7 +420,7 @@
     },
     {
       "name": "3c - Workload - Compute Red Hat OpenShift Container Platform on VPC",
-      "version_locator": "1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.d165c908-e8e5-470e-b5d4-0c284ec4cf43-global",
+      "version_locator": "1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.cb341280-efa5-4bdf-8976-cea6ea62c3a4-global",
       "inputs": [
         {
           "name": "prefix",
@@ -499,7 +491,7 @@
     },
     {
       "name": "4a - Essential Security - Cloud Logs for logging",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.ee855d83-2f87-4d0e-bc0d-66c11ba66902-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.05329b70-0b0b-4c7c-9b16-c7024a525465-global",
       "inputs": [
         {
           "name": "region",
@@ -545,7 +537,7 @@
     },
     {
       "name": "4b - Essential Security - App Configuration",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.430291dd-8a78-46c2-8d02-e951da977582-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.01bb35a3-8a27-4e08-a938-1f0f50b972a3-global",
       "inputs": [
         {
           "name": "existing_resource_group_name",
@@ -561,7 +553,7 @@
         },
         {
           "name": "app_config_service_plan",
-          "value": "ref:../../inputs/app_config_service_plan"
+          "value": "enterprise"
         },
         {
           "name": "enable_config_aggregator",
@@ -611,7 +603,7 @@
     },
     {
       "name": "4c - Essential Security - Secrets Manager",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.3d0da0a9-0327-44fc-8796-edf8e0017e25-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.09c13b73-1987-4c38-b54d-2c79712bfa76-global",
       "inputs": [
         {
           "name": "prefix",
@@ -657,7 +649,7 @@
     },
     {
       "name": "4d - Essential Security - Cloud Logs for activity tracking",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.ee855d83-2f87-4d0e-bc0d-66c11ba66902-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.05329b70-0b0b-4c7c-9b16-c7024a525465-global",
       "inputs": [
         {
           "name": "region",
@@ -715,7 +707,7 @@
     },
     {
       "name": "5a - Essential Security - Security and Compliance Center Workload Protection",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.b2cd208d-f893-4e44-bc2e-b9997e3a8153-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.dcdef1bc-68b8-460e-93d4-a72aac3f317b-global",
       "inputs": [
         {
           "name": "existing_resource_group_name",
@@ -749,7 +741,7 @@
     },
     {
       "name": "5b - Gen AI - Databases for Elasticsearch",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.55d77b5b-6866-4f7c-b216-2bb86d74d5e5-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.5acd3054-0a4f-4242-9110-890dc65f0ae7-global",
       "inputs": [
         {
           "name": "existing_resource_group_name",
@@ -815,7 +807,7 @@
     },
     {
       "name": "5c - Workload - DevSecOps Application Lifecycle Management",
-      "version_locator": "1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.40c697e5-a339-4bf2-90ed-c598f103c16b-global",
+      "version_locator": "1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.64e4c450-7e38-427e-856b-7d158f146c8d-global",
       "inputs": [
         {
           "name": "toolchain_name",
@@ -905,7 +897,7 @@
     },
     {
       "name": "5d - Essential Security - Activity Tracker Event Routing",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.6cec6dd7-d4e4-4bec-8f94-da26611d42a5-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.3b795a48-00a9-4430-95ba-857a324329e2-global",
       "inputs": [
         {
           "name": "region",
@@ -942,8 +934,8 @@
       ]
     },
     {
-      "name": "6 - Workload - Sample RAG App",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.89b0a04d-4690-4df6-8a7f-e71945053e6b-global",
+      "name": "6 - Workload - Sample RAG Application",
+      "version_locator": "7df1e4ca-d54c-4fd0-82ce-3d13247308cd.cf9bdedf-48c7-440e-bf04-82ba6008b2b9",
       "inputs": [
         {
           "name": "toolchain_region",
@@ -1026,6 +1018,18 @@
   ],
   "outputs": [
     {
+      "name": "cos_instance_crn",
+      "value": "ref:../2b - Essential Security - Cloud Object Storage/outputs/cos_instance_crn"
+    },
+    {
+      "name": "cos_instance_guid",
+      "value": "ref:../2b - Essential Security - Cloud Object Storage/outputs/cos_instance_guid"
+    },
+    {
+      "name": "cos_instance_name",
+      "value": "ref:../2b - Essential Security - Cloud Object Storage/outputs/cos_instance_name"
+    },
+    {
       "name": "elasticsearch_hostname",
       "value": "ref:./members/5b - Gen AI - Databases for Elasticsearch/outputs/hostname"
     },
@@ -1043,19 +1047,19 @@
     },
     {
       "name": "watsonx_project_url",
-      "value": "ref:./members/6 - Workload - Sample RAG App/outputs/watsonx_project_url"
+      "value": "ref:./members/6 - Workload - Sample RAG Application/outputs/watsonx_project_url"
     },
     {
       "name": "watsonx_project_id",
-      "value": "ref:./members/6 - Workload - Sample RAG App/outputs/watsonx_project_id"
+      "value": "ref:./members/6 - Workload - Sample RAG Application/outputs/watsonx_project_id"
     },
     {
       "name": "watson_discovery_api_url",
-      "value": "ref:./members/6 - Workload - Sample RAG App/outputs/watson_discovery_api_url"
+      "value": "ref:./members/6 - Workload - Sample RAG Application/outputs/watson_discovery_api_url"
     },
     {
       "name": "watson_discovery_project_id",
-      "value": "ref:./members/6 - Workload - Sample RAG App/outputs/watson_discovery_project_id"
+      "value": "ref:./members/6 - Workload - Sample RAG Application/outputs/watson_discovery_project_id"
     },
     {
       "name": "kms_instance_crn",

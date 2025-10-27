@@ -261,6 +261,10 @@
         {
           "name": "existing_resource_group_name",
           "value": "ref:../1 - Account Configuration/outputs/observability_resource_group_name"
+        },
+        {
+          "name": "instance_name",
+          "value": "essential-security"
         }
       ]
     },
@@ -340,7 +344,7 @@
     },
     {
       "name": "3a - Essential Security - Event Notifications",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.86dd9347-d1b4-4dc3-b520-f747557c9a42-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.5dbe54b9-6e6c-4843-a4f3-087400a99019-global",
       "inputs": [
         {
           "name": "existing_cos_instance_crn",
@@ -390,7 +394,7 @@
     },
     {
       "name": "3b - Gen AI - WatsonX SaaS services",
-      "version_locator": "1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.9ca79f5e-f2ad-4222-b654-efcbca158aaa-global",
+      "version_locator": "1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc.7dffb0ba-df27-4f52-b022-3b5ec6350cfc-global",
       "inputs": [
         {
           "name": "watsonx_admin_api_key",
@@ -451,10 +455,6 @@
         {
           "name": "existing_governance_instance",
           "value": "ref:../../inputs/existing_governance_instance_crn"
-        },
-        {
-          "name": "existing_cos_instance_crn",
-          "value": "ref:../2b - Essential Security - Cloud Object Storage/outputs/cos_instance_crn"
         },
         {
           "name": "cos_kms_crn",

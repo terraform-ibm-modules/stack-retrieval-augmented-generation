@@ -3,3 +3,5 @@
 *.tfstate
 *.lock.hcl
 .DS_Store
+*.tfvars
+*.tfvars.json

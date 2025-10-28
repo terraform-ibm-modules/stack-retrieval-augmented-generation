@@ -34,7 +34,7 @@ variable "prefix" {
     # - null and empty string is allowed
     # - Must not contain consecutive hyphens (--): length(regexall("--", var.prefix)) == 0
     # - Starts with a lowercase letter: [a-z]
-    # - Contains only lowercase letters (a–z), digits (0–9), and hyphens (-) 
+    # - Contains only lowercase letters (a–z), digits (0–9), and hyphens (-)
     # - Must not end with a hyphen (-): [a-z0-9]
     condition = (var.prefix == null || var.prefix == "" ? true :
       alltrue([

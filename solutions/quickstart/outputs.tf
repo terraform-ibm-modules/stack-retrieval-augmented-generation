@@ -13,6 +13,15 @@ output "resource_group_name" {
 }
 
 ########################################################################################################################
+# KMS
+########################################################################################################################
+
+output "kms_key_crn" {
+  description = "CRN of the KMS Key."
+  value       = module.key_protect_all_inclusive.keys["${local.key_ring_name}.${local.key_name}"].crn
+}
+
+########################################################################################################################
 # watsonx.ai
 ########################################################################################################################
 
@@ -38,9 +47,6 @@ output "watsonx_ai" {
     "watsonx_ai_studio_name"          = module.watsonx_ai.watsonx_ai_studio_name
     "watsonx_ai_studio_plan_id"       = module.watsonx_ai.watsonx_ai_studio_plan_id
     "watsonx_ai_studio_dashboard_url" = module.watsonx_ai.watsonx_ai_studio_dashboard_url
-
-    # COS KMS 
-    "cos_kms_key_crn" = module.key_protect_all_inclusive.keys["${local.key_ring_name}.${local.key_name}"].crn
   }
 }
 
@@ -59,36 +65,6 @@ output "watson_discovery" {
     "dashboard_url" = module.watson_discovery.dashboard_url
   }
 }
-
-# output "watson_discovery_account_id" {
-#   description = "Account ID of the Watson Discovery instance."
-#   value       = module.watson_discovery.account_id
-# }
-
-# output "watson_discovery_crn" {
-#   description = "CRN of the Watson Discovery instance."
-#   value       = module.watson_discovery.crn
-# }
-
-# output "watson_discovery_guid" {
-#   description = "GUID of the Watson Discovery instance."
-#   value       = module.watson_discovery.guid
-# }
-
-# output "watson_discovery_name" {
-#   description = "Name of the Watson Discovery instance."
-#   value       = module.watson_discovery.name
-# }
-
-# output "watson_discovery_plan_id" {
-#   description = "Plan ID of the Watson Discovery instance."
-#   value       = module.watson_discovery.plan_id
-# }
-
-# output "watson_discovery_dashboard_url" {
-#   description = "Dashboard URL of the Watson Discovery instance."
-#   value       = module.watson_discovery.dashboard_url
-# }
 
 ########################################################################################################################
 # watsonx Assistant
@@ -113,15 +89,18 @@ output "watsonx_assistant" {
 output "icd_elastic_search" {
   description = "ICD Elastic search output."
   value = {
-    "crn"                = module.icd_elasticsearch.crn
-    "id"                 = module.icd_elasticsearch.id
-    "version"            = module.icd_elasticsearch.version
-    # "adminuser"          = module.icd_elasticsearch.adminuser
-    "hostname"           = module.icd_elasticsearch.hostname
-    "port"               = module.icd_elasticsearch.port
-    # "certificate_base64" = module.icd_elasticsearch.certificate_base64
-    "service_credentials_json" = module.icd_elasticsearch.service_credentials_json
+    "crn"                      = module.icd_elasticsearch.crn
+    "id"                       = module.icd_elasticsearch.id
+    "version"                  = module.icd_elasticsearch.version
+    "hostname"                 = module.icd_elasticsearch.hostname
+    "port"                     = module.icd_elasticsearch.port
   }
+}
+
+output "icd_es_service_credentials_json" {
+  description = "ICD Elastic search output."
+  value = module.icd_elasticsearch.service_credentials_json
+  sensitive = true
 }
 
 ########################################################################################################################

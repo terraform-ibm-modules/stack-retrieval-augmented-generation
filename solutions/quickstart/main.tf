@@ -18,7 +18,7 @@ module "resource_group" {
 
 module "cos" {
   source            = "terraform-ibm-modules/cos/ibm//modules/fscloud"
-  version           = "10.4.0"
+  version           = "10.5.2"
   resource_group_id = module.resource_group.resource_group_id
   cos_instance_name = "${local.prefix}cos"
   cos_plan          = "standard"
@@ -36,7 +36,7 @@ locals {
 
 module "key_protect_all_inclusive" {
   source                    = "terraform-ibm-modules/kms-all-inclusive/ibm"
-  version                   = "5.3.3"
+  version                   = "5.4.5"
   resource_group_id         = module.resource_group.resource_group_id
   region                    = var.region
   key_protect_instance_name = "${local.prefix}kp"
@@ -55,30 +55,24 @@ module "key_protect_all_inclusive" {
 }
 
 ##############################################################################################################
-# Code Engine
-##############################################################################################################
-
-
-
-# Pass the existing application info
-
-
-##############################################################################################################
 # watsonx.ai
 ##############################################################################################################
 
+data "ibm_iam_auth_token" "restapi" {} # To include provider
 module "watsonx_ai" {
-  source                    = "terraform-ibm-modules/watsonx-ai/ibm"
-  version                   = "2.8.8"
-  region                    = var.region
-  resource_group_id         = module.resource_group.resource_group_id
-  resource_tags             = var.resource_tags
-  project_name              = "${local.prefix}project-rag"
-  watsonx_ai_studio_plan    = "professional-v1"
-  watsonx_ai_runtime_plan   = "v2-professional"
-  enable_cos_kms_encryption = true
-  cos_instance_crn          = module.cos.cos_instance_crn
-  cos_kms_key_crn           = module.key_protect_all_inclusive.keys["${local.key_ring_name}.${local.key_name}"].crn
+  source                           = "terraform-ibm-modules/watsonx-ai/ibm"
+  version                          = "2.9.1"
+  region                           = var.region
+  resource_group_id                = module.resource_group.resource_group_id
+  resource_tags                    = var.resource_tags
+  project_name                     = "${local.prefix}project-rag"
+  watsonx_ai_studio_instance_name  = "${local.prefix}wx-studio"
+  watsonx_ai_studio_plan           = "professional-v1"
+  watsonx_ai_runtime_instance_name = "${local.prefix}wx-runtime"
+  watsonx_ai_runtime_plan          = "v2-professional"
+  enable_cos_kms_encryption        = true
+  cos_instance_crn                 = module.cos.cos_instance_crn
+  cos_kms_key_crn                  = module.key_protect_all_inclusive.keys["${local.key_ring_name}.${local.key_name}"].crn
 }
 
 ##############################################################################################################
@@ -87,7 +81,7 @@ module "watsonx_ai" {
 
 module "watson_discovery" {
   source                = "terraform-ibm-modules/watsonx-discovery/ibm"
-  version               = "1.10.5"
+  version               = "1.11.2"
   region                = var.region
   resource_group_id     = module.resource_group.resource_group_id
   resource_tags         = var.resource_tags
@@ -102,7 +96,7 @@ module "watson_discovery" {
 
 module "watsonx_assistant" {
   source                 = "terraform-ibm-modules/watsonx-assistant/ibm"
-  version                = "1.4.6"
+  version                = "1.5.2"
   region                 = var.region
   resource_group_id      = module.resource_group.resource_group_id
   resource_tags          = var.resource_tags
@@ -110,15 +104,6 @@ module "watsonx_assistant" {
   watsonx_assistant_name = "${local.prefix}assistant"
   service_endpoints      = "public-and-private"
 }
-
-##############################################################################################################
-# watsonx.data
-##############################################################################################################
-
-##############################################################################################################
-# watsonx.governance
-##############################################################################################################
-
 
 ##############################################################################################################
 # Elastic search
@@ -131,14 +116,16 @@ locals {
     "elasticsearch_viewer" : "Viewer",
     "elasticsearch_editor" : "Editor",
   }
+  es_index_name = "${local.prefix}es-index"
 }
 
 module "icd_elasticsearch" {
   source                   = "terraform-ibm-modules/icd-elasticsearch/ibm"
-  version                  = "2.3.28"
+  version                  = "2.4.5"
   resource_group_id        = module.resource_group.resource_group_id
   name                     = "${local.prefix}data-store"
   region                   = var.region
+  plan                     = "enterprise"
   elasticsearch_version    = "8.12"
   tags                     = var.resource_tags
   service_endpoints        = "public-and-private"
@@ -147,30 +134,30 @@ module "icd_elasticsearch" {
   service_credential_names = local.es_credentials
 }
 
-##############################################################################################################
-# Event Notifications
-##############################################################################################################
+resource "time_sleep" "wait" {
+  depends_on      = [module.icd_elasticsearch]
+  create_duration = "11m"
+}
 
-
-##############################################################################################################
-# Secrets Manager
-##############################################################################################################
-
-
-##############################################################################################################
-# Cloud Logs
-##############################################################################################################
-
-##############################################################################################################
-# Cloud Monitoring
-##############################################################################################################
+// Create Elastic search index; configuration is added in provider configuration.
+resource "elasticsearch_index" "es_create_index" {
+  provider           = elasticsearch.ibm_es
+  depends_on         = [time_sleep.wait]
+  name               = local.es_index_name
+  number_of_shards   = 1
+  number_of_replicas = 1
+  force_destroy      = true
+}
 
 ##############################################################################################################
-# App Configuration
+# Code Engine
 ##############################################################################################################
 
-##############################################################################################################
-# SCC WP
-##############################################################################################################
+module "code_engine" {
+  source            = "terraform-ibm-modules/code-engine/ibm"
+  version           = "4.6.4"
+  resource_group_id = module.resource_group.resource_group_id
+  project_name      = "${local.prefix}project"
+}
 
 ##############################################################################################################

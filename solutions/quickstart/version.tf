@@ -7,5 +7,14 @@ terraform {
       source  = "IBM-Cloud/ibm"
       version = "1.83.3"
     }
+    elasticsearch = {
+      source  = "phillbaker/elasticsearch"
+      version = ">= 2.0.7"
+    }
+
+    restapi = {
+      source  = "Mastercard/restapi"
+      version = "1.20.0"
+    }
   }
 }

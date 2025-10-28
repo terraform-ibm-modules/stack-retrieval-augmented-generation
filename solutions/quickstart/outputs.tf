@@ -89,20 +89,32 @@ output "watsonx_assistant" {
 output "icd_elastic_search" {
   description = "ICD Elastic search output."
   value = {
-    "crn"                      = module.icd_elasticsearch.crn
-    "id"                       = module.icd_elasticsearch.id
-    "version"                  = module.icd_elasticsearch.version
-    "hostname"                 = module.icd_elasticsearch.hostname
-    "port"                     = module.icd_elasticsearch.port
+    "crn"      = module.icd_elasticsearch.crn
+    "id"       = module.icd_elasticsearch.id
+    "version"  = module.icd_elasticsearch.version
+    "hostname" = module.icd_elasticsearch.hostname
+    "port"     = module.icd_elasticsearch.port
   }
 }
 
 output "icd_es_service_credentials_json" {
-  description = "ICD Elastic search output."
-  value = module.icd_elasticsearch.service_credentials_json
-  sensitive = true
+  description = "ICD Elastic search credentials json."
+  value       = module.icd_elasticsearch.service_credentials_json
+  sensitive   = true
 }
 
 ########################################################################################################################
 # Code Engine
 ########################################################################################################################
+
+output "code_engine" {
+  description = "ICD Elastic search output."
+  value = {
+    "crn"            = module.icd_elasticsearch.crn
+    "project_id"     = module.code_engine.project_id
+    "app"            = module.code_engine.app
+    "config_map"     = module.code_engine.config_map
+    "secret"         = module.code_engine.secret
+    "domain_mapping" = module.code_engine.domain_mapping
+  }
+}

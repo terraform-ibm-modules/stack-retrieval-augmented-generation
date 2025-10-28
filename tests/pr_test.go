@@ -15,6 +15,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"github.com/terraform-ibm-modules/ibmcloud-terratest-wrapper/common"
+	"github.com/terraform-ibm-modules/ibmcloud-terratest-wrapper/testhelper"
 	"github.com/terraform-ibm-modules/ibmcloud-terratest-wrapper/testprojects"
 )
 
@@ -26,6 +27,15 @@ var permanentResources map[string]interface{}
 // Current supported regions (NOTE: eu-es is not being used as we don't have extended trial plan quota in that region currently. Not using us-south on request from SM team)
 var validRegions = []string{
 	"eu-de",
+}
+
+var validQsRegions = []string{
+	"us-south",
+	"eu-de",
+	"eu-gb",
+	"jp-tok",
+	"au-syd",
+	"ca-tor",
 }
 
 func TestMain(m *testing.M) {
@@ -41,6 +51,7 @@ func TestMain(m *testing.M) {
 
 const basicDaStackDefPath = "solutions/basic/stack_definition.json"
 const standardDaStackDefPath = "solutions/standard/stack_definition.json"
+const quickStartTerraformDir = "solutions/quickstart"
 
 func TestProjectsBasicFullTest(t *testing.T) {
 	t.Parallel()
@@ -187,5 +198,57 @@ func TestProjectsStandardFullTest(t *testing.T) {
 		t.Log("TestProjectsFullTest Passed")
 	} else {
 		t.Error("TestProjectsFullTest Failed")
+	}
+}
+
+func setupQuickstartOptions(t *testing.T, prefix string) *testhelper.TestOptions {
+
+	options := testhelper.TestOptionsDefault(&testhelper.TestOptions{
+		Testing:      t,
+		TerraformDir: quickStartTerraformDir,
+		Prefix:       prefix,
+
+		IgnoreDestroys: testhelper.Exemptions{ // Ignore for consistency check
+			List: []string{
+				"module.watsonx_ai.module.configure_user.null_resource.configure_user",
+				"module.watsonx_ai.module.configure_user.null_resource.restrict_access",
+			},
+		},
+		IgnoreUpdates: testhelper.Exemptions{ // Ignore for consistency check
+			List: []string{
+				"module.watsonx_ai.module.configure_user.null_resource.configure_user",
+				"module.watsonx_ai.module.configure_user.null_resource.restrict_access",
+			},
+		},
+	})
+
+	options.TerraformVars = map[string]interface{}{
+		"region":              validQsRegions[rand.Intn(len(validQsRegions))],
+		"provider_visibility": "public",
+		"prefix":              options.Prefix,
+	}
+
+	return options
+}
+
+func TestRunQuickstartDA(t *testing.T) {
+	t.Parallel()
+
+	options := setupQuickstartOptions(t, "rag-qs")
+	output, err := options.RunTestConsistency()
+	assert.Nil(t, err, "This should not have errored")
+	assert.NotNil(t, output, "Expected some output")
+}
+
+// Upgrade test for the Quickstart DA
+func TestRunUpgradeQuickstartDA(t *testing.T) {
+	t.Parallel()
+
+	options := setupQuickstartOptions(t, "rag-qs-upg")
+
+	output, err := options.RunTestUpgrade()
+	if !options.UpgradeTestSkipped {
+		assert.Nil(t, err, "This should not have errored")
+		assert.NotNil(t, output, "Expected some output")
 	}
 }

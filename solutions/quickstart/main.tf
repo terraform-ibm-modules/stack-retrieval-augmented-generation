@@ -1,5 +1,25 @@
+##############################################################################################################
+# Locals Block
+##############################################################################################################
+
 locals {
+
   prefix = var.prefix != null ? trimspace(var.prefix) != "" ? "${var.prefix}-" : "" : ""
+  service_endpoints = "public-and-private"
+
+  # KMS
+  key_ring_name = "${local.prefix}keyring"
+  key_name      = "${local.prefix}key"
+
+  # ICD Elastic Search
+  es_credentials = {
+    "elasticsearch_admin" : "Administrator",
+    "elasticsearch_operator" : "Operator",
+    "elasticsearch_viewer" : "Viewer",
+    "elasticsearch_editor" : "Editor",
+  }
+  es_index_name = "${local.prefix}es-index"
+
 }
 
 ##############################################################################################################
@@ -29,11 +49,6 @@ module "cos" {
 # Key Protect
 ##############################################################################
 
-locals {
-  key_ring_name = "${local.prefix}keyring"
-  key_name      = "${local.prefix}key"
-}
-
 module "key_protect_all_inclusive" {
   source                    = "terraform-ibm-modules/kms-all-inclusive/ibm"
   version                   = "5.4.5"
@@ -58,7 +73,8 @@ module "key_protect_all_inclusive" {
 # watsonx.ai
 ##############################################################################################################
 
-data "ibm_iam_auth_token" "restapi" {} # To include provider
+data "ibm_iam_auth_token" "restapi" {}
+
 module "watsonx_ai" {
   source                           = "terraform-ibm-modules/watsonx-ai/ibm"
   version                          = "2.9.1"
@@ -87,7 +103,7 @@ module "watson_discovery" {
   resource_tags         = var.resource_tags
   plan                  = "plus"
   watson_discovery_name = "${local.prefix}discovery"
-  service_endpoints     = "public-and-private"
+  service_endpoints     = local.service_endpoints
 }
 
 ##############################################################################################################
@@ -102,22 +118,12 @@ module "watsonx_assistant" {
   resource_tags          = var.resource_tags
   plan                   = "enterprise"
   watsonx_assistant_name = "${local.prefix}assistant"
-  service_endpoints      = "public-and-private"
+  service_endpoints      = local.service_endpoints
 }
 
 ##############################################################################################################
 # Elastic search
 ##############################################################################################################
-
-locals {
-  es_credentials = {
-    "elasticsearch_admin" : "Administrator",
-    "elasticsearch_operator" : "Operator",
-    "elasticsearch_viewer" : "Viewer",
-    "elasticsearch_editor" : "Editor",
-  }
-  es_index_name = "${local.prefix}es-index"
-}
 
 module "icd_elasticsearch" {
   source                   = "terraform-ibm-modules/icd-elasticsearch/ibm"
@@ -128,7 +134,7 @@ module "icd_elasticsearch" {
   plan                     = "enterprise"
   elasticsearch_version    = "8.12"
   tags                     = var.resource_tags
-  service_endpoints        = "public-and-private"
+  service_endpoints        = local.service_endpoints
   member_host_flavor       = "multitenant"
   deletion_protection      = false
   service_credential_names = local.es_credentials
@@ -139,7 +145,7 @@ resource "time_sleep" "wait" {
   create_duration = "11m"
 }
 
-// Create Elastic search index; configuration is added in provider configuration.
+// Create Elastic search index
 resource "elasticsearch_index" "es_create_index" {
   provider           = elasticsearch.ibm_es
   depends_on         = [time_sleep.wait]

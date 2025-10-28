@@ -12,7 +12,9 @@ provider "elasticsearch" {
   url                   = "https://${module.icd_elasticsearch.service_credentials_object.hostname}:${module.icd_elasticsearch.service_credentials_object.port}"
   cacert_file           = base64decode(module.icd_elasticsearch.service_credentials_object.certificate)
   elasticsearch_version = "8.12"
-  healthcheck           = false # Required to avoid HEAD healthcheck failed error.
+
+  # Below is required to avoid HEAD healthcheck failed error. Reference to similar issue and suggestion - https://github.com/phillbaker/terraform-provider-elasticsearch/issues/352
+  healthcheck           = false
 }
 
 provider "restapi" {

@@ -4,7 +4,7 @@
 
 locals {
 
-  prefix = var.prefix != null ? trimspace(var.prefix) != "" ? "${var.prefix}-" : "" : ""
+  prefix            = var.prefix != null ? trimspace(var.prefix) != "" ? "${var.prefix}-" : "" : ""
   service_endpoints = "public-and-private"
 
   # KMS
@@ -134,21 +134,16 @@ module "icd_elasticsearch" {
   plan                     = "enterprise"
   elasticsearch_version    = "8.12"
   tags                     = var.resource_tags
-  service_endpoints        = local.service_endpoints
+  service_endpoints        = "private"
   member_host_flavor       = "multitenant"
   deletion_protection      = false
   service_credential_names = local.es_credentials
 }
 
-resource "time_sleep" "wait" {
-  depends_on      = [module.icd_elasticsearch]
-  create_duration = "11m"
-}
-
 // Create Elastic search index
 resource "elasticsearch_index" "es_create_index" {
   provider           = elasticsearch.ibm_es
-  depends_on         = [time_sleep.wait]
+  depends_on         = [module.icd_elasticsearch]
   name               = local.es_index_name
   number_of_shards   = 1
   number_of_replicas = 1
@@ -156,14 +151,113 @@ resource "elasticsearch_index" "es_create_index" {
 }
 
 ##############################################################################################################
+# Container Registry
+##############################################################################################################
+
+module "icr_namespace" {
+  source            = "terraform-ibm-modules/container-registry/ibm"
+  version           = "2.2.1"
+  resource_group_id = module.resource_group.resource_group_id
+  namespace_name    = "${local.prefix}namespace"
+}
+
+##############################################################################################################
 # Code Engine
 ##############################################################################################################
 
-module "code_engine" {
-  source            = "terraform-ibm-modules/code-engine/ibm"
+locals {
+  env_vars = [
+    {
+      type  = "literal"
+      name  = "WATSONX_AI_APIKEY"
+      value = sensitive(var.ibmcloud_api_key)
+    },
+    {
+      type  = "literal"
+      name  = "WATSONX_PROJECT_ID"
+      value = module.watsonx_ai.watsonx_ai_project_id
+    },
+    {
+      type  = "literal"
+      name  = "ENABLE_WXASST"
+      value = "true"
+    },
+    {
+      type  = "literal"
+      name  = "WXASST_REGION"
+      value = var.region
+    },
+    {
+      type  = "literal"
+      name  = "ENABLE_RAG_LLM"
+      value = "true"
+    }
+  ]
+  output_image = "private.${var.region}.icr.io/${module.icr_namespace.namespace_name}/ai-agent-for-loan-risk"
+  url          = "https://github.com/IBM/ai-agent-for-loan-risk"
+  strategy     = "dockerfile"
+  ce_app_name  = "ai-agent-for-loan-risk"
+}
+
+##############################################################################
+# Code Engine Project
+##############################################################################
+module "code_engine_project" {
+  source            = "terraform-ibm-modules/code-engine/ibm//modules/project"
   version           = "4.6.4"
+  name              = "${local.prefix}project"
   resource_group_id = module.resource_group.resource_group_id
-  project_name      = "${local.prefix}project"
+}
+
+##############################################################################
+# Code Engine Secret
+##############################################################################
+module "code_engine_secret" {
+  source     = "terraform-ibm-modules/code-engine/ibm//modules/secret"
+  version    = "4.6.4"
+  name       = "${local.prefix}registry-secret"
+  project_id = module.code_engine_project.id
+  format     = "registry"
+  data = {
+    "server"   = "private.${var.region}.icr.io",
+    "username" = "${local.prefix}user",
+    "password" = sensitive(var.ibmcloud_api_key),
+  }
+}
+
+##############################################################################
+# Code Engine Build
+##############################################################################
+
+module "code_engine_build" {
+  source                     = "terraform-ibm-modules/code-engine/ibm//modules/build"
+  version                    = "4.6.4"
+  name                       = "${local.prefix}-ce-build"
+  ibmcloud_api_key           = var.ibmcloud_api_key
+  project_id                 = module.code_engine_project.id
+  existing_resource_group_id = module.resource_group.resource_group_id
+  source_url                 = local.url
+  strategy_type              = local.strategy
+  output_secret              = module.code_engine_secret.name
+  output_image               = local.output_image
+}
+
+##############################################################################
+# Code Engine Application
+##############################################################################
+module "code_engine_app" {
+  depends_on                    = [module.code_engine_build]
+  source                        = "terraform-ibm-modules/code-engine/ibm//modules/app"
+  version                       = "4.6.4"
+  project_id                    = module.code_engine_project.id
+  name                          = local.ce_app_name
+  image_reference               = module.code_engine_build.output_image
+  image_secret                  = module.code_engine_secret.name
+  run_env_variables             = local.env_vars
+  scale_cpu_limit               = "4"
+  scale_memory_limit            = "32G"
+  scale_ephemeral_storage_limit = "300M"
+  managed_domain_mappings       = "local_private"
 }
 
 ##############################################################################################################

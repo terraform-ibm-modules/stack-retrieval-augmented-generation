@@ -14,7 +14,7 @@ provider "elasticsearch" {
   elasticsearch_version = "8.12"
 
   # Below is required to avoid HEAD healthcheck failed error. Reference to similar issue and suggestion - https://github.com/phillbaker/terraform-provider-elasticsearch/issues/352
-  healthcheck           = false
+  healthcheck = false
 }
 
 provider "restapi" {

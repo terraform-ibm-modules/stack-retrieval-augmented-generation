@@ -104,17 +104,22 @@ output "icd_es_service_credentials_json" {
 }
 
 ########################################################################################################################
+# Container Registry
+########################################################################################################################
+output "icr_namespace_crn" {
+  description = "CRN representing the Container Registry namespace"
+  value       = module.icr_namespace.namespace_crn
+}
+
+########################################################################################################################
 # Code Engine
 ########################################################################################################################
 
 output "code_engine" {
-  description = "ICD Elastic search output."
+  description = "Code Engine output."
   value = {
-    "crn"            = module.icd_elasticsearch.crn
-    "project_id"     = module.code_engine.project_id
-    "app"            = module.code_engine.app
-    "config_map"     = module.code_engine.config_map
-    "secret"         = module.code_engine.secret
-    "domain_mapping" = module.code_engine.domain_mapping
+    "project_id"   = module.code_engine_project.id
+    "app_url"      = module.code_engine_app.endpoint
+    "output_image" = local.output_image
   }
 }

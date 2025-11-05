@@ -1,7 +1,7 @@
 {
   "products": [
     {
-      "label": "Cloud-native AI",
+      "label": "Landing zone for cloud-native AI applications",
       "name": "Retrieval_Augmented_Generation_Pattern",
       "product_kind": "solution",
       "tags": [

@@ -18,7 +18,14 @@ locals {
     "elasticsearch_viewer" : "Viewer",
     "elasticsearch_editor" : "Editor",
   }
-  es_index_name = "${local.prefix}es-index"
+
+  # Watson
+  watson_plan = {
+    "studio"    = "professional-v1",
+    "runtime"   = "v2-professional",
+    "discovery" = "plus",
+    "assistant" = "enterprise"
+  }
 
 }
 
@@ -82,10 +89,13 @@ module "watsonx_ai" {
   resource_group_id                = module.resource_group.resource_group_id
   resource_tags                    = var.resource_tags
   project_name                     = "${local.prefix}project-rag"
+
   watsonx_ai_studio_instance_name  = "${local.prefix}wx-studio"
-  watsonx_ai_studio_plan           = "professional-v1"
+  watsonx_ai_studio_plan           = local.watson_plan["studio"]
+
   watsonx_ai_runtime_instance_name = "${local.prefix}wx-runtime"
-  watsonx_ai_runtime_plan          = "v2-professional"
+  watsonx_ai_runtime_plan          = local.watson_plan["runtime"]
+
   enable_cos_kms_encryption        = true
   cos_instance_crn                 = module.cos.cos_instance_crn
   cos_kms_key_crn                  = module.key_protect_all_inclusive.keys["${local.key_ring_name}.${local.key_name}"].crn
@@ -101,7 +111,7 @@ module "watson_discovery" {
   region                = var.region
   resource_group_id     = module.resource_group.resource_group_id
   resource_tags         = var.resource_tags
-  plan                  = "plus"
+  plan                  = local.watson_plan["discovery"]
   watson_discovery_name = "${local.prefix}discovery"
   service_endpoints     = local.service_endpoints
 }
@@ -116,7 +126,7 @@ module "watsonx_assistant" {
   region                 = var.region
   resource_group_id      = module.resource_group.resource_group_id
   resource_tags          = var.resource_tags
-  plan                   = "enterprise"
+  plan                   = local.watson_plan["assistant"]
   watsonx_assistant_name = "${local.prefix}assistant"
   service_endpoints      = local.service_endpoints
 }
@@ -140,16 +150,6 @@ module "icd_elasticsearch" {
   service_credential_names = local.es_credentials
 }
 
-// Create Elastic search index
-resource "elasticsearch_index" "es_create_index" {
-  provider           = elasticsearch.ibm_es
-  depends_on         = [module.icd_elasticsearch]
-  name               = local.es_index_name
-  number_of_shards   = 1
-  number_of_replicas = 1
-  force_destroy      = true
-}
-
 ##############################################################################################################
 # Container Registry
 ##############################################################################################################
@@ -162,7 +162,7 @@ module "icr_namespace" {
 }
 
 ##############################################################################################################
-# Code Engine
+# Code Engine - Project, Secret, Build, Application
 ##############################################################################################################
 
 locals {
@@ -170,7 +170,7 @@ locals {
     {
       type  = "literal"
       name  = "WATSONX_AI_APIKEY"
-      value = sensitive(var.ibmcloud_api_key)
+      value = var.ibmcloud_api_key
     },
     {
       type  = "literal"
@@ -193,8 +193,8 @@ locals {
       value = "true"
     }
   ]
-  output_image = "private.${var.region}.icr.io/${module.icr_namespace.namespace_name}/ai-agent-for-loan-risk"
-  url          = "https://github.com/IBM/ai-agent-for-loan-risk"
+  cr_region    = split("-", var.region)[0]
+  output_image = "private.${local.cr_region}.icr.io/${module.icr_namespace.namespace_name}/ai-agent-for-loan-risk"
   strategy     = "dockerfile"
   ce_app_name  = "ai-agent-for-loan-risk"
 }
@@ -219,9 +219,9 @@ module "code_engine_secret" {
   project_id = module.code_engine_project.id
   format     = "registry"
   data = {
-    "server"   = "private.${var.region}.icr.io",
-    "username" = "${local.prefix}user",
-    "password" = sensitive(var.ibmcloud_api_key),
+    "server"   = "private.${local.cr_region}.icr.io",
+    "username" = "iamapikey",
+    "password" = var.ibmcloud_api_key,
   }
 }
 
@@ -232,20 +232,23 @@ module "code_engine_secret" {
 module "code_engine_build" {
   source                     = "terraform-ibm-modules/code-engine/ibm//modules/build"
   version                    = "4.6.4"
-  name                       = "${local.prefix}-ce-build"
+  name                       = "${local.prefix}ce-build"
   ibmcloud_api_key           = var.ibmcloud_api_key
   project_id                 = module.code_engine_project.id
   existing_resource_group_id = module.resource_group.resource_group_id
-  source_url                 = local.url
+  source_type                = "git"
+  source_url                 = "https://github.com/IBM/ai-agent-for-loan-risk"
   strategy_type              = local.strategy
   output_secret              = module.code_engine_secret.name
   output_image               = local.output_image
+  region                     = var.region
 }
 
 ##############################################################################
 # Code Engine Application
 ##############################################################################
 module "code_engine_app" {
+  // Added dependency on Code Engine Build as first Image is required for the application.
   depends_on                    = [module.code_engine_build]
   source                        = "terraform-ibm-modules/code-engine/ibm//modules/app"
   version                       = "4.6.4"

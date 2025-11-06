@@ -9,7 +9,7 @@
 *.lock.hcl
 
 .DS_Store
-
+.idea
 *.tfvars
 *.tfvars.json
 *.log

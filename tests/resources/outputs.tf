@@ -18,9 +18,9 @@ output "resource_group_id" {
   description = "Resource group ID"
 }
 
-output "event_notification_instance_crn" {
+output "event_notifications_instance_crn" {
   value       = module.event_notifications.crn
-  description = "CRN of created event notification"
+  description = "CRN of created event notifications"
 }
 
 output "secrets_manager_instance_crn" {

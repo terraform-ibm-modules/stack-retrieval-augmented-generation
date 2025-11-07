@@ -39,7 +39,9 @@ var validQsRegions = []string{
 	"eu-gb",
 	"jp-tok",
 	"au-syd",
-	"ca-tor",
+	// Ignoring below regions as not supported for watsonx Assistant and watson Discovery
+	// "ca-tor",
+	// "us-east"
 }
 
 func TestMain(m *testing.M) {
@@ -210,10 +212,11 @@ func setupQuickstartOptions(t *testing.T, prefix string) *testschematic.TestSche
 
 	var region = validQsRegions[rand.Intn(len(validQsRegions))]
 	options := testschematic.TestSchematicOptionsDefault(&testschematic.TestSchematicOptions{
-		Testing:       t,
-		Prefix:        prefix,
-		Region:        region,
-		ResourceGroup: resourceGroup,
+		Testing:        t,
+		TemplateFolder: quickStartTerraformDir,
+		Prefix:         prefix,
+		Region:         region,
+		ResourceGroup:  resourceGroup,
 		TarIncludePatterns: []string{
 			quickStartTerraformDir + "/*.tf",
 		},

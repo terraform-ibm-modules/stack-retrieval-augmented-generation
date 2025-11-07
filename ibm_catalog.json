@@ -1035,6 +1035,13 @@
 					"working_directory": "solutions/quickstart",
 					"iam_permissions": [
 						{
+							"service_name": "Resource group only",
+							"role_crns": [
+								"crn:v1:bluemix:public:iam::::role:Viewer"
+							],
+							"notes": "Viewer access is required in the resource group you want to provision in."
+						},
+						{
 							"service_name": "cloud-object-storage",
 							"role_crns": [
 								"crn:v1:bluemix:public:iam::::serviceRole:Manager",
@@ -1043,11 +1050,62 @@
 							"notes": "Required to manage Object Storage for the watsonx.ai."
 						},
 						{
+							"service_name": "kms",
 							"role_crns": [
-								"crn:v1:bluemix:public:iam::::role:Viewer"
+								"crn:v1:bluemix:public:iam::::serviceRole:Manager",
+								"crn:v1:bluemix:public:iam::::role:Editor"
 							],
-							"service_name": "Resource group only",
-							"notes": "Viewer access is required in the resource group you want to provision in."
+							"notes": "Required as Key Protect is used for encryption."
+						},
+						{
+							"service_name": "data-science-experience",
+							"role_crns": [
+								"crn:v1:bluemix:public:iam::::role:Editor"
+							],
+							"notes": "Required to create an instance of watsonx.ai Studio."
+						},
+						{
+							"service_name": "pm-20",
+							"role_crns": [
+								"crn:v1:bluemix:public:iam::::role:Editor"
+							],
+							"notes": "Required to create an instance of watsonx.ai Runtime."
+						},
+						{
+							"service_name": "discovery",
+							"role_crns": [
+								"crn:v1:bluemix:public:iam::::role:Editor"
+							],
+							"notes": "Required to create an instance of Watson Discovery."
+						},
+						{
+							"service_name": "conversation",
+							"role_crns": [
+								"crn:v1:bluemix:public:iam::::role:Editor"
+							],
+							"notes": "Required to create an instance of watsonx Assistant."
+						},
+						{
+							"service_name": "databases-for-elasticsearch",
+							"role_crns": [
+								"crn:v1:bluemix:public:iam::::role:Editor"
+							],
+							"notes": "Required to create the Databases for Elasticsearch instance."
+						},
+						{
+							"service_name": "container-registry",
+							"role_crns": [
+								"crn:v1:bluemix:public:iam::::serviceRole:Manager"
+							],
+							"notes": "Required to manage namespaces, repositories, and access policies in Container Registry."
+						},
+						{
+							"service_name": "codeengine",
+							"role_crns": [
+								"crn:v1:bluemix:public:iam::::serviceRole:Writer",
+								"crn:v1:bluemix:public:iam::::role:Editor"
+							],
+							"notes": "Required to create Code Engine instance."
 						}
 					],
 					"architecture": {
@@ -1058,17 +1116,17 @@
 							},
 							{
 								"title": " ",
-								"description": "Quickly provisions watsonx.ai, watsonx Assistant, watson Discovery, Elasticsearch, Object Storage, and Key Management Services. Includes all necessary services to deploy a sample Retrieval-Augmented Generation (RAG) application leveraging Code Engine."
+								"description": "Quickly provisions watsonx.ai, watsonx Assistant, watson Discovery, Elasticsearch, Object Storage, Key Management Services and Code Engine. Includes all necessary services to deploy a sample Retrieval-Augmented Generation (RAG) application leveraging Code Engine."
 							}
 						],
 						"diagrams": [
 							{
 								"diagram": {
-									"caption": "RAG based Solution on IBM Cloud with watsonx - QuickStart",
+									"caption": "Landing zone for cloud-native AI applications - QuickStart",
 									"url": "https://raw.githubusercontent.com/terraform-ibm-modules/stack-retrieval-augmented-generation/main/reference-architecture/deployable-architecture-rag-stack-qs.svg",
 									"type": "image/svg+xml"
 								},
-								"description": "This deployable architecture provisions a suite of AI and data services on IBM Cloud to support rapid development and deployment of Retrieval-Augmented Generation (RAG) applications. It includes <b>watsonx.ai</b> for foundation model training and inference, <b>watsonx Assistant</b> for conversational AI, <b>watson Discovery</b> for intelligent document understanding, and <b>IBM Cloud Databases for Elasticsearch</b>. The solution also provisions <b>IBM Cloud Object Storage (COS)</b> for persistent storage of model artifacts, application data, and logs, and <b>Key Management Services (KMS)</b> to ensure secure handling of sensitive information and encryption keys across services. Once the foundational services are provisioned, a sample <b>Retrieval-Augmented Generation (RAG)</b> application can be deployed to demonstrate how enterprise-grade AI solutions can be built using IBM Cloud-native services. The application leverages watsonx.ai for generative responses, Elasticsearch for document retrieval, and Code Engine to orchestrate the runtime environment."
+								"description": "This deployable architecture provisions a suite of AI and data services on IBM Cloud to support rapid development and deployment of Landing zone for cloud-native AI applications. It includes <b>watsonx.ai</b> for foundation model training and inference, <b>watsonx Assistant</b> for conversational AI, <b>watson Discovery</b> for intelligent document understanding, and <b>IBM Cloud Databases for Elasticsearch</b>. The solution also provisions <b>IBM Cloud Object Storage (COS)</b> for persistent storage of model artifacts, application data, and logs, and <b>Key Management Services (KMS)</b> to ensure secure handling of sensitive information and encryption keys across services. Once the foundational services are provisioned, a sample <b>Retrieval-Augmented Generation (RAG)</b> application can be deployed to demonstrate how enterprise-grade AI solutions can be built using IBM Cloud-native services. The application leverages `watsonx.ai` for generative responses, Elasticsearch for document retrieval, and Code Engine to orchestrate the runtime environment."
 							}
 						]
 					},

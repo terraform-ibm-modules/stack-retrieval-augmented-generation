@@ -17,6 +17,7 @@ import (
 	"github.com/terraform-ibm-modules/ibmcloud-terratest-wrapper/common"
 	"github.com/terraform-ibm-modules/ibmcloud-terratest-wrapper/testhelper"
 	"github.com/terraform-ibm-modules/ibmcloud-terratest-wrapper/testprojects"
+	"github.com/terraform-ibm-modules/ibmcloud-terratest-wrapper/testschematic"
 )
 
 // Define a struct with fields that match the structure of the YAML data
@@ -29,6 +30,9 @@ var validRegions = []string{
 	"eu-de",
 }
 
+// Use existing resource group
+const resourceGroup = "geretain-test-resources"
+const terraformVersion = "terraform_v1.12.2" // This should match the version in the ibm_catalog.json
 var validQsRegions = []string{
 	"us-south",
 	"eu-de",
@@ -202,12 +206,17 @@ func TestProjectsStandardFullTest(t *testing.T) {
 	}
 }
 
-func setupQuickstartOptions(t *testing.T, prefix string) *testhelper.TestOptions {
+func setupQuickstartOptions(t *testing.T, prefix string) *testschematic.TestSchematicOptions {
 
-	options := testhelper.TestOptionsDefault(&testhelper.TestOptions{
-		Testing:      t,
-		TerraformDir: quickStartTerraformDir,
-		Prefix:       prefix,
+	var region = validQsRegions[rand.Intn(len(validQsRegions))]
+	options := testschematic.TestSchematicOptionsDefault(&testschematic.TestSchematicOptions{
+		Testing:       t,
+		Prefix:        prefix,
+		Region:        region,
+		ResourceGroup: resourceGroup,
+		TarIncludePatterns: []string{
+			quickStartTerraformDir + "/*.tf",
+		},
 
 		IgnoreDestroys: testhelper.Exemptions{ // Ignore for consistency check
 			List: []string{
@@ -221,35 +230,37 @@ func setupQuickstartOptions(t *testing.T, prefix string) *testhelper.TestOptions
 				"module.watsonx_ai.module.configure_user.null_resource.restrict_access",
 			},
 		},
+		TerraformVersion: terraformVersion,
 	})
 
-	options.TerraformVars = map[string]interface{}{
-		"region":              validQsRegions[rand.Intn(len(validQsRegions))],
-		"provider_visibility": "public",
-		"prefix":              options.Prefix,
+	options.TerraformVars = []testschematic.TestSchematicTerraformVar{
+		{Name: "ibmcloud_api_key", Value: options.RequiredEnvironmentVars["TF_VAR_ibmcloud_api_key"], DataType: "string", Secure: true},
+		{Name: "prefix", Value: options.Prefix, DataType: "string"},
+		{Name: "region", Value: options.Region, DataType: "string"},
+		{Name: "provider_visibility", Value: "private", DataType: "string"},
+		{Name: "existing_resource_group_name", Value: resourceGroup, DataType: "string"},
 	}
 
 	return options
 }
 
-func TestRunQuickstartDA(t *testing.T) {
+func TestRunQuickstartSolutionSchematics(t *testing.T) {
 	t.Parallel()
 
 	options := setupQuickstartOptions(t, "rag-qs")
-	output, err := options.RunTestConsistency()
+	err := options.RunSchematicTest()
 	assert.Nil(t, err, "This should not have errored")
-	assert.NotNil(t, output, "Expected some output")
 }
 
 // Upgrade test for the Quickstart DA
-func TestRunUpgradeQuickstartDA(t *testing.T) {
+func TestRunQuickstartUpgradeSolutionSchematics(t *testing.T) {
 	t.Parallel()
 
 	options := setupQuickstartOptions(t, "rag-qs-upg")
+	options.CheckApplyResultForUpgrade = true
 
-	output, err := options.RunTestUpgrade()
+	err := options.RunSchematicUpgradeTest()
 	if !options.UpgradeTestSkipped {
 		assert.Nil(t, err, "This should not have errored")
-		assert.NotNil(t, output, "Expected some output")
 	}
 }

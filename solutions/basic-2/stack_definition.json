@@ -762,6 +762,18 @@
   ],
   "outputs": [
     {
+      "name": "kms_instance_crn",
+      "value": "ref:./members/2a - Essential Security - Encryption Key Management/outputs/kms_instance_crn"
+    },
+    {
+      "name": "kms_private_endpoint",
+      "value": "ref:./members/2a - Essential Security - Encryption Key Management/outputs/kms_private_endpoint"
+    },
+    {
+      "name": "kms_public_endpoint",
+      "value": "ref:./members/2a - Essential Security - Encryption Key Management/outputs/kms_public_endpoint"
+    },
+    {
       "name": "cos_instance_crn",
       "value": "ref:../2b - Essential Security - Cloud Object Storage/outputs/cos_instance_crn"
     },
@@ -774,32 +786,12 @@
       "value": "ref:../2b - Essential Security - Cloud Object Storage/outputs/cos_instance_name"
     },
     {
-      "name": "elasticsearch_hostname",
-      "value": "ref:./members/5b - Gen AI - Databases for Elasticsearch/outputs/hostname"
+      "name": "cloud_monitoring_crn",
+      "value": "ref:./members/2c - Essential Security - Cloud Monitoring/outputs/cloud_monitoring_crn"
     },
     {
-      "name": "elasticsearch_port",
-      "value": "ref:./members/5b - Gen AI - Databases for Elasticsearch/outputs/port"
-    },
-    {
-      "name": "elasticsearch_service_credentials_json",
-      "value": "ref:./members/5b - Gen AI - Databases for Elasticsearch/outputs/service_credentials_json"
-    },
-    {
-      "name": "elasticsearch_crn",
-      "value": "ref:./members/5b - Gen AI - Databases for Elasticsearch/outputs/crn"
-    },
-    {
-      "name": "kms_instance_crn",
-      "value": "ref:./members/2a - Essential Security - Encryption Key Management/outputs/kms_instance_crn"
-    },
-    {
-      "name": "kms_private_endpoint",
-      "value": "ref:./members/2a - Essential Security - Encryption Key Management/outputs/kms_private_endpoint"
-    },
-    {
-      "name": "kms_public_endpoint",
-      "value": "ref:./members/2a - Essential Security - Encryption Key Management/outputs/kms_public_endpoint"
+      "name": "cloud_monitoring_guid",
+      "value": "ref:./members/2c - Essential Security - Cloud Monitoring/outputs/cloud_monitoring_guid"
     },
     {
       "name": "event_notifications_instance_crn",
@@ -814,56 +806,12 @@
       "value": "ref:./members/3a - Essential Security - Event Notifications/outputs/guid"
     },
     {
-      "name": "cloud_logs_for_logging_crn",
-      "value": "ref:./members/4a - Essential Security - Cloud Logs for logging/outputs/cloud_logs_crn"
+      "name": "watsonx_project_url",
+      "value": "ref:./members/3b - Gen AI - WatsonX SaaS services/outputs/watsonx_project_url"
     },
     {
-      "name": "cloud_logs_for_logging_guid",
-      "value": "ref:./members/4a - Essential Security - Cloud Logs for logging/outputs/cloud_logs_guid"
-    },
-    {
-      "name": "cloud_logs_for_activity_tracking_crn",
-      "value": "ref:./members/4d - Essential Security - Cloud Logs for activity tracking/outputs/cloud_logs_crn"
-    },
-    {
-      "name": "cloud_logs_for_activity_tracking_guid",
-      "value": "ref:./members/4d - Essential Security - Cloud Logs for activity tracking/outputs/cloud_logs_guid"
-    },
-    {
-      "name": "cloud_monitoring_crn",
-      "value": "ref:./members/2c - Essential Security - Cloud Monitoring/outputs/cloud_monitoring_crn"
-    },
-    {
-      "name": "cloud_monitoring_guid",
-      "value": "ref:./members/2c - Essential Security - Cloud Monitoring/outputs/cloud_monitoring_guid"
-    },
-    {
-      "name": "secrets_manager_crn",
-      "value": "ref:./members/4c - Essential Security - Secrets Manager/outputs/secrets_manager_crn"
-    },
-    {
-      "name": "secrets_manager_guid",
-      "value": "ref:./members/4c - Essential Security - Secrets Manager/outputs/secrets_manager_guid"
-    },
-    {
-      "name": "secrets_manager_name",
-      "value": "ref:./members/4c - Essential Security - Secrets Manager/outputs/secrets_manager_name"
-    },
-    {
-      "name": "app_config_crn",
-      "value": "ref:./members/4b - Essential Security - App Configuration/outputs/app_config_crn"
-    },
-    {
-      "name": "app_config_guid",
-      "value": "ref:./members/4b - Essential Security - App Configuration/outputs/app_config_guid"
-    },
-    {
-      "name": "scc_workload_protection_crn",
-      "value": "ref:./members/5a - Essential Security - Security and Compliance Center Workload Protection/outputs/scc_workload_protection_crn"
-    },
-    {
-      "name": "scc_workload_protection_id",
-      "value": "ref:./members/5a - Essential Security - Security and Compliance Center Workload Protection/outputs/scc_workload_protection_id"
+      "name": "watsonx_project_id",
+      "value": "ref:./members/3b - Gen AI - WatsonX SaaS services/outputs/watsonx_project_id"
     },
     {
       "name": "watson_discovery_crn",
@@ -920,6 +868,66 @@
     {
       "name": "watson_discovery_guid",
       "value": "ref:./members/3b - Gen AI - WatsonX SaaS services/outputs/watson_discovery_guid"
+    },
+    {
+      "name": "cloud_logs_for_logging_crn",
+      "value": "ref:./members/4a - Essential Security - Cloud Logs for logging/outputs/cloud_logs_crn"
+    },
+    {
+      "name": "cloud_logs_for_logging_guid",
+      "value": "ref:./members/4a - Essential Security - Cloud Logs for logging/outputs/cloud_logs_guid"
+    },
+    {
+      "name": "app_config_crn",
+      "value": "ref:./members/4b - Essential Security - App Configuration/outputs/app_config_crn"
+    },
+    {
+      "name": "app_config_guid",
+      "value": "ref:./members/4b - Essential Security - App Configuration/outputs/app_config_guid"
+    },
+    {
+      "name": "secrets_manager_crn",
+      "value": "ref:./members/4c - Essential Security - Secrets Manager/outputs/secrets_manager_crn"
+    },
+    {
+      "name": "secrets_manager_guid",
+      "value": "ref:./members/4c - Essential Security - Secrets Manager/outputs/secrets_manager_guid"
+    },
+    {
+      "name": "secrets_manager_name",
+      "value": "ref:./members/4c - Essential Security - Secrets Manager/outputs/secrets_manager_name"
+    },
+    {
+      "name": "cloud_logs_for_activity_tracking_crn",
+      "value": "ref:./members/4d - Essential Security - Cloud Logs for activity tracking/outputs/cloud_logs_crn"
+    },
+    {
+      "name": "cloud_logs_for_activity_tracking_guid",
+      "value": "ref:./members/4d - Essential Security - Cloud Logs for activity tracking/outputs/cloud_logs_guid"
+    },
+    {
+      "name": "scc_workload_protection_crn",
+      "value": "ref:./members/5a - Essential Security - Security and Compliance Center Workload Protection/outputs/scc_workload_protection_crn"
+    },
+    {
+      "name": "scc_workload_protection_id",
+      "value": "ref:./members/5a - Essential Security - Security and Compliance Center Workload Protection/outputs/scc_workload_protection_id"
+    },
+    {
+      "name": "elasticsearch_hostname",
+      "value": "ref:./members/5b - Gen AI - Databases for Elasticsearch/outputs/hostname"
+    },
+    {
+      "name": "elasticsearch_port",
+      "value": "ref:./members/5b - Gen AI - Databases for Elasticsearch/outputs/port"
+    },
+    {
+      "name": "elasticsearch_service_credentials_json",
+      "value": "ref:./members/5b - Gen AI - Databases for Elasticsearch/outputs/service_credentials_json"
+    },
+    {
+      "name": "elasticsearch_crn",
+      "value": "ref:./members/5b - Gen AI - Databases for Elasticsearch/outputs/crn"
     }
   ]
 }

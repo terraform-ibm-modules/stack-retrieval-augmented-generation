@@ -767,10 +767,10 @@
               },
               {
                 "diagram": {
-                  "url": "https://raw.githubusercontent.com/terraform-ibm-modules/stack-retrieval-augmented-generation/main/reference-architectures/rag-stack.svg",
+                  "url": "https://raw.githubusercontent.com/terraform-ibm-modules/stack-retrieval-augmented-generation/main/reference-architectures/rag-stack-without-app-and-alm.svg",
                   "caption": "Solution components",
                   "type": "image/svg+xml",
-                  "thumbnail_url": "https://raw.githubusercontent.com/terraform-ibm-modules/stack-retrieval-augmented-generation/main/reference-architectures/rag-stack.svg"
+                  "thumbnail_url": "https://raw.githubusercontent.com/terraform-ibm-modules/stack-retrieval-augmented-generation/main/reference-architectures/rag-stack-without-app-and-alm.svg"
                 },
                 "description": "Solution components"
               }
@@ -2055,10 +2055,10 @@
               },
               {
                 "diagram": {
-                  "url": "https://raw.githubusercontent.com/terraform-ibm-modules/stack-retrieval-augmented-generation/main/reference-architectures/rag-stack.svg",
+                  "url": "https://raw.githubusercontent.com/terraform-ibm-modules/stack-retrieval-augmented-generation/main/reference-architectures/rag-stack-without-app-and-alm.svg",
                   "caption": "Solution components",
                   "type": "image/svg+xml",
-                  "thumbnail_url": "https://raw.githubusercontent.com/terraform-ibm-modules/stack-retrieval-augmented-generation/main/reference-architectures/rag-stack.svg"
+                  "thumbnail_url": "https://raw.githubusercontent.com/terraform-ibm-modules/stack-retrieval-augmented-generation/main/reference-architectures/rag-stack-without-app-and-alm.svg"
                 },
                 "description": "Solution components"
               }

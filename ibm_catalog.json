@@ -68,6 +68,7 @@
           "index": 1,
           "working_directory": "solutions/basic",
           "ignore_readme": true,
+          "dependency_version_2": true,
           "compliance": {
             "authority": "scc-v3",
             "profiles": [
@@ -616,6 +617,7 @@
           "index": 2,
           "working_directory": "solutions/standard",
           "ignore_readme": true,
+          "dependency_version_2": true,
           "compliance": {
             "authority": "scc-v3",
             "profiles": [

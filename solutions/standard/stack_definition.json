@@ -956,6 +956,28 @@
       ]
     },
     {
+      "name": "5e - Workload Essential Security - Red Hat OpenShift logging agent",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.6a32a898-804a-4e6f-833d-0dde755e1261-global",
+      "inputs": [
+        {
+          "name": "prefix",
+          "value": "ref:../../inputs/prefix"
+        },
+        {
+          "name": "cluster_id",
+          "value": "ref:./members/3c - Workload - Compute Red Hat OpenShift Container Platform on VPC/outputs/workload_cluster_id"
+        },
+        {
+          "name": "cluster_resource_group_id",
+          "value": "ref:./members/3c - Workload - Compute Red Hat OpenShift Container Platform on VPC/outputs/workload_rg_id"
+        },
+        {
+          "name": "cloud_logs_ingress_endpoint",
+          "value": "ref:./members/4a - Essential Security - Cloud Logs for logging/outputs/cloud_logs_ingress_private_endpoint"
+        }
+      ]
+    },
+    {
       "name": "6 - Workload - Sample RAG Application",
       "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.e7af3542-6a4a-44fe-b646-2598bb925719-global",
       "inputs": [

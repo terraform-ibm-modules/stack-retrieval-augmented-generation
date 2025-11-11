@@ -296,7 +296,7 @@
     },
     {
       "name": "2d - Workload - Code Engine Project for CI",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.879ff223-c2d9-486c-b7b6-62dbc3083a0d-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.8f2dddee-2211-4330-bd2d-74c84a72601d-global",
       "inputs": [
         {
           "name": "existing_resource_group_name",
@@ -307,7 +307,7 @@
           "value": "ref:../../inputs/prefix"
         },
         {
-          "name": "project_name",
+          "name": "code_engine_project_name",
           "value": "Generative_AI_Sample_App_CI_Project"
         },
         {
@@ -318,7 +318,7 @@
     },
     {
       "name": "2e - Workload - Code Engine Project for CD",
-      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.879ff223-c2d9-486c-b7b6-62dbc3083a0d-global",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.8f2dddee-2211-4330-bd2d-74c84a72601d-global",
       "inputs": [
         {
           "name": "existing_resource_group_name",
@@ -329,12 +329,34 @@
           "value": "ref:../../inputs/prefix"
         },
         {
-          "name": "project_name",
+          "name": "code_engine_project_name",
           "value": "Generative_AI_Sample_App_CD_Project"
         },
         {
           "name": "region",
           "value": "ref:../../inputs/region"
+        }
+      ]
+    },
+    {
+      "name": "2f - Workload - Container Registry",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.4ddd4d03-09ea-45c0-a591-53dbbed95eeb-global",
+      "inputs": [
+        {
+          "name": "existing_resource_group_name",
+          "value": "ref:../1 - Account Configuration/outputs/workload_resource_group_name"
+        },
+        {
+          "name": "prefix",
+          "value": "ref:../../inputs/prefix"
+        },
+        {
+          "name": "namespace_name",
+          "value": "ref:../../inputs/region"
+        },
+        {
+          "name": "upgrade_to_standard_plan",
+          "value": true
         }
       ]
     },
@@ -808,7 +830,7 @@
         },
         {
           "name": "ci_code_engine_project",
-          "value": "ref:../2d - Workload - Code Engine Project for CI/outputs/project_name"
+          "value": "ref:../2d - Workload - Code Engine Project for CI/outputs/code_engine_project_name"
         },
         {
           "name": "use_legacy_ref",
@@ -816,11 +838,7 @@
         },
         {
           "name": "cd_code_engine_project",
-          "value": "ref:../2e - Workload - Code Engine Project for CD/outputs/project_name"
-        },
-        {
-          "name": "registry_namespace",
-          "value": "rag-app"
+          "value": "ref:../2e - Workload - Code Engine Project for CD/outputs/code_engine_project_name"
         },
         {
           "name": "app_repo_clone_from_url",
@@ -860,7 +878,11 @@
         },
         {
           "name": "create_icr_namespace",
-          "value": true
+          "value": false
+        },
+        {
+          "name": "registry_namespace",
+          "value": "ref:../2f - Workload - Container Registry/outputs/namespace_name"
         },
         {
           "name": "add_container_name_suffix",

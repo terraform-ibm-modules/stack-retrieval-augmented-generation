@@ -965,15 +965,15 @@
         },
         {
           "name": "cluster_id",
-          "value": "ref:./members/3c - Workload - Compute Red Hat OpenShift Container Platform on VPC/outputs/workload_cluster_id"
+          "value": "ref:../3c - Workload - Compute Red Hat OpenShift Container Platform on VPC/outputs/workload_cluster_id"
         },
         {
           "name": "cluster_resource_group_id",
-          "value": "ref:./members/3c - Workload - Compute Red Hat OpenShift Container Platform on VPC/outputs/workload_rg_id"
+          "value": "ref:../3c - Workload - Compute Red Hat OpenShift Container Platform on VPC/outputs/workload_rg_id"
         },
         {
           "name": "cloud_logs_ingress_endpoint",
-          "value": "ref:./members/4a - Essential Security - Cloud Logs for logging/outputs/cloud_logs_ingress_private_endpoint"
+          "value": "ref:./4a - Essential Security - Cloud Logs for logging/outputs/cloud_logs_ingress_private_endpoint"
         }
       ]
     },
@@ -1063,15 +1063,15 @@
   "outputs": [
     {
       "name": "cos_instance_crn",
-      "value": "ref:../2b - Essential Security - Cloud Object Storage/outputs/cos_instance_crn"
+      "value": "ref:./members/2b - Essential Security - Cloud Object Storage/outputs/cos_instance_crn"
     },
     {
       "name": "cos_instance_guid",
-      "value": "ref:../2b - Essential Security - Cloud Object Storage/outputs/cos_instance_guid"
+      "value": "ref:./members/2b - Essential Security - Cloud Object Storage/outputs/cos_instance_guid"
     },
     {
       "name": "cos_instance_name",
-      "value": "ref:../2b - Essential Security - Cloud Object Storage/outputs/cos_instance_name"
+      "value": "ref:./members/2b - Essential Security - Cloud Object Storage/outputs/cos_instance_name"
     },
     {
       "name": "elasticsearch_hostname",

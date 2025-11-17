@@ -68,6 +68,7 @@
           "index": 1,
           "working_directory": "solutions/basic",
           "ignore_readme": true,
+          "dependency_version_2": true,
           "compliance": {
             "authority": "scc-v3",
             "profiles": [
@@ -1141,15 +1142,7 @@
           "index": 3,
           "working_directory": "solutions/standard",
           "ignore_readme": true,
-          "compliance": {
-            "authority": "scc-v3",
-            "profiles": [
-              {
-                "profile_name": "AI Security Guardrails 2.0",
-                "profile_version": "1.1.0"
-              }
-            ]
-          },
+          "dependency_version_2": true,
           "iam_permissions": [
             {
               "service_name": "iam-groups",

@@ -1018,15 +1018,15 @@
   "outputs": [
     {
       "name": "cos_instance_crn",
-      "value": "ref:../2b - Essential Security - Cloud Object Storage/outputs/cos_instance_crn"
+      "value": "ref:./members/2b - Essential Security - Cloud Object Storage/outputs/cos_instance_crn"
     },
     {
       "name": "cos_instance_guid",
-      "value": "ref:../2b - Essential Security - Cloud Object Storage/outputs/cos_instance_guid"
+      "value": "ref:./members/2b - Essential Security - Cloud Object Storage/outputs/cos_instance_guid"
     },
     {
       "name": "cos_instance_name",
-      "value": "ref:../2b - Essential Security - Cloud Object Storage/outputs/cos_instance_name"
+      "value": "ref:./members/2b - Essential Security - Cloud Object Storage/outputs/cos_instance_name"
     },
     {
       "name": "elasticsearch_hostname",

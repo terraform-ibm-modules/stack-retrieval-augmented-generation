@@ -1350,7 +1350,7 @@
           "name": "basic-without-app",
           "index": 3,
           "short_description": "Ideal for Code Engine users who want serverless simplicity with a reliable starting point.",
-          "working_directory": "solutions/basic-2",
+          "working_directory": "solutions/basic-without-sample-app",
           "ignore_readme": true,
           "dependency_version_2": true,
           "iam_permissions": [
@@ -1868,7 +1868,7 @@
           "name": "standard-without-app",
           "index": 4,
           "short_description": "Ideal for Red Hat OpenShift users who want enterprise‑grade flexibility with a reliable starting point.",
-          "working_directory": "solutions/standard-2",
+          "working_directory": "solutions/standard-without-sample-app",
           "ignore_readme": true,
           "dependency_version_2": true,
           "iam_permissions": [

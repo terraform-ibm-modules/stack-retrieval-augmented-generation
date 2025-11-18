@@ -6,23 +6,31 @@ This deployable architecture provides a comprehensive foundation for trust, obse
 
 ## Variations
 
-Two variations are available for this deployable architecture:
-1. Basic variation:
+Although four but primarily two variations are available for this deployable architecture:
+
+1. Basic variation - With sample application:
    - Code Engine Project: Provisions a Code Engine project, providing a fully managed platform for containerized applications.
    - Application Deployment: Deploys the application on the provisioned Code Engine project.
    - Elasticsearch Enterprise: Provisions an Elasticsearch [enterprise](https://cloud.ibm.com/docs/databases-for-elasticsearch?topic=databases-for-elasticsearch-elastic-offerings) instance for search and analytics capabilities.
 
-2. Standard variation:
+2. Basic variation - Without sample application:
+   - Code Engine Project: Provisions a Code Engine project, providing a fully managed platform for containerized applications.
+   - Elasticsearch Enterprise: Provisions an Elasticsearch [enterprise](https://cloud.ibm.com/docs/databases-for-elasticsearch?topic=databases-for-elasticsearch-elastic-offerings) instance for search and analytics capabilities.
+
+3. Standard variation - With sample application:
    - IBM Cloud OpenShift Cluster: Provisions an [IBM Cloud OpenShift cluster](https://cloud.ibm.com/docs/openshift?topic=openshift-overview)
    - VPC Network Infrastructure: Sets up the underlying VPC network infrastructure to support the OpenShift cluster.
    - Application Deployment: Deploys the application on the provisioned OpenShift cluster.
    - ElasticSearch Platinum Plan: Leverages the platinum plan of ElasticSearch, which includes the [ELSER](https://cloud.ibm.com/docs/databases-for-elasticsearch?topic=databases-for-elasticsearch-elser-embeddings-elasticsearch) model for advanced vector generation capabilities.
 
-
+4. Standard variation - Without sample application:
+   - IBM Cloud OpenShift Cluster: Provisions an [IBM Cloud OpenShift cluster](https://cloud.ibm.com/docs/openshift?topic=openshift-overview)
+   - VPC Network Infrastructure: Sets up the underlying VPC network infrastructure to support the OpenShift cluster.
+   - ElasticSearch Platinum Plan: Leverages the platinum plan of ElasticSearch, which includes the [ELSER](https://cloud.ibm.com/docs/databases-for-elasticsearch?topic=databases-for-elasticsearch-elser-embeddings-elasticsearch) model for advanced vector generation capabilities.
 
 ## Objective and benefits
 
-This deployable architecture is designed to showcase a fully automated deployment of a retrieval augmented generation application through IBM Cloud Projects. It provides a flexible and customizable foundation for your own watsonx applications on IBM Cloud. This architecture deploys the following [sample application](https://github.com/IBM/gen-ai-rag-watsonx-sample-application) by default.
+This deployable architecture is designed to showcase a fully automated deployment of a retrieval augmented generation application through IBM Cloud Projects. It provides a flexible and customizable foundation for your own watsonx applications on IBM Cloud. This architecture deploys the following [sample application](https://github.com/IBM/gen-ai-rag-watsonx-sample-application) by default for the variations that allow provisioning sample application.
 
 By using this architecture, you can accelerate your deployment and tailor it to meet your business needs and enterprise goals.
 

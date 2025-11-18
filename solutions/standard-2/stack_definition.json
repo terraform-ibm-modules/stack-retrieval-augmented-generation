@@ -203,10 +203,6 @@
           "value": "ref:../../inputs/resource_group_name"
         },
         {
-          "name": "devops_resource_group_name",
-          "value": "ref:../../inputs/resource_group_name"
-        },
-        {
           "name": "provision_trusted_profile_projects",
           "value": false
         }
@@ -279,6 +275,28 @@
         {
           "name": "cloud_monitoring_plan",
           "value": "ref:../../inputs/cloud_monitoring_plan"
+        }
+      ]
+    },
+    {
+      "name": "2d - Workload - Container Registry",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.4ddd4d03-09ea-45c0-a591-53dbbed95eeb-global",
+      "inputs": [
+        {
+          "name": "existing_resource_group_name",
+          "value": "ref:../1 - Account Configuration/outputs/workload_resource_group_name"
+        },
+        {
+          "name": "prefix",
+          "value": "ref:../../inputs/prefix"
+        },
+        {
+          "name": "namespace_name",
+          "value": "ref:../../inputs/region"
+        },
+        {
+          "name": "upgrade_to_standard_plan",
+          "value": true
         }
       ]
     },
@@ -830,6 +848,28 @@
           "value": true
         }
       ]
+    },
+    {
+      "name": "5d - Workload Essential Security - Red Hat OpenShift logging agent",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.6a32a898-804a-4e6f-833d-0dde755e1261-global",
+      "inputs": [
+        {
+          "name": "prefix",
+          "value": "ref:../../inputs/prefix"
+        },
+        {
+          "name": "cluster_id",
+          "value": "ref:../3c - Workload - Compute Red Hat OpenShift Container Platform on VPC/outputs/workload_cluster_id"
+        },
+        {
+          "name": "cluster_resource_group_id",
+          "value": "ref:../3c - Workload - Compute Red Hat OpenShift Container Platform on VPC/outputs/workload_rg_id"
+        },
+        {
+          "name": "cloud_logs_ingress_endpoint",
+          "value": "ref:./4a - Essential Security - Cloud Logs for logging/outputs/cloud_logs_ingress_private_endpoint"
+        }
+      ]
     }
   ],
   "outputs": [
@@ -847,15 +887,15 @@
     },
     {
       "name": "cos_instance_crn",
-      "value": "ref:../2b - Essential Security - Cloud Object Storage/outputs/cos_instance_crn"
+      "value": "ref:./members/2b - Essential Security - Cloud Object Storage/outputs/cos_instance_crn"
     },
     {
       "name": "cos_instance_guid",
-      "value": "ref:../2b - Essential Security - Cloud Object Storage/outputs/cos_instance_guid"
+      "value": "ref:./members/2b - Essential Security - Cloud Object Storage/outputs/cos_instance_guid"
     },
     {
       "name": "cos_instance_name",
-      "value": "ref:../2b - Essential Security - Cloud Object Storage/outputs/cos_instance_name"
+      "value": "ref:./members/2b - Essential Security - Cloud Object Storage/outputs/cos_instance_name"
     },
     {
       "name": "cloud_monitoring_crn",

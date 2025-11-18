@@ -203,10 +203,6 @@
           "value": "ref:../../inputs/resource_group_name"
         },
         {
-          "name": "devops_resource_group_name",
-          "value": "ref:../../inputs/resource_group_name"
-        },
-        {
           "name": "provision_trusted_profile_projects",
           "value": false
         }
@@ -279,6 +275,50 @@
         {
           "name": "cloud_monitoring_plan",
           "value": "ref:../../inputs/cloud_monitoring_plan"
+        }
+      ]
+    },
+    {
+      "name": "2d - Workload - Code Engine Project for CI",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.8f2dddee-2211-4330-bd2d-74c84a72601d-global",
+      "inputs": [
+        {
+          "name": "existing_resource_group_name",
+          "value": "ref:../1 - Account Configuration/outputs/workload_resource_group_name"
+        },
+        {
+          "name": "prefix",
+          "value": "ref:../../inputs/prefix"
+        },
+        {
+          "name": "code_engine_project_name",
+          "value": "Generative_AI_Basic_Project"
+        },
+        {
+          "name": "region",
+          "value": "ref:../../inputs/region"
+        }
+      ]
+    },
+    {
+      "name": "2e - Workload - Container Registry",
+      "version_locator": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3.4ddd4d03-09ea-45c0-a591-53dbbed95eeb-global",
+      "inputs": [
+        {
+          "name": "existing_resource_group_name",
+          "value": "ref:../1 - Account Configuration/outputs/workload_resource_group_name"
+        },
+        {
+          "name": "prefix",
+          "value": "ref:../../inputs/prefix"
+        },
+        {
+          "name": "namespace_name",
+          "value": "ref:../../inputs/region"
+        },
+        {
+          "name": "upgrade_to_standard_plan",
+          "value": true
         }
       ]
     },
@@ -775,15 +815,15 @@
     },
     {
       "name": "cos_instance_crn",
-      "value": "ref:../2b - Essential Security - Cloud Object Storage/outputs/cos_instance_crn"
+      "value": "ref:./members/2b - Essential Security - Cloud Object Storage/outputs/cos_instance_crn"
     },
     {
       "name": "cos_instance_guid",
-      "value": "ref:../2b - Essential Security - Cloud Object Storage/outputs/cos_instance_guid"
+      "value": "ref:./members/2b - Essential Security - Cloud Object Storage/outputs/cos_instance_guid"
     },
     {
       "name": "cos_instance_name",
-      "value": "ref:../2b - Essential Security - Cloud Object Storage/outputs/cos_instance_name"
+      "value": "ref:./members/2b - Essential Security - Cloud Object Storage/outputs/cos_instance_name"
     },
     {
       "name": "cloud_monitoring_crn",

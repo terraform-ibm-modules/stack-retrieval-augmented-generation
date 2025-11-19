@@ -1,1230 +1,1349 @@
 {
-	"products": [
-		{
-			"label": "Retrieval Augmented Generation (RAG) Pattern",
-			"name": "Retrieval_Augmented_Generation_Pattern",
-			"product_kind": "solution",
-			"tags": [
-				"solution",
-				"watson",
-				"security",
-				"banking",
-				"ibm_created",
-				"target_terraform",
-				"terraform",
-				"converged_infra",
-				"platform_engineering"
-			],
-			"keywords": [
-				"rag",
-				"watson",
-				"ai",
-				"compliance",
-				"fscloud",
-				"genai",
-				"sample",
-				"ibmcloud",
-				"financial services",
-				"watsonx",
-				"llm",
-				"retrieval augmented generation",
-				"secure",
-				"secret manager",
-				"key protect",
-				"security and compliance center workload protection",
-				"cspm",
-				"config aggregator",
-				"app config",
-				"IaC",
-				"infrastructure as code",
-				"terraform",
-				"solution"
-			],
-			"short_description": "Automate RAG deployment with supporting IBM Cloud and watsonx services, embed your enterprise data in generative AI solutions",
-			"long_description": "Utilize data from your enterprise to achieve productivity gains in activities related to question/answer conversations, content search, summarization and generation. RAG can be deployed in multiple configurations and is applicable to various industry use cases and solutions.\n\nThis deployable architecture provides a comprehensive foundation for trust, observability, security, and regulatory compliance by configuring and deploying various services and a sample application for a [RAG pattern](https://cloud.ibm.com/docs/pattern-genai-rag?topic=pattern-genai-rag-genai-pattern), including:\n- Configuring IBM Cloud Account with best practices from [IBM Cloud Framework for Financial Services](https://cloud.ibm.com/docs/framework-financial-services?topic=framework-financial-services-about)\n- Deploying key and secrets management services for storage and management of encryption keys and secrets\n- Deploying controls for continuous compliance\n- Deploying observability services for application and platform logging and monitoring\n- Deploying a suite of watsonx services to provide generative AI RAG capabilities\n- Deploying content databases for storing vector embeddings of the documents and content search/retrieval\n- Deploying a sample application in a variety of run times including CI/CD/CC pipelines for secure application lifecycle management\n\nThe above configured and deployed services enable a secure and trustworthy deployment of generative AI applications on IBM Cloud.\n\nThe configurations are flexible and be changed to meet the needs for several types of RAG patterns depending on the chosen combination of technologies and services.\n\nThe generative AI RAG pattern services include:\n- [watsonx.ai](https://dataplatform.cloud.ibm.com/docs/content/wsj/getting-started/welcome-main.html?context=wx)\n- [watsonx.data](https://cloud.ibm.com/docs/watsonxdata) (with Milvus)\n- [watsonx.governance](https://dataplatform.cloud.ibm.com/docs/content/svc-welcome/aiopenscale.html?context=wx)\n- [watsonx Assistant](https://cloud.ibm.com/docs/watson-assistant?topic=watson-assistant-welcome-new-assistant)\n- [watsonx Orchestrate](https://www.ibm.com/docs/en/watsonx/watson-orchestrate/current)\n- [Watson Discovery](https://cloud.ibm.com/docs/discovery-data)\n- [Elasticsearch](https://cloud.ibm.com/docs/databases-for-elasticsearch) Enterprise and Platinum edition\n\nThe supporting services include:\n- [Secrets Manager](https://cloud.ibm.com/docs/secrets-manager)\n- [Key Protect](https://cloud.ibm.com/docs/key-protect)\n- [Security and Compliance Center](https://cloud.ibm.com/docs/security-compliance)\n- [Event Notifications](https://cloud.ibm.com/docs/event-notifications?topic=event-notifications-getting-started)\n- [Logs](https://cloud.ibm.com/docs/cloud-logs)\n- [Monitoring](https://cloud.ibm.com/docs/monitoring?topic=monitoring-getting-started)\n- [Object Storage](https://cloud.ibm.com/docs/cloud-object-storage?topic=cloud-object-storage-getting-started-cloud-object-storage)\n- [Continuous Delivery](https://cloud.ibm.com/docs/ContinuousDelivery) toolchains\n- [Container Registry](https://cloud.ibm.com/docs/Registry)\n\nA [sample RAG application](https://github.com/IBM/gen-ai-rag-watsonx-sample-application) is deployed to [Code Engine](https://cloud.ibm.com/docs/codeengine) or [Red Hat OpenShift](https://cloud.ibm.com/docs/openshift) cluster.\n\nBy leveraging this architecture, you can accelerate your deployment and tailor it to meet your unique business needs and enterprise goals.",
-			"offering_docs_url": "https://github.com/terraform-ibm-modules/stack-retrieval-augmented-generation/blob/main/README.md",
-			"offering_icon_url": "https://globalcatalog.cloud.ibm.com/api/v1/1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc/artifacts/solution.svg",
-			"provider_name": "IBM",
-			"features": [
-				{
-					"title": "RAG Pattern",
-					"description": "Deploy a RAG pattern with supporting IBM Cloud and watsonx services, and a sample application to Code Engine or Red Hat OpenShift using Continuous Delivery."
-				},
-				{
-					"title": "Implement Security",
-					"description": "The architecture ensures security by deploying Key Protect and Secrets Manager."
-				},
-				{
-					"title": "Achieve Regulatory Compliance",
-					"description": "Ensures regulatory compliance by implementing CI/CD/CC pipelines, along with Security and Compliance Center Workload Protection for continuous compliance."
-				},
-				{
-					"title": "Ensure Observability",
-					"description": "Provides observability by deploying services such as Logs and Monitoring for log analysis and tracking activity."
-				},
-				{
-					"title": "Establish Trust",
-					"description": "Ensures trust by configuring the IBM Cloud account to align with compliance settings as defined in the Financial Services framework."
-				}
-			],
-			"support_details": "This product is in the community registry, as such support is handled through the originated repo. If you experience issues please open an issue in that repository [https://github.com/terraform-ibm-modules/stack-retrieval-augmented-generation/issues](https://github.com/terraform-ibm-modules/stack-retrieval-augmented-generation/issues). Please note this product is not supported via the IBM Cloud Support Center.",
-			"flavors": [
-				{
-					"label": "Basic (Deploy on Code Engine)",
-					"name": "basic",
-					"working_directory": "solutions/basic",
-					"compliance": {
-						"authority": "scc-v3",
-						"profiles": [
-							{
-								"profile_name": "AI Security Guardrails 2.0",
-								"profile_version": "1.1.0"
-							}
-						]
-					},
-					"iam_permissions": [
-						{
-							"service_name": "iam-groups",
-							"role_crns": [
-								"crn:v1:bluemix:public:iam::::role:Administrator"
-							]
-						},
-						{
-							"role_crns": [
-								"crn:v1:bluemix:public:iam::::serviceRole:Manager",
-								"crn:v1:bluemix:public:iam::::role:Editor"
-							],
-							"service_name": "cloud-object-storage"
-						},
-						{
-							"role_crns": [
-								"crn:v1:bluemix:public:iam::::role:Administrator"
-							],
-							"service_name": "iam-identity"
-						},
-						{
-							"role_crns": [
-								"crn:v1:bluemix:public:iam::::serviceRole:Writer",
-								"crn:v1:bluemix:public:iam::::role:Administrator"
-							],
-							"service_name": "atracker"
-						},
-						{
-							"role_crns": [
-								"crn:v1:bluemix:public:iam::::serviceRole:Manager",
-								"crn:v1:bluemix:public:iam::::role:Editor"
-							],
-							"service_name": "kms"
-						},
-						{
-							"service_name": "sysdig-secure",
-							"role_crns": [
-								"crn:v1:bluemix:public:iam::::serviceRole:Manager",
-								"crn:v1:bluemix:public:iam::::role:Editor"
-							]
-						},
-						{
-							"service_name": "apprapp",
-							"role_crns": [
-								"crn:v1:bluemix:public:iam::::serviceRole:Manager",
-								"crn:v1:bluemix:public:iam::::role:Editor"
-							]
-						},
-						{
-							"role_crns": [
-								"crn:v1:bluemix:public:iam::::role:Editor"
-							],
-							"service_name": "pm-20"
-						},
-						{
-							"role_crns": [
-								"crn:v1:bluemix:public:iam::::role:Editor"
-							],
-							"service_name": "data-science-experience"
-						},
-						{
-							"role_crns": [
-								"crn:v1:bluemix:public:iam::::role:Editor"
-							],
-							"service_name": "aiopenscale"
-						},
-						{
-							"role_crns": [
-								"crn:v1:bluemix:public:iam::::role:Editor"
-							],
-							"service_name": "conversation"
-						},
-						{
-							"role_crns": [
-								"crn:v1:bluemix:public:iam::::role:Editor"
-							],
-							"service_name": "discovery"
-						},
-						{
-							"service_name": "databases-for-elasticsearch",
-							"role_crns": [
-								"crn:v1:bluemix:public:iam::::role:Editor"
-							]
-						},
-						{
-							"service_name": "event-notifications",
-							"role_crns": [
-								"crn:v1:bluemix:public:iam::::serviceRole:Manager",
-								"crn:v1:bluemix:public:iam::::role:Editor"
-							]
-						},
-						{
-							"role_crns": [
-								"crn:v1:bluemix:public:iam::::serviceRole:Writer",
-								"crn:v1:bluemix:public:iam::::role:Editor"
-							],
-							"service_name": "codeengine"
-						}
-					],
-					"architecture": {
-						"features": [
-							{
-								"title": " ",
-								"description": "Enables:"
-							},
-							{
-								"title": "1. Code Engine for containerized and serverless workloads",
-								"description": " "
-							},
-							{
-								"title": "2. Elasticsearch Enterprise for building and storing dense vector indexes or keyword search indexes",
-								"description": " "
-							},
-							{
-								"title": "3. watsonx.ai in-memory vector store for RAG trial and exploration",
-								"description": " "
-							},
-							{
-								"title": "4. watsonx.ai UI to upload documents",
-								"description": " "
-							},
-							{
-								"title": "5. watsonx.ai Prompt Lab for inferencing and Prompt Templates",
-								"description": " "
-							},
-							{
-								"title": "6. watsonx Assistant Conversational Search with embedded LLM",
-								"description": " "
-							},
-							{
-								"title": "7. Build your own data processing, ingestion pipeline and indexes",
-								"description": " "
-							}
-						],
-						"diagrams": [
-							{
-								"diagram": {
-									"url": "https://raw.githubusercontent.com/terraform-ibm-modules/stack-retrieval-augmented-generation/main/reference-architecture/rag-pattern.svg",
-									"caption": "Reference architecture",
-									"type": "image/svg+xml",
-									"thumbnail_url": "https://raw.githubusercontent.com/terraform-ibm-modules/stack-retrieval-augmented-generation/main/reference-architecture/rag-pattern.svg"
-								},
-								"description": "Reference architecture"
-							},
-							{
-								"diagram": {
-									"url": "https://raw.githubusercontent.com/terraform-ibm-modules/stack-retrieval-augmented-generation/main/reference-architecture/rag-stack.svg",
-									"caption": "Solution components",
-									"type": "image/svg+xml",
-									"thumbnail_url": "https://raw.githubusercontent.com/terraform-ibm-modules/stack-retrieval-augmented-generation/main/reference-architecture/rag-stack.svg"
-								},
-								"description": "Solution components"
-							}
-						]
-					},
-					"configuration": [
-						{
-							"key": "prefix",
-							"type": "string",
-							"description": "A prefix added to the name of all resources created by this solution. Used to avoid name clashes in the target account when deploying this solution multiple times.",
-							"default_value": "rag",
-							"required": true
-						},
-						{
-							"key": "ibmcloud_api_key",
-							"type": "password",
-							"description": "The API Key used to provision all resources created in this solution.",
-							"required": true
-						},
-						{
-							"key": "signing_key",
-							"type": "password",
-							"description": "The key used to sign the application image built by the CI pipeline deployed in this solution; please refer to the documentation at https://github.com/terraform-ibm-modules/stack-retrieval-augmented-generation/blob/main/README.md for generating the key; if not set, all resources will deploy successfully, but the initial CI pipeline execution will fail at the signing step.",
-							"default_value": "replace",
-							"required": false,
-							"custom_config": {
-								"type": "multiline_secure_value",
-								"grouping": "deployment",
-								"original_grouping": "deployment"
-							}
-						},
-						{
-							"key": "region",
-							"type": "string",
-							"default_value": "us-south",
-							"description": "The region in which all resources are deployed.",
-							"required": false,
-							"options": [
-								{
-									"displayname": "us-south",
-									"value": "us-south"
-								},
-								{
-									"displayname": "eu-de",
-									"value": "eu-de"
-								}
-							]
-						},
-						{
-							"key": "resource_group_name",
-							"type": "string",
-							"default_value": "rag-services",
-							"description": "The name of the resource group that is created by this solution. The actual name is prefixed with the value of the input 'prefix'.  All resources created by this solution are deployed in this resource group.",
-							"required": false
-						},
-						{
-							"key": "existing_resource_group_name",
-							"type": "string",
-							"default_value": "__NULL__",
-							"description": "The name of an existing resource group that is used by this solution, takes precedence over resource_group_name. Prefix is NOT used for existing resource group. All resources created by this solution are deployed in this resource group.",
-							"required": false
-						},
-						{
-							"key": "watsonx_admin_api_key",
-							"type": "password",
-							"description": "The API key used to provision the watson project resources. If not set, the API key used to deploy the solution is used.",
-							"required": false
-						},
-						{
-							"key": "secret_manager_service_plan",
-							"type": "string",
-							"default_value": "trial",
-							"description": "The service/pricing plan to use when provisioning a new Secrets Manager instance. Only one trial instance is allowed per account.",
-							"required": false,
-							"options": [
-								{
-									"displayname": "Trial",
-									"value": "trial"
-								},
-								{
-									"displayname": "Standard",
-									"value": "standard"
-								}
-							]
-						},
-						{
-							"key": "existing_secrets_manager_crn",
-							"type": "string",
-							"default_value": "__NULL__",
-							"description": "The CRN of an existing secret manager instance to use in this solution. If not set, a new secret manager instance is provisioned.",
-							"required": false
-						},
-						{
-							"key": "skip_iam_authorization_policy",
-							"display_name": "disable_secrets_manager_iam_credentials_engine",
-							"type": "boolean",
-							"default_value": false,
-							"description": "Whether to skip the creation of the IAM authorization policies required to enable the Secrets Manager IAM credentials engine. If set to false, policies will be created that grants the Secrets Manager instance 'Operator' access to the IAM identity service, and 'Groups Service Member Manage' access to the IAM groups service.",
-							"required": false
-						},
-						{
-							"key": "enable_platform_metrics",
-							"type": "boolean",
-							"default_value": false,
-							"description": "Setting this to true will enable platform metrics for the Cloud Monitoring instance. NOTE: You can configure 1 instance only of the IBM Cloud Monitoring service per region to collect platform metrics in that location.",
-							"required": false
-						},
-						{
-							"key": "logs_routing_tenant_regions",
-							"type": "array",
-							"default_value": [],
-							"description": "Pass a list of regions to create a tenant that is targeted to the Cloud Logs instance created by this solution. To manage platform logs that are generated by IBM Cloud® services in a region of IBM Cloud, you must create a tenant in each region that you operate. Leave the list empty if you don't want to create any tenants.",
-							"required": false
-						},
-						{
-							"key": "app_config_service_plan",
-							"type": "string",
-							"default_value": "basic",
-							"description": "The pricing plan to use for the IBM Cloud App Configuration instance.",
-							"required": false,
-							"options": [
-							  {
-								"displayname": "Basic",
-								"value": "basic"
-							  },
-							  {
-								"displayname": "Standard",
-								"value": "standardv2"
-							  },
-							  {
-								"displayname": "Enterprise",
-								"value": "enterprise"
-							  }
-							]
-						},
-						{
-							"key": "scc_workload_protection_service_plan",
-							"type": "string",
-							"default_value": "graduated-tier",
-							"description": "The pricing plan to use for the IBM Cloud Security and Compliance Center Workload Protection instance.",
-							"required": false,
-							"options": [
-							  {
-								"displayname": "Graduated Tier",
-								"value": "graduated-tier"
-							  },
-							  {
-								"displayname": "Free Trial",
-								"value": "free-trial"
-							  }
-							]
-						},
-						{
-							"key": "enterprise_id",
-							"type": "string",
-							"default_value": "__NULL__",
-							"description": "If the account is an enterprise account and you want to scan sub-accounts for compliance, this value should be set to the enterprise ID (this is different to the account ID).",
-							"required": false
-						},
-						{
-							"key": "enterprise_account_group_ids_to_assign",
-							"type": "array",
-							"default_value": [
-							  "all"
-							],
-							"description": "A list of enterprise account group IDs to assign the trusted profile template to in order for the accounts to be scanned for compliance. Supports passing the string 'all' in the list to assign to all account groups. Only applies if a value is being passed for `enterprise_id`.",
-							"required": false
-						},
-						{
-							"key": "enterprise_account_ids_to_assign",
-							"type": "array",
-							"default_value": [
-							  "all"
-							],
-							"description": "A list of enterprise account IDs to assign the trusted profile template to in order for the accounts to be scanned. Supports passing the string 'all' in the list to assign to all accounts. Only applies if a value is being passed for `enterprise_id`.",
-							"required": false
-						},
-						{
-							"key": "sample_app_git_url",
-							"type": "string",
-							"default_value": "https://github.com/IBM/gen-ai-rag-watsonx-sample-application",
-							"description": "The URL to the public git repository containing the sample rag application code.",
-							"required": false
-						},
-						{
-							"key": "existing_kms_instance_crn",
-							"type": "string",
-							"default_value": "__NULL__",
-							"description": "The CRN of an existing KMS instance to use in this solution. If not set, a new KP instance is provisioned.",
-							"required": false
-						},
-						{
-							"key": "existing_event_notification_instance_crn",
-							"type": "string",
-							"default_value": "__NULL__",
-							"description": "The CRN of an existing event notification instance to use in this solution. If not set, a new event notification instance is provisioned.",
-							"required": false
-						},
-						{
-							"key": "existing_discovery_instance",
-							"type": "string",
-							"default_value": "__NULL__",
-							"description": "The CRN of an existing WatsonX SaaS discovery instance to use in this solution. If not set, a new discovery instance is provisioned depending on which plan is selected.",
-							"required": false
-						},
-						{
-							"key": "existing_assistant_instance_crn",
-							"type": "string",
-							"default_value": "__NULL__",
-							"description": "The CRN of an existing WatsonX SaaS assistant instance to use in this solution. If not set, a new assistant instance is provisioned depending on which plan is selected.",
-							"required": false
-						},
-						{
-							"key": "existing_governance_instance",
-							"type": "string",
-							"default_value": "__NULL__",
-							"description": "The CRN of an existing WatsonX SaaS governance instance to use in this solution. If not set, a new governance instance is provisioned depending on which plan is selected.",
-							"required": false
-						},
-						{
-							"key": "existing_studio_instance",
-							"type": "string",
-							"default_value": "__NULL__",
-							"description": "The CRN of an existing WatsonX SaaS studio instance to use in this solution. If not set, a new studio instance is provisioned depending on which plan is selected.",
-							"required": false
-						},
-						{
-							"key": "existing_machine_learning_instance",
-							"type": "string",
-							"default_value": "__NULL__",
-							"description": "The CRN of an existing WatsonX SaaS machine learning instance to use in this solution. If not set, a new machine learning instance is provisioned depending on which plan is selected.",
-							"required": false
-						},
-						{
-							"key": "existing_elasticsearch_instance_crn",
-							"type": "string",
-							"default_value": "__NULL__",
-							"description": "The CRN of an existing elasticsearch instance to use in this solution. If not set, a new elasticsearch instance is provisioned.",
-							"required": false
-						}
-					],
-					"outputs": [
-						{
-							"key": "elasticsearch_hostname",
-							"description": "The hostname of the Elasticsearch instance."
-						},
-						{
-							"key": "elasticsearch_port",
-							"description": "The port of the Elasticsearch instance."
-						},
-						{
-							"key": "elasticsearch_service_credentials_json",
-							"description": "The service credentials of the Elasticsearch instance."
-						},
-						{
-							"key": "elasticsearch_crn",
-							"description": "The CRN of the Elasticsearch instance."
-						},
-						{
-							"key": "watsonx_project_url",
-							"description": "The URL to the WatsonX project for the sample RAG application."
-						},
-						{
-							"key": "watsonx_project_id",
-							"description": "The ID for the WatsonX project for the sample RAG application."
-						},
-						{
-							"key": "watson_discovery_api_url",
-							"description": "The URL to the Watson Discovery API endpoint."
-						},
-						{
-							"key": "watson_discovery_project_id",
-							"description": "The ID for the Watson Discovery project for the sample RAG application."
-						}
-					],
-					"install_type": "fullstack"
-				},
-				{
-					"label": "Standard (Deploy on Red Hat OpenShift)",
-					"name": "standard",
-					"working_directory": "solutions/standard",
-					"compliance": {
-						"authority": "scc-v3",
-						"profiles": [
-							{
-								"profile_name": "AI Security Guardrails 2.0",
-								"profile_version": "1.1.0"
-							}
-						]
-					},
-					"iam_permissions": [
-						{
-							"service_name": "iam-groups",
-							"role_crns": [
-								"crn:v1:bluemix:public:iam::::role:Administrator"
-							]
-						},
-						{
-							"role_crns": [
-								"crn:v1:bluemix:public:iam::::serviceRole:Manager",
-								"crn:v1:bluemix:public:iam::::role:Editor"
-							],
-							"service_name": "cloud-object-storage"
-						},
-						{
-							"role_crns": [
-								"crn:v1:bluemix:public:iam::::role:Administrator",
-								"crn:v1:bluemix:public:iam-identity::::serviceRole:UserApiKeyCreator"
-							],
-							"service_name": "iam-identity"
-						},
-						{
-							"role_crns": [
-								"crn:v1:bluemix:public:iam::::serviceRole:Writer",
-								"crn:v1:bluemix:public:iam::::role:Administrator"
-							],
-							"service_name": "atracker"
-						},
-						{
-							"role_crns": [
-								"crn:v1:bluemix:public:iam::::serviceRole:Manager",
-								"crn:v1:bluemix:public:iam::::role:Editor"
-							],
-							"service_name": "kms"
-						},
-						{
-							"service_name": "sysdig-secure",
-							"role_crns": [
-								"crn:v1:bluemix:public:iam::::serviceRole:Manager",
-								"crn:v1:bluemix:public:iam::::role:Editor"
-							]
-						},
-						{
-							"service_name": "apprapp",
-							"role_crns": [
-								"crn:v1:bluemix:public:iam::::serviceRole:Manager",
-								"crn:v1:bluemix:public:iam::::role:Editor"
-							]
-						},
-						{
-							"role_crns": [
-								"crn:v1:bluemix:public:iam::::role:Editor"
-							],
-							"service_name": "pm-20"
-						},
-						{
-							"role_crns": [
-								"crn:v1:bluemix:public:iam::::role:Editor"
-							],
-							"service_name": "data-science-experience"
-						},
-						{
-							"role_crns": [
-								"crn:v1:bluemix:public:iam::::role:Editor"
-							],
-							"service_name": "aiopenscale"
-						},
-						{
-							"role_crns": [
-								"crn:v1:bluemix:public:iam::::role:Editor"
-							],
-							"service_name": "conversation"
-						},
-						{
-							"role_crns": [
-								"crn:v1:bluemix:public:iam::::role:Editor"
-							],
-							"service_name": "discovery"
-						},
-						{
-							"service_name": "databases-for-elasticsearch",
-							"role_crns": [
-								"crn:v1:bluemix:public:iam::::role:Editor"
-							]
-						},
-						{
-							"service_name": "event-notifications",
-							"role_crns": [
-								"crn:v1:bluemix:public:iam::::serviceRole:Manager",
-								"crn:v1:bluemix:public:iam::::role:Editor"
-							]
-						},
-						{
-							"role_crns": [
-								"crn:v1:bluemix:public:iam::::role:Administrator"
-							],
-							"service_name": "containers-kubernetes"
-						},
-						{
-							"role_crns": [
-								"crn:v1:bluemix:public:iam::::role:Administrator"
-							],
-							"service_name": "is.vpc"
-						}
-					],
-					"architecture": {
-						"features": [
-							{
-								"title": " ",
-								"description": "Enables:"
-							},
-							{
-								"title": "1. Red Hat OpenShift cluster for microservices workloads",
-								"description": " "
-							},
-							{
-								"title": "2. Elasticsearch Platinum for building and storing sparse vectors, dense vector indexes or keyword search indexes",
-								"description": " "
-							},
-							{
-								"title": "i. watsonx.ai use of Elasticsearch ELSER2 vector index for RAG",
-								"description": " "
-							},
-							{
-								"title": "ii. watsonx Assistant Conversational Search with UI feature for uploading documents to create or use Elasticsearch ELSER2 vector index for RAG",
-								"description": " "
-							},
-							{
-								"title": "3. watsonx.ai in-memory vector store for RAG trial and exploration",
-								"description": " "
-							},
-							{
-								"title": "4. watsonx.ai UI to upload documents",
-								"description": " "
-							},
-							{
-								"title": "5. watsonx.ai Prompt Lab for inferencing and Prompt Templates",
-								"description": " "
-							},
-							{
-								"title": "6. watsonx Assistant Conversational Search with embedded LLM",
-								"description": " "
-							},
-							{
-								"title": "7. Build your own data processing, ingestion pipeline and indexes",
-								"description": " "
-							}
-						],
-						"diagrams": [
-							{
-								"diagram": {
-									"url": "https://raw.githubusercontent.com/terraform-ibm-modules/stack-retrieval-augmented-generation/main/reference-architecture/rag-pattern.svg",
-									"caption": "Reference architecture",
-									"type": "image/svg+xml",
-									"thumbnail_url": "https://raw.githubusercontent.com/terraform-ibm-modules/stack-retrieval-augmented-generation/main/reference-architecture/rag-pattern.svg"
-								},
-								"description": "Reference architecture"
-							},
-							{
-								"diagram": {
-									"url": "https://raw.githubusercontent.com/terraform-ibm-modules/stack-retrieval-augmented-generation/main/reference-architecture/rag-stack.svg",
-									"caption": "Solution components",
-									"type": "image/svg+xml",
-									"thumbnail_url": "https://raw.githubusercontent.com/terraform-ibm-modules/stack-retrieval-augmented-generation/main/reference-architecture/rag-stack.svg"
-								},
-								"description": "Solution components"
-							}
-						]
-					},
-					"configuration": [
-						{
-							"key": "prefix",
-							"type": "string",
-							"description": "A prefix added to the name of all resources created by this solution. Must start with a letter, contain only lowercase letters, numbers, or dashes, and be 13 characters or less. Used to avoid name clashes in the target account when deploying this solution multiple times.",
-							"default_value": "rag",
-							"required": true
-						},
-						{
-							"key": "ibmcloud_api_key",
-							"type": "password",
-							"description": "The API Key used to provision all resources created in this solution.",
-							"required": true
-						},
-						{
-							"key": "signing_key",
-							"type": "password",
-							"description": "The key used to sign the application image built by the CI pipeline deployed in this solution; please refer to the documentation at https://github.com/terraform-ibm-modules/stack-retrieval-augmented-generation/blob/main/README.md for generating the key; if not set, all resources will deploy successfully, but the initial CI pipeline execution will fail at the signing step.",
-							"default_value": "replace",
-							"required": false,
-							"custom_config": {
-								"type": "multiline_secure_value",
-								"grouping": "deployment",
-								"original_grouping": "deployment"
-							}
-						},
-						{
-							"key": "region",
-							"type": "string",
-							"default_value": "us-south",
-							"description": "The region in which all resources are deployed.",
-							"required": false,
-							"options": [
-								{
-									"displayname": "us-south",
-									"value": "us-south"
-								},
-								{
-									"displayname": "eu-de",
-									"value": "eu-de"
-								}
-							]
-						},
-						{
-							"key": "resource_group_name",
-							"type": "string",
-							"default_value": "rag-services",
-							"description": "The name of the resource group that is created by this solution. The actual name is prefixed with the value of the input 'prefix'.  All resources created by this solution are deployed in this resource group.",
-							"required": false
-						},
-						{
-							"key": "existing_resource_group_name",
-							"type": "string",
-							"default_value": "__NULL__",
-							"description": "The name of an existing resource group that is used by this solution, takes precedence over resource_group_name. Prefix is NOT used for existing resource group. All resources created by this solution are deployed in this resource group.",
-							"required": false
-						},
-						{
-							"key": "watsonx_admin_api_key",
-							"type": "password",
-							"description": "The API key used to provision the watson project resources. If not set, the API key used to deploy the solution is used.",
-							"required": false
-						},
-						{
-							"key": "secret_manager_service_plan",
-							"type": "string",
-							"default_value": "trial",
-							"description": "The service/pricing plan to use when provisioning a new Secrets Manager instance. Only one trial instance is allowed per account.",
-							"required": false,
-							"options": [
-								{
-									"displayname": "Trial",
-									"value": "trial"
-								},
-								{
-									"displayname": "Standard",
-									"value": "standard"
-								}
-							]
-						},
-						{
-							"key": "existing_secrets_manager_crn",
-							"type": "string",
-							"default_value": "__NULL__",
-							"description": "The CRN of an existing secret manager instance to use in this solution. If not set, a new secret manager instance is provisioned.",
-							"required": false
-						},
-						{
-							"key": "skip_iam_authorization_policy",
-							"display_name": "disable_secrets_manager_iam_credentials_engine",
-							"type": "boolean",
-							"default_value": false,
-							"description": "Whether to skip the creation of the IAM authorization policies required to enable the Secrets Manager IAM credentials engine. If set to false, policies will be created that grants the Secrets Manager instance 'Operator' access to the IAM identity service, and 'Groups Service Member Manage' access to the IAM groups service.",
-							"required": false
-						},
-						{
-							"key": "enable_platform_metrics",
-							"type": "boolean",
-							"default_value": false,
-							"description": "Setting this to true will enable platform metrics for the Cloud Monitoring instance. NOTE: You can configure 1 instance only of the IBM Cloud Monitoring service per region to collect platform metrics in that location.",
-							"required": false
-						},
-						{
-							"key": "logs_routing_tenant_regions",
-							"type": "array",
-							"default_value": [],
-							"description": "Pass a list of regions to create a tenant that is targeted to the Cloud Logs instance created by this solution. To manage platform logs that are generated by IBM Cloud® services in a region of IBM Cloud, you must create a tenant in each region that you operate. Leave the list empty if you don't want to create any tenants.",
-							"required": false
-						},
-					    {
-							"key": "app_config_service_plan",
-							"type": "string",
-							"default_value": "basic",
-							"description": "The pricing plan to use for the IBM Cloud App Configuration instance.",
-							"required": false,
-							"options": [
-							  {
-								"displayname": "Basic",
-								"value": "basic"
-							  },
-							  {
-								"displayname": "Standard",
-								"value": "standardv2"
-							  },
-							  {
-								"displayname": "Enterprise",
-								"value": "enterprise"
-							  }
-							]
-						},
-						{
-							"key": "scc_workload_protection_service_plan",
-							"type": "string",
-							"default_value": "graduated-tier",
-							"description": "The pricing plan to use for the IBM Cloud Security and Compliance Center Workload Protection instance.",
-							"required": false,
-							"options": [
-							  {
-								"displayname": "Graduated Tier",
-								"value": "graduated-tier"
-							  },
-							  {
-								"displayname": "Free Trial",
-								"value": "free-trial"
-							  }
-							]
-						},
-						{
-							"key": "enterprise_id",
-							"type": "string",
-							"default_value": "__NULL__",
-							"description": "If the account is an enterprise account and you want to scan sub-accounts for compliance, this value should be set to the enterprise ID (this is different to the account ID).",
-							"required": false
-						},
-						{
-							"key": "enterprise_account_group_ids_to_assign",
-							"type": "array",
-							"default_value": [
-							  "all"
-							],
-							"description": "A list of enterprise account group IDs to assign the trusted profile template to in order for the accounts to be scanned for compliance. Supports passing the string 'all' in the list to assign to all account groups. Only applies if a value is being passed for `enterprise_id`.",
-							"required": false
-						},
-						{
-							"key": "enterprise_account_ids_to_assign",
-							"type": "array",
-							"default_value": [
-							  "all"
-							],
-							"description": "A list of enterprise account IDs to assign the trusted profile template to in order for the accounts to be scanned. Supports passing the string 'all' in the list to assign to all accounts. Only applies if a value is being passed for `enterprise_id`.",
-							"required": false
-						},
-						{
-
-							"key": "app_config_service_plan",
-							"type": "string",
-							"default_value": "basic",
-							"description": "The pricing plan to use for the IBM Cloud App Configuration instance.",
-							"required": false,
-							"options": [
-							  {
-								"displayname": "Basic",
-								"value": "basic"
-							  },
-							  {
-								"displayname": "Standard",
-								"value": "standardv2"
-							  },
-							  {
-								"displayname": "Enterprise",
-								"value": "enterprise"
-							  }
-							]
-						},
-						{
-							"key": "scc_workload_protection_service_plan",
-							"type": "string",
-							"default_value": "graduated-tier",
-							"description": "The pricing plan to use for the IBM Cloud Security and Compliance Center Workload Protection instance.",
-							"required": false,
-							"options": [
-							  {
-								"displayname": "Graduated Tier",
-								"value": "graduated-tier"
-							  },
-							  {
-								"displayname": "Free Trial",
-								"value": "free-trial"
-							  }
-							]
-						},
-						{
-							"key": "enterprise_id",
-							"type": "string",
-							"default_value": "__NULL__",
-							"description": "If the account is an enterprise account and you want to scan sub-accounts for compliance, this value should be set to the enterprise ID (this is different to the account ID).",
-							"required": false
-						},
-						{
-							"key": "enterprise_account_group_ids_to_assign",
-							"type": "array",
-							"default_value": [
-							  "all"
-							],
-							"description": "A list of enterprise account group IDs to assign the trusted profile template to in order for the accounts to be scanned for compliance. Supports passing the string 'all' in the list to assign to all account groups. Only applies if a value is being passed for `enterprise_id`.",
-							"required": false
-						},
-						{
-							"key": "enterprise_account_ids_to_assign",
-							"type": "array",
-							"default_value": [
-							  "all"
-							],
-							"description": "A list of enterprise account IDs to assign the trusted profile template to in order for the accounts to be scanned. Supports passing the string 'all' in the list to assign to all accounts. Only applies if a value is being passed for `enterprise_id`.",
-							"required": false
-						},
-						{
-							"key": "sample_app_git_url",
-							"type": "string",
-							"default_value": "https://github.com/IBM/gen-ai-rag-watsonx-sample-application",
-							"description": "The URL to the public git repository containing the sample rag application code.",
-							"required": false
-						},
-						{
-							"key": "existing_kms_instance_crn",
-							"type": "string",
-							"default_value": "__NULL__",
-							"description": "The CRN of an existing KMS instance to use in this solution. If not set, a new KP instance is provisioned.",
-							"required": false
-						},
-						{
-							"key": "existing_event_notification_instance_crn",
-							"type": "string",
-							"default_value": "__NULL__",
-							"description": "The CRN of an existing event notification instance to use in this solution. If not set, a new event notification instance is provisioned.",
-							"required": false
-						},
-						{
-							"key": "existing_discovery_instance",
-							"type": "string",
-							"default_value": "__NULL__",
-							"description": "The CRN of an existing WatsonX SaaS discovery instance to use in this solution. If not set, a new discovery instance is provisioned depending on which plan is selected.",
-							"required": false
-						},
-						{
-							"key": "existing_assistant_instance_crn",
-							"type": "string",
-							"default_value": "__NULL__",
-							"description": "The CRN of an existing WatsonX SaaS assistant instance to use in this solution. If not set, a new assistant instance is provisioned depending on which plan is selected.",
-							"required": false
-						},
-						{
-							"key": "existing_governance_instance",
-							"type": "string",
-							"default_value": "__NULL__",
-							"description": "The CRN of an existing WatsonX SaaS governance instance to use in this solution. If not set, a new governance instance is provisioned depending on which plan is selected.",
-							"required": false
-						},
-						{
-							"key": "existing_studio_instance",
-							"type": "string",
-							"default_value": "__NULL__",
-							"description": "The CRN of an existing WatsonX SaaS studio instance to use in this solution. If not set, a new studio instance is provisioned depending on which plan is selected.",
-							"required": false
-						},
-						{
-							"key": "existing_machine_learning_instance",
-							"type": "string",
-							"default_value": "__NULL__",
-							"description": "The CRN of an existing WatsonX SaaS machine learning instance to use in this solution. If not set, a new machine learning instance is provisioned depending on which plan is selected.",
-							"required": false
-						},
-						{
-							"key": "existing_elasticsearch_instance_crn",
-							"type": "string",
-							"default_value": "__NULL__",
-							"description": "The CRN of an existing elasticsearch instance to use in this solution. If not set, a new elasticsearch instance is provisioned.",
-							"required": false
-						}
-					],
-					"outputs": [
-						{
-							"key": "elasticsearch_hostname",
-							"description": "The hostname of the Elasticsearch instance."
-						},
-						{
-							"key": "elasticsearch_port",
-							"description": "The port of the Elasticsearch instance."
-						},
-						{
-							"key": "elasticsearch_service_credentials_json",
-							"description": "The service credentials of the Elasticsearch instance."
-						},
-						{
-							"key": "elasticsearch_crn",
-							"description": "The CRN of the Elasticsearch instance."
-						},
-						{
-							"key": "watsonx_project_url",
-							"description": "The URL to the WatsonX project for the sample RAG application."
-						},
-						{
-							"key": "watsonx_project_id",
-							"description": "The ID for the WatsonX project for the sample RAG application."
-						},
-						{
-							"key": "watson_discovery_api_url",
-							"description": "The URL to the Watson Discovery API endpoint."
-						},
-						{
-							"key": "watson_discovery_project_id",
-							"description": "The ID for the Watson Discovery project for the sample RAG application."
-						}
-					],
-					"install_type": "fullstack"
-				},
-				{
-					"label": "QuickStart",
-					"name": "quickstart",
-					"index": 1,
-					"install_type": "fullstack",
-					"working_directory": "solutions/quickstart",
-					"iam_permissions": [
-						{
-							"service_name": "Resource group only",
-							"role_crns": [
-								"crn:v1:bluemix:public:iam::::role:Viewer"
-							],
-							"notes": "Viewer access is required in the resource group you want to provision in."
-						},
-						{
-							"service_name": "cloud-object-storage",
-							"role_crns": [
-								"crn:v1:bluemix:public:iam::::serviceRole:Manager",
-								"crn:v1:bluemix:public:iam::::role:Editor"
-							],
-							"notes": "Required to manage Object Storage for the watsonx.ai."
-						},
-						{
-							"service_name": "kms",
-							"role_crns": [
-								"crn:v1:bluemix:public:iam::::serviceRole:Manager",
-								"crn:v1:bluemix:public:iam::::role:Editor"
-							],
-							"notes": "Required as Key Protect is used for encryption."
-						},
-						{
-							"service_name": "data-science-experience",
-							"role_crns": [
-								"crn:v1:bluemix:public:iam::::role:Editor"
-							],
-							"notes": "Required to create an instance of watsonx.ai Studio."
-						},
-						{
-							"service_name": "pm-20",
-							"role_crns": [
-								"crn:v1:bluemix:public:iam::::role:Editor"
-							],
-							"notes": "Required to create an instance of watsonx.ai Runtime."
-						},
-						{
-							"service_name": "discovery",
-							"role_crns": [
-								"crn:v1:bluemix:public:iam::::role:Editor"
-							],
-							"notes": "Required to create an instance of Watson Discovery."
-						},
-						{
-							"service_name": "conversation",
-							"role_crns": [
-								"crn:v1:bluemix:public:iam::::role:Editor"
-							],
-							"notes": "Required to create an instance of watsonx Assistant."
-						},
-						{
-							"service_name": "databases-for-elasticsearch",
-							"role_crns": [
-								"crn:v1:bluemix:public:iam::::role:Editor"
-							],
-							"notes": "Required to create the Databases for Elasticsearch instance."
-						},
-						{
-							"service_name": "container-registry",
-							"role_crns": [
-								"crn:v1:bluemix:public:iam::::serviceRole:Manager"
-							],
-							"notes": "Required to manage namespaces, repositories, and access policies in Container Registry."
-						},
-						{
-							"service_name": "codeengine",
-							"role_crns": [
-								"crn:v1:bluemix:public:iam::::serviceRole:Writer",
-								"crn:v1:bluemix:public:iam::::role:Editor"
-							],
-							"notes": "Required to create Code Engine instance."
-						}
-					],
-					"architecture": {
-						"features": [
-							{
-								"title": " ",
-								"description": "Ideal for users new to IBM Cloud or watsonx.ai who want to get started without configuring underlying infrastructure."
-							},
-							{
-								"title": " ",
-								"description": "Quickly provisions watsonx.ai, watsonx Assistant, watson Discovery, Elasticsearch, Object Storage, Key Management Services and Code Engine. Includes all necessary services to deploy a sample Retrieval-Augmented Generation (RAG) application leveraging Code Engine."
-							}
-						],
-						"diagrams": [
-							{
-								"diagram": {
-									"caption": "Landing zone for cloud-native AI applications - QuickStart",
-									"url": "https://raw.githubusercontent.com/terraform-ibm-modules/stack-retrieval-augmented-generation/main/reference-architecture/deployable-architecture-rag-stack-qs.svg",
-									"type": "image/svg+xml"
-								},
-								"description": "This deployable architecture provisions a suite of AI and data services on IBM Cloud to support rapid development and deployment of Landing zone for cloud-native AI applications. It includes <b>watsonx.ai</b> for foundation model training and inference, <b>watsonx Assistant</b> for conversational AI, <b>watson Discovery</b> for intelligent document understanding, and <b>IBM Cloud Databases for Elasticsearch</b>. The solution also provisions <b>IBM Cloud Object Storage (COS)</b> for persistent storage of model artifacts, application data, and logs, and <b>Key Management Services (KMS)</b> to ensure secure handling of sensitive information and encryption keys across services. Once the foundational services are provisioned, a sample <b>Retrieval-Augmented Generation (RAG)</b> application can be deployed to demonstrate how enterprise-grade AI solutions can be built using IBM Cloud-native services. The application leverages `watsonx.ai` for generative responses, Elasticsearch for document retrieval, and Code Engine to orchestrate the runtime environment."
-							}
-						]
-					},
-					"configuration": [
-						{
-							"key": "prefix",
-							"required": true,
-							"default_value": "dev",
-							"random_string": {
-								"length": 4
-							},
-							"value_constraints": [
-								{
-									"type": "regex",
-									"description": "Prefix must begin with a lowercase letter and may contain only lowercase letters, digits, and hyphens '-'. It must not end with a hyphen('-'), and cannot contain consecutive hyphens ('--'). It should not exceed 16 characters.",
-									"value": "^$|^__NULL__$|^[a-z](?!.*--)(?:[a-z0-9-]{0,14}[a-z0-9])?$"
-								}
-							]
-						},
-						{
-							"key": "existing_resource_group_name",
-							"display_name": "resource_group",
-							"custom_config": {
-								"type": "resource_group",
-								"grouping": "deployment",
-								"original_grouping": "deployment",
-								"config_constraints": {
-									"identifier": "rg_name"
-								}
-							}
-						},
-						{
-							"key": "ibmcloud_api_key"
-						},
-						{
-							"key": "region",
-							"required": true,
-							"options": [
-								{
-									"displayname": "Dallas (us-south)",
-									"value": "us-south"
-								},
-								{
-									"displayname": "Sydney (au-syd)",
-									"value": "au-syd"
-								},
-								{
-									"displayname": "Toronto (ca-tor)",
-									"value": "ca-tor"
-								},
-								{
-									"displayname": "Frankfurt (eu-de)",
-									"value": "eu-de"
-								},
-								{
-									"displayname": "London (eu-gb)",
-									"value": "eu-gb"
-								},
-								{
-									"displayname": "Tokyo (jp-tok)",
-									"value": "jp-tok"
-								}
-							]
-						},
-						{
-						"key": "provider_visibility",
-						"options": [
-							{
-								"displayname": "private",
-								"value": "private"
-							},
-							{
-								"displayname": "public",
-								"value": "public"
-							},
-							{
-								"displayname": "public-and-private",
-								"value": "public-and-private"
-							}
-						],
-						"hidden": true
-						},
-						{
-							"key": "resource_tags",
-							"custom_config": {
-								"type": "array",
-								"grouping": "deployment",
-								"original_grouping": "deployment",
-								"config_constraints": {
-									"type": "string"
-								}
-							}
-						}
-					],
-					"dependency_version_2": true,
-					"terraform_version": "1.12.2"
-				}
-			]
-		}
-	]
+  "products": [
+    {
+      "label": "Landing zone for cloud-native AI applications",
+      "name": "Retrieval_Augmented_Generation_Pattern",
+      "product_kind": "solution",
+      "tags": [
+        "solution",
+        "watson",
+        "security",
+        "banking",
+        "ibm_created"
+      ],
+      "keywords": [
+        "cloud-native",
+        "rag",
+        "watson",
+        "ai",
+        "compliance",
+        "fscloud",
+        "genai",
+        "sample",
+        "ibmcloud",
+        "financial services",
+        "watsonx",
+        "llm",
+        "retrieval augmented generation",
+        "secure",
+        "secret manager",
+        "key protect",
+        "security and compliance center workload protection",
+        "cspm",
+        "config aggregator",
+        "app config"
+      ],
+      "short_description": "Automate a cloud-native AI deployment with supporting IBM Cloud and watsonx services, embed your enterprise data in generative AI solutions.",
+      "long_description": "Utilize data from your enterprise to achieve productivity gains in activities related to question/answer conversations, content search, summarization and generation. Cloud-native AI can be deployed in multiple configurations and is applicable to various industry use cases and solutions.\n\nThis deployable architecture provides a comprehensive foundation for trust, observability, security, and regulatory compliance by configuring and deploying various services and a sample application for a [RAG pattern](https://cloud.ibm.com/docs/pattern-genai-rag?topic=pattern-genai-rag-genai-pattern), including:\n- Configuring IBM Cloud Account with best practices from [IBM Cloud Framework for Financial Services](https://cloud.ibm.com/docs/framework-financial-services?topic=framework-financial-services-about)\n- Deploying key and secrets management services for storage and management of encryption keys and secrets\n- Deploying controls for continuous compliance\n- Deploying observability services for application and platform logging and monitoring\n- Deploying a suite of watsonx services to provide generative AI RAG capabilities\n- Deploying content databases for storing vector embeddings of the documents and content search/retrieval\n- Deploying a sample application in a variety of run times including CI/CD/CC pipelines for secure application lifecycle management\n\nThe above configured and deployed services enable a secure and trustworthy deployment of generative AI applications on IBM Cloud.\n\nThe configurations are flexible and be changed to meet the needs for several types of RAG patterns depending on the chosen combination of technologies and services.\n\nThe generative AI RAG pattern services include:\n- [watsonx.ai](https://dataplatform.cloud.ibm.com/docs/content/wsj/getting-started/welcome-main.html?context=wx)\n- [watsonx.data](https://cloud.ibm.com/docs/watsonxdata) (with Milvus)\n- [watsonx.governance](https://dataplatform.cloud.ibm.com/docs/content/svc-welcome/aiopenscale.html?context=wx)\n- [watsonx Assistant](https://cloud.ibm.com/docs/watson-assistant?topic=watson-assistant-welcome-new-assistant)\n- [watsonx Orchestrate](https://www.ibm.com/docs/en/watsonx/watson-orchestrate/current)\n- [Watson Discovery](https://cloud.ibm.com/docs/discovery-data)\n- [Elasticsearch](https://cloud.ibm.com/docs/databases-for-elasticsearch) Enterprise and Platinum edition\n\nThe supporting services include:\n- [Secrets Manager](https://cloud.ibm.com/docs/secrets-manager)\n- [Key Protect](https://cloud.ibm.com/docs/key-protect)\n- [Security and Compliance Center](https://cloud.ibm.com/docs/security-compliance)\n- [Event Notifications](https://cloud.ibm.com/docs/event-notifications?topic=event-notifications-getting-started)\n- [Logs](https://cloud.ibm.com/docs/cloud-logs)\n- [Monitoring](https://cloud.ibm.com/docs/monitoring?topic=monitoring-getting-started)\n- [Object Storage](https://cloud.ibm.com/docs/cloud-object-storage?topic=cloud-object-storage-getting-started-cloud-object-storage)\n- [Continuous Delivery](https://cloud.ibm.com/docs/ContinuousDelivery) toolchains\n- [Container Registry](https://cloud.ibm.com/docs/Registry)\n\nA [sample RAG application](https://github.com/IBM/gen-ai-rag-watsonx-sample-application) is deployed to [Code Engine](https://cloud.ibm.com/docs/codeengine) or [Red Hat OpenShift](https://cloud.ibm.com/docs/openshift) cluster.\n\nBy leveraging this architecture, you can accelerate your deployment and tailor it to meet your unique business needs and enterprise goals.",
+      "offering_docs_url": "https://github.com/terraform-ibm-modules/stack-retrieval-augmented-generation/blob/main/README.md",
+      "offering_icon_url": "https://globalcatalog.cloud.ibm.com/api/v1/1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc/artifacts/solution.svg",
+      "provider_name": "IBM",
+      "features": [
+        {
+          "title": "RAG Pattern",
+          "description": "Deploy a RAG pattern with supporting IBM Cloud and watsonx services, and a sample application to Code Engine or Red Hat OpenShift using Continuous Delivery."
+        },
+        {
+          "title": "Implement Security",
+          "description": "The architecture ensures security by deploying Key Protect and Secrets Manager."
+        },
+        {
+          "title": "Achieve Regulatory Compliance",
+          "description": "Ensures regulatory compliance by implementing CI/CD/CC pipelines, along with Security and Compliance Center Workload Protection for continuous compliance."
+        },
+        {
+          "title": "Ensure Observability",
+          "description": "Provides observability by deploying services such as Logs and Monitoring for log analysis and tracking activity."
+        },
+        {
+          "title": "Establish Trust",
+          "description": "Ensures trust by configuring the IBM Cloud account to align with compliance settings as defined in the Financial Services framework."
+        }
+      ],
+      "support_details": "This product is in the community registry, as such support is handled through the originated repo. If you experience issues please open an issue in that repository [https://github.com/terraform-ibm-modules/stack-retrieval-augmented-generation/issues](https://github.com/terraform-ibm-modules/stack-retrieval-augmented-generation/issues). Please note this product is not supported via the IBM Cloud Support Center.",
+      "flavors": [
+        {
+          "label": "Basic with sample application (Deploy on Code Engine)",
+          "name": "basic",
+          "index": 1,
+          "working_directory": "solutions/basic",
+          "ignore_readme": true,
+          "dependency_version_2": true,
+          "iam_permissions": [
+            {
+              "service_name": "iam-groups",
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::role:Administrator"
+              ]
+            },
+            {
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::serviceRole:Manager",
+                "crn:v1:bluemix:public:iam::::role:Editor"
+              ],
+              "service_name": "cloud-object-storage"
+            },
+            {
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::role:Administrator"
+              ],
+              "service_name": "iam-identity"
+            },
+            {
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::serviceRole:Writer",
+                "crn:v1:bluemix:public:iam::::role:Administrator"
+              ],
+              "service_name": "atracker"
+            },
+            {
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::serviceRole:Manager",
+                "crn:v1:bluemix:public:iam::::role:Editor"
+              ],
+              "service_name": "kms"
+            },
+            {
+              "service_name": "sysdig-secure",
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::serviceRole:Manager",
+                "crn:v1:bluemix:public:iam::::role:Editor"
+              ]
+            },
+            {
+              "service_name": "apprapp",
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::serviceRole:Manager",
+                "crn:v1:bluemix:public:iam::::role:Editor"
+              ]
+            },
+            {
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::role:Editor"
+              ],
+              "service_name": "pm-20"
+            },
+            {
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::role:Editor"
+              ],
+              "service_name": "data-science-experience"
+            },
+            {
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::role:Editor"
+              ],
+              "service_name": "aiopenscale"
+            },
+            {
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::role:Editor"
+              ],
+              "service_name": "conversation"
+            },
+            {
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::role:Editor"
+              ],
+              "service_name": "discovery"
+            },
+            {
+              "service_name": "databases-for-elasticsearch",
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::role:Editor"
+              ]
+            },
+            {
+              "service_name": "event-notifications",
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::serviceRole:Manager",
+                "crn:v1:bluemix:public:iam::::role:Editor"
+              ]
+            },
+            {
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::serviceRole:Writer",
+                "crn:v1:bluemix:public:iam::::role:Editor"
+              ],
+              "service_name": "codeengine"
+            }
+          ],
+          "architecture": {
+            "features": [
+              {
+                "title": " ",
+                "description": "Enables:"
+              },
+              {
+                "title": "1. Code Engine for containerized and serverless workloads",
+                "description": " "
+              },
+              {
+                "title": "2. Elasticsearch Enterprise for building and storing dense vector indexes or keyword search indexes",
+                "description": " "
+              },
+              {
+                "title": "3. watsonx.ai in-memory vector store for RAG trial and exploration",
+                "description": " "
+              },
+              {
+                "title": "4. watsonx.ai UI to upload documents",
+                "description": " "
+              },
+              {
+                "title": "5. watsonx.ai Prompt Lab for inferencing and Prompt Templates",
+                "description": " "
+              },
+              {
+                "title": "6. watsonx Assistant Conversational Search with embedded LLM",
+                "description": " "
+              },
+              {
+                "title": "7. Build your own data processing, ingestion pipeline and indexes",
+                "description": " "
+              }
+            ],
+            "diagrams": [
+              {
+                "diagram": {
+                  "url": "https://raw.githubusercontent.com/terraform-ibm-modules/stack-retrieval-augmented-generation/main/reference-architectures/rag-pattern.svg",
+                  "caption": "Reference architecture",
+                  "type": "image/svg+xml",
+                  "thumbnail_url": "https://raw.githubusercontent.com/terraform-ibm-modules/stack-retrieval-augmented-generation/main/reference-architectures/rag-pattern.svg"
+                },
+                "description": "Reference architecture"
+              },
+              {
+                "diagram": {
+                  "url": "https://raw.githubusercontent.com/terraform-ibm-modules/stack-retrieval-augmented-generation/main/reference-architectures/rag-stack.svg",
+                  "caption": "Solution components",
+                  "type": "image/svg+xml",
+                  "thumbnail_url": "https://raw.githubusercontent.com/terraform-ibm-modules/stack-retrieval-augmented-generation/main/reference-architectures/rag-stack.svg"
+                },
+                "description": "Solution components"
+              }
+            ]
+          },
+          "configuration": [
+            {
+              "key": "prefix",
+              "type": "string",
+              "default_value": "dev",
+              "random_string" : {
+                "length": 4
+              },
+              "description": "The prefix to add to all resources that this solution creates (e.g `prod`, `test`, `dev`). Used to avoid name clashes in the target account when deploying this solution multiple times.",
+              "required": true,
+              "value_constraints": [
+                {
+                  "type": "regex",
+                  "description": "Prefix must begin with a lowercase letter and may contain only lowercase letters, digits, and hyphens '-'. It must not end with a hyphen('-'), and cannot contain consecutive hyphens ('--'). It should not exceed 16 characters",
+                  "value": "^$|^__NULL__$|^[a-z](?!.*--)(?:[a-z0-9-]{0,14}[a-z0-9])?$"
+                }
+              ]
+            },
+            {
+              "key": "ibmcloud_api_key",
+              "type": "password",
+              "description": "The API Key used to provision all resources created in this solution.",
+              "required": true
+            },
+            {
+              "key": "signing_key",
+              "type": "password",
+              "description": "The key used to sign the application image built by the CI pipeline deployed in this solution; please refer to the documentation at https://github.com/terraform-ibm-modules/stack-retrieval-augmented-generation/blob/main/README.md for generating the key; if not set, all resources will deploy successfully, but the initial CI pipeline execution will fail at the signing step.",
+              "default_value": "replace",
+              "required": false,
+              "custom_config": {
+                "type": "multiline_secure_value",
+                "grouping": "deployment",
+                "original_grouping": "deployment"
+              }
+            },
+            {
+              "key": "region",
+              "type": "string",
+              "default_value": "us-south",
+              "description": "The region in which all resources are deployed.",
+              "required": false,
+              "options": [
+                {
+                  "displayname": "Dallas (us-south)",
+                  "value": "us-south"
+                },
+                {
+                  "displayname": "Frankfurt (eu-de)",
+                  "value": "eu-de"
+                },
+                {
+                  "displayname": "London (eu-gb)",
+                  "value": "eu-gb"
+                },
+                {
+                  "displayname": "Sydney (au-syd)",
+                  "value": "au-syd"
+                },
+                {
+                  "displayname": "Tokyo (jp-tok)",
+                  "value": "jp-tok"
+                },
+                {
+                  "displayname": "Toronto (ca-tor)",
+                  "value": "ca-tor"
+                }
+              ]
+            },
+            {
+              "key": "resource_group_name",
+              "type": "string",
+              "default_value": "rag-services",
+              "description": "The name of the resource group that is created by this solution. The actual name is prefixed with the value of the input 'prefix'. All resources created by this solution are deployed in this resource group.",
+              "required": false
+            },
+            {
+              "key": "existing_resource_group_name",
+              "type": "string",
+              "default_value": "__NULL__",
+              "description": "The name of an existing resource group that is used by this solution, takes precedence over `resource_group_name`. Prefix is NOT used for existing resource group. All resources created by this solution are deployed in this resource group.",
+              "required": false,
+              "custom_config": {
+                "type": "resource_group",
+                "grouping": "deployment",
+                "original_grouping": "deployment",
+                "config_constraints": {
+                  "identifier": "rg_name"
+                }
+              }
+            },
+            {
+              "key": "watsonx_admin_api_key",
+              "type": "password",
+              "description": "The API key used to provision the watson project resources. If not set, the API key used to deploy the solution is used.",
+              "required": false
+            },
+            {
+              "key": "secrets_manager_service_plan",
+              "type": "string",
+              "default_value": "trial",
+              "description": "The service/pricing plan to use when provisioning a new Secrets Manager instance. Only one trial instance is allowed per account.",
+              "required": false,
+              "options": [
+                {
+                  "displayname": "Trial",
+                  "value": "trial"
+                },
+                {
+                  "displayname": "Standard",
+                  "value": "standard"
+                }
+              ]
+            },
+            {
+              "key": "key_protect_plan",
+              "type": "string",
+              "default_value": "tiered-pricing",
+              "description": "The service plan of the Key Protect instance that will be provisioned by this solution. Only used if not supplying `existing_kms_instance_crn`. [Learn more](https://cloud.ibm.com/docs/key-protect?topic=key-protect-pricing-plan).",
+              "required": false,
+              "options": [
+                {
+                  "displayname": "Standard",
+                  "value": "tiered-pricing"
+                },
+                {
+                  "displayname": "Cross-region Resiliency",
+                  "value": "cross-region-resiliency"
+                }
+              ]
+            },
+            {
+              "key": "cloud_monitoring_plan",
+              "type": "string",
+              "default_value": "graduated-tier",
+              "description": "The IBM Cloud Monitoring plan to provision. Available values are `lite` and `graduated-tier`. [Learn more](https://cloud.ibm.com/docs/monitoring?topic=monitoring-service_plans)",
+              "required": false,
+              "options": [
+                {
+                  "displayname": "Lite",
+                  "value": "lite"
+                },
+                {
+                  "displayname": "Graduated Tier",
+                  "value": "graduated-tier"
+                }
+              ]
+            },
+            {
+              "key": "scc_workload_protection_service_plan",
+              "type": "string",
+              "default_value": "graduated-tier",
+              "description": "The pricing plan to use for the IBM Cloud Security and Compliance Center Workload Protection instance.",
+              "required": false,
+              "options": [
+                {
+                  "displayname": "Graduated Tier",
+                  "value": "graduated-tier"
+                },
+                {
+                  "displayname": "Free Trial",
+                  "value": "free-trial"
+                }
+              ]
+            },
+            {
+              "key": "secrets_manager_secret_groups",
+              "type": "array",
+              "default_value": "[\n    {\n      secret_group_name        = \"General\"\n      secret_group_description = \"A general purpose secrets group with an associated access group which has a secrets reader role\"\n      create_access_group      = true\n      access_group_name        = \"general-secrets-group-access-group\"\n      access_group_roles       = [\"SecretsReader\"]\n    }\n  ]",
+              "description": "Secret Manager secret group and access group configurations. If a prefix input variable is specified, it is added to the `access_group_name` value in the `<prefix>-value` format. If you do not wish to create any groups, set the value to `[]`. [Learn more](https://github.com/terraform-ibm-modules/terraform-ibm-secrets-manager/tree/main/solutions/fully-configurable/provisioning_secrets_groups.md).",
+              "required": false,
+              "custom_config": {
+                "type": "code_editor",
+                "grouping": "deployment",
+                "original_grouping": "deployment"
+              }
+            },
+            {
+              "key": "skip_secrets_manager_iam_auth_policy",
+              "display_name": "disable_secrets_manager_iam_credentials_engine",
+              "type": "boolean",
+              "default_value": false,
+              "description": "Whether to skip the creation of the IAM authorization policies required to enable the Secrets Manager IAM credentials engine. If set to false, policies will be created that grants the Secrets Manager instance 'Operator' access to the IAM identity service, and 'Groups Service Member Manage' access to the IAM groups service.",
+              "required": false
+            },
+            {
+              "key": "enable_platform_metrics",
+              "type": "boolean",
+              "default_value": false,
+              "description": "Setting this to true will enable platform metrics for the Cloud Monitoring instance, including setting up a metrics routing route to the Cloud Monitoring instance. NOTE: You can configure 1 instance only of the IBM Cloud Monitoring service per region to collect platform metrics in that location.",
+              "required": false
+            },
+            {
+              "key": "logs_routing_tenant_regions",
+              "type": "array",
+              "default_value": [],
+              "description": "Pass a list of regions to create a tenant that is targeted to the Cloud Logs instance created by this solution. To manage platform logs that are generated by IBM Cloud® services in a region of IBM Cloud, you must create a tenant in each region that you operate. Leave the list empty if you don't want to create any tenants.",
+              "required": false,
+              "custom_config": {
+                "grouping": "deployment",
+                "original_grouping": "deployment",
+                "config_constraints": {
+                  "type": "string"
+                }
+              }
+            },
+            {
+              "key": "event_notifications_email_list",
+              "type": "array",
+              "default_value": [],
+              "description": "List of emails to configure event notifications.",
+              "required": false,
+              "custom_config": {
+                "grouping": "deployment",
+                "original_grouping": "deployment",
+                "config_constraints": {
+                  "type": "string"
+                }
+              }
+            },
+            {
+              "key": "enterprise_id",
+              "type": "string",
+              "default_value": "__NULL__",
+              "description": "If the account is an enterprise account and you want to scan sub-accounts for compliance, this value should be set to the enterprise ID (this is different to the account ID).",
+              "required": false
+            },
+            {
+              "key": "enterprise_account_group_ids_to_assign",
+              "type": "array",
+              "default_value": [
+                "all"
+              ],
+              "description": "A list of enterprise account group IDs to assign the trusted profile template to in order for the accounts to be scanned for compliance. Supports passing the string 'all' in the list to assign to all account groups. Only applies if a value is being passed for `enterprise_id`.",
+              "required": false,
+              "custom_config": {
+                "grouping": "deployment",
+                "original_grouping": "deployment",
+                "config_constraints": {
+                  "type": "string"
+                }
+              }
+            },
+            {
+              "key": "enterprise_account_ids_to_assign",
+              "type": "array",
+              "default_value": [
+                "all"
+              ],
+              "description": "A list of enterprise account IDs to assign the trusted profile template to in order for the accounts to be scanned. Supports passing the string 'all' in the list to assign to all accounts. Only applies if a value is being passed for `enterprise_id`.",
+              "required": false,
+              "custom_config": {
+                "grouping": "deployment",
+                "original_grouping": "deployment",
+                "config_constraints": {
+                  "type": "string"
+                }
+              }
+            },
+            {
+              "key": "sample_app_git_url",
+              "type": "string",
+              "default_value": "https://github.com/IBM/gen-ai-rag-watsonx-sample-application",
+              "description": "The URL to the public git repository containing the sample RAG application code.",
+              "required": false
+            },
+            {
+              "key": "existing_secrets_manager_crn",
+              "type": "string",
+              "default_value": "__NULL__",
+              "description": "The CRN of an existing secret manager instance to use in this solution. If not set, a new secret manager instance is provisioned.",
+              "required": false
+            },
+            {
+              "key": "existing_kms_instance_crn",
+              "type": "string",
+              "default_value": "__NULL__",
+              "description": "The CRN of an existing KMS instance to use in this solution. If not set, a new KP instance is provisioned.",
+              "required": false
+            },
+            {
+              "key": "existing_event_notifications_instance_crn",
+              "type": "string",
+              "default_value": "__NULL__",
+              "description": "The CRN of an existing event notification instance to use in this solution. If not set, a new event notification instance is provisioned.",
+              "required": false
+            },
+            {
+              "key": "existing_discovery_instance_crn",
+              "type": "string",
+              "default_value": "__NULL__",
+              "description": "The CRN of an existing WatsonX SaaS discovery instance to use in this solution. If not set, a new discovery instance is provisioned depending on which plan is selected.",
+              "required": false
+            },
+            {
+              "key": "existing_assistant_instance_crn",
+              "type": "string",
+              "default_value": "__NULL__",
+              "description": "The CRN of an existing WatsonX SaaS assistant instance to use in this solution. If not set, a new assistant instance is provisioned depending on which plan is selected.",
+              "required": false
+            },
+            {
+              "key": "existing_governance_instance_crn",
+              "type": "string",
+              "default_value": "__NULL__",
+              "description": "The CRN of an existing WatsonX SaaS governance instance to use in this solution. If not set, a new governance instance is provisioned depending on which plan is selected.",
+              "required": false
+            },
+            {
+              "key": "existing_studio_instance_crn",
+              "type": "string",
+              "default_value": "__NULL__",
+              "description": "The CRN of an existing WatsonX SaaS studio instance to use in this solution. If not set, a new studio instance is provisioned depending on which plan is selected.",
+              "required": false
+            },
+            {
+              "key": "existing_machine_learning_instance",
+              "type": "string",
+              "default_value": "__NULL__",
+              "description": "The CRN of an existing WatsonX SaaS machine learning instance to use in this solution. If not set, a new machine learning instance is provisioned depending on which plan is selected.",
+              "required": false
+            },
+            {
+              "key": "existing_elasticsearch_instance_crn",
+              "type": "string",
+              "default_value": "__NULL__",
+              "description": "The CRN of an existing elasticsearch instance to use in this solution. If not set, a new elasticsearch instance is provisioned.",
+              "required": false
+            }
+          ],
+          "outputs": [
+            {
+              "name": "cos_instance_crn",
+              "description": "Cloud Object Storage instance CRN"
+            },
+            {
+              "name": "cos_instance_guid",
+              "description": "Cloud Object Storage instance GUID"
+            },
+            {
+              "name": "cos_instance_name",
+              "description": "Cloud Object Storage instance name"
+            },
+            {
+              "key": "elasticsearch_hostname",
+              "description": "The hostname of the Elasticsearch instance."
+            },
+            {
+              "key": "elasticsearch_port",
+              "description": "The port of the Elasticsearch instance."
+            },
+            {
+              "key": "elasticsearch_service_credentials_json",
+              "description": "The service credentials of the Elasticsearch instance."
+            },
+            {
+              "key": "elasticsearch_crn",
+              "description": "The CRN of the Elasticsearch instance."
+            },
+            {
+              "key": "watsonx_project_url",
+              "description": "The URL to the WatsonX project for the sample RAG application."
+            },
+            {
+              "key": "watsonx_project_id",
+              "description": "The ID for the WatsonX project for the sample RAG application."
+            },
+            {
+              "key": "watson_discovery_api_url",
+              "description": "The URL to the Watson Discovery API endpoint."
+            },
+            {
+              "key": "watson_discovery_project_id",
+              "description": "The ID for the Watson Discovery project for the sample RAG application."
+            }
+          ],
+          "install_type": "fullstack"
+        },
+        {
+          "label": "Standard with sample application (Deploy on Red Hat OpenShift)",
+          "name": "standard",
+          "index": 2,
+          "working_directory": "solutions/standard",
+          "ignore_readme": true,
+          "dependency_version_2": true,
+          "iam_permissions": [
+            {
+              "service_name": "iam-groups",
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::role:Administrator"
+              ]
+            },
+            {
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::serviceRole:Manager",
+                "crn:v1:bluemix:public:iam::::role:Editor"
+              ],
+              "service_name": "cloud-object-storage"
+            },
+            {
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::role:Administrator",
+                "crn:v1:bluemix:public:iam-identity::::serviceRole:UserApiKeyCreator"
+              ],
+              "service_name": "iam-identity"
+            },
+            {
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::serviceRole:Writer",
+                "crn:v1:bluemix:public:iam::::role:Administrator"
+              ],
+              "service_name": "atracker"
+            },
+            {
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::serviceRole:Manager",
+                "crn:v1:bluemix:public:iam::::role:Editor"
+              ],
+              "service_name": "kms"
+            },
+            {
+              "service_name": "sysdig-secure",
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::serviceRole:Manager",
+                "crn:v1:bluemix:public:iam::::role:Editor"
+              ]
+            },
+            {
+              "service_name": "apprapp",
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::serviceRole:Manager",
+                "crn:v1:bluemix:public:iam::::role:Editor"
+              ]
+            },
+            {
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::role:Editor"
+              ],
+              "service_name": "pm-20"
+            },
+            {
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::role:Editor"
+              ],
+              "service_name": "data-science-experience"
+            },
+            {
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::role:Editor"
+              ],
+              "service_name": "aiopenscale"
+            },
+            {
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::role:Editor"
+              ],
+              "service_name": "conversation"
+            },
+            {
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::role:Editor"
+              ],
+              "service_name": "discovery"
+            },
+            {
+              "service_name": "databases-for-elasticsearch",
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::role:Editor"
+              ]
+            },
+            {
+              "service_name": "event-notifications",
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::serviceRole:Manager",
+                "crn:v1:bluemix:public:iam::::role:Editor"
+              ]
+            },
+            {
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::role:Administrator"
+              ],
+              "service_name": "containers-kubernetes"
+            },
+            {
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::role:Administrator"
+              ],
+              "service_name": "is.vpc"
+            }
+          ],
+          "architecture": {
+            "features": [
+              {
+                "title": " ",
+                "description": "Enables:"
+              },
+              {
+                "title": "1. Red Hat OpenShift cluster for microservices workloads",
+                "description": " "
+              },
+              {
+                "title": "2. Elasticsearch Platinum for building and storing sparse vectors, dense vector indexes or keyword search indexes",
+                "description": " "
+              },
+              {
+                "title": "i. watsonx.ai use of Elasticsearch ELSER2 vector index for RAG",
+                "description": " "
+              },
+              {
+                "title": "ii. watsonx Assistant Conversational Search with UI feature for uploading documents to create or use Elasticsearch ELSER2 vector index for RAG",
+                "description": " "
+              },
+              {
+                "title": "3. watsonx.ai in-memory vector store for RAG trial and exploration",
+                "description": " "
+              },
+              {
+                "title": "4. watsonx.ai UI to upload documents",
+                "description": " "
+              },
+              {
+                "title": "5. watsonx.ai Prompt Lab for inferencing and Prompt Templates",
+                "description": " "
+              },
+              {
+                "title": "6. watsonx Assistant Conversational Search with embedded LLM",
+                "description": " "
+              },
+              {
+                "title": "7. Build your own data processing, ingestion pipeline and indexes",
+                "description": " "
+              }
+            ],
+            "diagrams": [
+              {
+                "diagram": {
+                  "url": "https://raw.githubusercontent.com/terraform-ibm-modules/stack-retrieval-augmented-generation/main/reference-architectures/rag-pattern.svg",
+                  "caption": "Reference architecture",
+                  "type": "image/svg+xml",
+                  "thumbnail_url": "https://raw.githubusercontent.com/terraform-ibm-modules/stack-retrieval-augmented-generation/main/reference-architectures/rag-pattern.svg"
+                },
+                "description": "Reference architecture"
+              },
+              {
+                "diagram": {
+                  "url": "https://raw.githubusercontent.com/terraform-ibm-modules/stack-retrieval-augmented-generation/main/reference-architectures/rag-stack.svg",
+                  "caption": "Solution components",
+                  "type": "image/svg+xml",
+                  "thumbnail_url": "https://raw.githubusercontent.com/terraform-ibm-modules/stack-retrieval-augmented-generation/main/reference-architectures/rag-stack.svg"
+                },
+                "description": "Solution components"
+              }
+            ]
+          },
+          "configuration": [
+            {
+              "key": "prefix",
+              "type": "string",
+              "default_value": "dev",
+              "random_string" : {
+                "length": 4
+              },
+              "description": "The prefix to add to all resources that this solution creates (e.g `prod`, `test`, `dev`). Used to avoid name clashes in the target account when deploying this solution multiple times.",
+              "required": true,
+              "value_constraints": [
+                {
+                  "type": "regex",
+                  "description": "Prefix must begin with a lowercase letter and may contain only lowercase letters, digits, and hyphens '-'. It must not end with a hyphen('-'), and cannot contain consecutive hyphens ('--'). It should not exceed 16 characters",
+                  "value": "^$|^__NULL__$|^[a-z](?!.*--)(?:[a-z0-9-]{0,14}[a-z0-9])?$"
+                }
+              ]
+            },
+            {
+              "key": "ibmcloud_api_key",
+              "type": "password",
+              "description": "The API Key used to provision all resources created in this solution.",
+              "required": true
+            },
+            {
+              "key": "signing_key",
+              "type": "password",
+              "description": "The key used to sign the application image built by the CI pipeline deployed in this solution; please refer to the documentation at https://github.com/terraform-ibm-modules/stack-retrieval-augmented-generation/blob/main/README.md for generating the key; if not set, all resources will deploy successfully, but the initial CI pipeline execution will fail at the signing step.",
+              "default_value": "replace",
+              "required": false,
+              "custom_config": {
+                "type": "multiline_secure_value",
+                "grouping": "deployment",
+                "original_grouping": "deployment"
+              }
+            },
+            {
+              "key": "region",
+              "type": "string",
+              "default_value": "us-south",
+              "description": "The region in which all resources are deployed.",
+              "required": false,
+              "options": [
+                {
+                  "displayname": "Dallas (us-south)",
+                  "value": "us-south"
+                },
+                {
+                  "displayname": "Frankfurt (eu-de)",
+                  "value": "eu-de"
+                },
+                {
+                  "displayname": "London (eu-gb)",
+                  "value": "eu-gb"
+                },
+                {
+                  "displayname": "Sydney (au-syd)",
+                  "value": "au-syd"
+                },
+                {
+                  "displayname": "Tokyo (jp-tok)",
+                  "value": "jp-tok"
+                },
+                {
+                  "displayname": "Toronto (ca-tor)",
+                  "value": "ca-tor"
+                }
+              ]
+            },
+            {
+              "key": "resource_group_name",
+              "type": "string",
+              "default_value": "rag-services",
+              "description": "The name of the resource group that is created by this solution. The actual name is prefixed with the value of the input 'prefix'.  All resources created by this solution are deployed in this resource group.",
+              "required": false
+            },
+            {
+              "key": "existing_resource_group_name",
+              "type": "string",
+              "default_value": "__NULL__",
+              "description": "The name of an existing resource group that is used by this solution, takes precedence over resource_group_name. Prefix is NOT used for existing resource group. All resources created by this solution are deployed in this resource group.",
+              "required": false,
+              "custom_config": {
+                "type": "resource_group",
+                "grouping": "deployment",
+                "original_grouping": "deployment",
+                "config_constraints": {
+                  "identifier": "rg_name"
+                }
+              }
+            },
+            {
+              "key": "watsonx_admin_api_key",
+              "type": "password",
+              "description": "The API key used to provision the watson project resources. If not set, the API key used to deploy the solution is used.",
+              "required": false
+            },
+            {
+              "key": "secrets_manager_service_plan",
+              "type": "string",
+              "default_value": "standard",
+              "description": "The service/pricing plan to use when provisioning a new Secrets Manager instance. Only one trial instance is allowed per account.",
+              "required": false,
+              "options": [
+                {
+                  "displayname": "Trial",
+                  "value": "trial"
+                },
+                {
+                  "displayname": "Standard",
+                  "value": "standard"
+                }
+              ]
+            },
+            {
+              "key": "key_protect_plan",
+              "type": "string",
+              "default_value": "tiered-pricing",
+              "description": "The service plan of the Key Protect instance that will be provisioned by this solution. Only used if not supplying `existing_kms_instance_crn`. [Learn more](https://cloud.ibm.com/docs/key-protect?topic=key-protect-pricing-plan).",
+              "required": false,
+              "options": [
+                {
+                  "displayname": "Standard",
+                  "value": "tiered-pricing"
+                },
+                {
+                  "displayname": "Cross-region Resiliency",
+                  "value": "cross-region-resiliency"
+                }
+              ]
+            },
+            {
+              "key": "cloud_monitoring_plan",
+              "type": "string",
+              "default_value": "graduated-tier",
+              "description": "The IBM Cloud Monitoring plan to provision. Available values are `lite` and `graduated-tier`. [Learn more](https://cloud.ibm.com/docs/monitoring?topic=monitoring-service_plans)",
+              "required": false,
+              "options": [
+                {
+                  "displayname": "Lite",
+                  "value": "lite"
+                },
+                {
+                  "displayname": "Graduated Tier",
+                  "value": "graduated-tier"
+                }
+              ]
+            },
+            {
+              "key": "scc_workload_protection_service_plan",
+              "type": "string",
+              "default_value": "graduated-tier",
+              "description": "The pricing plan to use for the IBM Cloud Security and Compliance Center Workload Protection instance.",
+              "required": false,
+              "options": [
+                {
+                  "displayname": "Graduated Tier",
+                  "value": "graduated-tier"
+                },
+                {
+                  "displayname": "Free Trial",
+                  "value": "free-trial"
+                }
+              ]
+            },
+            {
+              "key": "secrets_manager_secret_groups",
+              "type": "array",
+              "default_value": "[\n    {\n      secret_group_name        = \"General\"\n      secret_group_description = \"A general purpose secrets group with an associated access group which has a secrets reader role\"\n      create_access_group      = true\n      access_group_name        = \"general-secrets-group-access-group\"\n      access_group_roles       = [\"SecretsReader\"]\n    }\n  ]",
+              "description": "Secret Manager secret group and access group configurations. If a prefix input variable is specified, it is added to the `access_group_name` value in the `<prefix>-value` format. If you do not wish to create any groups, set the value to `[]`. [Learn more](https://github.com/terraform-ibm-modules/terraform-ibm-secrets-manager/tree/main/solutions/fully-configurable/provisioning_secrets_groups.md).",
+              "required": false,
+              "custom_config": {
+                "type": "code_editor",
+                "grouping": "deployment",
+                "original_grouping": "deployment"
+              }
+            },
+            {
+              "key": "skip_secrets_manager_iam_auth_policy",
+              "display_name": "disable_secrets_manager_iam_credentials_engine",
+              "type": "boolean",
+              "default_value": false,
+              "description": "Whether to skip the creation of the IAM authorization policies required to enable the Secrets Manager IAM credentials engine. If set to false, policies will be created that grants the Secrets Manager instance 'Operator' access to the IAM identity service, and 'Groups Service Member Manage' access to the IAM groups service.",
+              "required": false
+            },
+            {
+              "key": "enable_platform_metrics",
+              "type": "boolean",
+              "default_value": false,
+              "description": "Setting this to true will enable platform metrics for the Cloud Monitoring instance, including setting up a metrics routing route to the Cloud Monitoring instance. NOTE: You can configure 1 instance only of the IBM Cloud Monitoring service per region to collect platform metrics in that location.",
+              "required": false
+            },
+            {
+              "key": "logs_routing_tenant_regions",
+              "type": "array",
+              "default_value": [],
+              "description": "Pass a list of regions to create a tenant that is targeted to the Cloud Logs instance created by this solution. To manage platform logs that are generated by IBM Cloud® services in a region of IBM Cloud, you must create a tenant in each region that you operate. Leave the list empty if you don't want to create any tenants.",
+              "required": false,
+              "custom_config": {
+                "grouping": "deployment",
+                "original_grouping": "deployment",
+                "config_constraints": {
+                  "type": "string"
+                }
+              }
+            },
+            {
+              "key": "event_notifications_email_list",
+              "type": "array",
+              "default_value": [],
+              "description": "List of emails to configure event notifications.",
+              "required": false,
+              "custom_config": {
+                "grouping": "deployment",
+                "original_grouping": "deployment",
+                "config_constraints": {
+                  "type": "string"
+                }
+              }
+            },
+            {
+              "key": "enterprise_id",
+              "type": "string",
+              "default_value": "__NULL__",
+              "description": "If the account is an enterprise account and you want to scan sub-accounts for compliance, this value should be set to the enterprise ID (this is different to the account ID).",
+              "required": false
+            },
+            {
+              "key": "enterprise_account_group_ids_to_assign",
+              "type": "array",
+              "default_value": [
+                "all"
+              ],
+              "description": "A list of enterprise account group IDs to assign the trusted profile template to in order for the accounts to be scanned for compliance. Supports passing the string 'all' in the list to assign to all account groups. Only applies if a value is being passed for `enterprise_id`.",
+              "required": false,
+              "custom_config": {
+                "grouping": "deployment",
+                "original_grouping": "deployment",
+                "config_constraints": {
+                  "type": "string"
+                }
+              }
+            },
+            {
+              "key": "enterprise_account_ids_to_assign",
+              "type": "array",
+              "default_value": [
+                "all"
+              ],
+              "description": "A list of enterprise account IDs to assign the trusted profile template to in order for the accounts to be scanned. Supports passing the string 'all' in the list to assign to all accounts. Only applies if a value is being passed for `enterprise_id`.",
+              "required": false,
+              "custom_config": {
+                "grouping": "deployment",
+                "original_grouping": "deployment",
+                "config_constraints": {
+                  "type": "string"
+                }
+              }
+            },
+            {
+              "key": "enterprise_id",
+              "type": "string",
+              "default_value": "__NULL__",
+              "description": "If the account is an enterprise account and you want to scan sub-accounts for compliance, this value should be set to the enterprise ID (this is different to the account ID).",
+              "required": false
+            },
+            {
+              "key": "enterprise_account_group_ids_to_assign",
+              "type": "array",
+              "default_value": [
+                "all"
+              ],
+              "description": "A list of enterprise account group IDs to assign the trusted profile template to in order for the accounts to be scanned for compliance. Supports passing the string 'all' in the list to assign to all account groups. Only applies if a value is being passed for `enterprise_id`.",
+              "required": false,
+              "custom_config": {
+                "grouping": "deployment",
+                "original_grouping": "deployment",
+                "config_constraints": {
+                  "type": "string"
+                }
+              }
+            },
+            {
+              "key": "enterprise_account_ids_to_assign",
+              "type": "array",
+              "default_value": [
+                "all"
+              ],
+              "description": "A list of enterprise account IDs to assign the trusted profile template to in order for the accounts to be scanned. Supports passing the string 'all' in the list to assign to all accounts. Only applies if a value is being passed for `enterprise_id`.",
+              "required": false,
+              "custom_config": {
+                "grouping": "deployment",
+                "original_grouping": "deployment",
+                "config_constraints": {
+                  "type": "string"
+                }
+              }
+            },
+            {
+              "key": "sample_app_git_url",
+              "type": "string",
+              "default_value": "https://github.com/IBM/gen-ai-rag-watsonx-sample-application",
+              "description": "The URL to the public git repository containing the sample RAG application code.",
+              "required": false
+            },
+            {
+              "key": "existing_secrets_manager_crn",
+              "type": "string",
+              "default_value": "__NULL__",
+              "description": "The CRN of an existing secret manager instance to use in this solution. If not set, a new secret manager instance is provisioned.",
+              "required": false
+            },
+            {
+              "key": "existing_kms_instance_crn",
+              "type": "string",
+              "default_value": "__NULL__",
+              "description": "The CRN of an existing KMS instance to use in this solution. If not set, a new KP instance is provisioned.",
+              "required": false
+            },
+            {
+              "key": "existing_event_notifications_instance_crn",
+              "type": "string",
+              "default_value": "__NULL__",
+              "description": "The CRN of an existing event notification instance to use in this solution. If not set, a new event notification instance is provisioned.",
+              "required": false
+            },
+            {
+              "key": "existing_discovery_instance_crn",
+              "type": "string",
+              "default_value": "__NULL__",
+              "description": "The CRN of an existing WatsonX SaaS discovery instance to use in this solution. If not set, a new discovery instance is provisioned depending on which plan is selected.",
+              "required": false
+            },
+            {
+              "key": "existing_assistant_instance_crn",
+              "type": "string",
+              "default_value": "__NULL__",
+              "description": "The CRN of an existing WatsonX SaaS assistant instance to use in this solution. If not set, a new assistant instance is provisioned depending on which plan is selected.",
+              "required": false
+            },
+            {
+              "key": "existing_governance_instance_crn",
+              "type": "string",
+              "default_value": "__NULL__",
+              "description": "The CRN of an existing WatsonX SaaS governance instance to use in this solution. If not set, a new governance instance is provisioned depending on which plan is selected.",
+              "required": false
+            },
+            {
+              "key": "existing_studio_instance_crn",
+              "type": "string",
+              "default_value": "__NULL__",
+              "description": "The CRN of an existing WatsonX SaaS studio instance to use in this solution. If not set, a new studio instance is provisioned depending on which plan is selected.",
+              "required": false
+            },
+            {
+              "key": "existing_machine_learning_instance",
+              "type": "string",
+              "default_value": "__NULL__",
+              "description": "The CRN of an existing WatsonX SaaS machine learning instance to use in this solution. If not set, a new machine learning instance is provisioned depending on which plan is selected.",
+              "required": false
+            },
+            {
+              "key": "existing_elasticsearch_instance_crn",
+              "type": "string",
+              "default_value": "__NULL__",
+              "description": "The CRN of an existing elasticsearch instance to use in this solution. If not set, a new elasticsearch instance is provisioned.",
+              "required": false
+            }
+          ],
+          "outputs": [
+            {
+              "name": "cos_instance_crn",
+              "description": "Cloud Object Storage instance CRN"
+            },
+            {
+              "name": "cos_instance_guid",
+              "description": "Cloud Object Storage instance GUID"
+            },
+            {
+              "name": "cos_instance_name",
+              "description": "Cloud Object Storage instance name"
+            },
+            {
+              "key": "elasticsearch_hostname",
+              "description": "The hostname of the Elasticsearch instance."
+            },
+            {
+              "key": "elasticsearch_port",
+              "description": "The port of the Elasticsearch instance."
+            },
+            {
+              "key": "elasticsearch_service_credentials_json",
+              "description": "The service credentials of the Elasticsearch instance."
+            },
+            {
+              "key": "elasticsearch_crn",
+              "description": "The CRN of the Elasticsearch instance."
+            },
+            {
+              "key": "watsonx_project_url",
+              "description": "The URL to the WatsonX project for the sample RAG application."
+            },
+            {
+              "key": "watsonx_project_id",
+              "description": "The ID for the WatsonX project for the sample RAG application."
+            },
+            {
+              "key": "watson_discovery_api_url",
+              "description": "The URL to the Watson Discovery API endpoint."
+            },
+            {
+              "key": "watson_discovery_project_id",
+              "description": "The ID for the Watson Discovery project for the sample RAG application."
+            },
+            {
+              "key": "kms_instance_crn",
+              "description": "The CRN of the Hyper Protect Crypto Service instance or Key Protect instance"
+            },
+            {
+              "key": "kms_private_endpoint",
+              "description": "Key Management Service instance private endpoint URL."
+            },
+            {
+              "key": "kms_public_endpoint",
+              "description": "Key Management Service instance public endpoint URL."
+            },
+            {
+              "key": "event_notifications_instance_crn",
+              "description": "Event Notifications crn"
+            },
+            {
+              "key": "event_notifications_instance_name",
+              "description": "Event Notifications name"
+            },
+            {
+              "key": "event_notifications_instance_guid",
+              "description": "Event Notifications guid"
+            },
+            {
+              "key": "cloud_logs_for_logging_crn",
+              "description": "The id of the provisioned IBM Cloud Logs for logging instance."
+            },
+            {
+              "key": "cloud_logs_for_logging_guid",
+              "description": "The guid of the provisioned IBM Cloud Logs for logging instance."
+            },
+            {
+              "key": "cloud_logs_for_activity_tracking_crn",
+              "description": "The id of the provisioned IBM Cloud Logs for activity tracking instance."
+            },
+            {
+              "key": "cloud_logs_for_activity_tracking_guid",
+              "description": "The guid of the provisioned IBM Cloud Logs for activity tracking instance."
+            },
+            {
+              "key": "cloud_monitoring_crn",
+              "description": "The id of the provisioned IBM cloud monitoring instance."
+            },
+            {
+              "key": "cloud_monitoring_guid",
+              "description": "The guid of the provisioned IBM cloud monitoring instance."
+            },
+            {
+              "key": "secrets_manager_crn",
+              "description": "CRN of the Secrets Manager instance"
+            },
+            {
+              "key": "secrets_manager_guid",
+              "description": "GUID of Secrets Manager instance"
+            },
+            {
+              "key": "secrets_manager_name",
+              "description": "Name of the Secrets Manager instance"
+            },
+            {
+              "key": "app_config_crn",
+              "description": "CRN of the App Configuration instance"
+            },
+            {
+              "key": "app_config_guid",
+              "description": "GUID of the App Configuration instance"
+            },
+            {
+              "key": "scc_workload_protection_crn",
+              "description": "SCC Workload Protection instance CRN"
+            },
+            {
+              "key": "scc_workload_protection_guid",
+              "description": "SCC Workload Protection instance ID"
+            },
+            {
+              "key": "watson_discovery_crn",
+              "description": "The CRN of the Watson Discovery instance."
+            },
+            {
+              "key": "watson_discovery_dashboard_url",
+              "description": "The dashboard URL of the Watson Discovery instance."
+            },
+            {
+              "key": "watson_machine_learning_crn",
+              "description": "The CRN of the Watson Machine Learning instance."
+            },
+            {
+              "key": "watson_machine_learning_dashboard_url",
+              "description": "The dashboard URL of the Watson Machine Learning instance."
+            },
+            {
+              "key": "watson_machine_learning_guid",
+              "description": "The GUID of the Watson Machine Learning instance."
+            },
+            {
+              "key": "watson_studio_crn",
+              "description": "The CRN of the Watson Studio instance."
+            },
+            {
+              "key": "watson_studio_dashboard_url",
+              "description": "The dashboard URL of the Watson Studio instance."
+            },
+            {
+              "key": "watson_studio_guid",
+              "description": "The GUID of the Watson Studio instance."
+            },
+            {
+              "key": "watsonx_assistant_crn",
+              "description": "The CRN of the watsonx Assistant instance."
+            },
+            {
+              "key": "watsonx_assistant_dashboard_url",
+              "description": "The dashboard URL of the watsonx Assistant instance."
+            },
+            {
+              "key": "watsonx_data_crn",
+              "description": "The CRN of the watsonx.data instance."
+            },
+            {
+              "key": "watsonx_data_dashboard_url",
+              "description": "The dashboard URL of the watsonx.data instance."
+            },
+            {
+              "key": "watsonx_data_guid",
+              "description": "The GUID of the watsonx.data instance."
+            },
+            {
+              "key": "watson_discovery_guid",
+              "description": "The GUID of the Watson Discovery instance."
+            },
+            {
+              "key": "workload_cluster_name",
+              "description": "The name of the workload cluster. If the cluster name does not exactly match the prefix-workload-cluster pattern it will be null."
+            },
+            {
+              "key": "workload_cluster_id",
+              "description": "The id of the workload cluster. If the cluster name does not exactly match the prefix-workload-cluster pattern it will be null."
+            },
+            {
+              "key": "workload_cluster_private_service_endpoint_url",
+              "description": "The private service endpoint URL of the Workload cluster, if not then null."
+            },
+            {
+              "key": "workload_cluster_public_service_endpoint_url",
+              "description": "The public service endpoint URL of the Workload cluster, if not then null."
+            }
+          ],
+          "install_type": "fullstack"
+        }
+      ]
+    }
+  ]
 }

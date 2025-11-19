@@ -27,7 +27,8 @@ var permanentResources map[string]interface{}
 
 // Current supported regions (NOTE: eu-es is not being used as we don't have extended trial plan quota in that region currently. Not using us-south on request from SM team)
 var validRegions = []string{
-	"eu-de",
+	// "eu-de", temp disable due to quota issue in account
+	"us-south",
 }
 
 // Use existing resource group

@@ -247,3 +247,9 @@ To use your own app, remove the `Workload - Sample RAG Application` member confi
 1.  Delete the project.
 
     To undeploy the infrastructure created by the deployable architecture, follow the steps in [Deleting a project](https://cloud.ibm.com/docs/secure-enterprise?topic=secure-enterprise-delete-project) in the IBM Cloud docs.
+
+## Known Issues
+
+- [The Standard (OpenShift) variation is currently not idempotent](https://github.com/terraform-ibm-modules/stack-retrieval-augmented-generation/issues/247).
+
+  Both the `Landing zone` Deployable Architecture (DA) and the `Landing zone for cloud-native AI applications` Deployable Architecture (DA) attempt to manage the same `Access Control Lists (ACLs)`. This may result in duplicate or conflicting updates.

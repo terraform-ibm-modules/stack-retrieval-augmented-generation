@@ -60,7 +60,7 @@
           "description": "Ensures trust by configuring the IBM Cloud account to align with compliance settings as defined in the Financial Services framework."
         }
       ],
-      "support_details": "This product is in the community registry, as such support is handled through the originated repo. If you experience issues please open an issue in that repository [https://github.com/terraform-ibm-modules/stack-retrieval-augmented-generation/issues](https://github.com/terraform-ibm-modules/stack-retrieval-augmented-generation/issues). Please note this product is not supported via the IBM Cloud Support Center.",
+      "support_details": "This product is in the community registry, support is handled through the [original repo](https://github.com/terraform-ibm-modules/stack-retrieval-augmented-generation). If you experience issues kindly open an issue [here](https://github.com/terraform-ibm-modules/stack-retrieval-augmented-generation/issues). Please note that this product is not currently supported through the IBM Cloud Support Center.",
       "flavors": [
         {
           "label": "Basic with sample application (Deploy on Code Engine)",
@@ -1342,6 +1342,225 @@
             }
           ],
           "install_type": "fullstack"
+        },
+                {
+          "label": "QuickStart",
+          "name": "quickstart",
+          "index": 5,
+          "short_description": "Ideal for users new to IBM Cloud or watsonx who want to get started without configuring underlying infrastructure.",
+          "install_type": "fullstack",
+          "ignore_readme": true,
+          "dependency_version_2": true,
+          "working_directory": "solutions/quickstart",
+          "iam_permissions": [
+            {
+              "service_name": "Resource group only",
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::role:Viewer"
+              ],
+              "notes": "Viewer access is required in the resource group you want to provision in."
+            },
+            {
+              "service_name": "cloud-object-storage",
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::serviceRole:Manager",
+                "crn:v1:bluemix:public:iam::::role:Editor"
+              ],
+              "notes": "Required to manage Object Storage for the watsonx.ai."
+            },
+            {
+              "service_name": "kms",
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::serviceRole:Manager",
+                "crn:v1:bluemix:public:iam::::role:Editor"
+              ],
+              "notes": "Required as Key Protect is used for encryption."
+            },
+            {
+              "service_name": "data-science-experience",
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::role:Editor"
+              ],
+              "notes": "Required to create an instance of watsonx.ai Studio."
+            },
+            {
+              "service_name": "pm-20",
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::role:Editor"
+              ],
+              "notes": "Required to create an instance of watsonx.ai Runtime."
+            },
+            {
+              "service_name": "discovery",
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::role:Editor"
+              ],
+              "notes": "Required to create an instance of Watson Discovery."
+            },
+            {
+              "service_name": "conversation",
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::role:Editor"
+              ],
+              "notes": "Required to create an instance of watsonx Assistant."
+            },
+            {
+              "service_name": "aiopenscale",
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::role:Editor"
+              ],
+              "notes": "Required to create an instance of watsonx.governance."
+            },
+            {
+              "service_name": "lakehouse",
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::role:Editor"
+              ],
+              "notes": "Required to create an instance of watsonx.data"
+            },
+            {
+              "service_name": "watsonx-orchestrate",
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::role:Editor"
+              ],
+              "notes": "Required to create an instance of watsonx Orchestrate."
+            },
+            {
+              "service_name": "databases-for-elasticsearch",
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::role:Editor"
+              ],
+              "notes": "Required to create the Databases for Elasticsearch instance."
+            },
+            {
+              "service_name": "container-registry",
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::serviceRole:Manager"
+              ],
+              "notes": "Required to manage namespaces, repositories, and access policies in Container Registry."
+            },
+            {
+              "service_name": "codeengine",
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::serviceRole:Writer",
+                "crn:v1:bluemix:public:iam::::role:Editor"
+              ],
+              "notes": "Required to create Code Engine instance."
+            }
+          ],
+          "architecture": {
+            "features": [
+              {
+                "title": " ",
+                "description": "Ideal for users new to IBM Cloud or watsonx.ai who want to get started without configuring underlying infrastructure."
+              },
+              {
+                "title": " ",
+                "description": "Quickly provisions watsonx.ai, watsonx Assistant, watsonx Orchestrate, watson Discovery, watsonx.data, watsonx.governance, Elasticsearch, Object Storage, Key Management Services and Code Engine. Includes all necessary services to deploy a sample Retrieval-Augmented Generation (RAG) application leveraging Code Engine."
+              }
+            ],
+            "diagrams": [
+              {
+                "diagram": {
+                  "caption": "Landing zone for cloud-native AI applications - QuickStart",
+                  "url": "https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-cloud-native-ai/main/reference-architectures/deployable-architecture-cn-ai-qs.svg",
+                  "type": "image/svg+xml"
+                },
+                "description": "This deployable architecture provisions a suite of AI and data services on IBM Cloud to support rapid development and deployment of Landing zone for cloud-native AI applications. It includes <b>watsonx.ai</b> for foundation model training and inference, <b>watsonx Assistant</b> for conversational AI, <b>watson Discovery</b> for intelligent document understanding, <b>watsonx.data</b> to support enterprise-grade requirements by using additional services, <b>watsonx.governance</b> to analyze your AI with trust and transparency and <b>IBM Cloud Databases for Elasticsearch</b>. The solution also provisions <b>IBM Cloud Object Storage (COS)</b> for persistent storage of model artifacts, application data, and logs, and <b>Key Management Services (KMS)</b> to ensure secure handling of sensitive information and encryption keys across services. Once the foundational services are provisioned, a sample <b>Retrieval-Augmented Generation (RAG)</b> application can be deployed to demonstrate how enterprise-grade AI solutions can be built using IBM Cloud-native services. The application leverages `watsonx.ai` for generative responses, Elasticsearch for document retrieval, and Code Engine to orchestrate the runtime environment."
+              }
+            ]
+          },
+          "configuration": [
+            {
+              "key": "prefix",
+              "type": "string",
+              "required": true,
+              "default_value": "cnai",
+              "random_string": {
+                "length": 4
+              },
+              "value_constraints": [
+                {
+                  "type": "regex",
+                  "description": "Prefix must begin with a lowercase letter and may contain only lowercase letters, digits, and hyphens '-'. It must not end with a hyphen('-'), and cannot contain consecutive hyphens ('--'). It should not exceed 16 characters.",
+                  "value": "^$|^__NULL__$|^[a-z](?!.*--)(?:[a-z0-9-]{0,14}[a-z0-9])?$"
+                }
+              ]
+            },
+            {
+              "key": "existing_resource_group_name",
+              "display_name": "resource_group",
+              "custom_config": {
+                "type": "resource_group",
+                "grouping": "deployment",
+                "original_grouping": "deployment",
+                "config_constraints": {
+                  "identifier": "rg_name"
+                }
+              }
+            },
+            {
+              "key": "ibmcloud_api_key",
+              "type": "password",
+              "required": true
+            },
+            {
+              "key": "region",
+              "required": true,
+              "options": [
+                {
+                  "displayname": "Dallas (us-south)",
+                  "value": "us-south"
+                },
+                {
+                  "displayname": "Sydney (au-syd)",
+                  "value": "au-syd"
+                },
+                {
+                  "displayname": "Frankfurt (eu-de)",
+                  "value": "eu-de"
+                },
+                {
+                  "displayname": "London (eu-gb)",
+                  "value": "eu-gb"
+                },
+                {
+                  "displayname": "Tokyo (jp-tok)",
+                  "value": "jp-tok"
+                }
+              ]
+            },
+            {
+              "key": "provider_visibility",
+              "options": [
+                {
+                  "displayname": "private",
+                  "value": "private"
+                },
+                {
+                  "displayname": "public",
+                  "value": "public"
+                },
+                {
+                  "displayname": "public-and-private",
+                  "value": "public-and-private"
+                }
+              ],
+              "hidden": true
+            },
+            {
+              "key": "resource_tags",
+              "custom_config": {
+                "type": "array",
+                "grouping": "deployment",
+                "original_grouping": "deployment",
+                "config_constraints": {
+                  "type": "string"
+                }
+              }
+            }
+          ],
+          "terraform_version": "1.12.2",
         }
       ]
     }

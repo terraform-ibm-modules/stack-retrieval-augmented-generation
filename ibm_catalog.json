@@ -286,10 +286,6 @@
                 {
                   "displayname": "Tokyo (jp-tok)",
                   "value": "jp-tok"
-                },
-                {
-                  "displayname": "Toronto (ca-tor)",
-                  "value": "ca-tor"
                 }
               ]
             },
@@ -840,10 +836,6 @@
                 {
                   "displayname": "Tokyo (jp-tok)",
                   "value": "jp-tok"
-                },
-                {
-                  "displayname": "Toronto (ca-tor)",
-                  "value": "ca-tor"
                 }
               ]
             },

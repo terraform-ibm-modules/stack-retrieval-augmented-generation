@@ -250,6 +250,17 @@ To use your own app, remove the `Workload - Sample RAG Application` member confi
 
 ## Known Issues
 
-- [The Standard (OpenShift) variation is currently not idempotent](https://github.com/terraform-ibm-modules/stack-retrieval-augmented-generation/issues/247).
+[The Standard (OpenShift) variation is currently not idempotent](https://github.com/terraform-ibm-modules/stack-retrieval-augmented-generation/issues/247).
 
-  Both the `Landing zone` Deployable Architecture (DA) and the `Landing zone for cloud-native AI applications` Deployable Architecture (DA) attempt to manage the same `Access Control Lists (ACLs)`. This may result in duplicate or conflicting updates.
+Both the `Landing zone` Deployable Architecture (DA) and the `Landing zone for cloud-native AI applications` Deployable Architecture (DA) attempt to manage the same `Access Control Lists (ACLs)`.
+This may result in duplicate or conflicting updates as the same ACL resource is updated from two independent Terraform states.
+
+**Impact:**
+
+- Non‑idempotent applies: `terraform apply` may produce updates even when no configuration changes exist.
+
+- Unexpected diffs: Terraform may show differences in ACL rules because another state has modified the resource.
+
+- Apply failures: Concurrent updates from both DAs may trigger errors such as “object changed outside of Terraform.
+
+These issues occur only in environments where both DAs are applied independently and target the same ACL resource.

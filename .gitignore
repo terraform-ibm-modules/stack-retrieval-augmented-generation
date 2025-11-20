@@ -1,6 +1,15 @@
 .def.json
 .terraform
+**/.terraform/*
+
 *.tfstate
+*.tfstate.*
+
+*.terraform.lock.hcl
 *.lock.hcl
+
 .DS_Store
 .idea
+*.tfvars
+*.tfvars.json
+*.log

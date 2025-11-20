@@ -66,7 +66,7 @@
           "label": "Basic with sample application (Deploy on Code Engine)",
           "name": "basic",
           "index": 1,
-          "short_description": "Ideal for Code Engine users who want serverless simplicity with a reliable starting point.",
+          "short_description": "Provides Code Engine users with serverless simplicity plus a hosted sample app and CI/CD pipeline.",
           "working_directory": "solutions/basic",
           "ignore_readme": true,
           "dependency_version_2": true,
@@ -607,7 +607,7 @@
           "label": "Standard with sample application (Deploy on Red Hat OpenShift)",
           "name": "standard",
           "index": 2,
-          "short_description": "Ideal for Red Hat OpenShift users who want enterprise‑grade flexibility with a reliable starting point.",
+          "short_description": "Offers Red Hat OpenShift users enterprise-grade flexibility along with a hosted sample app and automated pipeline deployment.",
           "working_directory": "solutions/standard",
           "ignore_readme": true,
           "dependency_version_2": true,
@@ -1346,10 +1346,10 @@
           "install_type": "fullstack"
         },
         {
-          "label": "Basic without sample application (Deploy on Code Engine)",
+          "label": "Basic (Deploy on Code Engine)",
           "name": "basic-without-app",
           "index": 3,
-          "short_description": "Ideal for Code Engine users who want serverless simplicity with a reliable starting point.",
+          "short_description": "Designed for Code Engine users who want serverless simplicity without deploying a sample app or pipeline.",
           "working_directory": "solutions/basic-without-sample-app",
           "ignore_readme": true,
           "dependency_version_2": true,
@@ -1864,10 +1864,10 @@
           "install_type": "fullstack"
         },
         {
-          "label": "Standard without sample application (Deploy on Red Hat OpenShift)",
+          "label": "Standard (Deploy on Red Hat OpenShift)",
           "name": "standard-without-app",
           "index": 4,
-          "short_description": "Ideal for Red Hat OpenShift users who want enterprise‑grade flexibility with a reliable starting point.",
+          "short_description": "Ideal for Red Hat OpenShift users seeking enterprise-grade flexibility without a sample app or pipeline included.",
           "working_directory": "solutions/standard-without-sample-app",
           "ignore_readme": true,
           "dependency_version_2": true,

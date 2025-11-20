@@ -6,24 +6,24 @@ This deployable architecture provides a comprehensive foundation for trust, obse
 
 ## Variations
 
-Although four but primarily two variations are available for this deployable architecture:
+This deployable architecture is available in four variations, grouped into two categories (Basic and Standard). Each category offers an option with or without a sample application deployment or pipeline:
 
 1. Basic variation - With sample application:
    - Code Engine Project: Provisions a Code Engine project, providing a fully managed platform for containerized applications.
    - Application Deployment: Deploys the application on the provisioned Code Engine project.
    - Elasticsearch Enterprise: Provisions an Elasticsearch [enterprise](https://cloud.ibm.com/docs/databases-for-elasticsearch?topic=databases-for-elasticsearch-elastic-offerings) instance for search and analytics capabilities.
 
-2. Basic variation - Without sample application:
-   - Code Engine Project: Provisions a Code Engine project, providing a fully managed platform for containerized applications.
-   - Elasticsearch Enterprise: Provisions an Elasticsearch [enterprise](https://cloud.ibm.com/docs/databases-for-elasticsearch?topic=databases-for-elasticsearch-elastic-offerings) instance for search and analytics capabilities.
-
-3. Standard variation - With sample application:
+2. Standard variation - With sample application:
    - IBM Cloud OpenShift Cluster: Provisions an [IBM Cloud OpenShift cluster](https://cloud.ibm.com/docs/openshift?topic=openshift-overview)
    - VPC Network Infrastructure: Sets up the underlying VPC network infrastructure to support the OpenShift cluster.
    - Application Deployment: Deploys the application on the provisioned OpenShift cluster.
    - ElasticSearch Platinum Plan: Leverages the platinum plan of ElasticSearch, which includes the [ELSER](https://cloud.ibm.com/docs/databases-for-elasticsearch?topic=databases-for-elasticsearch-elser-embeddings-elasticsearch) model for advanced vector generation capabilities.
 
-4. Standard variation - Without sample application:
+3. Basic variation:
+   - Code Engine Project: Provisions a Code Engine project, providing a fully managed platform for containerized applications.
+   - Elasticsearch Enterprise: Provisions an Elasticsearch [enterprise](https://cloud.ibm.com/docs/databases-for-elasticsearch?topic=databases-for-elasticsearch-elastic-offerings) instance for search and analytics capabilities.
+
+4. Standard variation:
    - IBM Cloud OpenShift Cluster: Provisions an [IBM Cloud OpenShift cluster](https://cloud.ibm.com/docs/openshift?topic=openshift-overview)
    - VPC Network Infrastructure: Sets up the underlying VPC network infrastructure to support the OpenShift cluster.
    - ElasticSearch Platinum Plan: Leverages the platinum plan of ElasticSearch, which includes the [ELSER](https://cloud.ibm.com/docs/databases-for-elasticsearch?topic=databases-for-elasticsearch-elser-embeddings-elasticsearch) model for advanced vector generation capabilities.

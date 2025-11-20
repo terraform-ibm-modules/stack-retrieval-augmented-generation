@@ -867,7 +867,7 @@
         },
         {
           "name": "cloud_logs_ingress_endpoint",
-          "value": "ref:./4a - Essential Security - Cloud Logs for logging/outputs/cloud_logs_ingress_private_endpoint"
+          "value": "ref:../4a - Essential Security - Cloud Logs for logging/outputs/cloud_logs_ingress_private_endpoint"
         }
       ]
     }

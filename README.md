@@ -2,27 +2,35 @@
 
 The following [deployable architecture](https://cloud.ibm.com/docs/secure-enterprise?topic=secure-enterprise-understand-module-da#what-is-da) automates the deployment of a sample gen AI Pattern on IBM Cloud, including all underlying IBM Cloud and WatsonX infrastructure. This architecture implements the best practices for watsonx gen AI Pattern deployment on IBM Cloud, as described in the [reference architecture](https://cloud.ibm.com/docs/pattern-genai-rag?topic=pattern-genai-rag-genai-pattern).
 
-This deployable architecture provides a comprehensive foundation for trust, observability, security, and regulatory compliance. The architecture configures an IBM Cloud account to align with compliance settings. It also deploys key management and secrets management services and the infrastructure to support continuous integration (CI), continuous delivery (CD), and continuous compliance (CC) pipelines for secure management of the application lifecycle. It also deploys the WatsonX services suite and IBM Cloud Elasticsearch to faciliate a RAG pattern. These pipelines facilitate the deployment of the application, check for vulnerabilities and auditability, and help ensure a secure and trustworthy deployment of generative AI applications on IBM Cloud.
+This deployable architecture provides a comprehensive foundation for trust, observability, security, and regulatory compliance. The architecture configures an IBM Cloud account to align with compliance settings. It also deploys key management and secrets management services and the infrastructure to support continuous integration (CI), continuous delivery (CD), and continuous compliance (CC) pipelines for secure management of the application lifecycle. It also deploys the WatsonX services suite and IBM Cloud Elasticsearch to facilitate a RAG pattern. These pipelines facilitate the deployment of the application, check for vulnerabilities and auditability, and help ensure a secure and trustworthy deployment of generative AI applications on IBM Cloud.
 
 ## Variations
 
-Two variations are available for this deployable architecture:
-1. Basic variation:
+This deployable architecture is available in four variations, grouped into two categories (Basic and Standard). Each category offers an option with or without a sample application deployment or pipeline:
+
+1. Basic variation - With sample application:
    - Code Engine Project: Provisions a Code Engine project, providing a fully managed platform for containerized applications.
    - Application Deployment: Deploys the application on the provisioned Code Engine project.
    - Elasticsearch Enterprise: Provisions an Elasticsearch [enterprise](https://cloud.ibm.com/docs/databases-for-elasticsearch?topic=databases-for-elasticsearch-elastic-offerings) instance for search and analytics capabilities.
 
-2. Standard variation:
+2. Standard variation - With sample application:
    - IBM Cloud OpenShift Cluster: Provisions an [IBM Cloud OpenShift cluster](https://cloud.ibm.com/docs/openshift?topic=openshift-overview)
    - VPC Network Infrastructure: Sets up the underlying VPC network infrastructure to support the OpenShift cluster.
    - Application Deployment: Deploys the application on the provisioned OpenShift cluster.
    - ElasticSearch Platinum Plan: Leverages the platinum plan of ElasticSearch, which includes the [ELSER](https://cloud.ibm.com/docs/databases-for-elasticsearch?topic=databases-for-elasticsearch-elser-embeddings-elasticsearch) model for advanced vector generation capabilities.
 
+3. Basic variation:
+   - Code Engine Project: Provisions a Code Engine project, providing a fully managed platform for containerized applications.
+   - Elasticsearch Enterprise: Provisions an Elasticsearch [enterprise](https://cloud.ibm.com/docs/databases-for-elasticsearch?topic=databases-for-elasticsearch-elastic-offerings) instance for search and analytics capabilities.
 
+4. Standard variation:
+   - IBM Cloud OpenShift Cluster: Provisions an [IBM Cloud OpenShift cluster](https://cloud.ibm.com/docs/openshift?topic=openshift-overview)
+   - VPC Network Infrastructure: Sets up the underlying VPC network infrastructure to support the OpenShift cluster.
+   - ElasticSearch Platinum Plan: Leverages the platinum plan of ElasticSearch, which includes the [ELSER](https://cloud.ibm.com/docs/databases-for-elasticsearch?topic=databases-for-elasticsearch-elser-embeddings-elasticsearch) model for advanced vector generation capabilities.
 
 ## Objective and benefits
 
-This deployable architecture is designed to showcase a fully automated deployment of a retrieval augmented generation application through IBM Cloud Projects. It provides a flexible and customizable foundation for your own watsonx applications on IBM Cloud. This architecture deploys the following [sample application](https://github.com/IBM/gen-ai-rag-watsonx-sample-application) by default.
+This deployable architecture is designed to showcase a fully automated deployment of a retrieval augmented generation application through IBM Cloud Projects. It provides a flexible and customizable foundation for your own watsonx applications on IBM Cloud. This architecture deploys the following [sample application](https://github.com/IBM/gen-ai-rag-watsonx-sample-application) by default for the variations that allow provisioning sample application.
 
 By using this architecture, you can accelerate your deployment and tailor it to meet your business needs and enterprise goals.
 
@@ -239,3 +247,20 @@ To use your own app, remove the `Workload - Sample RAG Application` member confi
 1.  Delete the project.
 
     To undeploy the infrastructure created by the deployable architecture, follow the steps in [Deleting a project](https://cloud.ibm.com/docs/secure-enterprise?topic=secure-enterprise-delete-project) in the IBM Cloud docs.
+
+## Known Issues
+
+[The Standard (OpenShift) variation is currently not idempotent](https://github.com/terraform-ibm-modules/stack-ibm-retrieval-augmented-generation/issues/247).
+
+Both the `Landing zone` Deployable Architecture (DA) and the `Landing zone for cloud-native AI applications` Deployable Architecture (DA) attempt to manage the same `Access Control Lists (ACLs)`.
+This may result in duplicate or conflicting updates as the same ACL resource is updated from two independent Terraform states.
+
+**Impact:**
+
+- Non‑idempotent applies: `terraform apply` may produce updates even when no configuration changes exist.
+
+- Unexpected diffs: Terraform may show differences in ACL rules because another state has modified the resource.
+
+- Apply failures: Concurrent updates from both DAs may trigger errors such as “object changed outside of Terraform.
+
+These issues occur only in environments where both DAs are applied independently and target the same ACL resource.

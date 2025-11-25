@@ -3,7 +3,6 @@ package tests
 import (
 	"fmt"
 	"log"
-	"math/rand"
 	"os"
 	"strings"
 	"testing"
@@ -60,7 +59,7 @@ func TestProjectsBasicFullTest(t *testing.T) {
 	}
 	options.StackInputs = map[string]interface{}{
 		"resource_group_name":          options.ResourceGroup,
-		"region":                       validRegions[rand.Intn(len(validRegions))],
+		"region":                       validRegions[common.CryptoIntn(len(validRegions))],
 		"ibmcloud_api_key":             options.RequiredEnvironmentVars["TF_VAR_ibmcloud_api_key"],
 		"prefix":                       options.Prefix,
 		"signing_key":                  privateKey,
@@ -96,7 +95,7 @@ func TestProjectsBasicExistingResourcesTest(t *testing.T) {
 		TerraformDir: tempTerraformDir,
 		Vars: map[string]interface{}{
 			"prefix": prefix,
-			"region": validRegions[rand.Intn(len(validRegions))],
+			"region": validRegions[common.CryptoIntn(len(validRegions))],
 		},
 		// Set Upgrade to true to ensure latest version of providers and modules are used by terratest.
 		// This is the same as setting the -upgrade=true flag with terraform.
@@ -177,7 +176,7 @@ func TestProjectsStandardFullTest(t *testing.T) {
 	}
 	options.StackInputs = map[string]interface{}{
 		"resource_group_name":          options.ResourceGroup,
-		"region":                       validRegions[rand.Intn(len(validRegions))],
+		"region":                       validRegions[common.CryptoIntn(len(validRegions))],
 		"ibmcloud_api_key":             options.RequiredEnvironmentVars["TF_VAR_ibmcloud_api_key"],
 		"prefix":                       options.Prefix,
 		"signing_key":                  privateKey,

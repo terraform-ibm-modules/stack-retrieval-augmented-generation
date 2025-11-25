@@ -60,7 +60,7 @@
           "description": "Ensures trust by configuring the IBM Cloud account to align with compliance settings as defined in the Financial Services framework."
         }
       ],
-      "support_details": "This product is in the community registry, as such support is handled through the [originated repo](https://github.com/terraform-ibm-modules/stack-retrieval-augmented-generation). If you experience issues, please open an [issue]([https://github.com/terraform-ibm-modules/stack-retrieval-augmented-generation/issues]) in that repository. Please note this product is not supported via the IBM Cloud Support Center.",
+      "support_details": "This product is in the community registry, as such support is handled through the [originated repo](https://github.com/terraform-ibm-modules/stack-ibm-retrieval-augmented-generation). If you experience issues, please open an [issue]([https://github.com/terraform-ibm-modules/stack-ibm-retrieval-augmented-generation/issues]) in that repository. Please note this product is not supported via the IBM Cloud Support Center.",
       "flavors": [
         {
           "label": "Basic with sample application (Deploy on Code Engine)",
@@ -1478,19 +1478,19 @@
             "diagrams": [
               {
                 "diagram": {
-                  "url": "https://raw.githubusercontent.com/terraform-ibm-modules/stack-retrieval-augmented-generation/main/reference-architectures/rag-pattern.svg",
+                  "url": "https://raw.githubusercontent.com/terraform-ibm-modules/stack-ibm-retrieval-augmented-generation/main/reference-architectures/rag-pattern.svg",
                   "caption": "Reference architecture",
                   "type": "image/svg+xml",
-                  "thumbnail_url": "https://raw.githubusercontent.com/terraform-ibm-modules/stack-retrieval-augmented-generation/main/reference-architectures/rag-pattern.svg"
+                  "thumbnail_url": "https://raw.githubusercontent.com/terraform-ibm-modules/stack-ibm-retrieval-augmented-generation/main/reference-architectures/rag-pattern.svg"
                 },
                 "description": "Reference architecture"
               },
               {
                 "diagram": {
-                  "url": "https://raw.githubusercontent.com/terraform-ibm-modules/stack-retrieval-augmented-generation/main/reference-architectures/rag-stack-without-app-and-alm.svg",
+                  "url": "https://raw.githubusercontent.com/terraform-ibm-modules/stack-ibm-retrieval-augmented-generation/main/reference-architectures/rag-stack-without-app-and-alm.svg",
                   "caption": "Solution components",
                   "type": "image/svg+xml",
-                  "thumbnail_url": "https://raw.githubusercontent.com/terraform-ibm-modules/stack-retrieval-augmented-generation/main/reference-architectures/rag-stack-without-app-and-alm.svg"
+                  "thumbnail_url": "https://raw.githubusercontent.com/terraform-ibm-modules/stack-ibm-retrieval-augmented-generation/main/reference-architectures/rag-stack-without-app-and-alm.svg"
                 },
                 "description": "Solution components"
               }
@@ -2010,19 +2010,19 @@
             "diagrams": [
               {
                 "diagram": {
-                  "url": "https://raw.githubusercontent.com/terraform-ibm-modules/stack-retrieval-augmented-generation/main/reference-architectures/rag-pattern.svg",
+                  "url": "https://raw.githubusercontent.com/terraform-ibm-modules/stack-ibm-retrieval-augmented-generation/main/reference-architectures/rag-pattern.svg",
                   "caption": "Reference architecture",
                   "type": "image/svg+xml",
-                  "thumbnail_url": "https://raw.githubusercontent.com/terraform-ibm-modules/stack-retrieval-augmented-generation/main/reference-architectures/rag-pattern.svg"
+                  "thumbnail_url": "https://raw.githubusercontent.com/terraform-ibm-modules/stack-ibm-retrieval-augmented-generation/main/reference-architectures/rag-pattern.svg"
                 },
                 "description": "Reference architecture"
               },
               {
                 "diagram": {
-                  "url": "https://raw.githubusercontent.com/terraform-ibm-modules/stack-retrieval-augmented-generation/main/reference-architectures/rag-stack-without-app-and-alm.svg",
+                  "url": "https://raw.githubusercontent.com/terraform-ibm-modules/stack-ibm-retrieval-augmented-generation/main/reference-architectures/rag-stack-without-app-and-alm.svg",
                   "caption": "Solution components",
                   "type": "image/svg+xml",
-                  "thumbnail_url": "https://raw.githubusercontent.com/terraform-ibm-modules/stack-retrieval-augmented-generation/main/reference-architectures/rag-stack-without-app-and-alm.svg"
+                  "thumbnail_url": "https://raw.githubusercontent.com/terraform-ibm-modules/stack-ibm-retrieval-augmented-generation/main/reference-architectures/rag-stack-without-app-and-alm.svg"
                 },
                 "description": "Solution components"
               }

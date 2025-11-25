@@ -1,4 +1,4 @@
-module github.com/terraform-ibm-modules/stack-retrieval-augmented-generation
+module github.com/terraform-ibm-modules/stack-ibm-retrieval-augmented-generation
 
 go 1.24.0
 
